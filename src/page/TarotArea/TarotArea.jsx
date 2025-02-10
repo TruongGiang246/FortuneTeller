@@ -4,7 +4,7 @@ import "./TarotAreaStyle.css";
 
 const TarotCard = ({ frontImage, backImage }) => {
     const [flipped, setFlipped] = useState(false);
-  
+    const BaseUrl = "/FortuneTeller"
     return (
       <motion.div
         className="tarot-card"
@@ -26,9 +26,9 @@ const TarotCard = ({ frontImage, backImage }) => {
   
   const TarotReading = () => {
     const cards = [
-      { front: "/images/card1.jpg", back: "/images/back.webp" },
-      { front: "/images/card2.jpg", back: "/images/back.webp" },
-      { front: "/images/card3.jpg", back: "/images/back.webp" }
+      { front: `${BaseUrl}/images/card1.jpg`, back: `${BaseUrl}/images/back.webp` },
+      { front: `${BaseUrl}/images/card2.jpg`, back: `${BaseUrl}/images/back.webp` },
+      { front: `${BaseUrl}/images/card3.jpg`, back: `${BaseUrl}/images/back.webp` }
     ];
   
     return (

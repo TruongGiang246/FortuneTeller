@@ -31,7 +31,7 @@ function Home(){
                     <div className='information_container'>
                         <div className='information_box'>
                             <div className='information_img'>
-                                <img src='/HomeImages/tarotCard.png'/>
+                                <img src={`${BaseUrl}/HomeImages/tarotCard.png`}/>
                             </div>
                             <div className='information_text'>
                                 <h2>Tarot</h2>
@@ -40,7 +40,7 @@ function Home(){
                         </div>
                         <div className='information_box'>
                             <div className='information_img'>
-                                <img width="60" height="60" src='/HomeImages/numer.png'/>
+                                <img width="60" height="60" src={`${BaseUrl}/HomeImages/numer.png`}/>
                             </div>
                             <div className='information_text'>
                                 <h2>Numerology</h2>
@@ -49,7 +49,7 @@ function Home(){
                         </div>
                         <div className='information_box'>
                             <div className='information_img'>
-                                <img src='/HomeImages/destiny.png'/>
+                                <img src={`${BaseUrl}/HomeImages/destiny.png`}/>
                             </div>
                             <div className='information_text'>
                                 <h2>Matrix Destiny</h2>
