@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ThreeBack from '../Component/ThreeBack'
 function Home(){
-    const tarot = "/gifs/tarot.gif"
+    const BaseUrl = "/FortuneTeller"
     useEffect(()=>{
         const information_1 = document.getElementsByClassName('Question_block');
         const information_2 = document.getElementsByClassName('slide');
@@ -99,7 +99,7 @@ function Home(){
                         
                         <div className='information_box box2'>
                             <div className='information_img_2'>
-                                <img className="img_gif_1" src='/gifs/tarot.gif'/>
+                                <img className="img_gif_1" src={`${BaseUrl}/gifs/tarot.gif`}/>
                             </div>
                             <div className='information_text_2'>
                             <Link to="/Tarot"><h2>Tarot</h2></Link>
@@ -108,7 +108,7 @@ function Home(){
                         
                         <div className='information_box box2'>
                             <div className='information_img_2'>
-                                <img className="img_gif_2" src='/gifs/dice.gif'/>
+                                <img className="img_gif_2" src={`${BaseUrl}/gifs/dice.gif`}/>
                             </div>
                             <div className='information_text_2'>
                                 <h2>Numerology</h2>
@@ -116,7 +116,7 @@ function Home(){
                         </div>
                         <div className='information_box box2'>
                             <div className='information_img_2'>
-                                <img className="img_gif_3" src='/gifs/matrix.gif'/>
+                                <img className="img_gif_3" src={`${BaseUrl}/gifs/matrix.gif`}/>
                             </div>
                             <div className='information_text_2'>
                                 <h2>Matrix Destiny</h2>
