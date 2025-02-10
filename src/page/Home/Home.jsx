@@ -1,15 +1,9 @@
 import './HomeStyle.css'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Matrix from '../Component/ThreeCard/Matrix/Matrix'
-import Numerology from '../Component/ThreeCard/Numerology/Numerology'
 import ThreeBack from '../Component/ThreeBack'
-import Tarot from '../Component/ThreeCard/Tarot/Tarot'
-import TarotImg from '../Component/HomeImages/icons8-tarot-cards-50.png'
-import NumberologyImg from '../Component/HomeImages/icons8-numerology-50.png'
-import DestinyImg from '../Component/HomeImages/icons8-destiny-48.png'
 function Home(){
-
+    const tarot = "/gifs/tarot.gif"
     useEffect(()=>{
         const information_1 = document.getElementsByClassName('Question_block');
         const information_2 = document.getElementsByClassName('slide');
@@ -37,7 +31,7 @@ function Home(){
                     <div className='information_container'>
                         <div className='information_box'>
                             <div className='information_img'>
-                                <img src={TarotImg}/>
+                                <img src='/HomeImages/tarotCard.png'/>
                             </div>
                             <div className='information_text'>
                                 <h2>Tarot</h2>
@@ -46,7 +40,7 @@ function Home(){
                         </div>
                         <div className='information_box'>
                             <div className='information_img'>
-                                <img width="60" height="60" src={NumberologyImg}/>
+                                <img width="60" height="60" src='/HomeImages/numer.png'/>
                             </div>
                             <div className='information_text'>
                                 <h2>Numerology</h2>
@@ -55,7 +49,7 @@ function Home(){
                         </div>
                         <div className='information_box'>
                             <div className='information_img'>
-                                <img src={DestinyImg}/>
+                                <img src='/HomeImages/destiny.png'/>
                             </div>
                             <div className='information_text'>
                                 <h2>Matrix Destiny</h2>
@@ -105,16 +99,16 @@ function Home(){
                         
                         <div className='information_box box2'>
                             <div className='information_img_2'>
-                                <Tarot/>
+                                <img className="img_gif_1" src='/gifs/tarot.gif'/>
                             </div>
                             <div className='information_text_2'>
-                            <Link to="/Home/Tarot"><h2>Tarot</h2></Link>
+                            <Link to="/Tarot"><h2>Tarot</h2></Link>
                             </div>
                         </div>
                         
                         <div className='information_box box2'>
                             <div className='information_img_2'>
-                                <Numerology/>
+                                <img className="img_gif_2" src='/gifs/dice.gif'/>
                             </div>
                             <div className='information_text_2'>
                                 <h2>Numerology</h2>
@@ -122,7 +116,7 @@ function Home(){
                         </div>
                         <div className='information_box box2'>
                             <div className='information_img_2'>
-                                <Matrix/>
+                                <img className="img_gif_3" src='/gifs/matrix.gif'/>
                             </div>
                             <div className='information_text_2'>
                                 <h2>Matrix Destiny</h2>

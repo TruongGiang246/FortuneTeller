@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/FortuneTeller">
       <Routes>
         {publicRoutes.map((route, index) => {
           const Page = route.component
@@ -19,11 +19,11 @@ function App() {
           }
 
           return <Route key={index} path={route.path} element = {
-            <Layout>
-                <Page/>
-            </Layout>
+            route.nav ? (<Page to="/"/>) : ( <Layout><Page/></Layout>)
           }/>
         })}
+        
+
       </Routes>
     </BrowserRouter>
 

@@ -86,7 +86,19 @@
 .information_img_2{
     width: 100%;
     height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.img_gif_1,
+.img_gif_2,
+.img_gif_3{
+    width: 100%;
+    height: 100%;
+
+}
+
+
 .information_text_2{
     width: 100%;
     height: 20%;
