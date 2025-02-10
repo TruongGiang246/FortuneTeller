@@ -1,0 +1,7 @@
+.NavBar{
+    position: absolute;
+    width: 100vw;
+    height: 10vh;
+    background-color: transparent;
+    border-bottom: 2px wheat solid;
+}

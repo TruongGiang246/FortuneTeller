@@ -1,0 +1,50 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    background-color: black;
+  }
+  .wrap{
+    width: 100vw;
+    height: 100vh;
+  }
+  h1{
+    color: white;
+  }
+  .container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
+  .input{
+    display: flex;
+    margin-bottom: 15px;
+  }
+  .container_input{
+    height: 40px;
+    width: 40px;
+    margin: 0px 10px;
+    text-align: center;
+    font-size: 25px; 
+  }
+  #buttonLmao{
+    height: 5vh;
+    width: 10vw;
+    background-color: #FAFBFC;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    text-align: center;
+  }
+  
