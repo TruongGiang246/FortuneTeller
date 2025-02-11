@@ -121,15 +121,17 @@ const TarotReading = () => {
     const groups = useRef([]);
 
     function swapHandle(){
-      const swapButton = document.getElementById('swap_button')
-      swapButton.style.backgroundColor = "green";
-      swapButton.style.color = "white";
-      swapButton.innerText = "Swap Done";
-      for (let i = cards.current.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); 
-        [cards.current[i], cards.current[j]] = [cards.current[j], cards.current[i]]; 
+      if(!canFlip && groups.current.length != 3){
+        const swapButton = document.getElementById('swap_button')
+        swapButton.style.backgroundColor = "green";
+        swapButton.style.color = "white";
+        swapButton.innerText = "Swap Done";
+        for (let i = cards.current.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1)); 
+          [cards.current[i], cards.current[j]] = [cards.current[j], cards.current[i]]; 
+        }
+        setCanFlip(true);
       }
-      setCanFlip(true);
     }
 
     function handleNavigate(){
@@ -184,8 +186,6 @@ const TarotReading = () => {
           },200)
         }
       }
-  
-
 
     },[canFlip])
     
