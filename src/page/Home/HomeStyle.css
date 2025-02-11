@@ -12,12 +12,12 @@
 
     cursor: pointer;
     font-family: 'Cinzel Decorative', serif;
-    font-size: 48px;  /* Kích thước lớn để nổi bật */
-    font-weight: 700;  /* Đậm hơn */
-    letter-spacing: 2px;  /* Khoảng cách giữa các chữ */
-    text-transform: uppercase;  /* Viết hoa toàn bộ */
-    color: #4B0082; /* Tím than */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Đổ bóng đen giúp nổi bật */
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
 .information{
     width: 100vw;

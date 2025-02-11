@@ -1,0 +1,33 @@
+.result_container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250vh;
+}
+.result_information{
+    margin: 15px 0px;
+    width: 70vw;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.result_img{
+    height: 100%;
+    width: 27%;
+    border-radius: 15px;
+    overflow: hidden;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.result_text{
+    height: 100%;
+    width: 67%;
+    padding: 20px;
+    color: white;
+}

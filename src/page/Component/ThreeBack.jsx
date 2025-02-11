@@ -2,7 +2,6 @@ import './ThreeBackStyle.css'
 import * as THREE from 'three'
 import { useEffect } from 'react'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
-import { CSS2DRenderer, CSS2DObject} from 'three/examples/jsm/renderers/CSS2DRenderer'
 import starsTexture from './images/stars.jpg'
 import sunTexture from './images/sun.jpg'
 import mercuryTexture from './images/mercury.jpg'
@@ -37,8 +36,8 @@ function ThreeBack(){
 
         const orbit = new OrbitControls(camera, renderer.domElement)
         
-        camera.position.set(-90, 140, 200)
-        camera.lookAt(scene.position)
+        camera.position.set(-90, 140, 100)
+        // camera.lookAt(scene.position)
         
         renderer.render(scene, camera)
         orbit.maxDistance = 300
@@ -50,14 +49,6 @@ function ThreeBack(){
         orbit.minPolarAngle = Math.PI / 4
         orbit.maxPolarAngle = Math.PI / 2
 
-        const labelRenderer = new CSS2DRenderer()
-        labelRenderer.setSize(window.innerWidth, window.innerHeight)
-        labelRenderer.domElement.style.position = 'absolute'
-        labelRenderer.domElement.style.top = '0px'
-        labelRenderer.domElement.style.pointerEvents = 'none'//use screen vd orbit
-        labelRenderer.domElement.style.backgroundColor = "rgba(74, 65, 65, 0.23)";
-
-        document.body.appendChild(labelRenderer.domElement)
 
      
 
@@ -162,13 +153,11 @@ function ThreeBack(){
         
             pluto.mesh.rotateY(0.008)
             pluto.obj.rotateY(0.00007)
-            labelRenderer.render(scene, camera)
             renderer.render(scene, camera)  
         }
         renderer.setAnimationLoop(animate)
 
         window.addEventListener('resize', function(){
-            labelRenderer.setSize(this.window.innerWidth, this.window.innerHeight)
             camera.aspect = window.innerWidth / window.innerHeight
             camera.updateProjectionMatrix()
             renderer.setSize(window.innerWidth, window.innerHeight)

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ThreeBack from '../Component/ThreeBack'
 function Home(){
-    const BaseUrl = "/FortuneTeller"
+    const BaseUrl = "/FortuneTeller";
     useEffect(()=>{
         const information_1 = document.getElementsByClassName('Question_block');
         const information_2 = document.getElementsByClassName('slide');

@@ -1,27 +1,77 @@
+
+.tarot-wrapper{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .tarot-container {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
+    gap: 10px;
+    overflow-x: scroll;
+    position: relative;
+}
+
   
-  .tarot-card {
-    width: 150px;
-    height: 250px;
+.tarot-card {
+    margin: 30px 0px;
+    min-width: 150px;
+    min-height: 250px;
     cursor: pointer;
     perspective: 1000px;
     border-radius: 10px;
     overflow: hidden;
-  }
-  
-  .card-inner {
+}
+
+
+.choose_card{
+    border: 2px solid white;
+}
+.card-inner {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-  }
+}
   
-  .card-face {
+.card-face {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-  }
-  
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #363636;
+}
+.button_feature{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+.button_feature button{
+  height: 70%;
+  width: 20%;
+}
+#result_button{
+  display: none;
+  opacity: 0;
+  transition: opacity 2s;
+}
