@@ -201,7 +201,6 @@ const TarotReading = () => {
           <button onClick={swapHandle} id="swap_button">Swap Start</button>
           <button onClick={handleNavigate}id="result_button">result Check</button>
         </div>
-        <div></div>
       </div>
     );
   };
