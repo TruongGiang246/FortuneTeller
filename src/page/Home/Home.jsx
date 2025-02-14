@@ -1,6 +1,7 @@
 import './HomeStyle.css'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import ErrorBoundary from '../Error/ErrorBoundary'
 import ThreeBack from '../Component/ThreeBack'
 function Home(){
     const BaseUrl = "/FortuneTeller";
@@ -19,7 +20,9 @@ function Home(){
         <React.Fragment>
             <div className='wrap'>
                 <div className='main_img'>
-                    <ThreeBack/>
+                    <ErrorBoundary>
+                        <ThreeBack/>
+                    </ErrorBoundary>
                     <div className='main_img_text'>
                         <p>Hành Trình Số Phận</p>
                     </div>

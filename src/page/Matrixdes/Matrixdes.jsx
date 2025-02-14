@@ -696,13 +696,12 @@ function Matrixdes(){
             <div className='information_text_slide'>
               <h2>Trung tâm cốt lõi của ma trận năng lượng</h2>
               <p>Tại trung tâm ma trận của bạn là năng lượng cốt lõi ảnh hưởng đến mọi khía cạnh trong cuộc sống. Năng lượng này đại diện cho bản chất thực sự của bạn, định hình tính cách, thế mạnh và bản sắc tổng thể. Nằm ở vị trí trung tâm của ma trận, nó đóng vai trò như nền tảng cho sự phát triển cá nhân và sự chuyển hóa, mở ra con đường giúp bạn nâng cao mọi lĩnh vực trong cuộc sống.</p>
-              <p id="safe_zone"></p>
+              <p id="safe_zone">Hãy chọn thời gian...</p>
             </div>
           </div>
           <div className='infomation_box'>
             <div className='information_matrix_text'>
               <h2>Ấn tượng đầu tiên</h2>
-              <p></p>
             </div>
             <div className='information_text_slide'>
               <h2>The Sphere of Influence and Manifestation</h2>
@@ -711,7 +710,7 @@ Một khía cạnh quan trọng trong bản đồ năng lượng cá nhân của
 <br/>Năng lượng này chi phối ấn tượng bạn để lại cho mọi người và giúp bạn biến những khát vọng của mình thành hiện thực, kết nối thế giới vô hình với hữu hình.
 Khi bạn mất đi động lực hoặc cảm hứng, tập trung vào nguồn năng lượng này có thể giúp bạn khơi lại niềm đam mê và tìm lại cảm giác trọn vẹn trong cuộc sống. Bằng cách hướng hành động tích cực vào khía cạnh này, bạn có thể khôi phục tinh thần và sống một cách trọn vẹn, chân thực hơn. Đây chính là lời nhắc nhở rằng bạn có khả năng tác động đến thế giới và biến những tầm nhìn bên trong thành thành tựu cụ thể.
               </p>
-              <p id='impression'></p>
+              <p id='impression'>Hãy chọn thời gian...</p>
             </div>
           </div>
           <div className='infomation_box'>
@@ -747,7 +746,7 @@ Khi bạn mất đi động lực hoặc cảm hứng, tập trung vào nguồn 
               <p>Chúng ta đến với thế giới này không chỉ mang theo những thử thách mà còn sở hữu những kinh nghiệm quý báu đã tích lũy từ các kiếp trước. Những trải nghiệm này có thể giúp hành trình hiện tại của chúng ta trở nên suôn sẻ hơn và mang lại những phẩm chất mạnh mẽ mà đôi khi chúng ta coi là hiển nhiên nhưng thực ra không nên đánh giá thấp.
                 <br/>Những sức mạnh vốn có này là của bạn, và bạn có khả năng vượt trội trong những lĩnh vực mà người khác có thể gặp khó khăn. Đây là những phẩm chất riêng biệt của bạn, có thể được áp dụng ngay vào cuộc sống hiện tại. Khi nhận ra và tận dụng chúng, bạn có thể đóng góp tích cực cho thế giới và đạt được thành công nhanh hơn. Chúng tôi khuyến khích bạn tích hợp những thế mạnh này vào môi trường làm việc của mình, vì điều đó sẽ giúp bạn nổi bật và tiến nhanh hơn trên con đường hướng tới mục tiêu.
               </p>
-              <p id='talent'></p>
+              <p id='talent'>Hãy chọn thời gian...</p>
             </div>
           </div>
         </div>

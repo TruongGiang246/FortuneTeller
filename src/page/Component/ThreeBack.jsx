@@ -37,7 +37,7 @@ function ThreeBack(){
         const orbit = new OrbitControls(camera, renderer.domElement)
         
         camera.position.set(-90, 140, 100)
-        // camera.lookAt(scene.position)
+        camera.lookAt(scene.position)
         
         renderer.render(scene, camera)
         orbit.maxDistance = 300
@@ -48,11 +48,11 @@ function ThreeBack(){
         
         orbit.minPolarAngle = Math.PI / 4
         orbit.maxPolarAngle = Math.PI / 2
-
+        orbit.enableZoom = false
 
      
 
-        const pointLight = new THREE.PointLight(0xFFFFFF, 8000, 300)// color - intensity - maximun distance
+        const pointLight = new THREE.PointLight(0xFFFFFF, 5000, 300)// color - intensity - maximun distance
         scene.add(pointLight)
         const CubeTextureLoader = new THREE.CubeTextureLoader()
         scene.background = CubeTextureLoader.load([
