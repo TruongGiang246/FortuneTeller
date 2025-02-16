@@ -427,6 +427,9 @@ span:nth-child(9){
         width: 48%;
         font-size: 9px;
     }
+    .tool_box_1_head{
+        padding: 6px;
+    }
     .tool_box_1_head h2{
         font-size: 12px;
         margin-bottom: 2px;

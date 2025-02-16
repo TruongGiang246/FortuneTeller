@@ -466,6 +466,9 @@ option{
     .matrix_header_content{
       width: 90%;
     }
+    #buttonLmao{
+      height: 60%;
+    }
     :root{
       --bigNumber: 5vw;
       --smallNumber: 2vw;
