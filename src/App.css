@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Rowdies:wght@300;400;700&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -6,5 +7,7 @@
 body{
     overflow-x: hidden;
 }
-
+html {
+    scroll-behavior: smooth;
+}
   

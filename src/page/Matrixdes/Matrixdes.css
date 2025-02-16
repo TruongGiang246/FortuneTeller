@@ -13,6 +13,23 @@
     align-items: center;
     flex-direction: column;
   }
+  select{
+    border: 2px solid gray;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+  }
+  .label_pos{
+    width: 30%;
+    height: 40%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .label_pos:last-child{
+    justify-content: flex-end;
+  }
   .result{
     width: 100vw;
     display: flex;
@@ -45,7 +62,8 @@
     margin-bottom: 5px;
     width: 100%;
     padding: 10px;
-    border: 2px solid purple;
+    border: 2px solid rgba(128, 128, 128, 0.519);
+    box-shadow: 2px 2px 4px gray;
     border-radius: 10px;
     
     cursor: pointer;
@@ -58,7 +76,7 @@
     overflow: hidden;
     border-radius: 10px;
     transition: transform 1s ease, max-height 1s ease, opacity 1s ease;
-    border: 2px solid purple;
+    border: 2px solid rgba(128, 128, 128, 0.519);
     
   }
   .ani{
@@ -70,7 +88,10 @@
   }
   #impression,
   #safe_zone,
-  #talent{
+  #talent,
+  #karma,
+  #relationship,
+  #financial{
     margin-top: 5%;
   }
 
@@ -259,7 +280,7 @@
     color: white;
   }
   .container_Matrix{
-    height: 50vh;
+
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -268,24 +289,25 @@
     
   }
   .input{
+    height: 40vh;
     width: 70%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
   }
   .container_input{
-    height: 40px;
-    width: 20%;
+    height: 50px;
+    width: 70%;
     margin: 0px 10px;
     text-align: center;
     font-size: 25px; 
     border-radius: 10px;
   }
   #buttonLmao{
-    height: 5vh;
-    width: 10vw;
+    height:40%;
+    width: 70%;
     background-color: #FAFBFC;
-    border-radius: 6px;
+    border-radius: 15px;
     cursor: pointer;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 17px;
@@ -297,6 +319,156 @@
     align-items: center;
     justify-content: center;
   }
+.title_number_wrapper{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .title_number{
   color: white;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  flex-direction: column;
+  height: 40vh;
+  
 }  
+.title_number p{
+  margin-top: 20px;
+  width: 70%;
+}
+
+label{
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+.matrix_header{
+  border: 3px solid rgba(255, 255, 255, 0.51);
+  color: white;
+  overflow:hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.background_img{
+  width: 100vw;
+  border-radius: 50%;
+  position: absolute;
+  top: -45%;
+  left: -30%;
+  overflow: hidden;
+  border: 2px solid white;
+}
+.matrix_header_sidebar{
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.matrix_header_content{
+  height: 50%;
+  width: 60%;
+  font-size: 15px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.quote_img{
+  display: flex;
+
+}
+.quote_img img{
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+.matrix_header_button_wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.matrix_header_button{
+  margin-top: 20px;
+  height: 40px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gray;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.matrix_header_title{
+  font-family: "M PLUS 1p", serif;
+}
+.matrix_header_title h1{
+  line-height: 70px;
+  margin: 20px 0px;
+}
+.background_img img{
+  opacity: 0.6;
+}
+option{
+  background-color: black;
+}
+
+
+@media screen and (max-width: 1024px) {
+    
+    .title_number{
+      width: 90%;
+    }
+    .title_number h1{
+      font-size: 3vh;
+    }
+    .title_number p{
+      width: 100%;
+    }
+    .result_information_matrix h2{
+      text-align: center;
+    }
+    .result_img_matrix{
+      width: 80vw;
+    }
+    .input{
+      height: 30vh;
+      width: 100%;
+      flex-wrap: wrap;
+    } 
+    .label_pos:last-child{
+      height: 30%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 60%;
+    }
+    option{
+      font-size: 10px;
+    }
+    .background_img{
+      display: none;   
+    }
+    .matrix_header{
+      background-image: url('/FortuneTeller/bg/background_12.png');
+    }
+    .matrix_header_sidebar{
+      width: 100%;
+    }
+    .matrix_header_content{
+      width: 90%;
+    }
+    :root{
+      --bigNumber: 5vw;
+      --smallNumber: 2vw;
+    }
+  }
+

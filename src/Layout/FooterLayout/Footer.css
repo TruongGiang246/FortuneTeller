@@ -1,0 +1,70 @@
+.footer_wrapper{
+    width: 100vw;
+    color: rgba(255, 255, 255, 0.807);;
+    box-shadow: -2px -2px 8px rgba(128, 128, 128, 0.778);
+    font-family: "Rowdies", serif;
+    font-weight: 200;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.web_name{
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.web_name_img{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.web_name_last{
+    font-size: 10px;
+}
+.quote{
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    margin: 10px 0px;
+}
+.logo_social{
+
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+
+}
+.social_logo{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+
+.credit{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.51);;
+}
+@media screen and (max-width: 600px) {
+    .quote{
+        text-align: center;
+        width: 70%;
+    }
+}
