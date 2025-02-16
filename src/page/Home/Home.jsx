@@ -87,11 +87,11 @@ function Home(){
                     <div className='tool_box_1'>
                         <div className='tool_box_1_wrapper'>
                             <div className='tool_box_1_foot ops'>
-                                <img src='/FortuneTeller/bg/background_9.png'/>
+                                <img src='/FortuneTeller/bg/background_10.png'/>
                             </div>
                             <div className='tool_box_1_head ops2'>
-                                <h2>~Thần Số Học~<br/>Bí Mật Con Số</h2>
-                                <p>Những con số không chỉ là phép toán mà còn là tấm gương phản chiếu vận mệnh. Tìm hiểu con số chủ đạo và ý nghĩa ẩn sau ngày sinh của bạn!</p>
+                                <h2>~Ma Trận Định Mệnh~<br/>Chìa Khóa Cuộc Đời</h2>   
+                                <p>Dựa trên ngày sinh, ma trận định mệnh giúp bạn khám phá tiềm năng, sứ mệnh và con đường phát triển bản thân theo góc nhìn huyền bí.</p>
                             </div>
                         </div>
                         <div className='space'></div>
@@ -99,11 +99,11 @@ function Home(){
                     <div className='tool_box_1'>
                         <div className='tool_box_1_wrapper'>
                             <div className='tool_box_1_head'>
-                                <h2>~Ma Trận Định Mệnh~<br/>Chìa Khóa Cuộc Đời</h2>
-                                <p>Dựa trên ngày sinh, ma trận định mệnh giúp bạn khám phá tiềm năng, sứ mệnh và con đường phát triển bản thân theo góc nhìn huyền bí.</p>
+                                <h2>~Thần Số Học~<br/>Bí Mật Con Số</h2>
+                                <p>Những con số không chỉ là phép toán mà còn là tấm gương phản chiếu vận mệnh. Tìm hiểu con số chủ đạo và ý nghĩa ẩn sau ngày sinh của bạn!</p>
                             </div>
                             <div className='tool_box_1_foot'>
-                                <img src='/FortuneTeller/bg/background_10.png'/>
+                                <img src='/FortuneTeller/bg/background_9.png'/>
                             </div>
                         </div>
                     </div>
