@@ -38,7 +38,7 @@ function Home(){
 
                 <div className='introduction'>
                 <div className='intro_img'>
-                    <img src='/FortuneTeller/bg/horoscope.jpg'/>
+                    <img src='/FortuneTeller/bg/horoscope_2.png'/>
                 </div>
                 <div className='intro_Text'>
                     <p className='intro_title'>Giới thiệu</p>

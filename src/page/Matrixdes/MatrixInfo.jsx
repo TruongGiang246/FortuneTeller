@@ -335,7 +335,7 @@ const energies = [
       `
     },
     {
-      conten: 
+      content: 
       `
           <h2>8 – Những Phẩm Chất Chính của Người Mang Năng Lượng Số 8</h2>
           <ul>
