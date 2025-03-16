@@ -1,33 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Orbitron:wght@400;700&family=Uncial+Antiqua&display=swap');
 .main_img{
     height: 100vh;
-    width: 100vw;
+    overflow-x: hidden;
 }
-.main_img_text{
+.paralax{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
+}
+.paralax img{
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+.paralax::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a2437;
+    z-index: 10;
+    mix-blend-mode: color;
+    
+}
+.paralax::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #0a2a43, transparent);
+    z-index: 11;
+}
+
+
+.main_img_text{
+    position: relative;
     text-align: center;
-    top: 54%;
-    left: 52%;
-    transform: translate(-50%, -50%);
+    z-index: 1;
     cursor: pointer;
     font-family: 'Cinzel Decorative', serif;
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: white;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
 }
+#road{
+    z-index: 2;
+}
 .main_img_text p{
     margin-top: 20px;
     font-family:'Times New Roman', Times, serif;
-    font-size: 20px;
-}
-.sub_title{
-    text-shadow: 0 0 10px rgba(254, 254, 254, 0.738), 
-    0 0 20px rgba(255, 255, 255, 0.6), 
-    0 0 30px rgba(173, 216, 230, 0.5); 
+    font-size: 30px;
 }
 
 
@@ -403,7 +439,7 @@ span:nth-child(9){
         height: 20px;
     }
     .main_img_text h2{
-        font-size: 50px;
+        font-size: 40px;
     }
     .introduction{
         justify-content: center;

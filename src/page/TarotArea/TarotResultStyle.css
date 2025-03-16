@@ -4,19 +4,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 250vh;
+    margin: 20vh 0;
 }
 .result_information{
-    margin: 15px 0px;
+    margin: 35px;
     width: 70vw;
-    height: 65vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .result_img{
-    height: 100%;
-    width: 27%;
+    width: 300px;
     border-radius: 15px;
     overflow: hidden;
 }
@@ -26,8 +24,24 @@ img{
     object-fit: cover;
 }
 .result_text{
-    height: 100%;
     width: 67%;
     padding: 20px;
     color: white;
 }
+.block{
+    height:10vh;
+}
+@media screen and (max-width: 1024px) {
+    .result_container{
+        margin: 10vh 0px;
+    }
+    .result_information{
+        flex-direction: column;
+        width: 100vw;
+    }
+    .result_text{
+        width: 100%;
+    }
+
+}
+

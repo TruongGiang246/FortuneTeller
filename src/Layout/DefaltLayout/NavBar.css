@@ -72,7 +72,8 @@
 a{  
     color: rgba(255, 255, 255, 0.807);;
 }
-a:hover{
+a:hover,
+.blog:hover{
     color: white;
     text-shadow: 0 0 10px rgba(254, 254, 254, 0.738), 
     0 0 20px rgba(255, 255, 255, 0.6), 

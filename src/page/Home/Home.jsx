@@ -1,57 +1,82 @@
 import './HomeStyle.css'
 import React, { useEffect } from 'react'
-
 function Home(){
     useEffect(()=>{
         const information_1 = document.getElementsByClassName('Question_block');
         const information_2 = document.getElementsByClassName('slide');
+        const bg = document.getElementById("bg");
+        const moon = document.getElementById("moon");
+        const mountain = document.getElementById("mountain");
+        const road = document.getElementById("road");
+        const text = document.getElementById("text");
         for(let i = 0; i < information_1.length; i++){
             information_1[i].onclick = () =>{
                 information_2[i].classList.toggle('slide_open');
             }
         } 
-        console.log(information_1)
+        console.log(window.scrollY)
+
+        window.addEventListener("scroll", ()=>{
+            console.log("brh")
+            let value = window.scrollY;
+            bg.style.top = value * 0.5 + 'px';
+            moon.style.left = -value * 0.5 + 'px';
+            mountain.style.top = -value * 0.15 + 'px';
+            road.style.top = value * 0.15 + 'px';
+            text.style.top = value * 1 + 'px';
+        })
+
+
     },[])
+
 
     return(
         <React.Fragment>
             <div className='wrap'>
                 <div className='main_img'>
-                    <img src='/FortuneTeller/background_1.jpg'/>
-                    <div className='main_img_text'>
-                        <h2>Hành Trình Số Phận</h2>
-                        <p className='sub_title'>"Soi tỏ vận mệnh – Khai mở tiềm năng!"</p>
+                    <div className='paralax'>
+                        <img src='/FortuneTeller/background1/bg.jpg' id='bg'/>
+                        <img src='/FortuneTeller/background1/moon.png' id='moon'/>
+                        <img src='/FortuneTeller/background1/mountain.png' id='mountain'/>
+                        <img src='/FortuneTeller/background1/road.png' id='road'/>
+
+                        <div className='main_img_text' id='text'>
+                                <h2>Hành Trình Số Phận</h2>
+                                <p className='sub_title'>"Soi tỏ vận mệnh – Khai mở tiềm năng!"</p>
+                        </div>
+                        
                     </div>
                     <section className='shooting_stars'>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </section>
-                </div>
 
+                </div>
+                
                 <div className='introduction'>
-                <div className='intro_img'>
-                    <img src='/FortuneTeller/bg/horoscope_2.png'/>
-                </div>
-                <div className='intro_Text'>
-                    <p className='intro_title'>Giới thiệu</p>
-                    <h1>Thông điệp đến bạn</h1>
-                    <p className='intro_content'>“Bạn có bao giờ tự hỏi vì sao mình lại có mặt trên thế giới này?
-                    Vũ trụ luôn gửi đến chúng ta những tín hiệu qua Tarot, Chiêm tinh và Thần số học. Hãy giải mã những bí ẩn đó, khám phá con đường dành riêng cho bạn và mở ra một tương lai đầy tiềm năng!”</p>
-                    <div className='intro_Button'>
-                        <p>Xem thêm</p>
-                    </div>
-                </div>
-                </div>
+                            <div className='intro_img'>
+                                <img src='/FortuneTeller/bg/horoscope_2.png'/>
+                            </div>
+                            <div className='intro_Text'>
+                                <p className='intro_title'>Giới thiệu</p>
+                                <h1>Thông điệp đến bạn</h1>
+                                <p className='intro_content'>“Bạn có bao giờ tự hỏi vì sao mình lại có mặt trên thế giới này?
+                                Vũ trụ luôn gửi đến chúng ta những tín hiệu qua Tarot, Chiêm tinh và Thần số học. Hãy giải mã những bí ẩn đó, khám phá con đường dành riêng cho bạn và mở ra một tương lai đầy tiềm năng!”</p>
+                                <div className='intro_Button'>
+                                    <p>Xem thêm</p>
+                                </div>
+                            </div>                      
+                        </div>
 
-                <div className='intro_2_img'>
+                        <div className='intro_2_img'>
                         <div className='split_img_wrapper'>
                         <img src='/FortuneTeller/bg/split_line_1.jpg'/>
                         </div>
@@ -167,7 +192,13 @@ function Home(){
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>                
+                
+                
+                
+
+
+
 
 
             </div>

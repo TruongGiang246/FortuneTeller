@@ -97,7 +97,6 @@ function TarotResult(){
 
     const cards = location.state.group_card;
     return(
-    
     <div className="result_container">
         <div className="result_information">
             <div className="result_img">
@@ -127,6 +126,6 @@ function TarotResult(){
             </div>    
         </div>
     </div>
-  
+
 )}
 export default TarotResult

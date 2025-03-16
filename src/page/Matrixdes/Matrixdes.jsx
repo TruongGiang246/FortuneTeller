@@ -4,20 +4,11 @@ import { useEffect, useState } from 'react';
 import { energies, safeZone, karmaInfo, talentInfo, relationshipInfo, financialInfo } from './MatrixInfo';
 function Matrixdes(){
     const [value, setValue] = useState([])
-    function Sum(dateString){
-      let ans = 0;
-      for(let i = 0; i < dateString.length; i++){
-        let number = parseInt(dateString[i], 10);
-        ans += number;
-      }
-      
-      while (ans > 22) {
-          ans = ans.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
-      }
-      return ans;
-    }
 
-    function handleClick(){
+
+
+    useEffect(()=>{
+      const ButtonSubmit = document.getElementById("buttonLmao");
       const days = document.getElementById('days').value;
       const months = document.getElementById('months').value;
       const years = document.getElementById('years').value;
@@ -28,61 +19,81 @@ function Matrixdes(){
       const relationshipText = document.getElementById('relationship')
       const financialText = document.getElementById('financial')
 
+ 
+      function Sum(dateString){
+        let ans = 0;
+        for(let i = 0; i < dateString.length; i++){
+          let number = parseInt(dateString[i], 10);
+          ans += number;
+        }
+        
+        while (ans > 22) {
+            ans = ans.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
+        }
+        return ans;
+      }
+  
+      function handleClick(){
 
-      const newDays = Sum([days]);
-      const newYears = Sum([years])
-      const karma = Sum([days, months, years]);
-      const comfort_zone = Sum([newDays, months, newYears, karma])
-      const number_6 = Sum([karma, comfort_zone]);
-      const number_7 = Sum([newDays, comfort_zone]);
-      const number_8 = Sum([months, comfort_zone]);
-      const number_9 = Sum([newYears, comfort_zone]);
-      const number_10 = Sum([number_6, number_9]);
-      const number_11 = Sum([number_6, number_10]);
-      const number_12 = Sum([number_9, number_10]);
-      const number_13 = Sum([karma, number_6]);
-      const number_14 = Sum([number_8, months]);
-      const number_15 = Sum([newDays, number_7]);
-      const number_16 = Sum([newYears, number_9]);
-      const number_17 = Sum([newDays, months]);
-      const number_18 = Sum([months, newYears]);
-      const number_19 = Sum([newYears, karma]);
-      const number_20 = Sum([karma, newDays]);
-      const number_21 = Sum([number_7, comfort_zone]);
-      const number_22 = Sum([number_8, comfort_zone]);
-      const number_23 = Sum([number_17, comfort_zone]);
-      const number_24 = Sum([number_23, number_17]);
-      const number_25 = Sum([number_18, comfort_zone])
-      const number_26 = Sum([number_25, number_18]);
-      const number_27 = Sum([number_19, comfort_zone]);
-      const number_28 = Sum([number_19, number_27]);
-      const number_29 = Sum([number_20, comfort_zone]);
-      const number_30 = Sum([number_29, number_20]);
-
-
-      console.log(comfort_zone)
+  
+        const newDays = Sum([days]);
+        const newYears = Sum([years])
+        const karma = Sum([days, months, years]);
+        const comfort_zone = Sum([newDays, months, newYears, karma])
+        const number_6 = Sum([karma, comfort_zone]);
+        const number_7 = Sum([newDays, comfort_zone]);
+        const number_8 = Sum([months, comfort_zone]);
+        const number_9 = Sum([newYears, comfort_zone]);
+        const number_10 = Sum([number_6, number_9]);
+        const number_11 = Sum([number_6, number_10]);
+        const number_12 = Sum([number_9, number_10]);
+        const number_13 = Sum([karma, number_6]);
+        const number_14 = Sum([number_8, months]);
+        const number_15 = Sum([newDays, number_7]);
+        const number_16 = Sum([newYears, number_9]);
+        const number_17 = Sum([newDays, months]);
+        const number_18 = Sum([months, newYears]);
+        const number_19 = Sum([newYears, karma]);
+        const number_20 = Sum([karma, newDays]);
+        const number_21 = Sum([number_7, comfort_zone]);
+        const number_22 = Sum([number_8, comfort_zone]);
+        const number_23 = Sum([number_17, comfort_zone]);
+        const number_24 = Sum([number_23, number_17]);
+        const number_25 = Sum([number_18, comfort_zone])
+        const number_26 = Sum([number_25, number_18]);
+        const number_27 = Sum([number_19, comfort_zone]);
+        const number_28 = Sum([number_19, number_27]);
+        const number_29 = Sum([number_20, comfort_zone]);
+        const number_30 = Sum([number_29, number_20]);
+  
+  
+        console.log(comfort_zone)
+        
+        impression.innerHTML = `
+        <h2>${energies[newDays-1].title}</h2>
+        <p>${energies[newDays-1].description}</p>
+      `;
       
-      impression.innerHTML = `
-      <h2>${energies[newDays-1].title}</h2>
-      <p>${energies[newDays-1].description}</p>
-    `;
-    
-      safe.innerHTML = `
-      <h2>${safeZone[comfort_zone-1].title}</h2>
-      <p>${safeZone[comfort_zone-1].description}</p>
-      `
+        safe.innerHTML = `
+        <h2>${safeZone[comfort_zone-1].title}</h2>
+        <p>${safeZone[comfort_zone-1].description}</p>
+        `
+  
+        karmaText.innerHTML = karmaInfo[karma-1].content;
+        relationshipText.innerHTML = relationshipInfo[number_6-1].content
+        financialText.innerHTML = financialInfo[number_10-1].content
+        talent.innerHTML = talentInfo[Number(months)-1].content;
+  
+        setValue([newDays, months, newYears, karma, comfort_zone, number_6, number_7,
+          number_8, number_9, number_10, number_11, number_12, number_13, number_14, number_15, number_16, number_17, number_18, number_19, number_20, number_21, number_22, number_23, number_24,
+          number_25, number_26, number_27, number_28, number_29, number_30
+        ]);
+        
+      }
+      ButtonSubmit.addEventListener("click", handleClick);
+    },[])
 
-      karmaText.innerHTML = karmaInfo[karma-1].content;
-      relationshipText.innerHTML = relationshipInfo[number_6-1].content
-      financialText.innerHTML = financialInfo[number_10-1].content
-      talent.innerHTML = talentInfo[Number(months)-1].content;
 
-      setValue([newDays, months, newYears, karma, comfort_zone, number_6, number_7,
-        number_8, number_9, number_10, number_11, number_12, number_13, number_14, number_15, number_16, number_17, number_18, number_19, number_20, number_21, number_22, number_23, number_24,
-        number_25, number_26, number_27, number_28, number_29, number_30
-      ]);
-      
-    }
 
     
     useEffect(()=>{
@@ -102,6 +113,7 @@ function Matrixdes(){
         <>
     <div className="wrap_Matrix">
     <div className="container_Matrix">
+
         <div className='matrix_header'>
           <div className='background_img'>
               <img src='/FortuneTeller/bg/background_12.png'/>
@@ -126,6 +138,8 @@ function Matrixdes(){
 
           </div>
         </div>
+
+
         <div className='title_number_wrapper'>
         <div className='title_number' id="matrix_begin">
             <h1>~Ma Trận Định Mệnh~<br/>Giải Mã Hành Trình Cuộc Đời</h1>
@@ -284,7 +298,7 @@ function Matrixdes(){
           </select>
           </div>
           <div className='label_pos'>
-          <button onClick={handleClick} id="buttonLmao">Giải mã ngay</button>
+          <button id="buttonLmao">Giải mã ngay</button>
           </div>
           
         </div>

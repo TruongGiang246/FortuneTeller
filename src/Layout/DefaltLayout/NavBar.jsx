@@ -16,7 +16,6 @@ function NavBar({children}){
         }
         
     }
-    console.log(children)
     return(
         <React.Fragment>
             <div className='NavBar'>
@@ -35,21 +34,21 @@ function NavBar({children}){
                 </div>
                 <div className='page'>
                     <Link to='/Tarot'><p>Tarot</p></Link>
-                    <Link to='/Number'><p>Thần số học</p></Link>
+                    <Link to='/Numerology'><p>Thần số học</p></Link>
                     <Link to='/MatrixDestiny'><p>Ma trận định mệnh</p></Link>       
                 </div>
                 <div className='blog'>
                     <div className='blog_img'>
                         <img src='/FortuneTeller/nav/blog_icon.png'/>
-                    </div>
-                    <p>Bài viết</p>
+                    </div>     
+                    <Link to='/Blog'><p>Bài viết</p></Link>
                 </div>
 
                 
                 <div className='nav_slide nope'>
                     <ul>
                         <li><Link to='/Tarot'><p>Tarot</p></Link></li>
-                        <li><Link to='/Number'><p>Thần số học</p></Link></li>
+                        <li><Link to='/Numerology'><p>Thần số học</p></Link></li>
                         <li><Link to='/MatrixDestiny'><p>Ma trận định mệnh</p></Link>   </li>
                     </ul>
                 </div>
@@ -58,7 +57,7 @@ function NavBar({children}){
 
             </div>
             {children}  
-            <Footer/>
+          <Footer/>
         </React.Fragment>
     )
 }
