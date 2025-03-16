@@ -375,6 +375,11 @@ select{
     .form__group{
         width: 90vw;
     }
-    
+    .number_circle{
+        font-size: 70px;
+    }
+    .model_inner{
+        width: 80vw;
+    }
 }
 
