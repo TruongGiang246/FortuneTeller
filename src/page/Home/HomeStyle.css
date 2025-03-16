@@ -12,6 +12,9 @@
     overflow: hidden;
     pointer-events: none;
 }
+#moon{
+    object-fit: contain;
+}
 .paralax img{
     position: absolute;
     top: 0;
@@ -439,7 +442,10 @@ span:nth-child(9){
         height: 20px;
     }
     .main_img_text h2{
-        font-size: 40px;
+        font-size: 35px;
+    }
+    .main_img_text p{
+        font-size: 20px;
     }
     .introduction{
         justify-content: center;
@@ -491,5 +497,7 @@ span:nth-child(9){
     .split_img_wrapper{
         width: 50%;
     }
+
+
 }
 
