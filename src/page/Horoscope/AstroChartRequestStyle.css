@@ -1,0 +1,67 @@
+.wrapper{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+.chart_wrapper svg{
+    width: 100vw;
+    height: 100vh;
+}
+.get_chart{
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+.get_chart_wrapper{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.content_box{
+    width: 800px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 20px gray;
+}
+.content_box h1{
+    padding: 20px;
+    border-bottom: 2px solid white;
+}
+.content_input{
+    padding: 20px;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+.content_wrapper{
+    height: 80%;
+    display: flex;
+}
+.content_input input{
+    width: 300px;
+    padding: 10px;
+    font-size: 17px;
+    border-radius: 5px;
+}
+.react-datepicker__close-icon::after{
+    background-color: black !important;
+}
+.react-datepicker__tab-loop{
+    position: absolute;
+}
+.react-datepicker__month-select,
+.react-datepicker__year-select{
+    color: black;
+    margin: 7px 0px;
+    border-radius: 2px;
+}
+.react-datepicker__month-select option,
+.react-datepicker__year-select option{
+    background-color: white;
+    font-size: 13px;
+
+}

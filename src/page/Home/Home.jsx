@@ -26,6 +26,32 @@ function Home(){
             text.style.top = value * 1 + 'px';
         })
 
+        const slider = document.querySelector(".testimonial-slider");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+    
+        let index = 0;
+        const testimonials = document.querySelectorAll(".testimonial-card");
+        const totalTestimonials = testimonials.length;
+    
+        function updateSlider() {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+    
+        // Nút "Next"
+        nextBtn.addEventListener("click", function () {
+            index = (index + 1) % totalTestimonials;
+            updateSlider();
+        });
+    
+        // Nút "Prev"
+        prevBtn.addEventListener("click", function () {
+            index = (index - 1 + totalTestimonials) % totalTestimonials;
+            updateSlider();
+        });
+    
+        // Tự động chuyển slider mỗi 3 giây
+
 
     },[])
 
@@ -87,9 +113,7 @@ function Home(){
                     <p className='intro_title'>Công cụ</p>
                     <h1>Bạn sẽ chọn con đường nào?</h1>
                     <p className='intro_content intro_2_content'>Vũ trụ luôn gửi đến chúng ta những tín hiệu ẩn giấu. Mỗi công cụ—Tarot, Chiêm tinh, Thần số học—đều là một chìa khóa giúp bạn khám phá bản thân và định mệnh. Hãy lắng nghe trực giác và chọn con đường của riêng mình!</p>
-
                     </div>
-
                 </div>
 
  
@@ -146,10 +170,9 @@ function Home(){
                     <p className='intro_title'>Câu hỏi</p>
                     <h1>Những Câu Hỏi Định Mệnh</h1>
                     <p className='intro_content intro_3_content'>Mỗi câu hỏi là một cánh cửa dẫn lối đến sự hiểu biết sâu sắc hơn về chính bạn và cuộc sống. Hãy để các công cụ huyền bí giúp bạn khám phá câu trả lời!</p>
-
                     </div>
-
                 </div>
+
                 <div className='Question_wrapper'>
                     <div className='Question_container'>
                         <div className='Question_box'>
@@ -192,14 +215,73 @@ function Home(){
                             </div>
                         </div>
                     </div>
+                    
                 </div>                
                 
                 
+
+
+                <div className='intro_2_img'>
+                        <div className='split_img_wrapper'>
+                        <img src='/FortuneTeller/bg/split_line_1.jpg'/>
+                        </div>
+                </div>   
                 
+                <div className='introduction_2'>
+                    <div className='intro_2_wrapper'>
+                    <p className='intro_title'>Nhận xét</p>
+                    <h1>Đánh giá khách hàng</h1>
+                    <p className='intro_content intro_2_content'>Vũ trụ luôn gửi đến chúng ta những tín hiệu ẩn giấu. Mỗi công cụ—Tarot, Chiêm tinh, Thần số học—đều là một chìa khóa giúp bạn khám phá bản thân và định mệnh. Hãy lắng nghe trực giác và chọn con đường của riêng mình!</p>
+                    </div>
+                </div>
+                
+                <section class="testimonial">
+                    <div class="testimonial-container">
+                        <div class="testimonial-slider">
+                            <div class="testimonial-card">
+                                <img src="/FortuneTeller/review/img1.jpg" alt="Nguyễn Văn A"/>
+                                <h3>Minh Hoàng</h3>
+                                <p>(34 tuổi, Doanh nhân)</p>
+                                <p class="stars">⭐⭐⭐⭐⭐</p>
+                                <p class="review">Trước đây, tôi luôn cảm thấy lạc lõng và không biết thực sự mình mạnh ở điểm nào. Sau khi làm bài phân tích thần số học, tôi nhận ra con số chủ đạo 7 của mình khiến tôi có xu hướng tìm kiếm sự thật và ham học hỏi. Điều này giúp tôi hiểu rõ bản thân hơn và tự tin theo đuổi con đường phát triển cá nhân. Giờ đây, tôi đã chọn ngành đào tạo và giảng dạy – đúng với thế mạnh của mình!</p>
+                            </div>
 
+                            <div class="testimonial-card">
+                                <img src="/FortuneTeller/review/img2.jpeg" alt="Trần Thị B"/>
+                                <h3>Ngọc Anh</h3>
+                                <p>(28 tuổi, Nhân sự)</p>
+                                <p class="stars">⭐⭐⭐⭐</p>
+                                <p class="review">Trước đây, tôi luôn cảm thấy lạc lõng và không biết thực sự mình mạnh ở điểm nào. Sau khi làm bài phân tích thần số học, tôi nhận ra con số chủ đạo 7 của mình khiến tôi có xu hướng tìm kiếm sự thật và ham học hỏi. Điều này giúp tôi hiểu rõ bản thân hơn và tự tin theo đuổi con đường phát triển cá nhân. Giờ đây, tôi đã chọn ngành đào tạo và giảng dạy – đúng với thế mạnh của mình</p>
+                            </div>
 
+                            <div class="testimonial-card">
+                                <img src="/FortuneTeller/review/img3.jpg" alt="Lê Văn C"/>
+                                <h3>Thu Trang</h3>
+                                <p>(24 tuổi, Freelancer)</p>
+                                <p class="stars">⭐⭐⭐⭐⭐</p>
+                                <p class="review">Lần đầu tiên trải nghiệm trải bài Tarot, tôi không ngờ lại nhận được nhiều góc nhìn mới mẻ đến vậy. Tôi đã băn khoăn giữa việc tiếp tục công việc văn phòng hay chuyển hẳn sang làm tự do. Kết quả trải bài ba lá chỉ ra rằng đây là thời điểm thích hợp để tôi theo đuổi đam mê. Tôi đã dũng cảm đưa ra quyết định – và đúng như vậy, công việc freelancer của tôi giờ đây ổn định và khiến tôi hạnh phúc hơn bao giờ hết!</p>
+                            </div>
 
+                            <div class="testimonial-card">
+                                <img src="/FortuneTeller/review/img4.jpg" alt="Lê Văn C"/>
+                                <h3>Hải Nam</h3>
+                                <p>(30 tuổi, Kỹ sư công nghệ)</p>
+                                <p class="stars">⭐⭐⭐⭐⭐</p>
+                                <p class="review">Tôi luôn tin rằng cuộc sống có sự sắp đặt kỳ diệu, nhưng chưa bao giờ tôi thấy rõ điều đó như khi kết hợp Thần số học và Tarot. Phân tích thần số học cho thấy tôi có con số 5 – yêu thích sự tự do và trải nghiệm. Còn trải bài Tarot đã giúp tôi tìm ra hướng đi phù hợp: khởi nghiệp trong lĩnh vực công nghệ sáng tạo. Nhờ những thông tin quý giá này, tôi đã mạnh dạn theo đuổi đam mê, và đến nay tôi chưa từng hối hận!</p>
+                            </div>
 
+                        </div>
+                    </div>
+
+                    <button class="prev-btn">❮</button>
+                    <button class="next-btn">❯</button>
+                </section>
+
+                <div className='intro_2_img'>
+                        <div className='split_img_wrapper'>
+                        <img src='/FortuneTeller/bg/split_line_1.jpg'/>
+                        </div>
+                </div>  
 
             </div>
         </React.Fragment>

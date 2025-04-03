@@ -35,13 +35,15 @@ function NavBar({children}){
                 <div className='page'>
                     <Link to='/Tarot'><p>Tarot</p></Link>
                     <Link to='/Numerology'><p>Thần số học</p></Link>
-                    <Link to='/MatrixDestiny'><p>Ma trận định mệnh</p></Link>       
+                    <Link to='/MatrixDestiny'><p>Ma trận định mệnh</p></Link>  
+                    <Link to='/Horoscope'><p>Bản đồ sao</p></Link>     
+                    <Link to='/DISC'><p>DISC</p></Link>     
                 </div>
                 <div className='blog'>
                     <div className='blog_img'>
                         <img src='/FortuneTeller/nav/blog_icon.png'/>
                     </div>     
-                    <Link to='/Blog'><p>Bài viết</p></Link>
+                    <Link to='/Personal_Report'><p>Báo cáo cá nhân</p></Link>
                 </div>
 
                 

@@ -5,7 +5,8 @@ import TarotArea from '../page/TarotArea/TarotArea'
 import TarotResult from '../page/TarotArea/TarotResult'
 import Numerology from '../page/Numerology/Numerology'
 import Blog from '../page/Blog/Blog'
-import InBlox from '../page/Blog/InBlox'
+import DISCQuiz from '../page/disc/Disc'
+import AstroChartRequest from '../page/Horoscope/AstroChartRequest'
 import { Navigate } from 'react-router-dom'
 const publicRoutes = [
     {path: '*', component: Navigate, nav: true},
@@ -14,8 +15,10 @@ const publicRoutes = [
     {path: '/Tarot', component: TarotArea},
     {path: '/Tarot/result', component: TarotResult},
     {path: '/Numerology', component: Numerology},
-    {path: '/Blog', component: Blog},
-    {path: '/Blog/Content', component: InBlox}
+    {path: '/Personal_Report', component: Blog},
+    {path: '/DISC', component: DISCQuiz},
+    {path: '/Horoscope', component: AstroChartRequest}
+    
 ]
 
 export{publicRoutes}

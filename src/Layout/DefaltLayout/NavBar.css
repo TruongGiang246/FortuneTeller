@@ -45,7 +45,7 @@
 }
 .page{
     height: 100%;
-    width: 30%;
+   
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,11 +53,11 @@
     cursor: pointer;
 }
 .page p{
-    margin: 0px 12px;
+    margin: 0px 20px;
 }
 .blog{
     height: 60%;
-    width: 10%;
+    padding: 0px 20px;
     border: 2px solid rgba(255, 255, 255, 0.51);
     border-radius: 20px;
     display: flex;
@@ -66,6 +66,7 @@
     cursor: pointer;
 }
 .blog_img{
+    margin-right: 20px;
     height: 30px;
     width: 30px;
 }

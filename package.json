@@ -9,15 +9,21 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "axios": "^1.8.4",
+    "date-fns": "^4.1.0",
     "framer-motion": "^12.4.1",
     "gh-pages": "^6.3.0",
     "react": "^18.3.1",
+    "react-datepicker": "^8.2.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.5",
+    "recharts": "^2.15.1",
     "three": "^0.173.0"
   },
   "devDependencies": {

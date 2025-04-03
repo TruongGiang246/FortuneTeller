@@ -120,19 +120,7 @@ const TarotReading = () => {
     const count = useRef(0);
     const groups = useRef([]);
 
-    function swapHandle(){
-      if(!canFlip && groups.current.length != 3){
-        const swapButton = document.getElementById('swap_button')
-        swapButton.style.backgroundColor = "green";
-        swapButton.style.color = "white";
-        swapButton.innerText = "Swap Done";
-        for (let i = cards.current.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1)); 
-          [cards.current[i], cards.current[j]] = [cards.current[j], cards.current[i]]; 
-        }
-        setCanFlip(true);
-      }
-    }
+
 
     function handleNavigate(){
       navigate("/Tarot/result",{state:{
@@ -144,6 +132,8 @@ const TarotReading = () => {
       const scrollContainer = document.querySelector(".tarot-container");
       const card_groups = document.getElementsByClassName('tarot-card');
       const resultButton = document.getElementById('result_button')
+      const swapButton = document.getElementById('swap_button');
+
 
       for(let i = 0; i < card_groups.length; i++){
           card_groups[i].onmouseover = () => {
@@ -160,7 +150,31 @@ const TarotReading = () => {
           }
       }
 
+      function swapHandle(){
+        if(!canFlip && groups.current.length != 3){
+          swapButton.style.backgroundColor = "green";
+          swapButton.style.color = "white";
+          swapButton.innerText = "Hãy chọn 3 lá";
+          for (let i = cards.current.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1)); 
+            [cards.current[i], cards.current[j]] = [cards.current[j], cards.current[i]]; 
+          }
+          
+          
+          for(let i = 0; i < card_groups.length-3; i++){
+              card_groups[i].style.margin = "30px -70px";
+          }
+          setInterval(()=>{
+            for(let i = 0; i < card_groups.length-3; i++){
+              card_groups[i].style.margin = "30px 0px";
+            }
+          }, 1500);
 
+          setCanFlip(true);
+        }
+      }
+
+      swapButton.addEventListener('click', swapHandle)
 
 
       scrollContainer.addEventListener("wheel", (event) => {
@@ -198,8 +212,8 @@ const TarotReading = () => {
           ))}
         </div>
         <div className="button_feature">
-          <button onClick={swapHandle} id="swap_button">Swap Start</button>
-          <button onClick={handleNavigate}id="result_button">result Check</button>
+          <button id="swap_button">Xáo bài</button>
+          <button onClick={handleNavigate}id="result_button">Xem kết quả</button>
         </div>
       </div>
     );

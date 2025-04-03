@@ -1,0 +1,28 @@
+.wrapper_Disc{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content_Disc{
+    width: 80%;
+}
+.text-center *{
+    margin: 10px 0px;
+}
+.Disc_result *{
+    margin: 20px 0px;
+}
+.Disc_result{
+    padding: 20px;
+
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px gray;
+}
+.guide{
+    margin-bottom: 30px;
+}
+.recharts-surface{
+    overflow: visible !important;
+  }

@@ -222,7 +222,7 @@ span:nth-child(9){
 }
 .intro_Text{
     width: 35%;
-    height: 45%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -430,6 +430,91 @@ span:nth-child(9){
     margin: 10px 0px;
 }
 
+.testimonial {
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+}
+
+
+
+/* Container của slider */
+.testimonial-container {
+   overflow: hidden;
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+    box-shadow: 10 10px 20px rgba(177, 176, 176, 0.637);
+}
+
+/* Dãy các đánh giá */
+.testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Mỗi thẻ đánh giá */
+.testimonial-card {
+    min-width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.testimonial-card p{
+    color: black;
+}
+/* Ảnh đại diện */
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Tên người đánh giá */
+.testimonial-card h3 {
+    font-size: 18px;
+    color: #444;
+}
+
+/* Đánh giá sao */
+.stars {
+    font-size: 20px;
+    color: #ffcc00;
+    margin: 5px 0;
+}
+
+/* Nội dung nhận xét */
+.review {
+    font-size: 14px;
+    color: #666;
+    line-height: 26px;
+}
+
+/* Nút chuyển slider */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.prev-btn { left: 30%; }
+.next-btn { right: 30%; }
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
 /* Màn hình nhỏ (điện thoại) */
 @media screen and (max-width: 1024px) {
     .blog{
@@ -456,7 +541,16 @@ span:nth-child(9){
     }
     .intro_Text{
         width: 80%;
-        height: 50%;
+        height: 60%;
+    }
+    .intro_Text h1{
+        font-size: 2em;
+    }
+    .intro_content{
+        font-size: 0.9em;
+    }
+    .intro_2_wrapper h1{
+        font-size: 2em;
     }
     .intro_2_content{
         width: 100%;
