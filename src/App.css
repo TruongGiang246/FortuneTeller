@@ -1,13 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Fredericka+the+Great&family=Iansui&family=M+PLUS+1p&family=Rowdies:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Oswald:wght@200..700&family=Pacifico&family=Playball&display=swap');
+@import url("https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@500;600;900&display=swap");
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 body{
     overflow-x: hidden;
     color: white;
+
 }
+
 html {
     scroll-behavior: smooth;
 }

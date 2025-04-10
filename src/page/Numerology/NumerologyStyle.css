@@ -150,6 +150,9 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+.disc_report{
+    margin: 40px 0px;
+}
 .item{
     margin: 20px;
     display: flex;

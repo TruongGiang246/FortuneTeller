@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import React, { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { SortableItem } from "./SortableItem";
 
 import "./DiscStyle.css"
+const COLORS4 = ['#FF0000', '#FFD700', '#00C49F', '#0088FE'];
 
 const questions = [
   {
@@ -243,10 +244,24 @@ const descriptions = {
 };
 
 const DISCQuiz = () => {
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');      // 09
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // 04 (tháng bắt đầu từ 0)
+  const year = today.getFullYear();                          // 2025
+
+  const formattedDate = `${day}-${month}-${year}`;
+  console.log(formattedDate); // "09-04-2025"
+  const randomNumber = Math.floor(Math.random() * 9) + 1;
+
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
   const [items, setItems] = useState(questions[0].options);
+  const [login, setlogin] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleDragEnd = (event) => {
     const { active, over } = event;
@@ -267,6 +282,54 @@ const DISCQuiz = () => {
     } else {
       console.log(Object.entries(calculateScores()));
       setShowResult(true);
+
+
+      
+
+      
+
+      const disc = Object.entries(calculateScores());
+
+      const storedUser = localStorage.getItem("user");
+
+      if (!storedUser) {
+        // Nếu chưa có gì trong localStorage
+        const user = {
+          [login]: {
+            disc: disc,
+            time: formattedDate,
+            avt: randomNumber
+          },
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log("User mới đã được lưu.");
+      } else {
+        // Nếu đã có user trong localStorage
+        const user = JSON.parse(storedUser);
+
+        if (!user[login]) {
+          // Nếu chưa có người dùng này
+          user[login] = { 
+            disc: disc,
+            time: formattedDate,
+            avt: randomNumber
+          };
+          console.log("Đã thêm người dùng mới vào user.");
+        } else {
+          // Nếu đã có người dùng này, cập nhật numerology
+          user[login].disc = disc;
+          if(!user[login].time){
+            user[login].time = formattedDate;
+            user[login].avt = randomNumber
+          }
+          console.log("Đã cập nhật disc cho người dùng.");
+        }
+
+        // Lưu lại toàn bộ object user
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+
+      
     }
   };
 
@@ -284,45 +347,88 @@ const DISCQuiz = () => {
     calculateScores()[a] > calculateScores()[b] ? a : b
   );
 
+  const onLogin = () => {
+    const name = document.getElementById('Firstname').value;
+    console.log(name);
+    setlogin(name);
+  }
+
   
 
   return (
-    <div className="wrapper_Disc">
-      <div className="content_Disc">
-        {!showResult ? (
-          <div className="text-center">
-            <div className="guide">
-              <h2>Hướng dẫn</h2>
-              <p>Trong mỗi câu hỏi sẽ có 4 mô tả khác nhau đại diện cho tính cách của bạn, Bạn hãy KÉO THẢ các câu trả lời để sắp xếp theo thứ tự từ giống bạn nhất đến ít giống bạn nhất.</p>
-              <p>- Với vị trí trên cùng (1) là mô tả GIỐNG bạn nhất</p>
-              <p>- Với vị trí dưới cùng (4) là mô tả ÍT GIỐNG bạn nhất</p>
+      <>
+        {!login ? (
+          <>
+          <div className="wrapper_Disc">
+
+            <div class="container_disc">
+              <div class="content">
+              <div className="form__group field disc_input">
+                {/* <input type="input" className="form__field" placeholder="Name" name="name" id='Firstname' required />
+                <label form="name" className="form__label">Họ và Tên</label>
+                <button onClick={onLogin}>Xác nhận</button> */}
+                <form>
+                <div class="segment">
+                  <h1>Họ Tên</h1>
+                </div>
+                <label>
+                  <input id="Firstname" type="input" placeholder="..."/>
+                </label>
+                <button onClick={onLogin} class="red" type="button"><i class="icon ion-md-lock"></i>Xác nhận</button> 
+              </form>
             </div>
-            <p className="text-lg font-semibold mb-4">{questions[step].text}</p>
-            <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-              <SortableContext items={items} strategy={verticalListSortingStrategy}>
-                {items.map((item) => (
-                  <SortableItem key={item.id} id={item.id} text={item.text} />
-                ))}
-              </SortableContext>
-            </DndContext>
-            <button onClick={handleNext} className="mt-4">Tiếp theo</button>
+              </div>
+              <div class="flap">
+              </div>
           </div>
+          </div>
+          </>
         ) : (
-          <div className="Disc_result">
-            <h2 className="result_title">Kết quả của bạn</h2>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={Object.entries(calculateScores()).map(([key, value]) => ({ name: key, score: value }))}>
-                <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }} dataKey="name"/>
-                <YAxis  tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }}allowDecimals={false} />
-                <Tooltip active={false}/>
-                <Bar dataKey="score" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
-            <p className="text-center mt-4">{descriptions[highestCategory]}</p>
+          <div className="wrapper_Disc">
+            <div className="content_Disc">
+              {!showResult ? (
+                <div className="text-center">
+                  <div className="guide">
+                    <h2>Hướng dẫn</h2>
+                    <p>
+                      Trong mỗi câu hỏi sẽ có 4 mô tả khác nhau đại diện cho tính cách của bạn.
+                      Bạn hãy KÉO THẢ các câu trả lời để sắp xếp theo thứ tự từ giống bạn nhất đến ít giống bạn nhất.
+                    </p>
+                    <p>- Vị trí trên cùng (1) là mô tả GIỐNG bạn nhất</p>
+                    <p>- Vị trí dưới cùng (4) là mô tả ÍT GIỐNG bạn nhất</p>
+                  </div>
+                  <p className="text-lg font-semibold mb-4">{questions[step].text}</p>
+                  <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                    <SortableContext items={items} strategy={verticalListSortingStrategy}>
+                      {items.map((item) => (
+                        <SortableItem key={item.id} id={item.id} text={item.text} />
+                      ))}
+                    </SortableContext>
+                  </DndContext>
+                  <button onClick={handleNext} className="mt-4">Tiếp theo</button>
+                </div>
+              ) : (
+                <div className="Disc_result">
+                  <h2 className="result_title">Kết quả của bạn</h2>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <BarChart data={Object.entries(calculateScores()).map(([key, value]) => ({ name: key, score: value }))}>
+                      <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }} dataKey="name"/>
+                      <YAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }} allowDecimals={false} />
+                      <Tooltip active={false}/>
+                      <Bar dataKey="score" fill="#8884d8">
+                        {COLORS4.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                  <p className="text-center mt-4">{descriptions[highestCategory]}</p>
+                </div>
+              )}
+            </div>
           </div>
         )}
-      </div>
-    </div>
+      </>
   );
 };
 

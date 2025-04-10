@@ -1,80 +1,79 @@
 
-import "./BlogStyle.css";
 import { useNavigate } from "react-router-dom";
+import "./BlogStyle.css";
+import { useEffect, useState } from "react";
 
-const blogPosts = [
-  {
-    title: "Ý nghĩa sâu sắc của từng lá bài trong bộ Ẩn Chính",
-    author: "Zan",
-    date: "18 Jan 2022",
-    image: "/FortuneTeller/blog/blog1.jpg",
-  },
-  {
-    title: "Mối liên hệ giữa thần số học và sự nghiệp – Bạn phù hợp với công việc nào?",
-    author: "Zan",
-    date: "18 Jan 2022",
-    image: "/FortuneTeller/blog/blog2.jpg",
-  },
-  {
-    title: "Cách sử dụng ma trận định mệnh để hiểu bản thân và định hướng cuộc sống",
-    author: "Zan",
-    date: "18 Jan 2022",
-    image: "/FortuneTeller/blog/blog3.jpg",
-  },
-  {
-    title: "Hướng dẫn trải bài 3 lá cho người mới bắt đầu",
-    author: "Zan",
-    date: "18 Jan 2022",
-    image: "/FortuneTeller/blog/blog4.jpeg",
-  },
-  {
-    title: "Thần số học là gì? Cách tính con số chủ đạo của bạn",
-    author: "Zan",
-    date: "18 Jan 2022",
-    image: "/FortuneTeller/blog/blog5.webp",
-  },
-  {
-    title: "Những quan niệm sai lầm về Tarot – Giải đáp những hiểu lầm phổ biến",
-    author: "Zan",
-    date: "18 Jan 2022",
-    image: "/FortuneTeller/blog/blog6.jpg",
-  },
-  // Thêm các bài viết khác nếu cần
-];
 
 const Blog = () => {
-
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const [deleteConfirm, setDeleteConfirm] = useState(null);
+  const data = JSON.parse(localStorage.getItem("user"));
+  
+  
+  const names = Object.keys(data);            // ["Trần Trường Giang", "Trần Trường"]
+  const dataList = Object.values(data); 
+  console.log(names)
   function handleNavigate(index){
-    navigate("/Blog/Content",{state:{
-      
+    navigate("/Personal_Report/Report",{state:{
+      user_information: dataList[index],
+      user_name: names[index]
+
     }})
   }
+
+  const handleDelete = (indexToDelete) => {
+    const userData = JSON.parse(localStorage.getItem("user")) || {};
+    delete userData[names[indexToDelete]];
+    localStorage.setItem("user", JSON.stringify(userData));
+
+    // Cập nhật danh sách tên (nếu bạn hiển thị từ state)
+
+
+    setDeleteConfirm(null);
+  };
+
 
 
   return (
     <div className="blog-container">
-      {/* <div className="blog-header">
-        <img src="https://via.placeholder.com/300"/>
-        <h1>Breaking Into Product Design</h1>
-        <p>Advice from Untitled Founder, Frankie</p>
-      </div> */}
-      <h2>Bài post gần đây</h2>
-      <section className="recent-posts">
-        {blogPosts.map((post, index) => (
-          <div key={index} onClick={() => handleNavigate(index)} className="post-card">
-            <div className="img_wrapper">
-                <img src={post.image} alt={post.title} />
+      {
+        names.map((name, index)=>{
+          
+          return(
+            <div key={index} className="card">
+              <div class="card-img">
+                  <img src={`/FortuneTeller/animal/${dataList[index].avt}.jpg`}/>
+              </div>
+              <div class="desc">
+                  <h6 class="primary-text">{name}</h6>
+                  <h6 class="secondary-text">#{index+1}</h6>
+              </div>
+              <button onClick={()=>handleNavigate(index)} class="primary-text">Xem thông tin</button>
+              <div class="details">
+                  <h3>{dataList[index].time}</h3>
+              </div>
+              <div className="card_close_btn">
+
+              {deleteConfirm === index ? (
+                  <>
+                    <button id="noo" onClick={() => setDeleteConfirm(null)}>
+                      <i className="fa-solid fa-x"></i>
+                    </button>
+                    <button id="yes" onClick={() => handleDelete(index)}>
+                      <i className="fa-solid fa-check"></i>
+                    </button>
+                  </>
+                ) : (
+                  <button onClick={() => setDeleteConfirm(index)} id="first_check">
+                    <i className="fa-solid fa-trash"></i>
+                  </button>
+                )}
+              </div>
             </div>
-            <h3>{post.title}</h3>
-            <p>{post.author} - {post.date}</p>
-          </div>
-        ))}
-      </section>
-      <div className="pagination">
-        <button>Load more</button>
-      </div>
-    </div>
+          )
+        })
+      }
+   </div>
   );
 };
 

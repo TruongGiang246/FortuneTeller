@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 const TarotCard = ({frontImage, backImage, condit }) => {
     const [flipped, setFlipped] = useState(false);
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
     return (
       <motion.div
@@ -127,12 +130,12 @@ const TarotReading = () => {
         group_card:groups.current,
       }})
     }
-
-    useEffect(()=>{
+let previous_index = 0;
+let sum = 0;
+useEffect(()=>{
       const scrollContainer = document.querySelector(".tarot-container");
       const card_groups = document.getElementsByClassName('tarot-card');
       const resultButton = document.getElementById('result_button')
-      const swapButton = document.getElementById('swap_button');
 
 
       for(let i = 0; i < card_groups.length; i++){
@@ -144,37 +147,27 @@ const TarotReading = () => {
           }
           card_groups[i].onclick = () => {
             if(canFlip){
-              count.current++;
-              pick_done(count.current, i);
+              
+              if(previous_index != i && sum % 2 == 0){
+                count.current++;
+                sum = 0;
+                pick_done(count.current, i);
+              }else{
+                sum++;
+              }
+              console.log(previous_index, i, sum)
+              previous_index = i;
+              
+              
             }
           }
       }
 
-      function swapHandle(){
-        if(!canFlip && groups.current.length != 3){
-          swapButton.style.backgroundColor = "green";
-          swapButton.style.color = "white";
-          swapButton.innerText = "Hãy chọn 3 lá";
-          for (let i = cards.current.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1)); 
-            [cards.current[i], cards.current[j]] = [cards.current[j], cards.current[i]]; 
-          }
-          
-          
-          for(let i = 0; i < card_groups.length-3; i++){
-              card_groups[i].style.margin = "30px -70px";
-          }
-          setInterval(()=>{
-            for(let i = 0; i < card_groups.length-3; i++){
-              card_groups[i].style.margin = "30px 0px";
-            }
-          }, 1500);
 
-          setCanFlip(true);
-        }
-      }
-
-      swapButton.addEventListener('click', swapHandle)
+  
+      // swapButton.addEventListener('click', swapHandle)
+      
+      // console.log(swapButton)
 
 
       scrollContainer.addEventListener("wheel", (event) => {
@@ -183,11 +176,7 @@ const TarotReading = () => {
               left: event.deltaY * 3, // Di chuyển theo chiều ngang
               behavior: "smooth", // Hiệu ứng cuộn mượt
           });
-      });
-
-
-  
-      
+      });   
       function pick_done(times, stt){
         if(times <= 3){
           groups.current.push(cards.current[stt].number);
@@ -202,6 +191,38 @@ const TarotReading = () => {
       }
 
     },[canFlip])
+
+    function swapHandle(){ 
+      if(!canFlip && groups.current.length != 3){
+        const swap_button = document.getElementById('swap_button');
+        const card_groups = document.getElementsByClassName('tarot-card');
+        const tarot_container = document.getElementsByClassName('tarot-container');
+        swap_button.style.backgroundColor = "green";
+        swap_button.style.color = "white";
+        swap_button.innerText = "Hãy chọn 3 lá";
+        tarot_container[0].style.overflowX = "hidden"
+        for (let i = cards.current.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1)); 
+          [cards.current[i], cards.current[j]] = [cards.current[j], cards.current[i]]; 
+
+          for(let i = 0; i < card_groups.length-3; i++){
+            card_groups[i].style.margin = "30px -70px";
+        }
+        setInterval(()=>{
+          for(let i = 0; i < card_groups.length-3; i++){
+            card_groups[i].style.margin = "30px 0px";
+          }
+        }, 1400);
+        setInterval(()=>{
+          tarot_container[0].style.overflowX = "scroll"
+        },2400)
+
+        setCanFlip(true);
+
+        }
+      }
+    }
+
     
 
     return (
@@ -212,7 +233,8 @@ const TarotReading = () => {
           ))}
         </div>
         <div className="button_feature">
-          <button id="swap_button">Xáo bài</button>
+   
+          <button onClick={(e)=>swapHandle(e)} id="swap_button">Xáo bài</button>
           <button onClick={handleNavigate}id="result_button">Xem kết quả</button>
         </div>
       </div>

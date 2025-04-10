@@ -24,9 +24,22 @@ img{
     object-fit: cover;
 }
 .result_text{
-    width: 67%;
-    padding: 20px;
+    width: 65%;
+    margin-left: 20px;
+    font-family: Playball;
     color: white;
+}
+.result_text h2{
+    padding: 20px;
+    font-size: 45px;
+    width: 70%;
+    border: 2px solid white;
+    margin-bottom: 18px;
+}
+.result_text p{
+    width: 70%;
+    font-size: 20px;
+    line-height: 35px;
 }
 .block{
     height:10vh;

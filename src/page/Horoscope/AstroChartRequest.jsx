@@ -2,13 +2,44 @@ import React, { useEffect, useState } from "react";
 import "./AstroChartRequestStyle.css"
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { PieChart, XAxis, YAxis, Pie, Cell, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import vi from 'date-fns/locale/vi'
+
+
+const COLORS3 = ['#0088FE', '#00C49F', '#FFBB28'];
+const COLORS4 = ['#FF0000', '#FFD700', '#00C49F', '#0088FE'];
 const AstroChartRequest = () => {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [date, setDate] = useState(new Date(2025, 0, 1));
   const [time, setTime] = useState(new Date(2025, 0, 1, 0, 0));
+  const [SumData, setSumData] = useState([
+    [
+      {name: 'Linh hoạt', value: 0},
+      {name: 'Tiên Phong', value: 0},
+      {name: 'Kiên định', value: 0},
+    ],
+    [
+      {name: "Lửa", value: 0},
+      {name: "Đất", value: 0},
+      {name: "Khí", value: 0},
+      {name: "Nước", value: 0}
+    ],
+    [
+      {name: "Mặt trời", value: 0},
+      {name: "Mặt trăng", value: 0},
+      {name: "Thủy tinh", value: 0},
+      {name: "Kim tinh", value: 0},
+      {name: "Sao hỏa", value: 0},
+      {name: "Sao mộc", value: 0},
+      {name: "Sao thổ", value: 0},
+      {name: "Thiên vương tinh", value: 0},
+      {name: "Hải vương tinh", value: 0},
+      {name: "Diêm vương tinh", value: 0}
+      
+    ]
+  ])
 
   registerLocale('vi', vi);
   setDefaultLocale('vi');
@@ -61,17 +92,38 @@ const AstroChartRequest = () => {
     } finally {
       setLoading(false);
     }
+
+
+
   };
 
-  useEffect(()=>{ 
+
+useEffect(()=>{ 
 
   if(response){
 
+
+  const featureBox = document.getElementsByClassName('feature_box');
+  const btn_lists = document.getElementsByClassName('button_feature');
+  
+  for(let i = 0; i < btn_lists.length; i++){
+    btn_lists[i].onclick = () => {
+      for(let j = 0; j < btn_lists.length; j++){
+        featureBox[j].classList.add('nope');
+        btn_lists[j].classList.remove('chosen');
+      }
+      featureBox[i].classList.remove('nope');
+      btn_lists[i].classList.add('chosen')
+    }
+  }
+
+  let element_push = [];
   const element = document.querySelector('[kr\\:node="Elements_Percentages"]').querySelectorAll('*');
   for(let i = 1; i < element.length; i++){
     const number = element[i].innerHTML.match(/\d+/);
-    console.log(number[0])
+    element_push[i] = number[0];
   }
+  console.log(element_push)
 
 
 
@@ -181,8 +233,6 @@ let number1 = 3, number2 = 3;
   filterHouse[planet.house] += number2;
    
 
-  console.log(planet.sign, filterZodiac[planet.sign]);
-  console.log(planet.house, filterHouse[planet.house]);
 })
 
 
@@ -223,31 +273,105 @@ pluto = filterZodiac["Sco"] + filterHouse["Eighth_House"] + filterPlanet["Pluto"
 
 
 
-console.log(planetsInfo)
-console.log(fixed, mutable, cardinal)
-console.log(sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto)
+// console.log(planetsInfo)
+// console.log(fixed, mutable, cardinal)
 
-  }
+// console.log(sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto)
+
+setSumData([
+  [
+    {name: 'Linh hoạt', value: mutable},
+    {name: 'Tiên Phong', value: cardinal},
+    {name: 'Kiên định', value: fixed},
+  ],
+  [
+    {name: "Lửa", value: parseInt(element_push[1])},
+    {name: "Đất", value: parseInt(element_push[2])},
+    {name: "Khí", value: parseInt(element_push[3])},
+    {name: "Nước", value: parseInt(element_push[4])}
+  ],
+  [
+    {name: "Mặt trời", value: sun},
+    {name: "Mặt trăng", value: moon},
+    {name: "Thủy tinh", value: mer},
+    {name: "Kim tinh", value: venus},
+    {name: "Sao hỏa", value: mars},
+    {name: "Sao mộc", value: jupiter},
+    {name: "Sao thổ", value: saturn},
+    {name: "Thiên vương tinh", value: uranus},
+    {name: "Hải vương tinh", value: neptune},
+    {name: "Diêm vương tinh", value: pluto}
+  ],
+  [
+    response.chart
+  ]
+])
+
+
+
+}
    
   
 
   },[response]);
 
-
-
-
 useEffect(()=>{
-  if(date){
-    console.log(date.getDate(), date.getMonth() + 1, date.getFullYear())
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');      // 09
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // 04 (tháng bắt đầu từ 0)
+  const year = today.getFullYear();                          // 2025
+
+  const randomNumber = Math.floor(Math.random() * 9) + 1;
+  const formattedDate = `${day}-${month}-${year}`;
+  console.log(formattedDate); // "09-04-2025"
+
+  console.log(SumData[3])
+  if(SumData[3]){
+    console.log(SumData)
+    const NamePerson = document.getElementById('Name').value;
+
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) {
+      // Nếu chưa có gì trong localStorage
+      const user = {
+        [NamePerson]: {
+          horoscope: SumData,
+          time: formattedDate,
+          avt: randomNumber
+        },
+      };
+      localStorage.setItem("user", JSON.stringify(user));
+      console.log("User mới đã được lưu.");
+    } else {
+      // Nếu đã có user trong localStorage
+      const user = JSON.parse(storedUser);
+
+      if (!user[NamePerson]) {
+        // Nếu chưa có người dùng này
+        user[NamePerson] = { 
+          horoscope: SumData,
+          time: formattedDate,
+          avt: randomNumber
+        };
+        console.log("Đã thêm người dùng mới vào user.");
+      } else {
+        // Nếu đã có người dùng này, cập nhật numerology
+        user[NamePerson].horoscope = SumData;
+        if(!user[NamePerson].time){
+          user[NamePerson].time = formattedDate
+          user[NamePerson].avt = randomNumber
+        }
+        console.log("Đã cập nhật Bản đồ sao cho người dùng.");
+      }
+
+      // Lưu lại toàn bộ object user
+      localStorage.setItem("user", JSON.stringify(user));
+    }
   }
-},[date])
+},[SumData])
 
 
-useEffect(()=>{
-  if(time){
-    console.log(time.getHours(), time.getMinutes());
-  }
-},[time])
 
 
 
@@ -297,8 +421,122 @@ useEffect(()=>{
 
       </div>
 
+
       {response ? (
-        <div className="chart_wrapper" dangerouslySetInnerHTML={{ __html: response.chart }} />
+        <div className="wrapper_feature">
+        <div className="feature">
+          <button className="button_feature">Bản đồ sao</button>
+          <button className="button_feature">Tính chất</button>
+          <button className="button_feature">Nguyên tố</button>
+          <button className="button_feature">Nhân tố hành tinh</button>
+        </div>
+        <div className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }} />
+
+
+        <div className="feature_box">
+        <h1>Cân bằng tính chất</h1>
+        <div className="feature_wrapper">
+        <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie data={SumData[0]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
+                {SumData[0].map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS3[index % COLORS3.length]} />
+                ))}
+              </Pie>
+              <Tooltip active={false}/>
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+          </div>
+          <div className="description">
+              <div className="des_content">
+                  <h2>Tính Tiên Phong</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Kiên Định</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Linh Hoạt</h2>
+                  <p>xin chào</p>
+              </div>
+          </div>
+        </div>
+
+        <div className="feature_box nope">
+        <h1>Cân bằng nguyên tố</h1>
+        <div className="feature_wrapper">
+        <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie data={SumData[1]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
+                {SumData[1].map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS4[index % COLORS4.length]} />
+                ))}
+              </Pie>
+              <Tooltip active={false}/>
+              <Legend />
+            </PieChart>
+        </ResponsiveContainer>     
+        </div>  
+        <div className="description">
+              <div className="des_content">
+                  <h2>Tính Lửa</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Đất</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Nước</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Khí</h2>
+                  <p>xin chào</p>
+              </div>
+          </div>
+        </div>
+
+
+        <div className="feature_box nope">
+          <h1>Các nhân tố</h1>
+            <div className="feature_wrapper_2">
+              <ResponsiveContainer width="100%" height={450}>
+                <BarChart data={SumData[2]}>
+                    <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }} dataKey="name"/>
+                    <YAxis domain={[0, 100]} tickCount={6}  tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }}allowDecimals={false} />
+                    <Tooltip />
+                    <Bar dataKey="value" fill="#8884d8">
+                        {SumData[2].map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS4[index % COLORS4.length]} />
+                        ))}
+            
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+            </div>
+            <div className="description">
+              <div className="des_content">
+                  <h2>Tính Lửa</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Đất</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Nước</h2>
+                  <p>xin chào</p>
+              </div>
+              <div className="des_content">
+                  <h2>Tính Khí</h2>
+                  <p>xin chào</p>
+              </div>
+          </div>
+          </div>
+        </div>
       ) : ""}
 
     </div>

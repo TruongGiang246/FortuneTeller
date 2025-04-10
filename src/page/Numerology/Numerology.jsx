@@ -5,6 +5,10 @@ function Numerology(){
     const [value, setValue] = useState(["?","?","?","?","?","?","?"]);
     const valueRef = useRef(value);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+  
 
     useEffect(() => {
         valueRef.current = value;
@@ -153,7 +157,55 @@ function Numerology(){
 
         setValue([LifePath, DestinyNumber, SoulNumber, PersonalityNumber, 
         MatureNumber, newDays, AttitudeNumber]);
+        const numerology = [LifePath, DestinyNumber, SoulNumber, PersonalityNumber, MatureNumber, newDays, AttitudeNumber];
+        const storedUser = localStorage.getItem("user");
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');      // 09
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // 04 (tháng bắt đầu từ 0)
+        const year = today.getFullYear();                          // 2025
+        const randomNumber = Math.floor(Math.random() * 9) + 1;
+        console.log(randomNumber)
+      
+        const formattedDate = `${day}-${month}-${year}`;
+        console.log(formattedDate); // "09-04-2025"
+      
 
+        if (!storedUser) {
+          
+          const user = {
+            [HoTen]: {
+              numerology: numerology,
+              time: formattedDate,
+              avt: randomNumber
+            },
+          };
+          localStorage.setItem("user", JSON.stringify(user));
+          console.log("User mới đã được lưu.");
+        } else {
+         
+          const user = JSON.parse(storedUser);
+        
+          if (!user[HoTen]) {
+          
+            user[HoTen] = { 
+                numerology: numerology,
+                time: formattedDate,
+                avt: randomNumber
+             };
+            console.log("Đã thêm người dùng mới vào user.");
+          } else {
+       
+            user[HoTen].numerology = numerology;
+            if(!user[HoTen].time){
+                user[HoTen].time = formattedDate,
+                user[HoTen].avt = randomNumber
+            }
+            console.log("Đã cập nhật numerology cho người dùng.");
+          }
+        
+          localStorage.setItem("user", JSON.stringify(user));
+        }
+        
     }
 
     buttonSubmit.addEventListener('click', handleClick);
@@ -428,7 +480,7 @@ function Numerology(){
             </div>
             <div className='item'>
                 <div className='number_name'>
-                    <h2>Số Linh hồn</h2> 
+                    <h2>Số nội tâm</h2> 
                 </div>
                 <div className='number_circle'>
                     <h2>{value[2]}</h2>

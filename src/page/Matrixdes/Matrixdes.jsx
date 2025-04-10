@@ -35,7 +35,7 @@ function Matrixdes(){
   
       function handleClick(){
 
-  
+        const HoTen = document.getElementById("Firstname").value
         const newDays = Sum([days]);
         const newYears = Sum([years])
         const karma = Sum([days, months, years]);
@@ -89,7 +89,67 @@ function Matrixdes(){
           number_25, number_26, number_27, number_28, number_29, number_30
         ]);
         
+
+        const matrix = [newDays, Number(months), newYears, karma, comfort_zone, number_6, number_7,
+          number_8, number_9, number_10, number_11, number_12, number_13, number_14, number_15, number_16, number_17, number_18, number_19, number_20, number_21, number_22, number_23, number_24,
+          number_25, number_26, number_27, number_28, number_29, number_30
+        ]
+
+
+
+      const storedUser = localStorage.getItem("user");
+
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');      // 09
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // 04 (tháng bắt đầu từ 0)
+      const year = today.getFullYear();                          // 2025
+      const randomNumber = Math.floor(Math.random() * 9) + 1;
+    
+      const formattedDate = `${day}-${month}-${year}`;
+      console.log(formattedDate); // "09-04-2025"
+    
+
+      if (!storedUser) {
+        // Nếu chưa có gì trong localStorage
+        const user = {
+          [HoTen]: {
+            matrix: matrix,
+            time: formattedDate,
+            avt: randomNumber
+          },
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log("User mới đã được lưu.");
+      } else {
+        // Nếu đã có user trong localStorage
+        const user = JSON.parse(storedUser);
+
+        if (!user[HoTen]) {
+          // Nếu chưa có người dùng này
+          user[HoTen] = { 
+            matrix: matrix,
+            time: formattedDate,
+            avt: randomNumber
+           };
+          console.log("Đã thêm người dùng mới vào user.");
+        } else {
+          // Nếu đã có người dùng này, cập nhật numerology
+          user[HoTen].matrix = matrix;
+          if(!user[HoTen].time){
+            user[HoTen].time = formattedDate,
+            user[HoTen].avt = randomNumber
+          }
+          console.log("Đã cập nhật disc cho người dùng.");
+        }
+
+        // Lưu lại toàn bộ object user
+        localStorage.setItem("user", JSON.stringify(user));
       }
+        
+      }
+
+
+
       ButtonSubmit.addEventListener("click", handleClick);
     },[])
 
@@ -145,6 +205,10 @@ function Matrixdes(){
             <h1>~Ma Trận Định Mệnh~<br/>Giải Mã Hành Trình Cuộc Đời</h1>
             <p>Mỗi con người sinh ra với một bản đồ định mệnh riêng, phản ánh tiềm năng, thử thách và con đường phát triển của họ. Ma trận định mệnh giúp bạn nhìn sâu vào chính mình, tìm ra những thông điệp vũ trụ đã an bài. Nhập ngày sinh để khám phá số phận của bạn!</p>
         </div>
+        </div>
+        <div className="form__group field">
+                <input type="input" className="form__field" placeholder="Name" name="name" id='Firstname' required />
+                <label form="name" className="form__label">Họ và Tên</label>
         </div>
 
         <div className='input'>

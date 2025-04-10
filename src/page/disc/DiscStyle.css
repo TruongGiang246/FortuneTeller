@@ -11,9 +11,12 @@
 .text-center *{
     margin: 10px 0px;
 }
-.Disc_result *{
-    margin: 20px 0px;
+.result_title{
+  margin-bottom: 20px;
 }
+/* .Disc_result *{
+    margin: 20px 0px;
+} */
 .Disc_result{
     padding: 20px;
 
@@ -23,6 +26,181 @@
 .guide{
     margin-bottom: 30px;
 }
+
 .recharts-surface{
     overflow: visible !important;
-  }
+}
+.disc_input{
+    width: 100%;
+    padding: 40px 20px;
+    flex-direction: column;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_disc  {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 650px;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #EBECF0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  width: 80%;
+  transform: translatey(-50%);
+  text-align: justify;
+  color: black;
+  padding: 40px;
+  font-family: 'Merriweather', serif;
+  background-color: #EBECF0;
+}
+
+h1 {
+  font-weight: 900;
+  text-align: center;
+}
+
+h3 {
+  font-weight: 300;
+}
+
+.flap {
+  width: 100%;
+  height: 100%;
+  background-color: #EBECF0;
+}
+
+.flap::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 50%;
+  background: url("/FortuneTeller/disc_1.png")  #f4f4f4;
+  background-position: 100%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  transition: 1s;
+  color: black;
+  text-align: start;
+  font-family: Pacifico;
+
+}
+
+.flap::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 50%;
+  right: 0;
+  background: url("/FortuneTeller/disc_2.png") #f4f4f4;
+  background-position: 5px;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  transition: 1s;
+}
+
+.container_disc:hover .flap::after {
+  transform: translatex(300px);
+}
+
+.container_disc:hover .flap::before{
+  transform: translatex(-300px);
+}
+
+
+
+.disc_input {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.2px;
+  font-size: 16px;
+}
+
+form {
+  padding: 16px;
+  width: 320px; /* 16 * 20 */
+  margin: 0 auto;
+}
+
+.segment {
+  padding: 32px 0; /* 16 * 2 */
+  text-align: center;
+}
+.segment h1{
+  color: black;
+  font-family: Pacifico;
+}
+
+
+.disc_input button,
+.disc_input input{
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  border-radius: 320px; /* 16 * 20 */
+  padding: 16px;
+  background-color: #EBECF0;
+  text-shadow: 1px 1px 0 #FFF;
+}
+
+
+.disc_input label{
+  display: block;
+  margin-bottom: 24px; /* 16 * 1.5 */
+  width: 100%;
+}
+
+.disc_input input{
+  margin-right: 8px; /* 16 / 2 */
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.disc_input input:focus {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.disc_input button{
+  color: #61677C;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.disc_input button:hover {
+  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.disc_input button:active {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.disc_input button .icon {
+  margin-right: 8px; /* 16 / 2 */
+}
+
+.disc_input button.red {
+  display: block;
+  width: 100%;
+  color: #AE1100;
+}
+
+

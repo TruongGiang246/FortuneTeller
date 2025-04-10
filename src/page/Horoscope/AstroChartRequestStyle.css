@@ -1,10 +1,9 @@
 .wrapper{
-    height: 100vh;
-    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 5%;
+    min-height: 100vh;
 }
 .chart_wrapper svg{
     width: 100vw;
@@ -64,4 +63,71 @@
     background-color: white;
     font-size: 13px;
 
+}
+.wrapper_feature{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.feature_box{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.horoscope_img{
+    width: 67%;
+    margin: 35px 0px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.feature_box h1{
+    margin-bottom: 35px;
+    margin-top: 50px;
+}
+.feature{
+    width: 80%;;
+    display: flex;
+}
+.description{
+    width: 80vw;
+    padding: 20px;
+}
+.des_content{
+    margin: 20px 0px;
+}
+.feature_wrapper{
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 3px 3px 20px white;
+    border-radius: 10px;
+}
+.feature_wrapper_2{
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    box-shadow: 3px 3px 20px white;
+    margin-bottom: 50px;
+    border-radius: 10px;
+}
+.feature button{
+    margin: 5px;
+    border-radius: 2px;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+}
+.chosen{
+    background-color: white !important;
+    color: black !important;
+}
+.nope{
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;   
 }
