@@ -9,9 +9,14 @@ const Blog = () => {
   const [deleteConfirm, setDeleteConfirm] = useState(null);
   const data = JSON.parse(localStorage.getItem("user"));
   
-  
-  const names = Object.keys(data);            // ["Trần Trường Giang", "Trần Trường"]
-  const dataList = Object.values(data); 
+  let names = [];
+  let dataList;
+  if(data){
+    names = Object.keys(data); 
+    dataList = Object.values(data);
+  }
+                          // ["Trần Trường Giang", "Trần Trường"]
+   
   console.log(names)
   function handleNavigate(index){
     navigate("/Personal_Report/Report",{state:{

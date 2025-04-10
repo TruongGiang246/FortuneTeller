@@ -19,7 +19,9 @@ function Report(){
         
         const element = document.getElementById("report_screen");
 
-        domtoimage.toPng(element).then((dataUrl) => {
+        domtoimage.toPng(element, {
+            bgcolor: '#000000', // Đặt nền đen
+          }).then((dataUrl) => {
         const link = document.createElement("a");
         link.download = "profile_screenshot.png";
         link.href = dataUrl;
@@ -117,7 +119,7 @@ function Report(){
                                     <p>Chưa có dữ liệu</p>
                                 ) : (
                                 <div className="Disc_result disc_report">
-                                <ResponsiveContainer width="100%" height={100}>
+                                <ResponsiveContainer width="100%" height={180}>
                                     <BarChart data={infor.disc.map(([key, value]) => ({ name: key, score: value }))}>
                                     <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '10px'} }} dataKey="name"/>
                                     <YAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '10px'} }} allowDecimals={false} />
@@ -135,13 +137,13 @@ function Report(){
 
                             </div>
                             <div className="body_report_1_column_planet">
-                            <h2 className="numerology_report_title">YẾU TỐ HÀNH TINH</h2>
+                            <h2 className="numerology_report_title">HÀNH TINH</h2>
                             {(!infor.horoscope) ? (
                             <p>Chưa có dữ liệu</p>
                             ) : (
                                 <div className="feature_box full_width">
                                     <div className="feature_wrapper_2 no_padding">
-                                    <ResponsiveContainer width="100%" height={120}>
+                                    <ResponsiveContainer width="100%" height={180}>
                                         <BarChart data={infor.horoscope[2]}>
                                             <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '10px'} }} dataKey="name"/>
                                             <YAxis domain={[0, 100]} tickCount={6}  tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '10px'} }}allowDecimals={false} />
@@ -204,16 +206,16 @@ function Report(){
 
                         </div>
                         <div className="body_report_2_column_2">
-                        <h2 className="numerology_report_title">Tính chất</h2>
+                        <h2 className="numerology_report_title">Nguyên tố</h2>
                         {(!infor.horoscope) ? (
                             <p>Chưa có dữ liệu</p>
                         ) : (
                             <div className="feature_box_1_2">
 
                             <div className="feature_wrapper text_1">
-                            <ResponsiveContainer width="100%" height={150}>
+                            <ResponsiveContainer width="100%" height={190}>
                                 <PieChart>
-                                <Pie  data={infor.horoscope[1]} cx="50%" cy="50%" outerRadius={50} fill="#8884d8" dataKey="value">
+                                <Pie  data={infor.horoscope[1]} cx="50%" cy="50%" outerRadius={65} fill="#8884d8" dataKey="value">
                                     {infor.horoscope[1].map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={COLORS4[index % COLORS4.length]} />
                                     ))}
@@ -233,9 +235,9 @@ function Report(){
                             <div className="feature_box_1_2">
 
                                 <div className="feature_wrapper text_2">
-                                <ResponsiveContainer width="100%" height={160}>
+                                <ResponsiveContainer width="100%" height={200}>
                                     <PieChart>
-                                    <Pie data={infor.horoscope[0]} cx="50%" cy="50%" outerRadius={50} fill="#8884d8" dataKey="value">
+                                    <Pie data={infor.horoscope[0]} cx="50%" cy="50%" outerRadius={65} fill="#8884d8" dataKey="value">
                                         {infor.horoscope[0].map((entry, index) => (
                                         <Cell key={`cell-${index}`} fill={COLORS3[index % COLORS3.length]} />
                                         ))}
