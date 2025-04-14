@@ -24,9 +24,21 @@
     width: 800px;
     border-radius: 5px;
     box-shadow: 3px 3px 20px gray;
+    margin: 50px 0px;
+}
+hr{
+    background-color: white;
+    color: white;
+    height: 2px;
+    width: 95%;
+    margin: 25px auto;
 }
 .content_box h1{
+    font-family: "Oswald", sans-serif;
     padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     border-bottom: 2px solid white;
 }
 .content_input{
@@ -35,6 +47,7 @@
     width: 80%;
     justify-content: space-between;
     align-items: center;
+    font-family: "Oswald", sans-serif;
 }
 .content_wrapper{
     height: 80%;
@@ -46,6 +59,15 @@
     font-size: 17px;
     border-radius: 5px;
 }
+
+.content_input input:-webkit-autofill,
+.content_input input:-webkit-autofill:hover,
+.content_input input:-webkit-autofill:focus,
+.content_input input:-webkit-autofill:active {
+    -webkit-text-fill-color: #000 !important;
+}
+
+
 .react-datepicker__close-icon::after{
     background-color: black !important;
 }
@@ -71,6 +93,20 @@
     align-items: center;
     flex-direction: column;
 }
+.relationship{
+    height: 60vh;
+    justify-content: space-between;
+}
+.relationship h1{
+    padding: 20px;
+    border: 2px solid white;
+    width: 80%;
+    text-align: center;
+}
+.relationship h2{
+    font-size: 40px;
+    font-family: "Pacifico";
+}
 .feature_box{
     width: 80%;
     display: flex;
@@ -92,9 +128,28 @@
     width: 80%;;
     display: flex;
 }
+.content_box i{
+    margin-left: 20px;
+}
+
+.content_box i:last-child{
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.fa-heart:hover{
+    color: red;
+}
+.fa-person:hover{
+    color: blue;
+}
 .description{
-    width: 80vw;
+    width: 75%;
     padding: 20px;
+}
+.description h1{
+    padding: 20px;
+    border: 2px solid white;
+    text-align: center;
 }
 .des_content{
     margin: 20px 0px;
@@ -109,7 +164,7 @@
 .feature_wrapper_2{
     width: 80%;
     height: 100%;
-    padding: 20px;
+    padding: 40px;
     box-shadow: 3px 3px 20px white;
     margin-bottom: 50px;
     border-radius: 10px;
@@ -130,4 +185,73 @@
     width: 0;
     height: 0;
     overflow: hidden;   
+}
+.feature_relationship{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.heart_image{
+    width: 180px;
+    height: 180px;
+}
+.heart{
+    height: 100px;
+    width: 100px;
+    background-color: #f20044;
+    position: relative;
+    transform: rotate(-45deg);
+    box-shadow: -10px 10px 90px #f20044;
+    animation: heart 0.8s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes heart{
+    0%{
+        transform: rotate(-45deg) scale(1.07);
+    }
+    80%{
+        transform: rotate(-45deg) scale(1.0);
+    }
+    100%{
+        transform: rotate(-45deg) scale(0.8);
+    }
+}
+.heart:before{
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background: #f20044;
+    top: -50%;
+    border-radius: 50px;
+    box-shadow: -10px 10px 90px #f20044;
+    
+}
+.feature_relationship{
+    position: relative;
+    margin-bottom: 20px;
+}
+.note{
+    width: 80%;
+    text-align: end;
+}
+.feature_relationship p{
+    position: absolute;
+    top: -10%;
+    font-family: "Pacifico";
+    font-size: 60px;
+    z-index: 20;
+}
+.heart::after{
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background: #f20044;
+    right: -50%;
+    border-radius: 50px;
+    box-shadow: -10px 10px 90px #f20044;
 }

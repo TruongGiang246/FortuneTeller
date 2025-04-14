@@ -20,7 +20,6 @@ const Blog = () => {
   console.log(names)
   function handleNavigate(index){
     navigate("/Personal_Report/Report",{state:{
-      user_information: dataList[index],
       user_name: names[index]
 
     }})

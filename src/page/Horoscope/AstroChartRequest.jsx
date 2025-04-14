@@ -5,15 +5,20 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { PieChart, XAxis, YAxis, Pie, Cell, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import vi from 'date-fns/locale/vi'
+import { ElementDescriptions, ModalityDescriptions, planetDes } from "./Library_Astro";
 
 
 const COLORS3 = ['#0088FE', '#00C49F', '#FFBB28'];
 const COLORS4 = ['#FF0000', '#FFD700', '#00C49F', '#0088FE'];
 const AstroChartRequest = () => {
   const [response, setResponse] = useState(null);
+  const [response2, setResponse2] = useState(null)
   const [loading, setLoading] = useState(false);
   const [date, setDate] = useState(new Date(2025, 0, 1));
   const [time, setTime] = useState(new Date(2025, 0, 1, 0, 0));
+  const [date2, setDate2] = useState(new Date(2025, 0, 1, 0, 0));
+  const [time2, setTime2] = useState(new Date(2025, 0, 1, 0, 0))
+
   const [SumData, setSumData] = useState([
     [
       {name: 'Linh hoạt', value: 0},
@@ -34,64 +39,136 @@ const AstroChartRequest = () => {
       {name: "Sao hỏa", value: 0},
       {name: "Sao mộc", value: 0},
       {name: "Sao thổ", value: 0},
-      {name: "Thiên vương tinh", value: 0},
-      {name: "Hải vương tinh", value: 0},
-      {name: "Diêm vương tinh", value: 0}
-      
+      {name: "Thiên vương", value: 0},
+      {name: "Hải vương", value: 0},
+      {name: "Diêm vương", value: 0}
     ]
   ])
+  const [des, setDes] = useState({
+    element: [],
+    modality: []
+  });
+  const [swapInput, setSwapInput] = useState(true);
 
   registerLocale('vi', vi);
   setDefaultLocale('vi');
 
-  const fetchAstroChart = async () => {
+  const fetchAstroChart = async (mode) => {
 
-    const NamePerson = document.getElementById('Name').value;
-    const BirthPlace = document.getElementById('place_birth').value
-    const inputWrapper = document.getElementsByClassName('content_box');
-
-    setLoading(true);
-    const data = {
-      subject: {
-        year: date.getFullYear(),
-        month: date.getMonth() + 1,
-        day: date.getDate(),
-        hour:time.getHours(),
-        minute: time.getMinutes(),
-        longitude: 106.3425,
-        latitude: 20.4491,
-        city: BirthPlace,
-        nation: "VN",
-        timezone: "Asia/Ho_Chi_Minh",
-        name: NamePerson,
-        zodiac_type: "Tropic",
-        sidereal_mode: null,
-        perspective_type: "Apparent Geocentric",
-        houses_system_identifier: "P",
-      },
-      theme: "classic",
-      language: "EN",
-      wheel_only: false,
-    };
-
-    try {
-      const res = await fetch("https://astrologer.p.rapidapi.com/api/v4/birth-chart", {
-        method: "POST",
-        headers: {
-          "x-rapidapi-key": "3c5c39e0fdmshb9e435523552215p10d56fjsnc394ff83fd8e",
-          "x-rapidapi-host": "astrologer.p.rapidapi.com",
-          "Content-Type": "application/json",
+    if(mode == 1){
+      const NamePerson = document.getElementById('Name').value;
+      const BirthPlace = document.getElementById('place_birth').value
+      const inputWrapper = document.getElementsByClassName('content_box');
+  
+      setLoading(true);
+      const data = {
+        subject: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate(),
+          hour:time.getHours(),
+          minute: time.getMinutes(),
+          longitude: 106.3425,
+          latitude: 20.4491,
+          city: BirthPlace,
+          nation: "VN",
+          timezone: "Asia/Ho_Chi_Minh",
+          name: NamePerson,
+          zodiac_type: "Tropic",
+          sidereal_mode: null,
+          perspective_type: "Apparent Geocentric",
+          houses_system_identifier: "P",
         },
-        body: JSON.stringify(data),
-      });
-      const result = await res.json();
-      setResponse(result);
-      inputWrapper[0].classList.add('nope');
-    } catch (error) {
-      console.error("Error fetching astrology chart:", error);
-    } finally {
-      setLoading(false);
+        theme: "classic",
+        language: "EN",
+        wheel_only: false,
+      };
+  
+      try {
+        const res = await fetch("https://astrologer.p.rapidapi.com/api/v4/birth-chart", {
+          method: "POST",
+          headers: {
+            "x-rapidapi-key": "3c5c39e0fdmshb9e435523552215p10d56fjsnc394ff83fd8e",
+            "x-rapidapi-host": "astrologer.p.rapidapi.com",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const result = await res.json();
+        setResponse(result);
+        inputWrapper[0].classList.add('nope');
+      } catch (error) {
+        console.error("Error fetching astrology chart:", error);
+      } finally {
+        setLoading(false);
+      }
+    }else if(mode == 2){
+      const NamePerson = document.getElementById('Name').value;
+      const BirthPlace = document.getElementById('place_birth').value
+      const NamePerson2 = document.getElementById('Name2').value;
+      const BirthPlace2 = document.getElementById('place_birth2').value
+
+      const inputWrapper = document.getElementsByClassName('content_box');
+  
+      setLoading(true);
+      const data = {
+        first_subject: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate(),
+          hour:time.getHours(),
+          minute: time.getMinutes(),
+          longitude: 106.3425,
+          latitude: 20.4491,
+          city: BirthPlace,
+          nation: "VN",
+          timezone: "Asia/Ho_Chi_Minh",
+          name: NamePerson,
+          zodiac_type: "Tropic",
+          sidereal_mode: null,
+          perspective_type: "Apparent Geocentric",
+          houses_system_identifier: "P",
+        },
+        second_subject: {
+          year: date2.getFullYear(),
+          month: date2.getMonth() + 1,
+          day: date2.getDate(),
+          hour:time2.getHours(),
+          minute: time2.getMinutes(),
+          longitude: 106.3425,
+          latitude: 20.4491,
+          city: BirthPlace2,
+          nation: "VN",
+          timezone: "Asia/Ho_Chi_Minh",
+          name: NamePerson2,
+          zodiac_type: "Tropic",
+          sidereal_mode: null,
+          perspective_type: "Apparent Geocentric",
+          houses_system_identifier: "P",
+        },
+      };
+  
+      try {
+        const res = await fetch("https://astrologer.p.rapidapi.com/api/v4/relationship-score", {
+          method: "POST",
+          headers: {
+            "x-rapidapi-key": "3c5c39e0fdmshb9e435523552215p10d56fjsnc394ff83fd8e",
+            "x-rapidapi-host": "astrologer.p.rapidapi.com",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const result = await res.json();
+        setResponse2(result);
+        inputWrapper[0].classList.add('nope');
+      } catch (error) {
+        console.error("Error fetching astrology chart:", error);
+      } finally {
+        setLoading(false);
+      }
     }
+
+
 
 
 
@@ -123,7 +200,6 @@ useEffect(()=>{
     const number = element[i].innerHTML.match(/\d+/);
     element_push[i] = number[0];
   }
-  console.log(element_push)
 
 
 
@@ -278,6 +354,8 @@ pluto = filterZodiac["Sco"] + filterHouse["Eighth_House"] + filterPlanet["Pluto"
 
 // console.log(sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto)
 
+
+
 setSumData([
   [
     {name: 'Linh hoạt', value: mutable},
@@ -291,27 +369,74 @@ setSumData([
     {name: "Nước", value: parseInt(element_push[4])}
   ],
   [
-    {name: "Mặt trời", value: sun},
-    {name: "Mặt trăng", value: moon},
-    {name: "Thủy tinh", value: mer},
-    {name: "Kim tinh", value: venus},
-    {name: "Sao hỏa", value: mars},
-    {name: "Sao mộc", value: jupiter},
-    {name: "Sao thổ", value: saturn},
-    {name: "Thiên vương tinh", value: uranus},
-    {name: "Hải vương tinh", value: neptune},
-    {name: "Diêm vương tinh", value: pluto}
+    {name: "Mặt trời", value: sun, color: "#FFD700"},
+    {name: "Mặt trăng", value: moon, color: "#B0C4DE"},
+    {name: "Thủy tinh", value: mer, color: "#C0C0C0"},
+    {name: "Kim tinh", value: venus, color: "#FF69B4"},
+    {name: "Sao hỏa", value: mars, color: "#FF4500"},
+    {name: "Sao mộc", value: jupiter, color: "#D2691E"},
+    {name: "Sao thổ", value: saturn, color: "#708090"},
+    {name: "Thiên vương", value: uranus, color: "#40E0D0"},
+    {name: "Hải vương", value: neptune, color: "#4169E1"},
+    {name: "Diêm vương", value: pluto, color: "#800080"}
   ],
   [
     response.chart
+  ],
+  [
+    response.data.sun.sign
   ]
+  
 ])
 
 
+  
+
+  let strong_weak = [0, 0, 0, 0]
+  let check_balance = 0;
+  for(let i = 1; i < element_push.length; i++){
+    
+    if(element_push[i] < 15){
+      strong_weak[i-1] = 1
+    }else if(element_push[i] > 35){
+      strong_weak[i-1] = 2
+    }else{
+      check_balance++;
+    }
+  }
+
+  const modalitySum = mutable + cardinal + fixed;
+
+
+  let check_balance_2 = 0;
+  const perMut = (mutable / modalitySum)*100
+  const perCar = (cardinal / modalitySum)*100
+  const perFix = (fixed / modalitySum)*100
+
+  const lmao = [perCar, perFix, perMut]
+
+  let strong_weak_2 = [0, 0, 0];
+  for(let i = 0; i < 3; i++){
+    if(lmao[i] < 23){
+      strong_weak_2[i] = 1
+    }else if(lmao[i] > 43){
+      strong_weak[i] = 2
+    }else{
+      check_balance_2++;
+    }
+  }
+
+  const insetData = {
+    element: [strong_weak[0], strong_weak[1], strong_weak[2], strong_weak[3]],
+    modality: [strong_weak_2[0], strong_weak_2[1], strong_weak_2[2]],
+    ifBalance: check_balance,
+    ifBalance_2: check_balance_2
+  }
+
+  setDes(insetData)
+  
 
 }
-   
-  
 
   },[response]);
 
@@ -322,12 +447,9 @@ useEffect(()=>{
   const year = today.getFullYear();                          // 2025
 
   const randomNumber = Math.floor(Math.random() * 9) + 1;
-  const formattedDate = `${day}-${month}-${year}`;
-  console.log(formattedDate); // "09-04-2025"
+  const formattedDate = `${day}-${month}-${year}`; // "09-04-2025"
 
-  console.log(SumData[3])
   if(SumData[3]){
-    console.log(SumData)
     const NamePerson = document.getElementById('Name').value;
 
     const storedUser = localStorage.getItem("user");
@@ -372,55 +494,160 @@ useEffect(()=>{
 },[SumData])
 
 
-
+console.log(response2)
 
 
   return (
     <div className="wrapper">
       <div className="content_box">
-        <h1>Lập lá số</h1>
-        <div className="content_input">
-          <h2 form="Name">Họ Tên:</h2>
-          <input type="text" id="Name" name="Name"/>
-        </div>
 
-        <div className="content_input">
-        <h2>Ngày  / Tháng / Năm:</h2>
-        <DatePicker
-          selected={date}
-          onChange={(date)=> setDate(date)}
-          locale="vi"
-          dateFormat="dd/MM/yyyy"
-          isClearable
-          showMonthDropdown
-          showYearDropdown
-          dropdownMode="select"
-        />
-        </div>
-        <div className="content_input">
-        <h2>Giờ Sinh:</h2>
-        <DatePicker
-          selected={time}
-          onChange={(time)=> setTime(time)}
-          locale="vi"
-          showTimeSelect
-          showTimeSelectOnly
-          timeFormat="HH:mm"
-          dateFormat="HH:mm"
-        />
-        </div>
-        <div className="content_input">
-          <h2>Nơi Sinh:</h2>
-          <input type="text" id="place_birth"/>
-        </div>
-      <div className="get_chart_wrapper"> 
-        <button className="get_chart" onClick={fetchAstroChart} disabled={loading}>
-        {loading ? "Loading..." : "Get Astro Chart"}
-        </button>
+
+        {swapInput ? (
+        <>
+          <h1>Lập lá số cá nhân<i onClick={()=>setSwapInput(!swapInput)} class="fa-solid fa-heart"></i></h1>
+          <div className="content_input">
+            <h2 form="Name">Họ Tên:</h2>
+            <input type="text" id="Name" name="Name"/>
+          </div>
+
+          <div className="content_input">
+          <h2>Ngày  / Tháng / Năm:</h2>
+          <DatePicker
+            selected={date}
+            onChange={(date)=> setDate(date)}
+            locale="vi"
+            dateFormat="dd/MM/yyyy"
+            isClearable
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+          />
+          </div>
+          <div className="content_input">
+          <h2>Giờ Sinh:</h2>
+          <DatePicker
+            selected={time}
+            onChange={(time)=> setTime(time)}
+            locale="vi"
+            showTimeSelect
+            showTimeSelectOnly
+            timeFormat="HH:mm"
+            dateFormat="HH:mm"
+          />
+          </div>
+          <div className="content_input">
+            <h2>Nơi Sinh:</h2>
+            <input type="text" id="place_birth"/>
+          </div>
+          <div className="get_chart_wrapper"> 
+          <button className="get_chart" onClick={() => fetchAstroChart(1)} disabled={loading}>
+          {loading ? "Loading..." : "Get Astro Chart"}
+          </button>
+          </div>
+        </>
+        ) : (
+        <>
+          <h1>Điểm hòa hợp đôi<i onClick={()=>setSwapInput(!swapInput)} class="fa-solid fa-person"></i></h1>
+          <div className="content_input">
+            <h2 form="Name">Họ Tên Người 1:</h2>
+            <input type="text" id="Name" name="Name"/>
+          </div>
+
+          <div className="content_input">
+          <h2>Ngày  / Tháng / Năm:</h2>
+          <DatePicker
+            selected={date}
+            onChange={(date)=> setDate(date)}
+            locale="vi"
+            dateFormat="dd/MM/yyyy"
+            isClearable
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+          />
+          </div>
+          <div className="content_input">
+          <h2>Giờ Sinh:</h2>
+          <DatePicker
+            selected={time}
+            onChange={(time)=> setTime(time)}
+            locale="vi"
+            showTimeSelect
+            showTimeSelectOnly
+            timeFormat="HH:mm"
+            dateFormat="HH:mm"
+          />
+          </div>
+          <div className="content_input">
+            <h2>Nơi Sinh:</h2>
+            <input type="text" id="place_birth"/>
+          </div>
+          <hr/>
+          {/* Người sinh 2 */}
+          <div className="content_input">
+            <h2 form="Name">Họ Tên Người 2:</h2>
+            <input type="text" id="Name2" name="Name"/>
+          </div>
+
+          <div className="content_input">
+          <h2>Ngày  / Tháng / Năm:</h2>
+          <DatePicker
+            selected={date2}
+            onChange={(date)=> setDate2(date)}
+            locale="vi"
+            dateFormat="dd/MM/yyyy"
+            isClearable
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
+          />
+          </div>
+          <div className="content_input">
+          <h2>Giờ Sinh:</h2>
+          <DatePicker
+            selected={time2}
+            onChange={(time)=> setTime2(time)}
+            locale="vi"
+            showTimeSelect
+            showTimeSelectOnly
+            timeFormat="HH:mm"
+            dateFormat="HH:mm"
+          />
+          </div>
+          <div className="content_input">
+            <h2>Nơi Sinh:</h2>
+            <input type="text" id="place_birth2"/>
+          </div>
+
+
+          <div className="get_chart_wrapper"> 
+          <button className="get_chart" onClick={() => fetchAstroChart(2)} disabled={loading}>
+          {loading ? "Loading..." : "Get Astro Chart"}
+          </button>
+          </div>
+          </>
+        )}
+
+
+
       </div>
 
-      </div>
-
+      {response2 ? (
+        <div>
+          <div className="wrapper_feature relationship">
+            <h1>Mức độ hòa hợp:</h1>
+            <div className="feature_relationship">
+              <h2>{response2.data.first_subject.name}</h2>
+              <div className="heart">
+                
+              </div>
+              <h2>{response2.data.second_subject.name}</h2>
+              <p>{Math.round((response2.score / 44)*100)}</p>
+            </div>
+            <p className="note">*Điểm trên thang 0-100</p>
+          </div>
+        </div>
+      ) : ""}
 
       {response ? (
         <div className="wrapper_feature">
@@ -449,18 +676,37 @@ useEffect(()=>{
           </ResponsiveContainer>
           </div>
           <div className="description">
-              <div className="des_content">
-                  <h2>Tính Tiên Phong</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Kiên Định</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Linh Hoạt</h2>
-                  <p>xin chào</p>
-              </div>
+          <h1>Tính chất</h1>
+
+            {des.ifBalance_2 == 3 ? (
+                <div className="des_content">
+                  <h2>Cân bằng tổng thể</h2>
+                  <p>{ModalityDescriptions.overallBalance.description}</p>
+                </div>
+            ) : (
+
+              des.modality.map((data, index)=>{
+
+                if(data == 1){
+                  return(
+                    <div className="des_content">
+                      <h2>Thiếu tính {ModalityDescriptions[index].name}</h2>
+                      <p>{ModalityDescriptions[index].lack}</p>
+                    </div>
+                    )
+                }
+                if(data == 2){
+                  return(
+                    <div className="des_content">
+                      <h2>Nhiều tính {ModalityDescriptions[index].name}</h2>
+                      <p>{ModalityDescriptions[index].excess}</p>
+                    </div>
+                    )
+                }
+                })
+
+            )}
+             
           </div>
         </div>
 
@@ -480,22 +726,38 @@ useEffect(()=>{
         </ResponsiveContainer>     
         </div>  
         <div className="description">
-              <div className="des_content">
-                  <h2>Tính Lửa</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Đất</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Nước</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Khí</h2>
-                  <p>xin chào</p>
-              </div>
+              <h1>Nguyên tố</h1>
+              {des.ifBalance == 4 ? (
+                <div className="des_content">
+                    <h2>Cân bằng tổng thể</h2>
+                    <p>{ElementDescriptions.overallBalance.description}</p>
+                </div>              
+              ) : (
+                des.element.map((data, index)=>{
+
+            
+
+                  if(data == 1){
+                    return(
+                      <div className="des_content">
+                        <h2>Thiếu nguyên tố {ElementDescriptions[index].name}</h2>
+                        <p>{ElementDescriptions[index].lack}</p>
+                      </div>
+                      )
+                  }
+                  if(data == 2){
+                    return(
+                      <div className="des_content">
+                        <h2>Nhiều nguyên tố {ElementDescriptions[index].name}</h2>
+                        <p>{ElementDescriptions[index].excess}</p>
+                      </div>
+                      )
+                  }
+                  
+  
+                })
+              )}
+              
           </div>
         </div>
 
@@ -505,8 +767,8 @@ useEffect(()=>{
             <div className="feature_wrapper_2">
               <ResponsiveContainer width="100%" height={450}>
                 <BarChart data={SumData[2]}>
-                    <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }} dataKey="name"/>
-                    <YAxis domain={[0, 100]} tickCount={6}  tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }}allowDecimals={false} />
+                    <XAxis tick={{ angle: -45, dy: 20, style: {fontWeight: 'bold', fill: 'white', fontSize: '12px'} }} dataKey="name"/>
+                    <YAxis domain={[0, 100]} tickCount={6}  tick={{  style: {  fontWeight: 'bold', fill: 'white', fontSize: '18px'} }}allowDecimals={false} />
                     <Tooltip />
                     <Bar dataKey="value" fill="#8884d8">
                         {SumData[2].map((entry, index) => (
@@ -514,26 +776,24 @@ useEffect(()=>{
                         ))}
             
                     </Bar>
+            
                   </BarChart>
                 </ResponsiveContainer>
+ 
             </div>
             <div className="description">
-              <div className="des_content">
-                  <h2>Tính Lửa</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Đất</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Nước</h2>
-                  <p>xin chào</p>
-              </div>
-              <div className="des_content">
-                  <h2>Tính Khí</h2>
-                  <p>xin chào</p>
-              </div>
+
+              {SumData[2].map((data, index)=>{
+                if(index > 6){
+                  return null
+                }
+                return(
+                  <div className="des_content">
+                    <h2>Mẫu người {data.name} - Điểm {data.value}</h2>
+                    <p>{planetDes[index]}</p>
+                  </div>
+                )
+              })}
           </div>
           </div>
         </div>

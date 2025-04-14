@@ -308,6 +308,11 @@ h6{
     height: 25%;
     padding: 10px;
 }
+.body_report_1_column_4{
+    height: 5%;
+    padding: 7px;
+    border-top: 2px solid white;
+}
 .body_report_1_column_disc{
     width: 50%;
     height: 100%;
@@ -321,7 +326,6 @@ h6{
 .body_report_2_column_2{
     height: 60%;
     padding: 10px;
-    border-bottom: 2px solid white;
 }
 
 .header_report{
@@ -362,13 +366,21 @@ h6{
     word-spacing: -10px;
 }
 .header_report_content_des{
-    padding: 20px;
+    padding: 15px;
+}
+.header_report_content_des h2{
+    margin-bottom: 10px;
+}
+.header_report_content_des i{
+    margin-left: 20px;
+    cursor: pointer;
 }
 .disc_report{
     margin: 10px 0px !important;
     padding: 10px 0px !important;
     padding-right: 30px !important;
     box-shadow: none !important;
+    transform: translateX(-35px);
 }
 .recharts-wrapper{
     display: flex;
@@ -388,6 +400,7 @@ h6{
     position: absolute;
     top: 13%;
     left: 22%;
+    height: 50px;
   }
   .menu:hover {
     pointer-events: all;
@@ -409,6 +422,7 @@ h6{
     padding: 0 !important;
     width: 100% !important;
     box-shadow: none !important;
+    transform: translateX(-35px);
   }
   .spacer {
     display: inline-block;

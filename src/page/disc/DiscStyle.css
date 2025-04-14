@@ -40,6 +40,18 @@
     justify-content: center;
 }
 
+.disc_input_box:-webkit-autofill,
+.disc_input_box:-webkit-autofill:hover,
+.disc_input_box:-webkit-autofill:focus,
+.disc_input_box:-webkit-autofill:active {
+    -webkit-text-fill-color: #000 !important;
+}
+
+
+
+.disc_input_box{
+  color: black !important;
+}
 .container_disc  {
   position: absolute;
   left: 50%;
@@ -186,7 +198,8 @@ form {
 }
 
 .disc_input button:hover {
-  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+  box-shadow: -2px -2px 5px #2c2c2c, 2px 2px 5px #BABECC;
+  color: black;
 }
 
 .disc_input button:active {

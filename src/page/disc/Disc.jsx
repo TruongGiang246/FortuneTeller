@@ -297,6 +297,7 @@ const DISCQuiz = () => {
         const user = {
           [login]: {
             disc: disc,
+            highest_disc: highestCategory,
             time: formattedDate,
             avt: randomNumber
           },
@@ -311,6 +312,7 @@ const DISCQuiz = () => {
           // Nếu chưa có người dùng này
           user[login] = { 
             disc: disc,
+            highest_disc: highestCategory,
             time: formattedDate,
             avt: randomNumber
           };
@@ -318,6 +320,7 @@ const DISCQuiz = () => {
         } else {
           // Nếu đã có người dùng này, cập nhật numerology
           user[login].disc = disc;
+          user[login].highest_disc = highestCategory;
           if(!user[login].time){
             user[login].time = formattedDate;
             user[login].avt = randomNumber
@@ -364,15 +367,12 @@ const DISCQuiz = () => {
             <div class="container_disc">
               <div class="content">
               <div className="form__group field disc_input">
-                {/* <input type="input" className="form__field" placeholder="Name" name="name" id='Firstname' required />
-                <label form="name" className="form__label">Họ và Tên</label>
-                <button onClick={onLogin}>Xác nhận</button> */}
                 <form>
                 <div class="segment">
                   <h1>Họ Tên</h1>
                 </div>
                 <label>
-                  <input id="Firstname" type="input" placeholder="..."/>
+                  <input id="Firstname" className="disc_input_box" type="input" placeholder="..."/>
                 </label>
                 <button onClick={onLogin} class="red" type="button"><i class="icon ion-md-lock"></i>Xác nhận</button> 
               </form>

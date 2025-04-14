@@ -185,6 +185,8 @@
     letter-spacing: 2px;
     line-height: 25px;
     font-style: italic;
+    font-size: 20px;
+    font-family: "Playball";
 }
 
 .form__group {
@@ -195,15 +197,16 @@
 }
 
 .form__field {
-  font-family: 'Times New Roman', Times, serif;
+font-family: "Playball";
   width: 100%;
   
   border: 0;
   border-bottom: 2px solid gray;
   outline: 0;
-  font-size: 1.3rem;
+  font-size: 23px;
   color: white;
-  padding: 7px 0;
+  padding: 18px 0;
+  
   background: transparent;
   transition: border-color 0.2s;
 
@@ -212,19 +215,20 @@
   }
 
   &:placeholder-shown ~ .form__label {
-    font-size: 1.3rem;
+    font-size: 25px;
     cursor: text;
-    top: 20px;
+    font-family: "Playball";
+    top: 40px;
   }
 }
 
 .form__label {
   position: absolute;
-  font-family: sans-serif;
+  font-family: "Playball";
   top: 0;
   display: block;
   transition: 0.2s;
-  font-size: 1rem;
+  font-size: 25px;
   color: rgba(255, 255, 255, 0.588);
 }
 
@@ -274,6 +278,7 @@ select{
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
+    font-family: "Oswald", sans-serif;
   }
   .label_pos:last-child{
     justify-content: flex-end;

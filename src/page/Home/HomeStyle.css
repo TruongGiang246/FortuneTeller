@@ -801,11 +801,7 @@
     border-radius: 5px;
     overflow: hidden;
 }
-hr{
-    background-color: white;
-    color: white;
-    height: 20px;
-}
+
 .box4_group{
     width: 75%;
     display: flex;

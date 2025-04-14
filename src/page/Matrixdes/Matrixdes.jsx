@@ -207,7 +207,7 @@ function Matrixdes(){
         </div>
         </div>
         <div className="form__group field">
-                <input type="input" className="form__field" placeholder="Name" name="name" id='Firstname' required />
+                <input type="input" className="form__field" placeholder="Name" name="name" id='Firstname' required="true" />
                 <label form="name" className="form__label">Họ và Tên</label>
         </div>
 
