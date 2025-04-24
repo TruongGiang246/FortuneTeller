@@ -9,6 +9,7 @@ import DISCQuiz from '../page/disc/Disc'
 import AstroChartRequest from '../page/Horoscope/AstroChartRequest'
 import Report from '../page/Blog/Report'
 import { Navigate } from 'react-router-dom'
+import Login from '../page/Login/Login'
 const publicRoutes = [
     {path: '*', component: Navigate, nav: true},
     {path: '/', component: HomePage},
@@ -19,7 +20,8 @@ const publicRoutes = [
     {path: '/Personal_Report', component: Blog},
     {path: '/DISC', component: DISCQuiz},
     {path: '/Horoscope', component: AstroChartRequest},
-    {path: '/Personal_Report/Report', component: Report}
+    {path: '/Personal_Report/Report', component: Report},
+    {path: '/Login', component: Login}
 ]
 
 export{publicRoutes}

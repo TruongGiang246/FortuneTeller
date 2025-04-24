@@ -3,7 +3,10 @@
     align-items: center;
     justify-content: center;
     margin-top: 5%;
+    background-position: center;
+    background-size: contain;
     min-height: 100vh;
+    background-image: url('/FortuneTeller/bg_wall.jpg');
 }
 .chart_wrapper svg{
     width: 100vw;
@@ -25,6 +28,7 @@
     border-radius: 5px;
     box-shadow: 3px 3px 20px gray;
     margin: 50px 0px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 hr{
     background-color: white;

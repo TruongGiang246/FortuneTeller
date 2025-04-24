@@ -65,6 +65,21 @@
     align-items: center; 
     cursor: pointer;
 }
+.account{
+  position: absolute;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 1px;
+  border: 2px solid rgba(255, 255, 255, 0.51);
+  cursor: pointer;
+}
+.account:hover{
+  box-shadow: 2px 2px 5px white;
+  border: 3px solid rgba(255, 255, 255, 0.51);
+}
 .blog_img{
     margin-right: 20px;
     height: 30px;
@@ -80,18 +95,7 @@ a:hover,
     0 0 20px rgba(255, 255, 255, 0.6), 
     0 0 30px rgba(173, 216, 230, 0.5); 
 }
-.nav_slide{
-    position: fixed;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    border: 2px solid gray;
-    background-color: black;
-    font-size: 20px;
-    padding: 40px;
-    z-index: 3;
 
-}
 .nav_slide li{
     width: 100%;
     height: 50px;
@@ -104,13 +108,157 @@ a:hover,
 
     width: 100vw;
     height: 100vh;
-    z-index: 2;
+    z-index: -1;
     background-color: rgba(0, 0, 0, 0.401);
 }
 .nope{
     display: none;
 
 }
+
+
+.sidebar {
+    height: 100vh;
+    width: 320px;
+    background: #fff;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-150%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .sidebar__close {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    background: #fff;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out 0.2s;
+    transform: rotate(45deg);
+  }
+  
+  .sidebar__close::before,
+  .sidebar__close::after {
+    content: "";
+    height: 2px;
+    background: #898989;
+    width: 24px;
+    display: block;
+    position: absolute;
+  }
+  
+  .sidebar__close::after {
+    transform: rotate(90deg);
+  }
+  
+  .sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    color: #898989;
+  }
+  
+  .sidebar__menu p {
+    color: #898989;
+    text-decoration: none;
+    transform: translateX(-80%);
+    right: -10%;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+  }
+  
+  /* Tạo hiệu ứng hover cho liên kết */
+  .sidebar__menu p::before {
+    content: "";
+    height: 2px;
+    background: #898989;
+    width: 120px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: transform 0.4s ease-in-out, opacity 0.4s linear;
+  }
+  
+  .sidebar__menu p:hover::before {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  /* Thêm hiệu ứng delay cho từng liên kết */
+
+  .tp1{
+    transition-delay: 0.05s !important;
+  }
+  .tp2{
+    transition-delay: 0.10s !important;
+  }
+  .tp3{
+    transition-delay: 0.15s !important;
+  }
+  .tp4{
+    transition-delay: 0.20s !important;
+  }
+  .tp5{
+    transition-delay: 0.25s !important;
+  }
+  
+
+
+
+  
+  .sidebar__social {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar__social li {
+    margin: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sidebar__social a,
+  .sidebar__social svg {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+  }
+  
+
+  .menu-control{
+    display: none;
+  }
+  .add_animation{
+    transform: translateX(0) !important;
+  }
+  /* Khi checkbox menu-control được checked */
+
+ 
+
 
 /* Màn hình nhỏ (điện thoại) */
 @media screen and (max-width: 1024px) {

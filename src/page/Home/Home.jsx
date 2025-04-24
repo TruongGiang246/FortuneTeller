@@ -897,8 +897,16 @@ function Home(){
         const text = document.getElementById("text");
         const container = document.getElementsByClassName('container');
         const timeline = document.getElementsByClassName('timeline');
-
+        const slider = document.querySelector(".testimonial-slider");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+        const testimonials = document.querySelectorAll(".testimonial-card");
+        const totalTestimonials = testimonials.length;
+        let index = 0;
         let first_time = true;
+
+
+
         for(let i = 0; i < img_popup.length; i++){
             img_popup[i].onclick = () =>{
                 console.log(imageData[i])
@@ -912,9 +920,9 @@ function Home(){
                 information_2[i].classList.toggle('slide_open');
             }
         } 
-        console.log(window.scrollY)
+    
 
-        window.addEventListener("scroll", ()=>{
+        function scrollParalaxHome(){
             let value = window.scrollY;
             console.log(value)
             if(value > 2200 && first_time){
@@ -930,19 +938,17 @@ function Home(){
             mountain.style.top = -value * 0.15 + 'px';
             road.style.top = value * 0.15 + 'px';
             text.style.top = value * 1 + 'px';
-        })
+        }
 
-        const slider = document.querySelector(".testimonial-slider");
-        const prevBtn = document.querySelector(".prev-btn");
-        const nextBtn = document.querySelector(".next-btn");
-    
-        let index = 0;
-        const testimonials = document.querySelectorAll(".testimonial-card");
-        const totalTestimonials = testimonials.length;
-    
+            
         function updateSlider() {
             slider.style.transform = `translateX(-${index * 100}%)`;
         }
+
+        
+
+
+
     
         // Nút "Next"
         nextBtn.addEventListener("click", function () {
@@ -955,9 +961,13 @@ function Home(){
             index = (index - 1 + totalTestimonials) % totalTestimonials;
             updateSlider();
         });
+        window.addEventListener("scroll", scrollParalaxHome)
     
         // Tự động chuyển slider mỗi 3 giây
 
+        return () => {
+            window.removeEventListener("scroll", scrollParalaxHome);
+          };
 
     },[])
 
@@ -1005,7 +1015,7 @@ function Home(){
                                 <p className='intro_content'>“Bạn có bao giờ tự hỏi vì sao mình lại có mặt trên thế giới này?
                                 Vũ trụ luôn gửi đến chúng ta những tín hiệu qua Tarot, Chiêm tinh và Thần số học. Hãy giải mã những bí ẩn đó, khám phá con đường dành riêng cho bạn và mở ra một tương lai đầy tiềm năng!”</p>
                                 <div className='intro_Button'>
-                                    <p>Xem thêm</p>
+                                    <a href='#timeline_begin'>Xem thêm</a>
                                 </div>
                             </div>                      
                         </div>
@@ -1094,7 +1104,7 @@ function Home(){
 
 
 
-                <div className='introduction_2'>
+                <div className='introduction_2'  id='timeline_begin'>
                     <div className='intro_2_wrapper'>
                     <p className='intro_title'>Công cụ</p>
                     <h1>Bạn sẽ chọn con đường nào?</h1>

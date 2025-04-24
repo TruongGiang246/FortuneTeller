@@ -6,6 +6,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-position: center;
+  background-size: contain;
+  background-image: url('/FortuneTeller/bg_wall.jpg');
 }
 
 .tarot-container {

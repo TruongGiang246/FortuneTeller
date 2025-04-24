@@ -65,7 +65,8 @@ function Report(){
     const getRandom_2 = createRandomPicker(Linking_words.connect_dev)
     const getRandom_3 = createRandomPicker(Linking_words.connect_intro_2)
 
-    function generatePersonalityDescription(data, connectors, n1, n2, n3, n4) {
+    function generatePersonalityDescription(data, n1, n2, n3, n4) {
+    console.log(n1, n2, n3, n4)
     if(!n1 || !n2 || !n3 || !n4){
         return "Hãy nhập đầy đủ thông tin để có kết quả tổng hợp chính xác"
     }
@@ -79,7 +80,7 @@ function Report(){
     `;
     }
 
-    function generateDevelopDescription(data, connectors, n1, n2, n3, n4){
+    function generateDevelopDescription(data, n1, n2, n3, n4){
         if(!n1 || !n2 || !n3 || !n4){
             return "Hãy nhập đầy đủ thông tin để có kết quả tổng hợp chính xác"
         }
@@ -133,8 +134,8 @@ function Report(){
     
    
     const des = useRef([
-            generatePersonalityDescription(Sentances, Linking_words, infor.numerology, infor.highest_disc, infor.horoscope, infor.matrix),
-            generateDevelopDescription(Sentances, Linking_words, infor.numerology, infor.highest_disc, infor.horoscope, infor.matrix)
+            generatePersonalityDescription(Sentances, infor.numerology, infor.highest_disc, infor.horoscope, infor.matrix),
+            generateDevelopDescription(Sentances, infor.numerology, infor.highest_disc, infor.horoscope, infor.matrix)
     ])
 
 
@@ -309,7 +310,11 @@ function Report(){
                             </div>
                         </div>
                         <div className="body_report_1_column_4">
-                        <CustomLegend data={infor.horoscope[2]}/>
+                        {(!infor.horoscope) ? (
+                            <p>Chưa có dữ liệu</p>
+                            ) : (
+                                <CustomLegend data={infor.horoscope[2]}/>
+                            )}
                         </div>
                     </div>
    

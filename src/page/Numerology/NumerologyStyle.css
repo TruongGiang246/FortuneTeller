@@ -17,7 +17,7 @@
     width: 100%;
     height: 100%;
     background: #0a2437;
-    z-index: 10;
+    z-index: -1;
     mix-blend-mode: color;
     
 }
@@ -28,7 +28,7 @@
     width: 100%;
     height: 100px;
     background: linear-gradient(to top, #0a2a43, transparent);
-    z-index: 10;
+    z-index: 1;
 }
 #bg_Numerology{
     position: absolute;
