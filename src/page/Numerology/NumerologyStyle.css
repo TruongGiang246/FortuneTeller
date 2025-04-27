@@ -389,5 +389,9 @@ select{
     .model_inner{
         width: 80vw;
     }
+    .introduce_title p{
+        margin-top: 20px;
+    }
+
 }
 

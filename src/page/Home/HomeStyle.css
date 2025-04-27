@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Orbitron:wght@400;700&family=Uncial+Antiqua&display=swap');
 .main_img{
     height: 100vh;
+    width: 100vw;
     overflow-x: hidden;
 }
 .wrap{
     position: relative;
     z-index: 0;
+    width: 100vw;
+    overflow: hidden;
 }
 .paralax{
     position: relative;
@@ -18,6 +21,9 @@
 }
 #moon{
     object-fit: contain;
+}
+.adj{
+    margin: 0px 20px;
 }
 .paralax img{
     position: absolute;
@@ -286,7 +292,7 @@
     width: 20%;
 }
 .introduction_2{
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -502,6 +508,7 @@
 #middle{
     background-image: url('/FortuneTeller/bg/intersecting-wave-layers.png');
     animation: wavying_down 8s linear infinite;
+    width: 100vw;
 }
 @keyframes wavying_down{
     0%{
@@ -530,8 +537,10 @@
     background-image: url('/FortuneTeller/bg/intersecting-waves-split.png');
     animation-delay: 1s;
     animation: wavying_up 8s linear infinite;
+    width: 100vw;
 }
 .testimonial {
+    width: 100vw;
     text-align: center;
     padding: 50px 20px;
     position: relative;
@@ -693,6 +702,26 @@
     .split_img_wrapper{
         width: 50%;
     }
+    .testimonial-card{
+        height: 300px;
+    }
+    .testimonial-card img{
+        height: 50px;
+        width: 50px;
+    }
+    .next-btn{
+        right: 10%;
+        top: 40%;
+    }
+    .prev-btn{
+        left: 10%;
+        top: 40%;
+    }
+    .review{
+        font-size: 10px;
+        line-height: 16px;
+    }
+
 
 
 }
@@ -720,7 +749,8 @@
     }
     .left-container img,
     .right-container img{
-        left: 10px;
+        left: 44.5% !important;
+        top: -17% !important;
     }
     .left-container-arrow,
     .right-container-arrow{
@@ -728,6 +758,21 @@
         border-left: 0;
         left: -15px;
     }
+    .container{
+        width: 100% !important;
+        margin: 50px 0px;
+    }
+    .left-container{
+        left: 0 !important;
+    }
+    .right-container{
+        left: 0 !important;
+    }
+
+    .left-container-arrow{
+        display: none;
+    }
+
 }
 
 /* hiện ảnh */
@@ -845,6 +890,71 @@
 .popup_wrapper_inner_4{
     width: 90%;
 }
+
+.block_content_3_inner{
+    width: 100%;
+    display: flex;
+}
+
+.block_content_3_inner_item *{
+    margin: 0px 5px;
+}
+.block_content_3_inner_item_img{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.the_box{
+    position: absolute;
+
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px white;
+    width: 70px;
+    height: 70px;
+}
+.matrix_box_1{
+    top: 47%;
+    left: 46%;
+}
+.matrix_box_2{
+    top: 47%;
+    left: 31%;
+}
+.matrix_box_3{
+    top: 70%;
+    left: 46%;
+    height: 150px;
+}
+.matrix_box_4{
+    top: 10%;
+    left: 46%;
+    height: 150px;
+}
+.matrix_box_5{
+    top: 25%;
+    left: 37%;
+    width: 70px;
+    height: 250px;
+    transform: rotate(45deg);
+    border: 3px solid rgb(226, 255, 61);
+}
+.matrix_box_6{
+    top: 5%;
+    left: 45%;
+    width: 70px;
+    height: 250px;
+    transform: rotate(45deg);
+    border: 3px solid rgb(226, 255, 61);
+}
+.content_3_item_title{
+    padding: 5px;
+    border: 2px solid white;
+}
+
 .popup_wrapper_inner_4 h1{
     padding: 20px;
     border: 2px solid white;

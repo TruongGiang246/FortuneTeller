@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     margin: 20vh 0;
+    overflow: hidden;
 }
 .result_information{
     margin: 35px;
@@ -53,7 +54,12 @@ img{
         width: 100vw;
     }
     .result_text{
-        width: 100%;
+        margin-top: 20px;;
+        width: 120vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
 }

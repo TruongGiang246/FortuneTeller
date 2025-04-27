@@ -4,4 +4,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
+    background-image: url("/FortuneTeller/bg_wall.jpg");
+}
+.login_inner{
+    height: 500px;
+    width: 300px;
+    display: flex;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px white;
+    background-color: rgb(18, 18, 18);
+}
+.boxWrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.boxWrapper *{
+    margin: 10px 0px;
+}
+.login_button_group *{
+    margin: 0px 10px;
+}
+.login_img{
+    height: 60px;
+    width: 60px;
+    margin: 15px 0px;
 }

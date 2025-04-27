@@ -5,6 +5,35 @@ import { useNavigate } from 'react-router-dom'
 function Home(){
     const [isExpanded, setIsExpanded] = useState(null)
     const navigate = useNavigate();
+
+
+
+    const cardsData = [
+        { img_url:"/FortuneTeller/images/card2.jpg", number: 1, title: "The Magician - Nhà Ảo Thuật", description: "Sáng tạo, khởi đầu mới, quyền lực cá nhân." },
+        { img_url:"/FortuneTeller/images/card3.jpg", number: 2, title: "The High Priestess - Nữ Tư Tế", description: "Trực giác, tri thức ẩn giấu, kết nối tiềm thức." },
+        { img_url:"/FortuneTeller/images/card4.jpg", number: 3, title: "The Empress - Hoàng Hậu", description: "Sự phong phú, sinh sôi, tình yêu thương." },
+        { img_url:"/FortuneTeller/images/card5.jpg", number: 4, title: "The Emperor - Hoàng Đế", description: "Sức mạnh, kiểm soát, lãnh đạo." },
+        { img_url:"/FortuneTeller/images/card6.jpg", number: 5, title: "The Hierophant - Giáo Hoàng", description: "Truyền thống, niềm tin, sự hướng dẫn." },
+        { img_url:"/FortuneTeller/images/card7.jpg", number: 6, title: "The Lovers - Những Người Yêu", description: "Sự lựa chọn, tình yêu, mối quan hệ." },
+        { img_url:"/FortuneTeller/images/card8.jpg", number: 7, title: "The Chariot - Cỗ Xe Chiến Thắng", description: "Chiến thắng, quyết tâm, điều khiển." },
+        { img_url:"/FortuneTeller/images/card9.jpg", number: 8, title: "Strength - Sức Mạnh", description: "Sự can đảm, kiên nhẫn, kiểm soát bản thân." },
+        { img_url:"/FortuneTeller/images/card10.jpg", number: 9, title: "The Hermit - Ẩn Sĩ", description: "Tìm kiếm, ẩn dật, nội tâm." },
+        { img_url:"/FortuneTeller/images/card11.jpg", number: 10, title: "Wheel of Fortune - Bánh Xe Số Phận", description: "Thay đổi, chu kỳ, số phận." },
+        { img_url:"/FortuneTeller/images/card12.jpg", number: 11, title: "Justice - Công Lý", description: "Cân bằng, công bằng, trách nhiệm." },
+        { img_url:"/FortuneTeller/images/card13.jpg", number: 12, title: "The Hanged Man - Người Bị Treo Ngược", description: "Buông bỏ, hy sinh, góc nhìn mới." },
+        { img_url:"/FortuneTeller/images/card14.jpg", number: 13, title: "Death - Thần Chết", description: "Kết thúc, chuyển đổi, tái sinh." },
+        { img_url:"/FortuneTeller/images/card15.jpg", number: 14, title: "Temperance - Điều Độ", description: "Sự hòa hợp, cân bằng, chữa lành." },
+        { img_url:"/FortuneTeller/images/card16.jpg", number: 15, title: "The Devil - Ác Quỷ", description: "Cám dỗ, ràng buộc, bóng tối bên trong." },
+        { img_url:"/FortuneTeller/images/card17.jpg", number: 16, title: "The Tower - Tòa Tháp", description: "Sụp đổ, bất ngờ, khai sáng." },
+        { img_url:"/FortuneTeller/images/card18.jpg", number: 17, title: "The Star - Ngôi Sao", description: "Hy vọng, cảm hứng, sự chữa lành." },
+        { img_url:"/FortuneTeller/images/card19.jpg", number: 18, title: "The Moon - Mặt Trăng", description: "Ảo giác, cảm xúc, tiềm thức." },
+        { img_url:"/FortuneTeller/images/card20.jpg", number: 19, title: "The Sun - Mặt Trời", description: "Niềm vui, thành công, khai sáng." },
+        { img_url:"/FortuneTeller/images/card21.jpg", number: 20, title: "Judgement - Phán Xét", description: "Thức tỉnh, đánh giá, tái sinh." },
+        { img_url:"/FortuneTeller/images/card22.jpg", number: 21, title: "The World - Thế Giới", description: "Hoàn thành, thành tựu, hành trình trọn vẹn." },
+        { img_url:"/FortuneTeller/images/card1.jpg", number: 22, title: "The Fool - Kẻ Khờ", description: "Khởi đầu mới, tự do, tiềm năng." },
+      ];
+      
+
     const imageData = [
         {//box_1
             url: "/FortuneTeller/bg/background_8.png",
@@ -178,18 +207,196 @@ function Home(){
                     id: "block_type1",
                     code: (
                     <div class="popup_wrapper_inner_1">
-                        <div class="block_image">
-                            <img src="/FortuneTeller/number_infor/Numerology_History-1.jpg"/>
+                        <div class="block_image set_80_size">
+                            <img src="/FortuneTeller/origin_matrix.jpeg"/>
                             </div>
                             <div class="block_content">
-                                <h1>Lịch sử và Nguồn gốc của Tarot</h1>
-                                <p>​Tarot là một bộ bài gồm 78 lá, được sử dụng như một công cụ để khám phá bản thân và tìm kiếm lời khuyên trong cuộc sống. Mỗi lá bài mang một hình ảnh và ý nghĩa riêng, phản ánh những khía cạnh khác nhau của trải nghiệm con người.</p>
+                                <h1>Ma Trận Định Mệnh Là Gì?</h1>
+                                <p>Ma trận định mệnh là một biểu đồ số học được xây dựng dựa trên ngày tháng năm sinh của mỗi người, kết hợp với 22 năng lượng chính trong bộ bài Tarot (22 lá Major Arcana).</p>
                                 <br/>
-                                <p>Mặc dù nguồn gốc chính xác của Tarot vẫn còn nhiều tranh cãi, nhưng nhiều tài liệu cho thấy bộ bài này xuất hiện từ thế kỷ 15 tại miền Bắc nước Ý. Ban đầu, Tarot được sử dụng như một trò chơi giải trí, sau đó phát triển thành công cụ bói toán và tự khám phá bản thân</p>
+                                <p>Phương pháp này giúp người dùng hiểu rõ về điểm mạnh, điểm yếu, sứ mệnh cá nhân và các khía cạnh quan trọng trong cuộc sống như sự nghiệp, tình yêu, sức khỏe và tài chính.</p>
                             </div>
                         </div>
                     )
             },
+            {
+                id: "block_type1",
+                code: (
+                <div class="popup_wrapper_inner_1">
+
+                    <div class="block_content">
+                            <h1>Cấu Trúc Của Ma Trận Định Mệnh</h1>
+                            <p>Ma trận định mệnh hình lục giác là một sơ đồ gồm 7 tầng tuổi (0, 10, 20, 30, 40, 50, 60, 70) xếp thành hình lục giác, mỗi điểm trên đó mang một con số từ 1 đến 22.</p>
+                            <br/>
+                            <p>Các trục dọc, ngang và chéo tượng trưng cho hành trình phát triển bản thân và ảnh hưởng từ dòng họ (cha mẹ, ông bà). Trung tâm ma trận là số chủ đạo cuộc đời. Các số cho biết tài năng, thử thách và năng lượng mạnh yếu theo từng giai đoạn cuộc sống.</p>
+                        </div>
+                        <div class="block_image set_80_size">
+                        <img src="/FortuneTeller/matrix_information_img.png"/>
+                        </div>
+                    </div>
+                )
+        },
+            
+
+            {
+                id: "block_type3",
+                code: (
+                <div class="popup_wrapper_inner_3">
+                    <h1>Cấu Trúc Của Ma Trận Định Mệnh</h1>
+                    <div class="block_content_wrapper_3">
+                        <div className='block_content_3_inner'>
+                            <div className='block_content_3_inner_item'>
+                            <p className='content_3_item_title'>Vùng thoải mái</p>
+                            <p>Nó phản ánh sự thoải mái của linh hồn bạn và tiết lộ những gì
+bạn cần làm để cảm thấy hài lòng. Khu vực này cũng liên quan đến chakra manipura, tập
+trung vào các hành động cụ thể bạn phải thực hiện trong cuộc sống để tìm thấy sự thoải
+mái. Hãy coi đây là lá bài cốt lõi của bạn.</p>
+                                <div className=' block_content_3_inner_item_img'>
+                                    <div className='the_box matrix_box_1'></div>
+                                    <img className='set_80_size' src='/FortuneTeller/matrix_information_img.png'/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='block_content_3_inner'>
+                            <div className='block_content_3_inner_item'>
+                            <p className='content_3_item_title'>Vùng chân dung</p>
+                            <p>Nó giống như dấu
+hiệu tăng lên trong chiêm tinh học và đại diện cho cách bạn xuất hiện trước người khác.
+Nếu bạn muốn tạo ấn tượng tốt với ai đó, bạn nên điều chỉnh hành động và hình ảnh của
+mình theo lá bài này. Khu vực này tương ứng với cả sự tồn tại vật chất của bạn và
+chakra vương miện, liên quan đến cảm hứng. Nó giúp bạn khám phá những khía cạnh
+nào của cuộc sống có thể truyền cảm hứng cho bạn và mang lại cho bạn cảm giác mục
+đích.</p>
+                                <div className=' block_content_3_inner_item_img'>
+                                    <div className='the_box matrix_box_2'></div>
+                                    <img className='set_80_size' src='/FortuneTeller/matrix_information_img.png'/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='block_content_3_inner'>
+                            <div className='block_content_3_inner_item'>
+                            <p className='content_3_item_title'>Đuôi nghiệp</p>
+                            <p>Một khu vực quan trọng khác trong ma trận số phận của chúng ta là Kiếp Trước. Nó
+chứa đựng gánh nặng từ các kiếp sống trước của bạn và ảnh hưởng đến những đặc
+điểm yếu nhất của bạn. Khu vực này cung cấp cơ hội cho sự phát triển và phát triển cá
+nhân. Làm việc trên những khía cạnh này là thiết yếu; nếu không, bạn có thể gặp phải
+thách thức lặp đi lặp lại và thấy khó khăn để đạt được hạnh phúc. Bằng cách phân tích lá
+bài trong khu vực này, chúng ta có thể đưa ra những phỏng đoán có giáo dục về bạn đã
+là ai trong kiếp trước và những thách thức và sai lầm bạn đã gặp phải.</p>
+                                <div className=' block_content_3_inner_item_img'>
+                                    <div className='the_box matrix_box_3'></div>
+                                    <img className='set_80_size' src='/FortuneTeller/matrix_information_img.png'/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='block_content_3_inner'>
+                            <div className='block_content_3_inner_item'>
+                            <p className='content_3_item_title'>Vùng tài năng và cảm hứng</p>
+                            <p> Khu vực này tiết lộ những tài
+năng tiềm ẩn của bạn, thường không được khai thác. Nó đại diện cho những khía cạnh
+tích cực bạn mang theo từ các kiếp sống trước, thể hiện những gì bạn tự nhiên giỏi.
+</p>
+                                <div className=' block_content_3_inner_item_img'>
+                                    <div className='the_box matrix_box_4'></div>
+                                    <img className='set_80_size' src='/FortuneTeller/matrix_information_img.png'/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='block_content_3_inner'>
+                            <div className='block_content_3_inner_item'>
+                            <p className='content_3_item_title'>Vùng mối quan hệ</p>
+                            <p>Bạn sẽ nhận thấy mối liên hệ
+của nó với Kiếp trước, vì hai khu vực này thường có ảnh hưởng đáng kể đối với nhau.
+Nếu Kiếp trước của bạn tiêu cực, nó có thể dẫn đến vấn đề trong mối quan hệ của bạn.
+Khu vực này tiết lộ cái nhìn sâu sắc về linh hồn bạn đời lý tưởng của bạn trong một ý
+nghĩa tích cực và làm nổi bật những khó khăn tiềm ẩn trong các mối quan hệ tiêu cực.
+Trước khi bắt đầu một mối quan hệ mới, hãy cố gắng điều chỉnh cuộc sống của bạn với
+những đặc điểm tích cực của lá bài trong khu vực này. Lá bài trung tâm trong khu vực
+này mang ảnh hưởng 50% đối với mối quan hệ của bạn.</p>
+                                <div className=' block_content_3_inner_item_img'>
+                                    <div className='the_box matrix_box_5'></div>
+                                    <img className='set_80_size' src='/FortuneTeller/matrix_information_img_1-4.png'/>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div className='block_content_3_inner'>
+                            <div className='block_content_3_inner_item'>
+                            <p className='content_3_item_title'>Vùng tiền bạc</p>
+                            <p>Nó cung cấp
+hướng dẫn về cách thu hút sự giàu có, quản lý tài chính một cách khôn ngoan và phát
+triển tâm trí đúng đắn cho thành công. Mặc dù nó không xác định nghề nghiệp cụ thể của
+bạn, nhưng nó cung cấp cái nhìn sâu sắc vào các hành vi có thể nâng cao tình hình tài
+chính của bạn. Lá bài trung tâm trong khu vực này cũng giữ ảnh hưởng 50% đối với
+dòng chảy tài chính của bạn, với hai lá bài còn lại đóng góp 25% mỗi lá.</p>
+                                <div className=' block_content_3_inner_item_img'>
+                                    <div className='the_box matrix_box_6'></div>
+                                    <img className='set_80_size' src='/FortuneTeller/matrix_information_img_1-4.png'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                )
+            },
+            {
+                id: "block_type4",
+                code: (
+                <div class="popup_wrapper_inner_4">
+                    <h1>Cách Thức Ma trận định mệnh</h1>
+                    <div class="video_group">
+                        <iframe 
+                        allowfullscreen
+                        src="https://www.youtube.com/embed/Ow8y8K87RAQ">
+                        </iframe>
+                    </div>
+                </div>
+                )
+            },
+            {
+                id: "block_type5",
+                code: (
+                <div class="popup_wrapper_inner_5">
+                    <button class='link_button' onClick={()=>{navigate('/Matrix')}}>Xem bản đồ của bạn<i class="fa-solid fa-arrow-right"></i>
+                    <div className="star-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }}>
+                            <path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" className="fil0"></path>
+                        </svg>
+                        </div>
+                        <div className="star-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }}>
+                            <path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" className="fil0"></path>
+                        </svg>
+                        </div>
+                        <div className="star-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }}>
+                            <path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" className="fil0"></path>
+                        </svg>
+                        </div>
+                        <div className="star-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }}>
+                            <path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" className="fil0"></path>
+                        </svg>
+                        </div>
+                        <div className="star-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }}>
+                            <path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" className="fil0"></path>
+                        </svg>
+                        </div>
+                        <div className="star-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }}>
+                            <path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" className="fil0"></path>
+                        </svg>
+                        </div>
+                    </button>
+                </div>
+                )
+            }
+            
         ]
         },
 

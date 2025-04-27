@@ -120,17 +120,7 @@ function Report(){
     
 
     
-    
-    // const des = useRef(["Hãy nhập đầy đủ thông tin để có kết quả tổng hợp chính xác", "Hãy nhập đầy đủ thông tin để có kết quả tổng hợp chính xác"])
 
-    // const oneTime = useRef(true)
-    // if(infor.numerology[0] && infor.highest_disc && infor.horoscope[4][0] && infor.matrix[4] && oneTime){
-    //     des.current = [
-    //         generatePersonalityDescription(Sentances, Linking_words, infor.numerology[0], infor.highest_disc, infor.horoscope[4][0], infor.matrix[4]),
-    //         generateDevelopDescription(Sentances, Linking_words, infor.numerology[0], infor.highest_disc, infor.horoscope[4][0], infor.matrix[4])
-    //     ]
-    //     oneTime.current = false
-    // }
     
    
     const des = useRef([
@@ -266,7 +256,7 @@ function Report(){
                                     <p>Chưa có dữ liệu</p>
                                 ) : (
                                 <div className="Disc_result disc_report">
-                                <ResponsiveContainer width="120%" height={180}>
+                                <ResponsiveContainer width="120%" height={160}>
                                     <BarChart data={infor.disc.map(([key, value]) => ({ name: key, score: value }))}>
                                     <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '10px'} }} dataKey="name"/>
                                     <YAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '10px'} }} allowDecimals={false} />

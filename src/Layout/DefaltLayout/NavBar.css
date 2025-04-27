@@ -72,7 +72,6 @@
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  padding: 1px;
   border: 2px solid rgba(255, 255, 255, 0.51);
   cursor: pointer;
 }
@@ -121,7 +120,7 @@ a:hover,
     height: 100vh;
     width: 320px;
     background: #fff;
-    position: absolute;
+    position: fixed;
     top: -2px;
     left: 0;
     padding: 0 30px;
@@ -221,6 +220,9 @@ a:hover,
   .tp5{
     transition-delay: 0.25s !important;
   }
+  .tp6{
+    transition-delay: 0.30s !important;
+  }
   
 
 
@@ -277,6 +279,10 @@ a:hover,
     }
     .NavBar{
         justify-content: space-evenly;
+    }
+    .blog{
+      visibility: hidden;
+      width: 0%;
     }
 
 }

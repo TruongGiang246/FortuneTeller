@@ -4,26 +4,31 @@ import LoginAndSave from "./LoginAndSave";
 import Dashboard from "./Dashboard";
 import "./LoginStyle.css"
 
-function Login() {
+function Login({setMenuData}) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) setUser(storedUser);
+    const storedUser = JSON.parse(localStorage.getItem("user_gmail"));
+    if (storedUser) {
+      setUser(storedUser)
+    };
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("user_gmail");
+    setMenuData(null)
     setUser(null);
   };
 
   return (
     <div className="login_wrapper">
+      <div className="login_inner">   
       {user ? (
         <Dashboard user={user} onLogout={handleLogout} />
       ) : (
-        <LoginAndSave onLoginSuccess={(userData) => setUser(userData)} />
+        <LoginAndSave setMenuData={setMenuData} onLoginSuccess={(userData) => setUser(userData)} />
       )}
+      </div>
     </div>
   );
 }

@@ -1,8 +1,19 @@
 import './NavBar.css'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../FooterLayout/Footer'
+import { useState, cloneElement } from 'react'
 function NavBar({children}){
+    const [menuData, setMenuData] = useState(null);
+
+    useEffect(()=>{
+        const userData = localStorage.getItem('user_gmail')
+        if(userData){
+            const img = JSON.parse(userData).photo
+            setMenuData(img)
+        }
+    },[])
+
     function handleNav(){
 
         const menu_list = document.body.getElementsByClassName('sidebar')
@@ -35,6 +46,8 @@ function NavBar({children}){
         }
         
     }
+
+
     return(
         <React.Fragment>
             <div className='NavBar'>
@@ -66,7 +79,7 @@ function NavBar({children}){
                 </div>
 
                 <div className='account'>
-                <Link to='/Login'><img src='/FortuneTeller/account.png'/></Link>
+                <Link to='/Login'><img src={menuData ? menuData : "/FortuneTeller/account.png"}/></Link>
                 </div>
     
 
@@ -82,6 +95,7 @@ function NavBar({children}){
                             <Link to='/MatrixDestiny'><p className='ele tp3'>Ma trận định mệnh</p></Link>
                             <Link to='/Horoscope'><p className='ele tp4'>Bản đồ sao</p></Link>
                             <Link to='/DISC'><p className='ele tp5'>DISC</p></Link>
+                            <Link to='/Personal_Report'><p className='ele tp6'>Báo cáo cá nhân</p></Link>
                             </nav>
                             
                             <label for="menu-control" class="sidebar__close"></label>
@@ -116,7 +130,7 @@ function NavBar({children}){
                 </div>
 
             </div>
-            {children}  
+            {cloneElement(children, { setMenuData })}
           <Footer/>
         </React.Fragment>
     )

@@ -1,5 +1,5 @@
 // src/services/userService.js
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./fireBase";
 
 // Đọc dữ liệu người dùng từ Firestore
@@ -24,6 +24,7 @@ export const updateUserData = async (uid, data) => {
     try {
       const userDocRef = doc(db, "users", uid);
       await updateDoc(userDocRef, data);
+      console.log(uid)
       console.log("Cập nhật dữ liệu thành công");
     } catch (error) {
       console.error("Lỗi cập nhật dữ liệu:", error);
