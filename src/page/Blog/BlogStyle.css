@@ -1,11 +1,12 @@
 
 .blog-container{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-  
+    flex-wrap: wrap;
+    margin: 5% 0;
 }
 .card{
     height: 400px;
@@ -490,3 +491,10 @@ h6{
     font-size: 17px;
     transition: background-color 0.2s ease;
   }
+
+
+@media screen and (max-width: 800px) {
+    .blog-container{
+        margin-top: 10vh;
+    }
+}

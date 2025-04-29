@@ -96,6 +96,7 @@ hr{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 5% 0px;
 }
 .relationship{
     height: 60vh;
@@ -118,9 +119,13 @@ hr{
     justify-content: center;
     flex-direction: column;
 }
-.horoscope_img{
+.screen_shoot_horoscope_wrapper{
+    margin: 4% 0px;
     width: 67%;
-    margin: 35px 0px;
+}
+.horoscope_img{
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -131,6 +136,7 @@ hr{
 .feature{
     width: 80%;;
     display: flex;
+    margin-top: 5%;
 }
 .content_box i{
     margin-left: 20px;
@@ -164,14 +170,23 @@ hr{
     padding: 20px;
     box-shadow: 3px 3px 20px white;
     border-radius: 10px;
+
 }
 .feature_wrapper_2{
     width: 80%;
-    height: 100%;
-    padding: 40px;
+    height: 43vw;
+    min-height: 400px;
+    padding: 20px 40px 14% 40px; 
     box-shadow: 3px 3px 20px white;
     margin-bottom: 50px;
     border-radius: 10px;
+}
+.wrapper_feature .feature{
+    top: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .feature button{
     margin: 5px;
@@ -179,6 +194,7 @@ hr{
     border: 2px solid white;
     background-color: black;
     color: white;
+    width: 220px;
 }
 .chosen{
     background-color: white !important;
@@ -259,3 +275,76 @@ hr{
     border-radius: 50px;
     box-shadow: -10px 10px 90px #f20044;
 }
+.adj_Astro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    margin: 1vw auto;
+    border-top: 1px solid white;
+}
+.adj_Astro li{
+    font-size: 1.2vw !important;
+    width: 120px !important;
+    margin-top: 3px;
+}
+.feature_box_horoscope button{
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
+.feature_box_horoscope button i{
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .content_input{
+        display: block;
+    }
+    .content_box{
+        width: 90%;
+    }
+    .content_input input{
+        width: 80vw;
+    }
+    .content_input h2{
+        margin-bottom: 10px;
+    }
+
+    .content_box{
+        margin-top: 30%;
+    }
+    .wrapper_feature .feature{
+        width: 100%;
+    }
+    .screen_shoot_horoscope_wrapper{
+        margin: 8% 0px;
+        width: 95%;
+    }
+    .horoscope_img{
+        width: 100%;
+    }
+ 
+    .feature{
+        margin-top: 20%;
+    }
+    .feature_wrapper{
+        width: 100%;
+    }
+    .description{
+        width: 100%;
+    }
+    .feature_wrapper_2{
+        height: calc(340px + 16vw);
+        width: 110%;
+        padding: 20px 5px calc(100px + 6.5vw) 5px;
+    }
+    .adj_Astro li{
+        font-size: calc(2.5vw - 0.1vw) !important;
+        width: 27% !important;
+
+    }
+}
+

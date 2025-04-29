@@ -5,7 +5,7 @@
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     color: rgba(255, 255, 255, 0.807);;
     box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.778);
     font-family: "Rowdies", serif;
@@ -57,7 +57,7 @@
 }
 .blog{
     height: 60%;
-    padding: 0px 20px;
+    padding: 0px 15px;
     border: 2px solid rgba(255, 255, 255, 0.51);
     border-radius: 20px;
     display: flex;
@@ -66,7 +66,6 @@
     cursor: pointer;
 }
 .account{
-  position: absolute;
   right: 20px;
   width: 50px;
   height: 50px;
@@ -281,7 +280,7 @@ a:hover,
         justify-content: space-evenly;
     }
     .blog{
-      visibility: hidden;
+      display: none;
       width: 0%;
     }
 

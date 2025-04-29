@@ -5,6 +5,21 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend
 import Sentances from "./Library";
 import CustomLegend from "./CustomLegend";
 
+const PlantColors = [
+    {name: "Mặt trời", color: "#FFD700"},
+    {name: "Mặt trăng", color: "#B0C4DE"},
+    {name: "Thủy tinh", color: "#C0C0C0"},
+    {name: "Kim tinh", color: "#FF69B4"},
+    {name: "Sao hỏa", color: "#FF4500"},
+    {name: "Sao mộc", color: "#D2691E"},
+    {name: "Sao thổ", color: "#708090"},
+    {name: "Thiên vương", color: "#40E0D0"},
+    {name: "Hải vương", color: "#4169E1"},
+    {name: "Diêm vương", color: "#800080"}
+  ]
+
+
+
 const Linking_words = {
     "connect_intro": [
       "Bên cạnh đó, bạn có ",
@@ -303,7 +318,7 @@ function Report(){
                         {(!infor.horoscope) ? (
                             <p>Chưa có dữ liệu</p>
                             ) : (
-                                <CustomLegend data={infor.horoscope[2]}/>
+                                <CustomLegend data={PlantColors}/>
                             )}
                         </div>
                     </div>

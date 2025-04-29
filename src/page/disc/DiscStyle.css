@@ -1,5 +1,5 @@
 .wrapper_Disc{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -74,7 +74,6 @@
 .content {
   position: absolute;
   top: 50%;
-  width: 80%;
   transform: translatey(-50%);
   text-align: justify;
   color: black;
@@ -219,4 +218,13 @@ form {
   color: #AE1100;
 }
 
+
+@media screen and (max-width: 800px) {
+  .container_disc{
+    width: 90%;
+  }
+  .content_Disc{
+    margin: 20% 0;
+  }
+}
 

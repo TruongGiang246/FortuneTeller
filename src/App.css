@@ -36,3 +36,7 @@ input:-webkit-autofill:active {
 .scroll_X{
     overflow-x: scroll;
 }
+.top_wrapper{
+    width: 100vw;
+    overflow-x: hidden;
+}

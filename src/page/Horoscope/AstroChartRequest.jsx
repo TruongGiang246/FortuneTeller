@@ -5,11 +5,28 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { PieChart, XAxis, YAxis, Pie, Cell, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import vi from 'date-fns/locale/vi'
+import CustomLegend from "../Blog/CustomLegend";
 import { ElementDescriptions, ModalityDescriptions, planetDes } from "./Library_Astro";
+import domtoimage from "dom-to-image-more";
 
 
 const COLORS3 = ['#0088FE', '#00C49F', '#FFBB28'];
 const COLORS4 = ['#FF0000', '#FFD700', '#00C49F', '#0088FE'];
+const COLORS10 = [
+  "#FFD700","#B0C4DE","#C0C0C0","#FF69B4","#FF4500","#D2691E","#708090","#40E0D0","#4169E1","#800080"
+]
+const PlantColors = [
+  {name: "Mặt trời", color: "#FFD700"},
+  {name: "Mặt trăng", color: "#B0C4DE"},
+  {name: "Thủy tinh", color: "#C0C0C0"},
+  {name: "Kim tinh", color: "#FF69B4"},
+  {name: "Sao hỏa", color: "#FF4500"},
+  {name: "Sao mộc", color: "#D2691E"},
+  {name: "Sao thổ", color: "#708090"},
+  {name: "Thiên vương", color: "#40E0D0"},
+  {name: "Hải vương", color: "#4169E1"},
+  {name: "Diêm vương", color: "#800080"}
+]
 const AstroChartRequest = () => {
   const [response, setResponse] = useState(null);
   const [response2, setResponse2] = useState(null)
@@ -18,6 +35,19 @@ const AstroChartRequest = () => {
   const [time, setTime] = useState(new Date(2025, 0, 1, 0, 0));
   const [date2, setDate2] = useState(new Date(2025, 0, 1, 0, 0));
   const [time2, setTime2] = useState(new Date(2025, 0, 1, 0, 0))
+
+  const handleScreenshot = async () => {
+        
+    const element = document.getElementById("horoscope_img_download");
+
+    domtoimage.toPng(element).then((dataUrl) => {
+    const link = document.createElement("a");
+    link.download = "personal_horoscope.png";
+    link.href = dataUrl;
+    
+    link.click();
+    });
+  };
 
   const [SumData, setSumData] = useState([
     [
@@ -182,6 +212,8 @@ useEffect(()=>{
 
   const featureBox = document.getElementsByClassName('feature_box');
   const btn_lists = document.getElementsByClassName('button_feature');
+  const downloadButton = document.getElementsByClassName('feature_box_horoscope');
+
   
   for(let i = 0; i < btn_lists.length; i++){
     btn_lists[i].onclick = () => {
@@ -189,7 +221,11 @@ useEffect(()=>{
         featureBox[j].classList.add('nope');
         btn_lists[j].classList.remove('chosen');
       }
+      downloadButton[0].classList.add('nope');
       featureBox[i].classList.remove('nope');
+      if(i == 0){
+        downloadButton[0].classList.remove('nope');
+      }
       btn_lists[i].classList.add('chosen')
     }
   }
@@ -657,7 +693,12 @@ console.log(response2)
           <button className="button_feature">Nguyên tố</button>
           <button className="button_feature">Nhân tố hành tinh</button>
         </div>
-        <div className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }} />
+        <div className="screen_shoot_horoscope_wrapper">
+          <div id="horoscope_img_download" className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
+          </div>
+        <div className="feature_box_horoscope nope">
+          <button onClick={handleScreenshot}>Tải ảnh<i class="fa-solid fa-file-arrow-down fa-bounce"></i></button>
+        </div>
 
 
         <div className="feature_box">
@@ -765,21 +806,23 @@ console.log(response2)
         <div className="feature_box nope">
           <h1>Các nhân tố</h1>
             <div className="feature_wrapper_2">
-              <ResponsiveContainer width="100%" height={450}>
+              <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={SumData[2]}>
-                    <XAxis tick={{ angle: -45, dy: 20, style: {fontWeight: 'bold', fill: 'white', fontSize: '12px'} }} dataKey="name"/>
+                    <XAxis hide tick={{ angle: -65, dy: 30, style: {fontWeight: 'bold', fill: 'white', fontSize: '11px'} }} dataKey="name"/>
                     <YAxis domain={[0, 100]} tickCount={6}  tick={{  style: {  fontWeight: 'bold', fill: 'white', fontSize: '18px'} }}allowDecimals={false} />
                     <Tooltip />
                     <Bar dataKey="value" fill="#8884d8">
                         {SumData[2].map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS4[index % COLORS4.length]} />
+                          <Cell key={`cell-${index}`} fill={COLORS10[index % COLORS10.length]} />
                         ))}
             
                     </Bar>
             
                   </BarChart>
                 </ResponsiveContainer>
- 
+                <div className="adj_Astro">
+                      <CustomLegend data={PlantColors}/>                      
+                </div>
             </div>
             <div className="description">
 

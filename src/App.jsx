@@ -6,7 +6,7 @@ import './App.css'
 
 function App() {
   return (
-    <>
+    <div className="top_wrapper">
       <BrowserRouter basename="/FortuneTeller">
       <Routes>
         {publicRoutes.map((route, index) => {
@@ -27,7 +27,7 @@ function App() {
       </Routes>
     </BrowserRouter>
 
-    </>
+    </div>
   )
 }
 
