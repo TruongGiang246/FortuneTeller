@@ -8,6 +8,7 @@
     flex-wrap: wrap;
     margin: 5% 0;
 }
+
 .card{
     height: 400px;
     width: 320px;
@@ -123,7 +124,6 @@ h6{
 .inner_report{
     width: 900px;
     border: 2px solid white;
-    min-height: 100vh;
     padding: 35px;
     border-radius: 10px;
 }
@@ -219,27 +219,21 @@ h6{
 .feature_box_1_2{
     width: 100%;
 }
-.feature_box_1_2 .text_1{
+.feature_box_1_2 .text{
     width: 100%;
+    height: 190px !important;
     margin-top: 10px;
-    padding: 10px;
+    padding: 2px;
     box-shadow: none;
 }
-.feature_box_1_2 .text_2{
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    box-shadow: none;
-}
+
 .feature_box h1{
     font-size: 30px;
 }
 .last_title{
     margin-top: 10px;;
 }
-.report_screen{
-    background-color: black !important;
-}
+
 .full_width{
     width: 100% !important;
     margin: 10px auto !important;
@@ -247,6 +241,9 @@ h6{
 }
 .feature_wrapper_2{
     width: 100%;
+}
+.planet_report_height{
+    height: 150px;
 }
 .screenShot_button{
     position: absolute;
@@ -383,6 +380,7 @@ h6{
     padding-right: 30px !important;
     box-shadow: none !important;
     transform: translateX(-35px);
+    height: 160px;
 }
 .recharts-wrapper{
     display: flex;
@@ -425,6 +423,7 @@ h6{
     width: 100% !important;
     box-shadow: none !important;
     transform: translateX(-35px);
+    height: 100%;
   }
   .spacer {
     display: inline-block;
@@ -493,8 +492,253 @@ h6{
   }
 
 
+/* FOR_SCREEN_SHOOT */
+
+
+#report_screen{
+    background-color: black !important;
+    position: absolute;
+    top: -9999px;
+    width: 1200px;
+}
+
+.numerology_report_title_screen{
+    font-size: 40px;
+}
+
+.header_report_screen{
+    height: 600px !important;
+}
+.header_report_img_screen{
+    padding: 20px;
+}
+.header_report_content_name_screen{
+    padding: 20px;
+    height: 30%;
+}
+.header_report_content_name_screen h1{
+    font-size: 40px;
+    word-spacing: -10;
+}
+.header_report_content_name_screen p{
+    font-size: 25px;
+}
+.header_report_content_des_screen{
+    padding: 20px;
+    font-size: 25px;
+}
+.header_report_content_des_screen h2{
+    font-size: 40px;
+}
+.body_report_screen{
+    height: 1200px !important;
+}
+
+
+.body_report_1_column_1_screen{
+    padding: 20px 10px;
+}
+.body_report_1_column_1_screen h2{
+    font-size: 40px;
+}
+
+.report_num_screen{
+    width: 100px;
+    height: 100px;
+}
+.number_name_screen h2{
+    font-size: 30px;
+}
+
+
+.body_report_2_column_1_screen{
+    padding: 20px;
+}
+
+.fix_width_screen{
+    width: 350px;
+}
+
+.body_report_1_column_2_screen{
+    padding: 20px;
+    height: 45%;
+}
+
+.feature_box_1_2 .text_screen{
+    font-size: 20px;
+    height: 250px !important;
+    margin-top: 10px;
+}
+
+.body_report_2_column_2_screen{
+    padding: 20px;
+}
+.body_report_1_column_3_screen{
+    padding: 20px;
+}
+
+.disc_report_screen{
+    margin: 2px !important;
+    padding: 0px !important;
+    width: 270px;
+    box-shadow: none !important;
+    transform: translateX(-40px);
+    height: 220px;
+}
+.body_report_1_column_4_screen{
+    padding: 5px;
+}
+
+.body_report_1_column_4_screen li span{
+    width: 12px !important;
+    height: 12px !important;
+}
+.body_report_1_column_4_screen ul li{
+    font-size: 15px !important ;
+    margin-left: 10px;
+    width: 100px !important;
+}
+
+.planet_report_height_screen{
+    height: 180px;
+    width: 100% !important;
+}
+
 @media screen and (max-width: 800px) {
     .blog-container{
         margin-top: 10vh;
     }
+
+
+    .numerology_report_title_mobile{
+        font-size: 15px;
+    }
+    .inner_report_mobile{
+        width: 95%;
+        padding: 10px;
+        margin: 35% 0;
+    }
+    .header_report_mobile{
+        height: 230px;
+    }
+    .header_report_img_mobile{
+        padding: 5px;
+    }
+    .header_report_content_name_mobile{
+        padding: 5px;
+        height: 25%;
+    }
+    .header_report_content_name_mobile h1{
+        font-size: 20px;
+        word-spacing: 0;
+    }
+    .header_report_content_name_mobile p{
+        font-size: 12px;
+    }
+    .header_report_content_des_mobile{
+        padding: 5px;
+        font-size: 9px;
+    }
+    .header_report_content_des_mobile h2{
+        font-size: 20px;
+    }
+    .body_report_mobile{
+        height: 500px;
+    }
+
+
+    .body_report_1_column_1_mobile{
+        padding: 5px;
+    }
+    .body_report_1_column_1_mobile h2{
+        font-size: 16px;
+    }
+    .report_num_inner_mobile{
+        padding: 0;
+        justify-content: space-between;
+    }
+    .report_num_mobile{
+        width: 45px;
+        height: 45px;
+    }
+    .number_name_mobile h2{
+        font-size: 10px;
+    }
+
+
+    .body_report_2_column_1_mobile{
+        padding: 5px;
+    }
+
+    .fix_width_mobile{
+        width: 120px;
+    }
+
+    .body_report_1_column_2_mobile{
+        padding: 5px;
+        height: 40%;
+    }
+
+    .feature_box_1_2 .text_mobile{
+        font-size: 9px;
+        height: 115px !important;
+        margin-top: 0px;
+    }
+
+    .body_report_2_column_2_mobile{
+        padding: 5px;
+    }
+    .body_report_1_column_3_mobile{
+        padding: 5px;
+    }
+
+    .disc_report_mobile{
+        margin: 2px !important;
+        padding: 0px !important;
+        width: 100px;
+        box-shadow: none !important;
+        transform: translateX(-40px);
+        height: 100px;
+    }
+    .body_report_1_column_4_mobile{
+        height: 10%;
+        padding: 3px;
+    }
+    .body_report_1_column_4_mobile li{
+        width: 25% !important;
+        font-size: 6.5px !important;
+    }
+    .body_report_1_column_4_mobile li span{
+        width: 6px !important;
+        height: 6px !important;
+    }
+
+    .planet_report_height_mobile{
+        height: 70px;
+        width: 135% !important;
+        transform: translateX(-11px);
+    }
+    .menu {
+        position: absolute;
+        left: 5%;
+        top: 13%;
+        height: 40px;
+      }
+    .menu .label{
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+    .spacer{
+        width: 20px;
+    }
+    .item_tool{
+        margin-right: 10px;
+    }
+    .item_tool button,
+    .item_tool label{
+        padding: 5px 7px;
+        font-size: 14px;
+        width: 90px;
+    }
+
 }

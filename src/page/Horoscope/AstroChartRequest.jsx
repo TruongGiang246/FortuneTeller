@@ -694,8 +694,13 @@ console.log(response2)
           <button className="button_feature">Nhân tố hành tinh</button>
         </div>
         <div className="screen_shoot_horoscope_wrapper">
-          <div id="horoscope_img_download" className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
-          </div>
+          <div className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
+        </div>
+
+        <div id="hidden-content">
+          <div id="horoscope_img_download" className="feature_box horoscope_img_screen" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
+        </div>
+
         <div className="feature_box_horoscope nope">
           <button onClick={handleScreenshot}>Tải ảnh<i class="fa-solid fa-file-arrow-down fa-bounce"></i></button>
         </div>

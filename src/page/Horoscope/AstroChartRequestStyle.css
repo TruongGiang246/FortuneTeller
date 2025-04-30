@@ -124,6 +124,11 @@ hr{
     width: 67%;
 }
 .horoscope_img{
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.horoscope_img_screen{
     height: 100%;
     width: 100%;
     border-radius: 10px;
@@ -298,6 +303,14 @@ hr{
     margin-left: 10px;
 }
 
+#hidden-content{
+    position: absolute;
+    width: 1200px;
+    height: 675px;
+    top: -9999px;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
 @media screen and (max-width: 800px) {
     .content_input{
@@ -322,6 +335,10 @@ hr{
     .screen_shoot_horoscope_wrapper{
         margin: 8% 0px;
         width: 95%;
+    }
+    .horoscope_img_screen{
+        height: 100%;
+        width: 100%;
     }
     .horoscope_img{
         width: 100%;
