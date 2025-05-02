@@ -19,14 +19,14 @@ const Dashboard = ({ user, onLogout }) => {
     console.log(localData);
     if(localData){
       await updateUserData(user.uid, { localData });
-
+      
       alert("Đã lưu thông tin!");
     }
   };
 
   return (
     <div className="boxWrapper">
-      <div className="login_img">
+      {/* <div className="login_img">
         <img src="/FortuneTeller/nav/nav_icon.png"/>
       </div>
       <h2>Xin chào, {user.name}</h2>
@@ -42,7 +42,7 @@ const Dashboard = ({ user, onLogout }) => {
             Đăng xuất
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

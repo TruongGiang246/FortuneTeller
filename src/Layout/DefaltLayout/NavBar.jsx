@@ -15,35 +15,8 @@ function NavBar({children}){
     },[])
 
     function handleNav(){
-
-        const menu_list = document.body.getElementsByClassName('sidebar')
-        const close_btn = document.getElementsByClassName('menu-control')
-        const menu_list_elements = document.getElementsByClassName('ele')
-        const menu_list_wrapper = document.body.getElementsByClassName('nav_slide_wrapper')
-        menu_list[0].classList.toggle('add_animation');
-
-        for(let i = 0; i < menu_list_elements.length; i++){
-            menu_list_elements[i].classList.toggle('add_animation')     
-        }
-        console.log(menu_list_elements)
-        menu_list_wrapper[0].classList.toggle('nope');
-
-        close_btn[0].onclick = () =>{
-            menu_list[0].classList.toggle('add_animation');
-            menu_list_wrapper[0].classList.toggle('nope');
-            for(let i = 0; i < menu_list_elements.length; i++){
-                menu_list_elements[i].classList.toggle('add_animation')     
-            }
-        }
-
-        menu_list_wrapper[0].onclick = () =>{
-            menu_list[0].classList.toggle('add_animation');
-            menu_list_wrapper[0].classList.toggle('nope');
-            for(let i = 0; i < menu_list_elements.length; i++){
-                menu_list_elements[i].classList.toggle('add_animation')     
-            }
-    
-        }
+        const sidebar = document.getElementsByClassName('sidebar');
+        sidebar[0].classList.toggle('translateX_0')
         
     }
 
@@ -51,7 +24,7 @@ function NavBar({children}){
     return(
         <React.Fragment>
             <div className='NavBar'>
-                <div onClick={handleNav} className='tool_open'>
+                {/* <div onClick={handleNav} className='tool_open'>
                     <img src='/FortuneTeller/nav/menu_icon.png'/>
                 </div>
                 <div className='web_name'>
@@ -80,11 +53,18 @@ function NavBar({children}){
 
                 <div className='account'>
                 <Link to='/Login'><img src={menuData ? menuData : "/FortuneTeller/account.png"}/></Link>
-                </div>
+                </div> */}
     
+        <nav class="absolute top-6 right-6 z-30">
+            <ul class="flex space-x-6">
+                <li><a href="#" class="golden-text hover:golden-glow text-sm md:text-base">About</a></li>
+                <li onClick={handleNav}><a href="#" class="golden-text hover:golden-glow text-sm md:text-base">Services</a></li>
+                <li><Link to='/Login' class="golden-text hover:golden-glow text-sm md:text-base">Login</Link></li>
+            </ul>
+        </nav>
 
                 
-           
+{/*            
                 <input type="checkbox" class="menu-control" id="menu-control" />
                       <aside class="sidebar">
                             
@@ -124,11 +104,98 @@ function NavBar({children}){
                                 </a>
                             </li>
                             </ul>
-                        </aside>
-             
-                <div className='nav_slide_wrapper nope'>
-                </div>
+                        </aside> */}
 
+            <div class="sidebar w-64 h-full flex flex-col">
+                <button onClick={handleNav} className='sidebar_close'>X</button> 
+                <div class="p-6 flex items-center justify-center">
+                    <svg class="w-10 h-10 mr-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" stroke="#d4af37" stroke-width="2" fill="none" opacity="0.3"></circle>
+                        <circle cx="50" cy="50" r="35" stroke="#d4af37" stroke-width="1" fill="none"></circle>
+                        <path d="M50 5L60 30L85 35L65 55L70 80L50 70L30 80L35 55L15 35L40 30L50 5Z" stroke="#d4af37" stroke-width="2" fill="none"></path>
+                        <circle cx="50" cy="50" r="15" stroke="#d4af37" stroke-width="1.5" fill="none"></circle>
+                        <circle cx="50" cy="50" r="5" fill="#d4af37" opacity="0.7"></circle>
+                    </svg>
+                    <h1 class="title text-xl text-white font-bold tracking-wider">MYSTIC VISIONS</h1>
+                </div>
+                
+
+                    <div class="flex-1 mt-8">
+
+                    <Link to='/'><div class="nav-item active px-6 py-4 flex items-center text-yellow-100">
+                        <svg class="w-5 h-5 mr-3 glow-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                        </svg>
+                        <span>Home</span>
+                    </div></Link>
+                    
+                    <Link to='/Numerology'><div class="nav-item px-6 py-4 flex items-center text-gray-400 hover:text-yellow-100">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                        </svg>
+                        <span>Numerology</span>
+                    </div></Link>
+                    
+                    <Link to='/Horoscope'><div class="nav-item px-6 py-4 flex items-center text-gray-400 hover:text-yellow-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <g id="sun">
+                            <path d="M12.5,5a7.55,7.55,0,1,0,7.55,7.55A7.56,7.56,0,0,0,12.5,5Zm0,13.1a5.55,5.55,0,1,1,5.55-5.55A5.56,5.56,0,0,1,12.5,18.05Z"/>
+                            <path d="M12.5,10.52a2,2,0,1,0,2,2A2,2,0,0,0,12.5,10.52Z"/>
+                            <path d="M21,1H4A3,3,0,0,0,1,4V21a3,3,0,0,0,3,3H21a3,3,0,0,0,3-3V4A3,3,0,0,0,21,1Zm1,20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V4A1,1,0,0,1,4,3H21a1,1,0,0,1,1,1Z"/>
+                            </g>
+                        </svg>
+                        <span>Horoscope</span>
+                    </div></Link>
+                    
+                    <Link to='/MatrixDestiny'><div class="nav-item px-6 py-4 flex items-center text-gray-400 hover:text-yellow-100">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Matrix Destiny</span>
+                    </div></Link>
+                    
+
+                    <Link to='/DISC'><div class="nav-item px-6 py-4 flex items-center text-gray-400 hover:text-yellow-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10,17H31a1,1,0,1,0,0-2H10a1,1,0,0,0,0,2Z"/>
+                            <path d="M10,10H31a1,1,0,1,0,0-2H10a1,1,0,0,0,0,2Z"/>
+                            <path d="M32,23a1,1,0,0,0-1-1H10a1,1,0,1,0,0,2H31A1,1,0,0,0,32,23Z"/>
+                            <path d="M1,9v2a1,1,0,0,0,2,0V7.33a1,1,0,0,0-.53-.88,1,1,0,0,0-1,0l-1,.67A1,1,0,0,0,1,9Z"/>
+                            <path d="M1,16a.93.93,0,0,0,.52-.15A11.24,11.24,0,0,1,.29,17.29a1,1,0,0,0-.21,1.09A1,1,0,0,0,1,19H3a1,1,0,0,0,.16-2A3.92,3.92,0,0,0,4,15a1.84,1.84,0,0,0-2-1.75A1.84,1.84,0,0,0,0,15,1,1,0,0,0,1,16Z"/>
+                            <path d="M0,24a1.84,1.84,0,0,0,2,1.75A1.84,1.84,0,0,0,4,24a2,2,0,0,0-.25-1A2,2,0,0,0,4,22a1.84,1.84,0,0,0-2-1.75A1.84,1.84,0,0,0,0,22a1,1,0,0,0,1,1A1,1,0,0,0,0,24Z"/>
+                        </svg>
+                        <span>DISC</span>
+                    </div></Link>
+
+
+                    <Link to='/Personal_Report'><div class="nav-item px-6 py-4 flex items-center text-gray-400 hover:text-yellow-100">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Support</span>
+                    </div></Link>
+                </div>
+                
+
+                <div class="p-6 border-t border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-yellow-300 to-yellow-500 flex items-center justify-center text-gray-900 font-bold">
+                            JS
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-white text-sm font-semibold">Jane Seeker</p>
+                            <p class="text-gray-400 text-xs">Premium Member</p>
+                        </div>
+                    </div>
+                    <button class="signout-btn flex items-center text-gray-400 hover:text-yellow-200 text-sm">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+      
             </div>
             {cloneElement(children, { setMenuData })}
           <Footer/>

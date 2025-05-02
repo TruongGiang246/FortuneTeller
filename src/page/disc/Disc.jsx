@@ -367,7 +367,7 @@ const DISCQuiz = () => {
             <div class="container_disc">
               <div class="content">
               <div className="form__group field disc_input">
-                <form>
+                <form className="DISC_form">
                 <div class="segment">
                   <h1>Họ Tên</h1>
                 </div>

@@ -1,16 +1,7 @@
 .NavBar{
     position: absolute;
     width: 100vw;
-    height: 10vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    color: rgba(255, 255, 255, 0.807);;
-    box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.778);
-    font-family: "Rowdies", serif;
-    font-weight: 200;
-    z-index: 10;
+
 }
 .web_name{
     height: 100%;
@@ -286,3 +277,125 @@ a:hover,
 
 }
 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+
+
+
+
+
+.sidebar {
+    background: rgba(13, 13, 23, 0.8);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.content-area {
+    background: rgba(13, 13, 23, 0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+}
+
+.nav-item {
+    border-left: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    border-left: 2px solid #d4af37;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f2d272 100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.signout-btn {
+    transition: all 0.3s ease;
+}
+
+.signout-btn:hover {
+    color: #d4af37;
+}
+
+.card {
+    background: rgba(20, 20, 35, 0.7);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+}
+
+.golden-text {
+    background: linear-gradient(to right, #d4af37, #f2d272, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, #d4af37, #f2d272);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+.glow-icon {
+    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.5));
+}
+
+.chart-container {
+    position: relative;
+    height: 200px;
+}
+
+.chart-line {
+    stroke: #d4af37;
+    stroke-width: 2;
+    fill: none;
+    filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.5));
+}
+.sidebar_close{
+  position: absolute;
+  top: 4%;
+  right: 25px;
+  background: rgba(13, 13, 23, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.sidebar_close:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+.chart-area {
+    fill: url(#goldGradient);
+    opacity: 0.2;
+}
+
+.chart-dot {
+    fill: #ffffff;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+}

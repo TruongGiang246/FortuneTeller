@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    background-image: url("/FortuneTeller/bg_wall.jpg");
+    position: relative;
+    font-family: 'Times New Roman', Times, serif;
 }
 .login_inner{
     height: 500px;
@@ -35,4 +35,60 @@
     height: 60px;
     width: 60px;
     margin: 15px 0px;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        
+
+
+.constellation {
+    position: absolute;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.light-beam {
+    position: absolute;
+    background: radial-gradient(ellipse at center, rgba(255,215,0,0.15) 0%, rgba(255,215,0,0) 70%);
+    border-radius: 50%;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+.emblem {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    animation: pulse 4s infinite ease-in-out;
+}
+
+.login-container {
+    background: rgba(13, 13, 23, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.google-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f2d272 100%);
+    transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7)); }
+}
+
+.title {
+    font-family: 'Cinzel', serif;
 }

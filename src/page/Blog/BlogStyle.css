@@ -626,14 +626,14 @@ h6{
     }
     .header_report_content_name_mobile{
         padding: 5px;
-        height: 25%;
+        height: 30%;
     }
     .header_report_content_name_mobile h1{
-        font-size: 20px;
-        word-spacing: 0;
+        font-size: 17px;
+        word-spacing: -2px;
     }
     .header_report_content_name_mobile p{
-        font-size: 12px;
+        font-size: 10px;
     }
     .header_report_content_des_mobile{
         padding: 5px;

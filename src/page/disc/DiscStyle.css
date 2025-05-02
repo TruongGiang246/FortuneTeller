@@ -11,9 +11,9 @@
 .content_Disc{
     width: 80%;
 }
-.text-center *{
+/* .text-center *{
     margin: 10px 0px;
-}
+} */
 .result_title{
   margin-bottom: 20px;
 }
@@ -142,7 +142,7 @@ h3 {
   font-size: 16px;
 }
 
-form {
+.DISC_form {
   padding: 16px;
   width: 320px; /* 16 * 20 */
   margin: 0 auto;

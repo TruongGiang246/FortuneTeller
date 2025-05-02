@@ -73,33 +73,33 @@
 }
 #number_1{
     transform: translateY(15vh);
-    top: 0;
+    top: 2%;
     left: 5%;
   
 }
 #number_2{
-    top: 0;
+    top: 5%;
     transform: translateY(35vh);
     left: 20%;
 }
 #number_3{
-    top: 0;
+    top: 18%;
     transform: translateY(60vh);
     left: 11%;
     
 }
 #number_4{
-    top: 0;
+    top: 15%;
     transform: translateY(10vh);
     left: 40%;
 }
 #number_5{
-    top: 0;
+    top: 7%;
     transform: translateY(70vh);
     left: 30%;
 }
 #number_6{
-    top: 0;
+    top: 17%;
     transform: translateY(12vh);
     right: 32%;
 }
@@ -109,12 +109,12 @@
     right: 23%;
 }
 #number_8{
-    top: 0;
+    top: 20%;
     transform: translateY(57vh);
     right: 13%;
 }
 #number_9{
-    top: 0;
+    top: 16%;
     transform: translateY(17vh);
     right: 5%;
 }
@@ -129,10 +129,12 @@
 }
 
 .content_Numerology{
-    height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .Numerology_Result{
@@ -395,3 +397,107 @@ select{
 
 }
 
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        
+
+.sacred-geometry {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.light-beam {
+    position: fixed;
+    background: radial-gradient(ellipse at center, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0) 70%);
+    border-radius: 50%;
+    transform: rotate(45deg);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.form-container {
+    font-family: 'Times New Roman', Times, serif;
+    background: rgba(13, 13, 23, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.input-field {
+    background: rgba(20, 20, 35, 0.5);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    outline: none;
+}
+
+.calculate-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #f2d272 100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.result-card {
+    background: rgba(20, 20, 35, 0.7);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.result-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-symbol {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+}
+.container_numerology{
+    width: 100%;
+}
+.golden-text {
+    background: linear-gradient(to right, #d4af37, #f2d272, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7)); }
+}
+
+.number-symbol {
+    position: absolute;
+    font-family: 'Cinzel', serif;
+    color: rgba(255, 215, 0, 0.1);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
