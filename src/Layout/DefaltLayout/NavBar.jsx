@@ -107,7 +107,7 @@ function NavBar({children}){
                         </aside> */}
 
             <div class="sidebar w-64 h-full flex flex-col">
-                <button onClick={handleNav} className='sidebar_close'>X</button> 
+                <button onClick={handleNav} class='sidebar_close'>X</button> 
                 <div class="p-6 flex items-center justify-center">
                     <svg class="w-10 h-10 mr-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="50" cy="50" r="45" stroke="#d4af37" stroke-width="2" fill="none" opacity="0.3"></circle>
@@ -168,11 +168,11 @@ function NavBar({children}){
                     </div></Link>
 
 
-                    <Link to='/Personal_Report'><div class="nav-item px-6 py-4 flex items-center text-gray-400 hover:text-yellow-100">
+                    <Link to='/Guide'><div class="nav-item px-6 py-4 flex items-center text-gray-400 hover:text-yellow-100">
                         <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
                         </svg>
-                        <span>Support</span>
+                        <span>Guide</span>
                     </div></Link>
                 </div>
                 

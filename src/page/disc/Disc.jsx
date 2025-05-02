@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
-import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+  DndContext,
+  closestCenter,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { SortableItem } from "./SortableItem";
 
@@ -244,6 +251,12 @@ const descriptions = {
 };
 
 const DISCQuiz = () => {
+
+  const sensors = useSensors(
+    useSensor(MouseSensor),
+    useSensor(TouchSensor) // để hỗ trợ điện thoại
+  );
+
   const today = new Date();
   const day = String(today.getDate()).padStart(2, '0');      // 09
   const month = String(today.getMonth() + 1).padStart(2, '0'); // 04 (tháng bắt đầu từ 0)
@@ -398,7 +411,7 @@ const DISCQuiz = () => {
                     <p>- Vị trí dưới cùng (4) là mô tả ÍT GIỐNG bạn nhất</p>
                   </div>
                   <p className="text-lg font-semibold mb-4">{questions[step].text}</p>
-                  <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                  <DndContext collisionDetection={closestCenter} sensors={sensors} onDragEnd={handleDragEnd}>
                     <SortableContext items={items} strategy={verticalListSortingStrategy}>
                       {items.map((item) => (
                         <SortableItem key={item.id} id={item.id} text={item.text} />

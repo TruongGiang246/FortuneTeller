@@ -10,7 +10,7 @@
 body{
     overflow-x: hidden;
     color: white;
-
+    font-family: 'Times New Roman', Times, serif;
 }
 
 html {
@@ -55,7 +55,9 @@ input:-webkit-autofill:active {
     margin-bottom: 2rem;
 }
 
-
+.opac_1{
+    opacity: 1 !important;
+}
 
 
 

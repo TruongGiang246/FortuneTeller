@@ -120,136 +120,9 @@ a:hover,
     transition: transform 0.4s ease-in-out;
     z-index: 1000;
   }
-  
-  .sidebar__close {
-    position: absolute;
-    top: 50%;
-    right: -30px;
-    background: #fff;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.03);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(-100%);
-    cursor: pointer;
-    transition: transform 0.4s ease-in-out 0.2s;
-    transform: rotate(45deg);
-  }
-  
-  .sidebar__close::before,
-  .sidebar__close::after {
-    content: "";
-    height: 2px;
-    background: #898989;
-    width: 24px;
-    display: block;
-    position: absolute;
-  }
-  
-  .sidebar__close::after {
-    transform: rotate(90deg);
-  }
-  
-  .sidebar__menu {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: 100%;
-    justify-content: space-around;
-    font-size: 20px;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    color: #898989;
-  }
-  
-  .sidebar__menu p {
-    color: #898989;
-    text-decoration: none;
-    transform: translateX(-80%);
-    right: -10%;
-    transition: transform 0.5s ease-in-out;
-    position: relative;
-  }
-  
-  /* Tạo hiệu ứng hover cho liên kết */
-  .sidebar__menu p::before {
-    content: "";
-    height: 2px;
-    background: #898989;
-    width: 120px;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: transform 0.4s ease-in-out, opacity 0.4s linear;
-  }
-  
-  .sidebar__menu p:hover::before {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  
-  /* Thêm hiệu ứng delay cho từng liên kết */
-
-  .tp1{
-    transition-delay: 0.05s !important;
-  }
-  .tp2{
-    transition-delay: 0.10s !important;
-  }
-  .tp3{
-    transition-delay: 0.15s !important;
-  }
-  .tp4{
-    transition-delay: 0.20s !important;
-  }
-  .tp5{
-    transition-delay: 0.25s !important;
-  }
-  .tp6{
-    transition-delay: 0.30s !important;
-  }
-  
-
-
 
   
-  .sidebar__social {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar__social li {
-    margin: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sidebar__social a,
-  .sidebar__social svg {
-    display: inline-block;
-    height: 18px;
-    width: 18px;
-  }
-  
 
-  .menu-control{
-    display: none;
-  }
-  .add_animation{
-    transform: translateX(0) !important;
-  }
-  /* Khi checkbox menu-control được checked */
-
- 
 
 
 /* Màn hình nhỏ (điện thoại) */
@@ -385,7 +258,11 @@ a:hover,
   border: 1px solid rgba(255, 215, 0, 0.3);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
   transition: transform 0.3s ease;
+  padding: 0.6em 1.2em; 
+  border-radius: 8px;
 }
+
+
 .sidebar_close:hover{
   transform: translateY(-2px);
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);

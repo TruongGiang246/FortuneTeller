@@ -354,14 +354,13 @@ select{
     }
     #cloud2{
         width: 120%;
-        top: -20%;
-        transform: translateX(20vw);
     }
     #numerology_title{
         font-size: 10vw;
     }
     #number_7{
         right: 17%;
+        display: none;
     }
     #number_2{
         
@@ -369,6 +368,15 @@ select{
     }
     #number_3{
         left: 7%;
+    }
+    #number_4{
+        display: none;
+    }
+    #number_5{
+        display: none;
+    }
+    #number_6{
+        display: none;
     }
     .number{
         font-size: 11vw;
