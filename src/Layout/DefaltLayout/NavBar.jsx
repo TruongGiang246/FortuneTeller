@@ -1,9 +1,13 @@
 import './NavBar.css'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
 import Footer from '../FooterLayout/Footer'
 import { useState, cloneElement } from 'react'
 function NavBar({children}){
+
+
+
     const [menuData, setMenuData] = useState(null);
 
     useEffect(()=>{
@@ -25,8 +29,8 @@ function NavBar({children}){
         <React.Fragment>
           
                 <header class="fixed top-0 left-0 right-0 z-30 bg-white/80 backdrop-blur-md px-4 py-3 flex justify-between items-center shadow-sm">
-                    <div class="flex items-center gap-2">
-                        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center">
+                    <div  class="flex items-center gap-2">
+                        <div id='horoscope_img_download'  class="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                             </svg>
@@ -90,22 +94,29 @@ function NavBar({children}){
                 </div></Link>
                 
                 <Link onClick={handleNav} to="/Tarot"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <rect x="6" y="3" width="12" height="18" rx="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        <path d="M12 7L12 7.01M9 12L12 15L15 12M9 17L15 17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
+
                     <span class="font-medium">Tarot</span>
                 </div></Link>
 
                 <Link onClick={handleNav} to="/Guide"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <circle cx="12" cy="12" r="9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+                        <path d="M12 3L12 5M12 19L12 21M3 12L5 12M19 12L21 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12 12L8 8M12 12L16 16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                     <span class="font-medium">Guide</span>
                 </div></Link>
 
                 <Link onClick={handleNav} to="/Login"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        <path d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M10 17L15 12L10 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M15 12H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                     <span class="font-medium">Login</span>
                 </div></Link>

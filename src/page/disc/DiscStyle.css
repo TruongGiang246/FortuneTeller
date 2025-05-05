@@ -153,7 +153,13 @@
     animation: reveal 1s ease-out;
     width: 70%;
 }
-
+#back-to-results{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+#back-to-results:hover{
+    transform: translateX(-5px);
+}
 @keyframes reveal {
     0% { opacity: 0; transform: scale(0.8); }
     70% { transform: scale(1.05); }

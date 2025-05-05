@@ -174,7 +174,7 @@ function Matrixdes(){
                 
                 // Scroll to results
                 resultsSection.scrollIntoView({ behavior: 'smooth' });
-            }, 2000);
+            }, 1400);
 
 
 
@@ -190,6 +190,11 @@ function Matrixdes(){
             console.log(formattedDate); // "09-04-2025"
           
       
+            const matrix = [newDays, Number(months), newYears, karma, comfort_zone, number_6, number_7,
+                number_8, number_9, number_10, number_11, number_12, number_13, number_14, number_15, number_16, number_17, number_18, number_19, number_20, number_21, number_22, number_23, number_24,
+                number_25, number_26, number_27, number_28, number_29, number_30
+              ]
+
             if (!storedUser) {
               // Nếu chưa có gì trong localStorage
               const user = {
@@ -280,10 +285,7 @@ function Matrixdes(){
 
         
 
-        const matrix = [newDays, Number(months), newYears, karma, comfort_zone, number_6, number_7,
-          number_8, number_9, number_10, number_11, number_12, number_13, number_14, number_15, number_16, number_17, number_18, number_19, number_20, number_21, number_22, number_23, number_24,
-          number_25, number_26, number_27, number_28, number_29, number_30
-        ]
+
 
 
 

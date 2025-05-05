@@ -4,68 +4,72 @@ import {LifePath, DestinyNumber, SoulNumber, PersonalityNumber, MaturityNumber, 
 import { da } from 'date-fns/locale';
 
 
+
 const descriptions = {
     1: {
-        title: "The Leader",
-        description: "You're independent, determined, and born to lead. You have strong willpower and are driven to achieve your goals.",
-        traits: ["Natural leadership", "Independence", "Originality", "Determination"]
+        title: "Người dẫn đầu 🔥",
+        description: "Bạn độc lập, quyết đoán và sinh ra để lãnh đạo. Bạn có ý chí mạnh mẽ và luôn nỗ lực để đạt được mục tiêu của mình.",
+        traits: ["💼 Khả năng lãnh đạo", "🛤️ Tính độc lập", "🎨 Sự sáng tạo", "💪 Sự quyết tâm"]
     },
     2: {
-        title: "The Mediator",
-        description: "You're diplomatic, cooperative, and sensitive to others' needs. You excel at creating harmony and working with others.",
-        traits: ["Cooperation", "Diplomacy", "Sensitivity", "Peacemaking"]
+        title: "Người hòa giải 🤝",
+        description: "Bạn khéo léo, hợp tác và nhạy cảm với cảm xúc của người khác. Bạn giỏi tạo ra sự hòa hợp và làm việc nhóm.",
+        traits: ["🤝 Tính hợp tác", "🗨️ Sự ngoại giao", "💖 Sự nhạy cảm", "🕊️ Khả năng hòa giải"]
     },
     3: {
-        title: "The Creative Communicator",
-        description: "You shine when expressing yourself, inspiring others, and bringing joy to your environment.",
-        traits: ["Creative expression", "Communication skills", "Optimism", "Social nature"]
+        title: "Người giao tiếp sáng tạo 🎭",
+        description: "Bạn tỏa sáng khi được thể hiện bản thân, truyền cảm hứng cho người khác và mang lại niềm vui cho môi trường xung quanh.",
+        traits: ["🎨 Biểu đạt sáng tạo", "🗣️ Kỹ năng giao tiếp", "🌈 Sự lạc quan", "😄 Tính hướng ngoại"]
     },
     4: {
-        title: "The Builder",
-        description: "You're practical, reliable, and excellent at creating solid foundations. You value stability and work hard to achieve your goals.",
-        traits: ["Reliability", "Hard work", "Organization", "Practical thinking"]
+        title: "Người xây dựng 🧱",
+        description: "Bạn thực tế, đáng tin cậy và giỏi xây dựng nền tảng vững chắc. Bạn coi trọng sự ổn định và luôn nỗ lực vì mục tiêu.",
+        traits: ["🛠️ Đáng tin cậy", "💼 Làm việc chăm chỉ", "📦 Tổ chức tốt", "📐 Tư duy thực tế"]
     },
     5: {
-        title: "The Freedom Seeker",
-        description: "You're adventurous, versatile, and crave variety. You learn through experience and value your independence.",
-        traits: ["Adaptability", "Curiosity", "Adventure", "Resourcefulness"]
+        title: "Người tìm kiếm tự do 🌍",
+        description: "Bạn phiêu lưu, linh hoạt và yêu thích sự đa dạng. Bạn học hỏi qua trải nghiệm và trân trọng sự tự do.",
+        traits: ["🔄 Khả năng thích nghi", "🔍 Tính tò mò", "🌄 Tình thần phiêu lưu", "🎒 Tính linh hoạt"]
     },
     6: {
-        title: "The Nurturer",
-        description: "You're caring, responsible, and focused on creating harmony. You have a natural ability to support and help others.",
-        traits: ["Compassion", "Responsibility", "Nurturing", "Harmony"]
+        title: "Người nuôi dưỡng 🌸",
+        description: "Bạn giàu tình cảm, có trách nhiệm và hướng đến việc tạo ra sự hòa hợp. Bạn có khả năng chăm sóc và hỗ trợ người khác một cách tự nhiên.",
+        traits: ["🤗 Lòng trắc ẩn", "📎 Tinh thần trách nhiệm", "🍼 Sự chăm sóc", "🎶 Sự hòa hợp"]
     },
     7: {
-        title: "The Seeker",
-        description: "You're analytical, thoughtful, and drawn to understanding life's mysteries. You have a natural gift for research and analysis.",
-        traits: ["Analysis", "Introspection", "Wisdom", "Research skills"]
+        title: "Người tìm kiếm tri thức 🔍",
+        description: "Bạn phân tích sâu sắc, suy tư và luôn khao khát khám phá những bí ẩn của cuộc sống. Bạn có năng khiếu nghiên cứu và phân tích.",
+        traits: ["🧠 Phân tích", "🪞 Tự nhìn nhận", "📚 Trí tuệ", "🔬 Kỹ năng nghiên cứu"]
     },
     8: {
-        title: "The Achiever",
-        description: "You're ambitious, goal-oriented, and have natural leadership abilities. You excel at creating material success.",
-        traits: ["Ambition", "Organization", "Practicality", "Leadership"]
+        title: "Người thành đạt 🏆",
+        description: "Bạn tham vọng, có định hướng mục tiêu và có khả năng lãnh đạo tự nhiên. Bạn xuất sắc trong việc tạo dựng thành công vật chất.",
+        traits: ["🎯 Tham vọng", "📊 Tổ chức", "🔧 Thực tế", "👑 Khả năng lãnh đạo"]
     },
     9: {
-        title: "The Humanitarian",
-        description: "You're compassionate, idealistic, and focused on making a difference. You have a natural ability to see the big picture.",
-        traits: ["Compassion", "Idealism", "Creativity", "Global thinking"]
+        title: "Người nhân đạo 🌟",
+        description: "Bạn giàu lòng trắc ẩn, lý tưởng và hướng đến việc tạo ra sự khác biệt tích cực. Bạn có khả năng nhìn nhận tổng thể và hướng đến cộng đồng.",
+        traits: ["💖 Lòng trắc ẩn", "🌈 Chủ nghĩa lý tưởng", "🎨 Sáng tạo", "🌍 Tư duy toàn cầu"]
     },
     11: {
-        title: "The Intuitive",
-        description: "You're highly intuitive, inspirational, and have unique spiritual insights. You're here to inspire and elevate others.",
-        traits: ["Intuition", "Inspiration", "Idealism", "Sensitivity"]
+        title: "Người trực giác 🔮",
+        description: "Bạn có trực giác cao, truyền cảm hứng và có những hiểu biết tâm linh đặc biệt. Bạn đến để truyền cảm hứng và nâng tầm người khác.",
+        traits: ["🌙 Trực giác", "✨ Khả năng truyền cảm hứng", "🕊️ Chủ nghĩa lý tưởng", "🌊 Sự nhạy cảm"]
     },
     22: {
-        title: "The Master Builder",
-        description: "You have extraordinary vision and the ability to manifest large-scale projects. You can turn dreams into reality.",
-        traits: ["Vision", "Practicality", "Leadership", "Manifestation"]
+        title: "Người kiến tạo vĩ đại 🏗️",
+        description: "Bạn có tầm nhìn phi thường và khả năng biến những dự án lớn thành hiện thực. Bạn có thể biến ước mơ thành hành động cụ thể.",
+        traits: ["🔭 Tầm nhìn", "🧰 Tính thực tế", "🚀 Khả năng lãnh đạo", "📦 Năng lực hiện thực hóa"]
     },
     33: {
-        title: "The Master Teacher",
-        description: "You have exceptional nurturing abilities and wisdom to share. You're here to uplift humanity through compassionate service.",
-        traits: ["Compassion", "Wisdom", "Nurturing", "Healing"]
+        title: "Người thầy tâm linh 🌈",
+        description: "Bạn có khả năng nuôi dưỡng và trí tuệ vượt trội. Bạn sinh ra để nâng đỡ nhân loại thông qua sự phục vụ đầy từ bi.",
+        traits: ["💞 Lòng trắc ẩn", "📖 Trí tuệ", "🌷 Sự chăm sóc", "💫 Khả năng chữa lành"]
     }
 };
+
+
+const titleNum = ["Số đường đời","Số vận mệnh","Số nội tâm","Số nhân cách","Số thái độ","Số trưởng thành"]
 
 function Numerology(){
     const [value, setValue] = useState([0,0,0,0,0,0,0]);
@@ -139,6 +143,8 @@ function Numerology(){
             const newDays = Sum([days]);
             const newMonths = Sum([months]);
             const newYears = Sum([years]);
+
+            
 
             const NumberHoTen = normalizeName(HoTen, 0);
             const LifePath = Sum([newDays, newMonths, newYears]);
@@ -497,7 +503,7 @@ function Numerology(){
                         {/* <!-- Life Path Number Preview --> */}
 
                         
-                        {value[0] != 0 ? value.map((value)=>(
+                        {value[0] != 0 ? value.map((value, index)=>(
 
                             <div class="result-card show">
                             <div class="flex items-start">
@@ -505,7 +511,7 @@ function Numerology(){
                                     <span class="text-indigo-600 font-bold text-xl">{value}</span>
                                 </div>
                                 <div>
-                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Life Path {value} – {descriptions[value].title}</h4>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">{titleNum[index]} {value} – {descriptions[value].title}</h4>
                                     <p class="text-gray-600 mb-3">{descriptions[value].description}</p>
                                     <div class="bg-indigo-50 rounded-lg p-4">
                                         <h5 class="font-medium text-gray-800 mb-2">Your Key Traits:</h5>
@@ -548,7 +554,12 @@ function Numerology(){
                     <div class="text-center mt-8">
                         <p class="text-lg font-medium text-indigo-600 mb-4">🔎 Want to see yours? Just click Start!</p>
                         <a  id='ResetBtn' href="#numerology-tool" class="inline-block px-6 py-3 bg-indigo-100 text-indigo-600 rounded-lg font-medium hover:bg-indigo-200 transition-colors">Go to Calculator</a>
-                        <button class="inline-block px-6 py-3 bg-indigo-100 text-indigo-600 ml-5 rounded-lg font-medium hover:bg-indigo-200 transition-colors">Ask Lumina</button>
+                        <button class="inline-block px-6 py-3 bg-indigo-100 text-indigo-600 ml-5 rounded-lg font-medium hover:bg-indigo-200 transition-colors">
+                        <svg  xmlns="http://www.w3.org/2000/svg" class="inline-block h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                        </svg>
+                            Ask Lumina
+                        </button>
                     </div>
                 </div>
             </div>

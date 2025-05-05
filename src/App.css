@@ -24,13 +24,7 @@ html {
     0 0 30px rgba(173, 216, 230, 0.5); 
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-    -webkit-text-fill-color: white !important;
-    transition: background-color 9999s ease-in-out 0s; /* chống chuyển màu nền */
-}
+
 .set_80_size{
     width: 40%;
     height: 40%;

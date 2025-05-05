@@ -250,8 +250,85 @@ const descriptions = {
   C: "Bạn cẩn thận, có hệ thống và chú trọng đến chi tiết.",
 };
 
-const DISCQuiz = () => {
 
+const discProfiles = {
+  "D":{
+    type: "Dominance (D) 🔥",
+    title: "Người thống lĩnh 💼",
+    description: "⚡ Bạn là người quyết đoán, định hướng kết quả và sẵn sàng đương đầu với thử thách. Bạn thích kiểm soát và dẫn dắt người khác đến mục tiêu.",
+    traits: [
+      "🧭 Lãnh đạo tự nhiên",
+      "🏁 Quyết đoán",
+      "🚀 Chấp nhận thử thách",
+      "📢 Giao tiếp thẳng thắn"
+    ],
+    growthAreas: [
+      "👂 Luyện tập lắng nghe chủ động",
+      "💗 Xem xét cảm xúc của người khác",
+      "⏳ Phát triển sự kiên nhẫn",
+      "🤝 Cân bằng giữa quyết đoán và hợp tác"
+    ],
+    workStyle: "⚙️ Bạn phát triển tốt trong môi trường nhanh, có mục tiêu rõ ràng và kết quả đo lường được. Bạn ưa thích giao tiếp trực tiếp và có quyền tự quyết. 🚀 Hãy tìm kiếm các vai trò lãnh đạo và dự án tạo ra thay đổi thực chất."
+  },
+  "I":{
+    type: "Influence (I) ✨",
+    title: "Người truyền cảm hứng 🎤",
+    description: "🌟 Bạn hướng ngoại, tràn đầy năng lượng và có khả năng ảnh hưởng tích cực đến người khác. Bạn yêu thích giao tiếp và xây dựng mối quan hệ.",
+    traits: [
+      "🌈 Lạc quan",
+      "🔥 Nhiệt huyết",
+      "🗣️ Thuyết phục tốt",
+      "🤗 Thân thiện, dễ gần"
+    ],
+    growthAreas: [
+      "📋 Tập trung vào chi tiết",
+      "👂 Lắng nghe nhiều hơn nói",
+      "⏱️ Quản lý thời gian hiệu quả",
+      "⚖️ Cân bằng giữa công việc và tương tác"
+    ],
+    workStyle: "🎯 Bạn làm tốt trong môi trường năng động, nhiều tương tác. Thích hợp với vai trò sáng tạo, giao tiếp và kết nối con người. ✨ Hãy chọn những vị trí giúp bạn truyền cảm hứng và lan tỏa năng lượng tích cực."
+  },
+  "S":{
+    type: "Steadiness (S) 🌱",
+    title: "Người ổn định và hỗ trợ 🛠️",
+    description: "🕊️ Bạn trung thành, kiên định và tạo ra sự ổn định cho tập thể. Luôn sẵn sàng hỗ trợ người khác một cách âm thầm và hiệu quả.",
+    traits: [
+      "🧘 Tính kiên nhẫn",
+      "🛡️ Đáng tin cậy",
+      "👂 Lắng nghe tốt",
+      "🤝 Tinh thần hợp tác"
+    ],
+    growthAreas: [
+      "📣 Chủ động chia sẻ quan điểm",
+      "🎢 Chấp nhận thay đổi",
+      "🧱 Thiết lập ranh giới cá nhân",
+      "🙅 Học cách từ chối khi cần thiết"
+    ],
+    workStyle: "🏡 Bạn làm việc tốt trong môi trường ổn định, ít căng thẳng. Phù hợp với vai trò hỗ trợ, quản lý quy trình và chăm sóc đội nhóm. 🌿 Hãy chọn nơi mà bạn có thể tạo nên sự vững vàng và tin cậy."
+  },
+  "C":{
+    type: "Conscientiousness (C) 🧠",
+    title: "Người chính xác và phân tích 🧮",
+    description: "📏 Bạn logic, cẩn trọng và có tiêu chuẩn cao. Bạn theo đuổi sự hoàn hảo, chú trọng vào chất lượng và chi tiết.",
+    traits: [
+      "🔍 Tư duy phân tích",
+      "📌 Chính xác",
+      "🧾 Có trách nhiệm",
+      "📚 Tuân thủ quy định"
+    ],
+    growthAreas: [
+      "🎯 Tránh cầu toàn quá mức",
+      "🤝 Tin tưởng người khác nhiều hơn",
+      "💬 Giao tiếp linh hoạt",
+      "⚡ Biết khi nào nên hành động"
+    ],
+    workStyle: "🧑‍🔬 Bạn phát triển tốt trong môi trường có quy trình rõ ràng, kỳ vọng cao và cần sự tỉ mỉ. 🎓 Phù hợp với các vai trò phân tích, đánh giá và cải tiến hiệu suất."
+  }
+};
+
+
+const DISCQuiz = () => {
+  
   const [inputValue, setInputValue] = useState('');
 
 
@@ -263,6 +340,7 @@ const DISCQuiz = () => {
   const resultsSection = document.getElementById('results-section');
   const tipsSection = document.getElementById('tips-section');
   const progressDot = document.getElementsByClassName('progress-dot')
+
 
   function handleNext1(){
     wellcome.classList.add('hidden')
@@ -277,6 +355,17 @@ const DISCQuiz = () => {
   function handleNext3(){
     resultsSection.classList.add('hidden')
     tipsSection.classList.remove('hidden')
+  }
+
+  function handleBackResult(){
+    tipsSection.classList.add('hidden')
+    resultsSection.classList.remove('hidden')
+  }
+
+  function handleBacktoStart(){
+    resultsSection.classList.add('hidden');
+    wellcome.classList.remove('hidden')
+    setInputValue("")
   }
 
   const sensors = useSensors(
@@ -295,9 +384,7 @@ const DISCQuiz = () => {
 
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [showResult, setShowResult] = useState(false);
   const [items, setItems] = useState(questions[0].options);
-  const [login, setlogin] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -339,7 +426,7 @@ const DISCQuiz = () => {
       if (!storedUser) {
         // Nếu chưa có gì trong localStorage
         const user = {
-          [login]: {
+          [inputValue]: {
             disc: disc,
             highest_disc: highestCategory,
             time: formattedDate,
@@ -352,9 +439,9 @@ const DISCQuiz = () => {
         // Nếu đã có user trong localStorage
         const user = JSON.parse(storedUser);
 
-        if (!user[login]) {
+        if (!user[inputValue]) {
           // Nếu chưa có người dùng này
-          user[login] = { 
+          user[inputValue] = { 
             disc: disc,
             highest_disc: highestCategory,
             time: formattedDate,
@@ -363,11 +450,11 @@ const DISCQuiz = () => {
           console.log("Đã thêm người dùng mới vào user.");
         } else {
           // Nếu đã có người dùng này, cập nhật numerology
-          user[login].disc = disc;
-          user[login].highest_disc = highestCategory;
-          if(!user[login].time){
-            user[login].time = formattedDate;
-            user[login].avt = randomNumber
+          user[inputValue].disc = disc;
+          user[inputValue].highest_disc = highestCategory;
+          if(!user[inputValue].time){
+            user[inputValue].time = formattedDate;
+            user[inputValue].avt = randomNumber
           }
           console.log("Đã cập nhật disc cho người dùng.");
         }
@@ -390,22 +477,12 @@ const DISCQuiz = () => {
     return scores;
   };
 
+  
+
   const highestCategory = Object.keys(calculateScores()).reduce((a, b) =>
     calculateScores()[a] > calculateScores()[b] ? a : b
   );
 
-  const onLogin = () => {
-    const name = document.getElementById('Firstname').value;
-    console.log(name);
-    setlogin(name);
-  }
-
-
-
-
-  
-
-  
 
   return (
       <>
@@ -576,38 +653,56 @@ const DISCQuiz = () => {
 
 
         <div id="results-section" class="hidden">
+
             <div class="result-card-disc mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-lg glow mt-20 mb-8">
+
+            {highestCategory ? (
+              <>
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-4">Your DISC Personality Type</h2>
-                    <p class="text-lg text-gray-600 mb-6">Based on your responses, <span id="user-name-display">you</span> are primarily:</p>
-                    
-                    <div id="personality-type" class="text-5xl font-bold mb-4">{highestCategory}</div>
-                    <div id="personality-title" class="text-2xl text-purple-700 mb-8">Dominance: {descriptions[highestCategory]}</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-4">Your DISC Personality Type</h2>
+                <p class="text-lg text-gray-600 mb-6">Based on your responses, <span id="user-name-display">you</span> are primarily:</p>
+
+                <div id="personality-type" class="text-5xl font-bold mb-4">{highestCategory}</div>
+                <div id="personality-title" class="text-2xl text-purple-700 mb-8">Dominance: {discProfiles[highestCategory].description}</div>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-purple-50 rounded-2xl p-6">
-                        <h3 class="text-xl font-bold text-purple-800 mb-4">Your Strengths</h3>
-                        <ul id="strengths-list" class="list-disc pl-5 space-y-2 text-gray-700"><li>Natural leader who takes initiative</li><li>Decisive and results-oriented</li><li>Embraces challenges head-on</li><li>Confident and direct communicator</li></ul>
-                    </div>
-                    
-                    <div class="bg-indigo-50 rounded-2xl p-6">
-                        <h3 class="text-xl font-bold text-indigo-800 mb-4">Your Potential Growth Areas</h3>
-                        <ul id="growth-list" class="list-disc pl-5 space-y-2 text-gray-700"><li>Practice active listening</li><li>Consider others' feelings before acting</li><li>Develop patience with detailed processes</li><li>Balance assertiveness with collaboration</li></ul>
-                    </div>
+                <div class="bg-purple-50 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-purple-800 mb-4">Điểm mạnh:</h3>
+                    <ul id="strengths-list" class="list-disc pl-5 space-y-2 text-gray-700">
+                      <li>{discProfiles[highestCategory].traits[0]}</li>
+                      <li>{discProfiles[highestCategory].traits[1]}</li>
+                      <li>{discProfiles[highestCategory].traits[2]}</li>
+                      <li>{discProfiles[highestCategory].traits[3]}</li>
+                    </ul>
                 </div>
-                
+
+                <div class="bg-indigo-50 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-4">Tiềm năng phát triển:</h3>
+                    <ul id="growth-list" class="list-disc pl-5 space-y-2 text-gray-700">
+                      <li>{discProfiles[highestCategory].growthAreas[0]}</li>
+                      <li>{discProfiles[highestCategory].growthAreas[1]}</li>
+                      <li>{discProfiles[highestCategory].growthAreas[2]}</li>
+                      <li>{discProfiles[highestCategory].growthAreas[3]}</li>
+                    </ul>
+                </div>
+                </div>
+
                 <div class="bg-blue-50 rounded-2xl p-6 mb-8">
-                    <h3 class="text-xl font-bold text-blue-800 mb-4">How You Work Best</h3>
-                    <p id="work-style" class="text-gray-700">You thrive in fast-paced environments with clear goals and measurable results. You prefer direct communication and having autonomy to make decisions. To maximize your potential, seek leadership opportunities and projects where you can drive meaningful change.</p>
+                <h3 class="text-xl font-bold text-blue-800 mb-4">How You Work Best</h3>
+                <p id="work-style" class="text-gray-700">
+                {discProfiles[highestCategory].workStyle}
+                </p>
                 </div>
+                </>
+            ) : ""}
                 
                 <div class="text-center">
                     <button onClick={handleNext3} id="tips-btn" class="mr-8 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 mb-4">
                         See Development Tips
                     </button>
                     
-                    <button id="restart-btn" class="bg-white text-indigo-600 border border-indigo-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-indigo-50 transition duration-300">
+                    <button onClick={handleBacktoStart} id="restart-btn" class="bg-white text-indigo-600 border border-indigo-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-indigo-50 transition duration-300">
                         Take the Test Again
                     </button>
                 </div>
@@ -632,7 +727,7 @@ const DISCQuiz = () => {
             <div class="bg-white bg-opacity-80 rounded-3xl p-8 md:p-12 shadow-lg glow mb-8 fade-in">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-3xl font-bold text-indigo-800">Development Tips</h2>
-                    <button id="back-to-results" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                    <button onClick={handleBackResult} id="back-to-results" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                         </svg>
@@ -643,77 +738,8 @@ const DISCQuiz = () => {
                 <div id="tips-content" class="space-y-6"><h3 class="text-xl font-bold text-indigo-800 mb-4">Study Tips for Dominance Types</h3><ul class="space-y-4"><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Set clear goals and deadlines</strong> - Break your study sessions into timed challenges with specific outcomes.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Focus on application</strong> - Connect theoretical concepts to real-world applications and problem-solving.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Use competition</strong> - Challenge yourself against benchmarks or previous performance.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Take leadership in study groups</strong> - Organize and lead study sessions to reinforce your understanding.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Use direct learning methods</strong> - Opt for concise summaries, flashcards, and practice tests over lengthy readings.</li></ul></div>
             </div>
         </div>
-
-
       </div>
-        {/* {!login ? (
-          <>
-          <div className="wrapper_Disc">
 
-            <div class="container_disc">
-              <div class="content">
-              <div className="form__group field disc_input">
-                <form className="DISC_form">
-                <div class="segment">
-                  <h1>Họ Tên</h1>
-                </div>
-                <label>
-                  <input id="Firstname" className="disc_input_box" type="input" placeholder="..."/>
-                </label>
-                <button onClick={onLogin} class="red" type="button"><i class="icon ion-md-lock"></i>Xác nhận</button> 
-              </form>
-            </div>
-              </div>
-              <div class="flap">
-              </div>
-          </div>
-          </div>
-          </>
-        ) : (
-          <div className="wrapper_Disc">
-            <div className="content_Disc">
-              {!showResult ? (
-                <div className="flex-start">
-                  <div className="guide">
-                    <h2>Hướng dẫn</h2>
-                    <p>
-                      Trong mỗi câu hỏi sẽ có 4 mô tả khác nhau đại diện cho tính cách của bạn.
-                      Bạn hãy KÉO THẢ các câu trả lời để sắp xếp theo thứ tự từ giống bạn nhất đến ít giống bạn nhất.
-                    </p>
-                    <p>- Vị trí trên cùng (1) là mô tả GIỐNG bạn nhất</p>
-                    <p>- Vị trí dưới cùng (4) là mô tả ÍT GIỐNG bạn nhất</p>
-                  </div>
-                  <p className="text-lg font-semibold mb-4">{questions[step].text}</p>
-                  <DndContext collisionDetection={closestCenter} sensors={sensors} onDragEnd={handleDragEnd}>
-                    <SortableContext items={items} strategy={verticalListSortingStrategy}>
-                      {items.map((item) => (
-                        <SortableItem key={item.id} id={item.id} text={item.text} />
-                      ))}
-                    </SortableContext>
-                  </DndContext>
-                  <button onClick={handleNext} className="mt-4">Tiếp theo</button>
-                </div>
-              ) : (
-                <div className="Disc_result">
-                  <h2 className="result_title">Kết quả của bạn</h2>
-                  <ResponsiveContainer width="100%" height={250}>
-                    <BarChart data={Object.entries(calculateScores()).map(([key, value]) => ({ name: key, score: value }))}>
-                      <XAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }} dataKey="name"/>
-                      <YAxis tick={{ style: { fontWeight: 'bold', fill: 'white', fontSize: '18px'} }} allowDecimals={false} />
-                      <Tooltip active={false}/>
-                      <Bar dataKey="score" fill="#8884d8">
-                        {COLORS4.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry} />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                  <p className="text-center mt-4">{descriptions[highestCategory]}</p>
-                </div>
-              )}
-            </div>
-          </div>
-        )} */}
       </>
   );
 };
