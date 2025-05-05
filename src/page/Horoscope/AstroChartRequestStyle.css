@@ -1,285 +1,9 @@
-.wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5%;
-    background-position: center;
-    background-size: contain;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+.astro_wrapper{
+    position: relative;
     min-height: 100vh;
-    background-image: url('/FortuneTeller/bg_wall.jpg');
-}
-.chart_wrapper svg{
-    width: 100vw;
-    height: 100vh;
-}
-.get_chart{
-    background-color: black;
-    color: white;
-    border: 2px solid white;
-}
-.get_chart_wrapper{
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-}
-.content_box{
-    width: 800px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 20px gray;
-    margin: 50px 0px;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-hr{
-    background-color: white;
-    color: white;
-    height: 2px;
-    width: 95%;
-    margin: 25px auto;
-}
-.content_box h1{
-    font-family: "Oswald", sans-serif;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid white;
-}
-.content_input{
-    padding: 20px;
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Oswald", sans-serif;
-}
-.content_wrapper{
-    height: 80%;
-    display: flex;
-}
-.content_input input{
-    width: 300px;
-    padding: 10px;
-    font-size: 17px;
-    border-radius: 5px;
-}
-
-.content_input input:-webkit-autofill,
-.content_input input:-webkit-autofill:hover,
-.content_input input:-webkit-autofill:focus,
-.content_input input:-webkit-autofill:active {
-    -webkit-text-fill-color: #000 !important;
-}
-
-
-.react-datepicker__close-icon::after{
-    background-color: black !important;
-}
-.react-datepicker__tab-loop{
-    position: absolute;
-}
-.react-datepicker__month-select,
-.react-datepicker__year-select{
-    color: black;
-    margin: 7px 0px;
-    border-radius: 2px;
-}
-.react-datepicker__month-select option,
-.react-datepicker__year-select option{
-    background-color: white;
-    font-size: 13px;
-
-}
-.wrapper_feature{
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 5% 0px;
-}
-.relationship{
-    height: 60vh;
-    justify-content: space-between;
-}
-.relationship h1{
-    padding: 20px;
-    border: 2px solid white;
-    width: 80%;
-    text-align: center;
-}
-.relationship h2{
-    font-size: 40px;
-    font-family: "Pacifico";
-}
-.feature_box{
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.screen_shoot_horoscope_wrapper{
-    margin: 4% 0px;
-    width: 67%;
-}
-.horoscope_img{
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-.horoscope_img_screen{
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-.feature_box h1{
-    margin-bottom: 35px;
-    margin-top: 50px;
-}
-.feature{
-    width: 80%;;
-    display: flex;
-    margin-top: 5%;
-}
-.content_box i{
-    margin-left: 20px;
-}
-
-.content_box i:last-child{
-    cursor: pointer;
-    transition: color 0.2s;
-}
-.fa-heart:hover{
-    color: red;
-}
-.fa-person:hover{
-    color: blue;
-}
-.description{
-    width: 75%;
-    padding: 20px;
-}
-.description h1{
-    padding: 20px;
-    border: 2px solid white;
-    text-align: center;
-}
-.des_content{
-    margin: 20px 0px;
-}
-.feature_wrapper{
-    width: 50%;
-    height: 100%;
-    padding: 20px;
-    box-shadow: 3px 3px 20px white;
-    border-radius: 10px;
-
-}
-.feature_wrapper_2{
-    width: 80%;
-    height: 43vw;
-    min-height: 400px;
-    padding: 20px 40px 14% 40px; 
-    box-shadow: 3px 3px 20px white;
-    margin-bottom: 50px;
-    border-radius: 10px;
-}
-.wrapper_feature .feature{
-    top: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.feature button{
-    margin: 5px;
-    border-radius: 2px;
-    border: 2px solid white;
-    background-color: black;
-    color: white;
-    width: 220px;
-}
-.chosen{
-    background-color: white !important;
-    color: black !important;
-}
-.nope{
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;   
-}
-.feature_relationship{
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-.heart_image{
-    width: 180px;
-    height: 180px;
-}
-.heart{
-    height: 100px;
-    width: 100px;
-    background-color: #f20044;
-    position: relative;
-    transform: rotate(-45deg);
-    box-shadow: -10px 10px 90px #f20044;
-    animation: heart 0.8s linear infinite;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-@keyframes heart{
-    0%{
-        transform: rotate(-45deg) scale(1.07);
-    }
-    80%{
-        transform: rotate(-45deg) scale(1.0);
-    }
-    100%{
-        transform: rotate(-45deg) scale(0.8);
-    }
-}
-.heart:before{
-    content: '';
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    background: #f20044;
-    top: -50%;
-    border-radius: 50px;
-    box-shadow: -10px 10px 90px #f20044;
-    
-}
-.feature_relationship{
-    position: relative;
-    margin-bottom: 20px;
-}
-.note{
-    width: 80%;
-    text-align: end;
-}
-.feature_relationship p{
-    position: absolute;
-    top: -10%;
-    font-family: "Pacifico";
-    font-size: 60px;
-    z-index: 20;
-}
-.heart::after{
-    content: '';
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    background: #f20044;
-    right: -50%;
-    border-radius: 50px;
-    box-shadow: -10px 10px 90px #f20044;
-}
+}      
 .adj_Astro{
     display: flex;
     align-items: center;
@@ -287,81 +11,182 @@ hr{
     width: 100%;
     padding: 10px;
     margin: 1vw auto;
-    border-top: 1px solid white;
+    border-top: 1px solid black;
 }
-.adj_Astro li{
-    font-size: 1.2vw !important;
-    width: 120px !important;
-    margin-top: 3px;
+.plant_inner{
+    width: 100%;
+    height: 250px;
+    margin: 12% 0;
 }
-.feature_box_horoscope button{
-    height: 50px;
-    width: 150px;
-    font-size: 20px;
-}
-.feature_box_horoscope button i{
-    margin-left: 10px;
-}
-
-#hidden-content{
+.floating {
     position: absolute;
-    width: 1200px;
-    height: 675px;
-    top: -9999px;
-    border-radius: 10px;
+    animation-name: float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+.screen_shoot_horoscope_wrapper{
+    width: 100%;
+    border-radius: 8px;
     overflow: hidden;
 }
-
-@media screen and (max-width: 800px) {
-    .content_input{
-        display: block;
-    }
-    .content_box{
-        width: 90%;
-    }
-    .content_input input{
-        width: 80vw;
-    }
-    .content_input h2{
-        margin-bottom: 10px;
-    }
-
-    .content_box{
-        margin-top: 30%;
-    }
-    .wrapper_feature .feature{
-        width: 100%;
-    }
-    .screen_shoot_horoscope_wrapper{
-        margin: 8% 0px;
-        width: 95%;
-    }
-    .horoscope_img_screen{
-        height: 100%;
-        width: 100%;
-    }
-    .horoscope_img{
-        width: 100%;
-    }
- 
-    .feature{
-        margin-top: 20%;
-    }
-    .feature_wrapper{
-        width: 100%;
-    }
-    .description{
-        width: 100%;
-    }
-    .feature_wrapper_2{
-        height: calc(340px + 16vw);
-        width: 110%;
-        padding: 20px 5px calc(100px + 6.5vw) 5px;
-    }
-    .adj_Astro li{
-        font-size: calc(2.5vw - 0.1vw) !important;
-        width: 27% !important;
-
-    }
+.elements_inner{
+    width: 100%;
+    height: 100%;
+}
+.quality_inner{
+    width: 100%;
+    height: 100%;
 }
 
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.reveal-btn {
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+}
+
+.reveal-btn:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.5);
+}
+
+.reveal-btn:disabled {
+    background: linear-gradient(135deg, #c4b5fd 0%, #e9d5ff 100%);
+    cursor: not-allowed;
+}
+
+.input-field {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.input-field:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+.nav-item {
+    transition: all 0.3s ease;
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+.nav-item:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.content-panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.content-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.birth-chart-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.birth-chart {
+    width: 100%;
+    height: auto;
+    position: relative;
+    animation: rotate 120s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.planet-marker {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    z-index: 10;
+}
+
+.star-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.5rem;
+    }
+    
+    .nav-item {
+        flex-direction: row;
+        padding: 0.5rem 1rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+    }
+    
+    .nav-item span {
+        margin-left: 0.5rem;
+        margin-top: 0;
+    }
+}

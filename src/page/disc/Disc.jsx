@@ -252,6 +252,33 @@ const descriptions = {
 
 const DISCQuiz = () => {
 
+  const [inputValue, setInputValue] = useState('');
+
+
+  const startButton = document.getElementById('startButton');
+
+  
+  const wellcome = document.getElementById('wellcome')
+  const questionSection = document.getElementById('questions-section');
+  const resultsSection = document.getElementById('results-section');
+  const tipsSection = document.getElementById('tips-section');
+  const progressDot = document.getElementsByClassName('progress-dot')
+
+  function handleNext1(){
+    wellcome.classList.add('hidden')
+    questionSection.classList.remove('hidden')
+  }
+
+  function handleNext2(){
+    questionSection.classList.add('hidden')
+    resultsSection.classList.remove('hidden')
+  }
+
+  function handleNext3(){
+    resultsSection.classList.add('hidden')
+    tipsSection.classList.remove('hidden')
+  }
+
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(TouchSensor) // để hỗ trợ điện thoại
@@ -276,6 +303,8 @@ const DISCQuiz = () => {
     window.scrollTo(0, 0);
   }, []);
 
+
+
   const handleDragEnd = (event) => {
     const { active, over } = event;
     if (active.id !== over.id) {
@@ -292,11 +321,13 @@ const DISCQuiz = () => {
     if (step + 1 < questions.length) {
       setStep(step + 1);
       setItems(questions[step + 1].options);
+      progressDot[step+1].classList.remove('bg-gray-300')
+      progressDot[step+1].classList.add('bg-purple-600')
+      console.log(step)
+
     } else {
       console.log(Object.entries(calculateScores()));
-      setShowResult(true);
-
-
+      handleNext2()
       
 
       
@@ -369,11 +400,253 @@ const DISCQuiz = () => {
     setlogin(name);
   }
 
+
+
+
+  
+
   
 
   return (
       <>
-        {!login ? (
+      <div className="disc_inner flex justify-center">
+
+      
+      <div id="wellcome" className="relative disc_wrapper flex flex-col items-center justify-center p-4 md:p-8">
+          <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="floating text-4xl" style={{ top: '15%', left: '10%', animationDuration: '6s', opacity: 0.6 }}>🧠</div>
+            <div className="floating text-3xl" style={{ top: '25%', right: '15%', animationDuration: '7s', opacity: 0.6 }}>🔍</div>
+            <div className="floating text-4xl" style={{ bottom: '20%', left: '15%', animationDuration: '8s', opacity: 0.6 }}>💭</div>
+            <div className="floating text-3xl" style={{ bottom: '30%', right: '10%', animationDuration: '9s', opacity: 0.6 }}>✨</div>
+            <div className="floating text-4xl" style={{ top: '60%', left: '20%', animationDuration: '7.5s', opacity: 0.6 }}>🌟</div>
+            <div className="floating text-3xl" style={{ top: '40%', right: '25%', animationDuration: '6.5s', opacity: 0.6 }}>📊</div>
+        </div>
+
+        <header class="w-full max-w-4xl mb-8 flex justify-center items-center">
+
+          
+          {/* <!-- DISC Type Preview --> */}
+          <div class="hidden md:flex items-center gap-2">
+
+              <div className="disc-icon bg-red-500" title="Dominant" style={{ transform: 'scale(1)' }}>D</div>
+              <div className="disc-icon bg-yellow-500" title="Influential" style={{ transform: 'scale(1)' }}>I</div>
+              <div className="disc-icon bg-green-500" title="Steady" style={{ transform: 'scale(1)' }}>S</div>
+              <div className="disc-icon bg-blue-500" title="Conscientious" style={{ transform: 'scale(1)' }}>C</div>
+
+          </div>
+        </header>
+
+        <main class="w-full max-w-2xl">
+        <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl fade-in">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Discover Your DISC Personality Type</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Find out if you're a Dominant, Influential, Steady, or Conscientious type – and learn how to grow with your natural style.
+                </p>
+            </div>
+            
+            {/* <!-- Mobile DISC Icons --> */}
+            <div class="md:hidden flex justify-center gap-3 mb-8">
+                <div class="disc-icon bg-red-500 text-sm" title="Dominant">D</div>
+                <div class="disc-icon bg-yellow-500 text-sm" title="Influential">I</div>
+                <div class="disc-icon bg-green-500 text-sm" title="Steady">S</div>
+                <div class="disc-icon bg-blue-500 text-sm" title="Conscientious">C</div>
+            </div>
+            
+            {/* <!-- Name Input --> */}
+            <div class="mb-8">
+                <label for="name" class="block text-gray-700 font-medium mb-2">Enter your name to begin your journey</label>
+                <input  value={inputValue} onChange={(e) => setInputValue(e.target.value)} type="text" id="name" class="input-field w-full px-5 py-4 bg-white/70 rounded-xl text-gray-800 text-lg outline-none" placeholder="e.g., Alex, Linh, or Jaden"/>
+            </div>
+            
+            {/* <!-- Start Button --> */}
+            <div class="flex justify-center">
+                <button onClick={handleNext1} id="startButton" class="start-btn w-full md:w-2/3 py-4 rounded-xl text-white font-bold text-lg shadow-lg disabled:opacity-70" disabled={inputValue.trim() === ''}>
+                    Start the DISC Test
+                </button>
+            </div>
+            
+            {/* <!-- Test Info --> */}
+            <div class="mt-8 text-center text-sm text-gray-500">
+                <p>This test takes about 5-10 minutes to complete</p>
+                <p class="mt-1">Your results will help you understand your strengths</p>
+            </div>
+        </div>
+        
+        {/* <!-- DISC Type Explanation --> */}
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 fade-in" style={{animationDelay: "0.3s"}}>
+            <div class="bg-white/60 backdrop-blur-sm p-5 rounded-2xl flex items-center gap-4">
+                <div class="disc-icon bg-red-500 text-sm">D</div>
+                <div>
+                    <h3 class="font-bold text-gray-800">Dominant</h3>
+                    <p class="text-sm text-gray-600">Direct, results-oriented, strong-willed</p>
+                </div>
+            </div>
+            
+            <div class="bg-white/60 backdrop-blur-sm p-5 rounded-2xl flex items-center gap-4">
+                <div class="disc-icon bg-yellow-500 text-sm">I</div>
+                <div>
+                    <h3 class="font-bold text-gray-800">Influential</h3>
+                    <p class="text-sm text-gray-600">Outgoing, enthusiastic, optimistic</p>
+                </div>
+            </div>
+            
+            <div class="bg-white/60 backdrop-blur-sm p-5 rounded-2xl flex items-center gap-4">
+                <div class="disc-icon bg-green-500 text-sm">S</div>
+                <div>
+                    <h3 class="font-bold text-gray-800">Steady</h3>
+                    <p class="text-sm text-gray-600">Patient, loyal, supportive</p>
+                </div>
+            </div>
+            
+            <div class="bg-white/60 backdrop-blur-sm p-5 rounded-2xl flex items-center gap-4">
+                <div class="disc-icon bg-blue-500 text-sm" style={{transform: "scale(1)"}}>C</div>
+                <div>
+                    <h3 class="font-bold text-gray-800">Conscientious</h3>
+                    <p class="text-sm text-gray-600">Analytical, precise, systematic</p>
+                </div>
+            </div>
+        </div>
+    </main>
+      </div>
+
+
+
+      <div id="questions-section" class="disc_wrapper_small flex justify-center flex-col items-center hidden">
+            {/* <!-- Progress Indicator --> */}
+            <div class="flex justify-center mb-8">
+                <div class="flex space-x-4">
+                    <div class="progress-dot w-4 h-4 rounded-full bg-purple-600"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                    <div class="progress-dot w-4 h-4 rounded-full bg-gray-300"></div>
+                </div>
+            </div>
+            
+            {/* <!-- Question 1 --> */}
+            <div id="question-1" class="question-card bg-white bg-opacity-70 rounded-3xl p-8 shadow-lg glow mb-8 fade-in">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-indigo-800 mb-8">{questions[step].text}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+
+
+
+                    
+                <DndContext collisionDetection={closestCenter} sensors={sensors} onDragEnd={handleDragEnd}>
+                    <SortableContext items={items} strategy={verticalListSortingStrategy}>
+                      {items.map((item) => (
+
+                        <SortableItem key={item.id} id={item.id} text={item.text} />
+                      ))}
+                    </SortableContext>
+                  </DndContext>
+
+                </div>
+            </div>
+            
+      
+            <div class="mb-8 flex justify-center">
+                <button onClick={handleNext} class="continue_btn start-btn  md:w-2/3 py-4 rounded-xl text-white font-bold text-lg shadow-lg disabled:opacity-70">
+                    Tiếp theo
+                </button>
+            </div>
+            </div>
+      
+
+
+
+        <div id="results-section" class="hidden">
+            <div class="result-card-disc mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-lg glow mt-20 mb-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-4">Your DISC Personality Type</h2>
+                    <p class="text-lg text-gray-600 mb-6">Based on your responses, <span id="user-name-display">you</span> are primarily:</p>
+                    
+                    <div id="personality-type" class="text-5xl font-bold mb-4">{highestCategory}</div>
+                    <div id="personality-title" class="text-2xl text-purple-700 mb-8">Dominance: {descriptions[highestCategory]}</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-purple-50 rounded-2xl p-6">
+                        <h3 class="text-xl font-bold text-purple-800 mb-4">Your Strengths</h3>
+                        <ul id="strengths-list" class="list-disc pl-5 space-y-2 text-gray-700"><li>Natural leader who takes initiative</li><li>Decisive and results-oriented</li><li>Embraces challenges head-on</li><li>Confident and direct communicator</li></ul>
+                    </div>
+                    
+                    <div class="bg-indigo-50 rounded-2xl p-6">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-4">Your Potential Growth Areas</h3>
+                        <ul id="growth-list" class="list-disc pl-5 space-y-2 text-gray-700"><li>Practice active listening</li><li>Consider others' feelings before acting</li><li>Develop patience with detailed processes</li><li>Balance assertiveness with collaboration</li></ul>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-2xl p-6 mb-8">
+                    <h3 class="text-xl font-bold text-blue-800 mb-4">How You Work Best</h3>
+                    <p id="work-style" class="text-gray-700">You thrive in fast-paced environments with clear goals and measurable results. You prefer direct communication and having autonomy to make decisions. To maximize your potential, seek leadership opportunities and projects where you can drive meaningful change.</p>
+                </div>
+                
+                <div class="text-center">
+                    <button onClick={handleNext3} id="tips-btn" class="mr-8 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 mb-4">
+                        See Development Tips
+                    </button>
+                    
+                    <button id="restart-btn" class="bg-white text-indigo-600 border border-indigo-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-indigo-50 transition duration-300">
+                        Take the Test Again
+                    </button>
+                </div>
+            </div>
+            
+            <div id="lumina-section" class="mb-20 lumina-section-disc mx-auto bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-3xl p-8 shadow-lg text-center">
+                <h3 class="text-2xl font-bold mb-4">Want to explore your results further?</h3>
+                <p class="mb-6">Chat with Lumina, our AI assistant, to learn more about your personality type and how to leverage your strengths.</p>
+                <button id="lumina-btn" class="bg-white text-indigo-700 font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+                    Ask Lumina About My Type
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div id="tips-section" class="hidden disc_wrapper_small">
+            <div class="bg-white bg-opacity-80 rounded-3xl p-8 md:p-12 shadow-lg glow mb-8 fade-in">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-indigo-800">Development Tips</h2>
+                    <button id="back-to-results" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                        Back to Results
+                    </button>
+                </div>
+                
+                <div id="tips-content" class="space-y-6"><h3 class="text-xl font-bold text-indigo-800 mb-4">Study Tips for Dominance Types</h3><ul class="space-y-4"><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Set clear goals and deadlines</strong> - Break your study sessions into timed challenges with specific outcomes.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Focus on application</strong> - Connect theoretical concepts to real-world applications and problem-solving.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Use competition</strong> - Challenge yourself against benchmarks or previous performance.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Take leadership in study groups</strong> - Organize and lead study sessions to reinforce your understanding.</li><li class="bg-white rounded-xl p-4 shadow-sm"><strong>Use direct learning methods</strong> - Opt for concise summaries, flashcards, and practice tests over lengthy readings.</li></ul></div>
+            </div>
+        </div>
+
+
+      </div>
+        {/* {!login ? (
           <>
           <div className="wrapper_Disc">
 
@@ -400,7 +673,7 @@ const DISCQuiz = () => {
           <div className="wrapper_Disc">
             <div className="content_Disc">
               {!showResult ? (
-                <div className="text-center">
+                <div className="flex-start">
                   <div className="guide">
                     <h2>Hướng dẫn</h2>
                     <p>
@@ -440,7 +713,7 @@ const DISCQuiz = () => {
               )}
             </div>
           </div>
-        )}
+        )} */}
       </>
   );
 };

@@ -1,230 +1,161 @@
-.wrapper_Disc{
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+        
+.disc_inner {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 50%, #fef3c7 100%);
     min-height: 100vh;
-    width: 100vw;
+    overflow-x: hidden;
+    animation: gradient 15s ease infinite;
+}
+
+
+.floating {
+    position: absolute;
+    animation-name: float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.start-btn {
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+}
+
+.start-btn:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5);
+}
+
+.start-btn:disabled {
+    background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%);
+    cursor: not-allowed;
+}
+
+.input-field {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.input-field:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.2);
+}
+
+.disc-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-position: center;
-    background-size: contain;
-    background-image: url('/FortuneTeller/bg_wall.jpg');
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
-.content_Disc{
+
+.disc-icon:hover {
+    transform: scale(1.1);
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(129, 140, 248, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(129, 140, 248, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(129, 140, 248, 0); }
+}
+.disc_wrapper{
+  min-height: 150vh
+}
+
+
+
+
+
+
+
+
+
+
+
+.continue_btn{
+    width: 200px;
+}
+
+
+.glow {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.circle-yel{
+    width: 35px;
+    height: 35px;
+}
+.text-width{
+    width: 85%;
+}
+.question-card{
+    width: 70vw;
+}
+.disc_wrapper_small{
+    min-height: 120vh;
+}
+.selected {
+    border: 3px solid #7c4dff;
+    background-color: rgba(124, 77, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+/* #results-section{
+    width: 60%;
+} */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.progress-dot {
+    transition: all 0.3s ease;
+}
+.lumina-section-disc{
     width: 80%;
 }
-/* .text-center *{
-    margin: 10px 0px;
-} */
-.result_title{
-  margin-bottom: 20px;
-}
-/* .Disc_result *{
-    margin: 20px 0px;
-} */
-.Disc_result{
-    padding: 20px;
-
-    border-radius: 10px;
-    box-shadow: 3px 3px 20px gray;
-}
-.guide{
-    margin-bottom: 30px;
+.result-card-disc {
+    animation: reveal 1s ease-out;
+    width: 70%;
 }
 
-.recharts-surface{
-    overflow: visible !important;
+@keyframes reveal {
+    0% { opacity: 0; transform: scale(0.8); }
+    70% { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
 }
-.disc_input{
-    width: 100%;
-    padding: 40px 20px;
-    flex-direction: column;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.disc_input_box:-webkit-autofill,
-.disc_input_box:-webkit-autofill:hover,
-.disc_input_box:-webkit-autofill:focus,
-.disc_input_box:-webkit-autofill:active {
-    -webkit-text-fill-color: #000 !important;
-}
-
-
-
-.disc_input_box{
-  color: black !important;
-}
-.container_disc  {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 400px;
-  width: 650px;
-  overflow: hidden;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 20px 8px #EBECF0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content {
-  position: absolute;
-  top: 50%;
-  transform: translatey(-50%);
-  text-align: justify;
-  color: black;
-  padding: 40px;
-  font-family: 'Merriweather', serif;
-  background-color: #EBECF0;
-}
-
-.segment h1 {
-  font-weight: 900;
-  text-align: center;
-}
-
-h3 {
-  font-weight: 300;
-}
-
-.flap {
-  width: 100%;
-  height: 100%;
-  background-color: #EBECF0;
-}
-
-.flap::before {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 50%;
-  background: url("/FortuneTeller/disc_1.png")  #f4f4f4;
-  background-position: 100%;
-  background-size: 50%;
-  background-repeat: no-repeat;
-  transition: 1s;
-  color: black;
-  text-align: start;
-  font-family: Pacifico;
-
-}
-
-.flap::after {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 50%;
-  right: 0;
-  background: url("/FortuneTeller/disc_2.png") #f4f4f4;
-  background-position: 5px;
-  background-size: 50%;
-  background-repeat: no-repeat;
-  transition: 1s;
-}
-
-.container_disc:hover .flap::after {
-  transform: translatex(300px);
-}
-
-.container_disc:hover .flap::before{
-  transform: translatex(-300px);
-}
-
-
-
-.disc_input {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: -0.2px;
-  font-size: 16px;
-}
-
-.DISC_form {
-  padding: 16px;
-  width: 320px; /* 16 * 20 */
-  margin: 0 auto;
-}
-
-.segment {
-  padding: 32px 0; /* 16 * 2 */
-  text-align: center;
-}
-.segment h1{
-  color: black;
-  font-family: Pacifico;
-}
-
-
-.disc_input button,
-.disc_input input{
-  border: 0;
-  outline: 0;
-  font-size: 16px;
-  border-radius: 320px; /* 16 * 20 */
-  padding: 16px;
-  background-color: #EBECF0;
-  text-shadow: 1px 1px 0 #FFF;
-}
-
-
-.disc_input label{
-  display: block;
-  margin-bottom: 24px; /* 16 * 1.5 */
-  width: 100%;
-}
-
-.disc_input input{
-  margin-right: 8px; /* 16 / 2 */
-  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-  width: 100%;
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.disc_input input:focus {
-  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-}
-
-.disc_input button{
-  color: #61677C;
-  font-weight: bold;
-  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.disc_input button:hover {
-  box-shadow: -2px -2px 5px #2c2c2c, 2px 2px 5px #BABECC;
-  color: black;
-}
-
-.disc_input button:active {
-  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-}
-
-.disc_input button .icon {
-  margin-right: 8px; /* 16 / 2 */
-}
-
-.disc_input button.red {
-  display: block;
-  width: 100%;
-  color: #AE1100;
-}
-
-
-@media screen and (max-width: 800px) {
-  .container_disc{
-    width: 90%;
-  }
-  .content_Disc{
-    margin: 20% 0;
-  }
-}
-

@@ -8,13 +8,40 @@ import vi from 'date-fns/locale/vi'
 import CustomLegend from "../Blog/CustomLegend";
 import { ElementDescriptions, ModalityDescriptions, planetDes } from "./Library_Astro";
 import domtoimage from "dom-to-image-more";
+import { da } from "date-fns/locale";
+
 
 
 const COLORS3 = ['#0088FE', '#00C49F', '#FFBB28'];
 const COLORS4 = ['#FF0000', '#FFD700', '#00C49F', '#0088FE'];
+const COLORS4T = ['	#EF4444B3', '#10B981B3', '#FACC15B3', '#3B82F6B3']
+const COLORS3T = ['#6366F1B3', '#8B5CF6B3', '#EC4899B3']
+
+
 const COLORS10 = [
   "#FFD700","#B0C4DE","#C0C0C0","#FF69B4","#FF4500","#D2691E","#708090","#40E0D0","#4169E1","#800080"
 ]
+
+
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div style={{
+        backgroundColor: 'black',
+        border: '2px solid rgba(212, 175, 55, 0.5)',
+        padding: '10px',
+        borderRadius: '5px'
+      }}>
+        <p><strong>{payload[0].name}:</strong></p>
+        <p>{payload[0].value}%</p>
+      </div>
+    );
+  }
+
+  return null;
+};
+
 const PlantColors = [
   {name: "Mặt trời", color: "#FFD700"},
   {name: "Mặt trăng", color: "#B0C4DE"},
@@ -28,6 +55,218 @@ const PlantColors = [
   {name: "Diêm vương", color: "#800080"}
 ]
 const AstroChartRequest = () => {
+
+
+  
+  
+  useEffect(() => {
+    // Create starry background
+  
+    
+    // Show floating elements with delay
+    const floatingElements = document.querySelectorAll('.floating');
+    floatingElements.forEach((el, index) => {
+        setTimeout(() => {
+            el.style.opacity = '0.6';
+        }, index * 200 + 500);
+    });
+    
+    // Name input and reveal button
+    const nameInput = document.getElementById('Name');
+    const revealButton = document.getElementById('revealButton');
+    const nameInputSection = document.getElementById('nameInputSection');
+    
+    
+    // Enable/disable button based on name input
+    
+    // nameInput.addEventListener('input', () => {
+    //     if (nameInput.value.trim().length > 0) {
+    //         revealButton.disabled = false;
+    //         revealButton.classList.add('pulse');
+    //     } else {
+    //         revealButton.disabled = true;
+    //         revealButton.classList.remove('pulse');
+    //     }
+    // });
+    
+    // Reveal button click handler
+    // revealButton.addEventListener('click', () => {
+    //     if (nameInput.value.trim().length > 0) {
+    //         nameInputSection.classList.add('hidden');
+    //         resultsSection.classList.remove('hidden');
+    //         resultsSection.classList.add('fade-in');
+            
+    //         // Initialize charts after revealing results
+    //         initCharts();
+    //     }
+    // });
+    
+    // Navigation between panels
+    const navItems = document.querySelectorAll('.nav-item');
+    const contentPanels = document.querySelectorAll('.content-panel');
+    
+    navItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            // Update active nav item
+            navItems.forEach(nav => nav.classList.remove('active'));
+            item.classList.add('active');
+            
+            // Show selected content panel
+            contentPanels.forEach(panel => panel.classList.remove('active'));
+            contentPanels[index].classList.add('active');
+        });
+    });
+});
+
+// Create random stars in the background
+function createStars() {
+    const starBg = document.getElementById('starBackground');
+    const starCount = 100;
+    
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Random position
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        
+        // Random size
+        const size = Math.random() * 3 + 1;
+        
+        // Random opacity and animation delay
+        const opacity = Math.random() * 0.5 + 0.1;
+        const animationDelay = Math.random() * 4 + 's';
+        
+        star.style.left = `${left}%`;
+        star.style.top = `${top}%`;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.opacity = opacity;
+        star.style.animationDelay = animationDelay;
+        
+        starBg.appendChild(star);
+    }
+}
+
+// Initialize charts
+function initCharts() {
+    // Planet Influence Chart (Bar Chart)
+    const planetCtx = document.getElementById('planetChart').getContext('2d');
+    const planetChart = new Chart(planetCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'],
+            datasets: [{
+                label: 'Influence Score',
+                data: [65, 70, 45, 85, 60, 55, 40, 30, 50, 35],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 159, 64, 0.7)',
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(201, 203, 207, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(153, 102, 255)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 99, 132)',
+                    'rgb(75, 192, 192)',
+                    'rgb(201, 203, 207)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(255, 159, 64)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+    
+    // Qualities Chart (Pie Chart)
+    const qualitiesCtx = document.getElementById('qualitiesChart').getContext('2d');
+    const qualitiesChart = new Chart(qualitiesCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Cardinal', 'Fixed', 'Mutable'],
+            datasets: [{
+                data: [35, 40, 25],
+                backgroundColor: [
+                    'rgba(99, 102, 241, 0.7)',
+                    'rgba(139, 92, 246, 0.7)',
+                    'rgba(236, 72, 153, 0.7)'
+                ],
+                borderColor: [
+                    'rgb(99, 102, 241)',
+                    'rgb(139, 92, 246)',
+                    'rgb(236, 72, 153)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+    
+    // Elements Chart (Pie Chart)
+    const elementsCtx = document.getElementById('elementsChart').getContext('2d');
+    const elementsChart = new Chart(elementsCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Fire', 'Earth', 'Air', 'Water'],
+            datasets: [{
+                data: [20, 30, 15, 35],
+                backgroundColor: [
+                    'rgba(239, 68, 68, 0.7)',
+                    'rgba(16, 185, 129, 0.7)',
+                    'rgba(250, 204, 21, 0.7)',
+                    'rgba(59, 130, 246, 0.7)'
+                ],
+                borderColor: [
+                    'rgb(239, 68, 68)',
+                    'rgb(16, 185, 129)',
+                    'rgb(250, 204, 21)',
+                    'rgb(59, 130, 246)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+}
+
+
   const [response, setResponse] = useState(null);
   const [response2, setResponse2] = useState(null)
   const [loading, setLoading] = useState(false);
@@ -84,20 +323,24 @@ const AstroChartRequest = () => {
   setDefaultLocale('vi');
 
   const fetchAstroChart = async (mode) => {
+    const resultsSection = document.getElementById('resultsSection');
+    const nameInputSection = document.getElementById('nameInputSection')
+    const [year, month, day] = date.split('-').map(Number)
+    const [hours, minute] = time.split(':').map(Number)
 
     if(mode == 1){
       const NamePerson = document.getElementById('Name').value;
       const BirthPlace = document.getElementById('place_birth').value
-      const inputWrapper = document.getElementsByClassName('content_box');
+      const inputWrapper = document.getElementsByClassName('content_Horoscope');
   
       setLoading(true);
       const data = {
         subject: {
-          year: date.getFullYear(),
-          month: date.getMonth() + 1,
-          day: date.getDate(),
-          hour:time.getHours(),
-          minute: time.getMinutes(),
+          year: year,
+          month: month,
+          day: day,
+          hour: hours,
+          minute: minute,
           longitude: 106.3425,
           latitude: 20.4491,
           city: BirthPlace,
@@ -125,8 +368,10 @@ const AstroChartRequest = () => {
           body: JSON.stringify(data),
         });
         const result = await res.json();
+        resultsSection.classList.remove('hidden')
+        nameInputSection.classList.add('hidden')
         setResponse(result);
-        inputWrapper[0].classList.add('nope');
+        // inputWrapper[0].classList.add('nope');
       } catch (error) {
         console.error("Error fetching astrology chart:", error);
       } finally {
@@ -138,7 +383,7 @@ const AstroChartRequest = () => {
       const NamePerson2 = document.getElementById('Name2').value;
       const BirthPlace2 = document.getElementById('place_birth2').value
 
-      const inputWrapper = document.getElementsByClassName('content_box');
+      const inputWrapper = document.getElementsByClassName('content_Horoscope');
   
       setLoading(true);
       const data = {
@@ -190,7 +435,7 @@ const AstroChartRequest = () => {
         });
         const result = await res.json();
         setResponse2(result);
-        inputWrapper[0].classList.add('nope');
+        // inputWrapper[0].classList.add('nope');
       } catch (error) {
         console.error("Error fetching astrology chart:", error);
       } finally {
@@ -210,7 +455,7 @@ useEffect(()=>{
   if(response){
 
 
-  const featureBox = document.getElementsByClassName('feature_box');
+  const featureBox = document.getElementsByClassName('tab-content');
   const btn_lists = document.getElementsByClassName('button_feature');
   const downloadButton = document.getElementsByClassName('feature_box_horoscope');
 
@@ -218,19 +463,19 @@ useEffect(()=>{
   for(let i = 0; i < btn_lists.length; i++){
     btn_lists[i].onclick = () => {
       for(let j = 0; j < btn_lists.length; j++){
-        featureBox[j].classList.add('nope');
-        btn_lists[j].classList.remove('chosen');
+        featureBox[j].classList.remove('active');
+        btn_lists[j].classList.remove('active');
       }
-      downloadButton[0].classList.add('nope');
-      featureBox[i].classList.remove('nope');
+      downloadButton[0].classList.add('active');
+      featureBox[i].classList.add('active');
       if(i == 0){
-        downloadButton[0].classList.remove('nope');
+        downloadButton[0].classList.add('active');
       }
-      btn_lists[i].classList.add('chosen')
+      btn_lists[i].classList.add('active')
     }
   }
 
-  let element_push = [];
+  let element_push = [0, 0, 0, 0];
   const element = document.querySelector('[kr\\:node="Elements_Percentages"]').querySelectorAll('*');
   for(let i = 1; i < element.length; i++){
     const number = element[i].innerHTML.match(/\d+/);
@@ -256,7 +501,7 @@ return null; // Nếu không có hành tinh này, trả về null
 }).filter(planet => planet !== null); // Loại bỏ những kết quả null
 
 
-let fixed = 0, mutable = 0, cardinal = 0;
+let absolute = 0, mutable = 0, cardinal = 0;
 
 let sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto;
 const filterZodiac = {
@@ -322,7 +567,7 @@ const master = {
 
 planetsInfo.forEach(planet =>{
 if(planet.quality == 'Fixed'){
-  fixed++;
+  absolute++;
 }else if(planet.quality == 'Mutable'){
   mutable++;
 }else{
@@ -386,7 +631,7 @@ pluto = filterZodiac["Sco"] + filterHouse["Eighth_House"] + filterPlanet["Pluto"
 
 
 // console.log(planetsInfo)
-// console.log(fixed, mutable, cardinal)
+// console.log(absolute, mutable, cardinal)
 
 // console.log(sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto)
 
@@ -396,7 +641,7 @@ setSumData([
   [
     {name: 'Linh hoạt', value: mutable},
     {name: 'Tiên Phong', value: cardinal},
-    {name: 'Kiên định', value: fixed},
+    {name: 'Kiên định', value: absolute},
   ],
   [
     {name: "Lửa", value: parseInt(element_push[1])},
@@ -441,13 +686,13 @@ setSumData([
     }
   }
 
-  const modalitySum = mutable + cardinal + fixed;
+  const modalitySum = mutable + cardinal + absolute;
 
 
   let check_balance_2 = 0;
   const perMut = (mutable / modalitySum)*100
   const perCar = (cardinal / modalitySum)*100
-  const perFix = (fixed / modalitySum)*100
+  const perFix = (absolute / modalitySum)*100
 
   const lmao = [perCar, perFix, perMut]
 
@@ -530,324 +775,275 @@ useEffect(()=>{
 },[SumData])
 
 
-console.log(response2)
+
+console.log(time, date)
 
 
   return (
-    <div className="wrapper">
-      <div className="content_box">
-
-
-        {swapInput ? (
-        <>
-          <h1>Lập lá số cá nhân<i onClick={()=>setSwapInput(!swapInput)} class="fa-solid fa-heart"></i></h1>
-          <div className="content_input">
-            <h2 form="Name">Họ Tên:</h2>
-            <input type="text" id="Name" name="Name"/>
-          </div>
-
-          <div className="content_input">
-          <h2>Ngày  / Tháng / Năm:</h2>
-          <DatePicker
-            selected={date}
-            onChange={(date)=> setDate(date)}
-            locale="vi"
-            dateFormat="dd/MM/yyyy"
-            isClearable
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-          />
-          </div>
-          <div className="content_input">
-          <h2>Giờ Sinh:</h2>
-          <DatePicker
-            selected={time}
-            onChange={(time)=> setTime(time)}
-            locale="vi"
-            showTimeSelect
-            showTimeSelectOnly
-            timeFormat="HH:mm"
-            dateFormat="HH:mm"
-          />
-          </div>
-          <div className="content_input">
-            <h2>Nơi Sinh:</h2>
-            <input type="text" id="place_birth"/>
-          </div>
-          <div className="get_chart_wrapper"> 
-          <button className="get_chart" onClick={() => fetchAstroChart(1)} disabled={loading}>
-          {loading ? "Loading..." : "Get Astro Chart"}
-          </button>
-          </div>
-        </>
-        ) : (
-        <>
-          <h1>Điểm hòa hợp đôi<i onClick={()=>setSwapInput(!swapInput)} class="fa-solid fa-person"></i></h1>
-          <div className="content_input">
-            <h2 form="Name">Họ Tên Người 1:</h2>
-            <input type="text" id="Name" name="Name"/>
-          </div>
-
-          <div className="content_input">
-          <h2>Ngày  / Tháng / Năm:</h2>
-          <DatePicker
-            selected={date}
-            onChange={(date)=> setDate(date)}
-            locale="vi"
-            dateFormat="dd/MM/yyyy"
-            isClearable
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-          />
-          </div>
-          <div className="content_input">
-          <h2>Giờ Sinh:</h2>
-          <DatePicker
-            selected={time}
-            onChange={(time)=> setTime(time)}
-            locale="vi"
-            showTimeSelect
-            showTimeSelectOnly
-            timeFormat="HH:mm"
-            dateFormat="HH:mm"
-          />
-          </div>
-          <div className="content_input">
-            <h2>Nơi Sinh:</h2>
-            <input type="text" id="place_birth"/>
-          </div>
-          <hr/>
-          {/* Người sinh 2 */}
-          <div className="content_input">
-            <h2 form="Name">Họ Tên Người 2:</h2>
-            <input type="text" id="Name2" name="Name"/>
-          </div>
-
-          <div className="content_input">
-          <h2>Ngày  / Tháng / Năm:</h2>
-          <DatePicker
-            selected={date2}
-            onChange={(date)=> setDate2(date)}
-            locale="vi"
-            dateFormat="dd/MM/yyyy"
-            isClearable
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-          />
-          </div>
-          <div className="content_input">
-          <h2>Giờ Sinh:</h2>
-          <DatePicker
-            selected={time2}
-            onChange={(time)=> setTime2(time)}
-            locale="vi"
-            showTimeSelect
-            showTimeSelectOnly
-            timeFormat="HH:mm"
-            dateFormat="HH:mm"
-          />
-          </div>
-          <div className="content_input">
-            <h2>Nơi Sinh:</h2>
-            <input type="text" id="place_birth2"/>
-          </div>
-
-
-          <div className="get_chart_wrapper"> 
-          <button className="get_chart" onClick={() => fetchAstroChart(2)} disabled={loading}>
-          {loading ? "Loading..." : "Get Astro Chart"}
-          </button>
-          </div>
-          </>
-        )}
-
-
-
+    <div className="astro_wrapper">
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+          <div class="floating text-4xl" style={{top: "15%",left: "10%",animationDuration: "6s", opacity: "0.6"}}>✨</div>
+          <div class="floating text-3xl" style={{top: "25%", right: "15%", animationDuration: "7s", opacity: "0.6"}}>🌙</div>
+          <div class="floating text-4xl" style={{bottom: "20%", left: "15%", animationDuration: "8s", opacity: "0.6"}}>⭐</div>
+          <div class="floating text-3xl" style={{bottom: "30%", right: "10%", animationDuration: "9s", opacity: "0.6"}}>🪐</div>
+          <div class="floating text-4xl" style={{top: "60%", left: "20%", animationDuration: "7.5s", opacity: "0.6"}}>💫</div>
+          <div class="floating text-3xl" style={{top: "40%", right: "25%", animationDuration: "6.5s", opacity: "0.6"}}>🌠</div>
       </div>
 
-      {response2 ? (
-        <div>
-          <div className="wrapper_feature relationship">
-            <h1>Mức độ hòa hợp:</h1>
-            <div className="feature_relationship">
-              <h2>{response2.data.first_subject.name}</h2>
-              <div className="heart">
+      <header class="w-full max-w-6xl mx-auto px-4 py-4 flex justify-center items-center">
+
+        
+        <div class="text-sm text-indigo-700 font-medium">
+            Astrology Map
+        </div>
+    </header>
+      <main class="w-full max-w-6xl mx-auto px-4 py-6">
+        {/* <!-- Name Input Section --> */}
+        <div id="nameInputSection" class="fade-in">
+            <div class="mb-10 bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl max-w-lg mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Your Cosmic Blueprint</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Discover how the stars and planets influence your personality, strengths, and potential paths.
+                    </p>
+                </div>
                 
-              </div>
-              <h2>{response2.data.second_subject.name}</h2>
-              <p>{Math.round((response2.score / 44)*100)}</p>
-            </div>
-            <p className="note">*Điểm trên thang 0-100</p>
-          </div>
-        </div>
-      ) : ""}
-
-      {response ? (
-        <div className="wrapper_feature">
-        <div className="feature">
-          <button className="button_feature">Bản đồ sao</button>
-          <button className="button_feature">Tính chất</button>
-          <button className="button_feature">Nguyên tố</button>
-          <button className="button_feature">Nhân tố hành tinh</button>
-        </div>
-        <div className="screen_shoot_horoscope_wrapper">
-          <div className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
-        </div>
-
-        <div id="hidden-content">
-          <div id="horoscope_img_download" className="feature_box horoscope_img_screen" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
-        </div>
-
-        <div className="feature_box_horoscope nope">
-          <button onClick={handleScreenshot}>Tải ảnh<i class="fa-solid fa-file-arrow-down fa-bounce"></i></button>
-        </div>
-
-
-        <div className="feature_box">
-        <h1>Cân bằng tính chất</h1>
-        <div className="feature_wrapper">
-        <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie data={SumData[0]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
-                {SumData[0].map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS3[index % COLORS3.length]} />
-                ))}
-              </Pie>
-              <Tooltip active={false}/>
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-          </div>
-          <div className="description">
-          <h1>Tính chất</h1>
-
-            {des.ifBalance_2 == 3 ? (
-                <div className="des_content">
-                  <h2>Cân bằng tổng thể</h2>
-                  <p>{ModalityDescriptions.overallBalance.description}</p>
+                {/* <!-- Name Input --> */}
+                <div class="mb-8">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">Enter your name to reveal your birth chart</label>
+                    <input type="text" id="Name" class="input-field w-full px-5 py-4 bg-white/70 rounded-xl text-gray-800 text-lg outline-none" placeholder="e.g., Linh, Kai"/>
                 </div>
-            ) : (
+                <div class="mb-8">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">Enter your Nơi sinh</label>
+                    <input type="text" id="place_birth" class="input-field w-full px-5 py-4 bg-white/70 rounded-xl text-gray-800 text-lg outline-none" placeholder="e.g., Linh, Kai"/>
+                </div>
 
-              des.modality.map((data, index)=>{
 
-                if(data == 1){
-                  return(
-                    <div className="des_content">
-                      <h2>Thiếu tính {ModalityDescriptions[index].name}</h2>
-                      <p>{ModalityDescriptions[index].lack}</p>
+                {/* <div className="mb-8">
+                <label for="name" class="block text-gray-700 font-medium mb-2">Ngày Tháng Năm</label>
+                <DatePicker
+                  selected={date}
+                  onChange={(date)=> setDate(date)}
+                  locale="vi"
+                  dateFormat="dd/MM/yyyy"
+                  isClearable
+                  showMonthDropdown
+                  showYearDropdown
+                  dropdownMode="select"
+                />
+                </div>
+
+                <div className="mb-8">
+                <label for="name" class="block text-gray-700 font-medium mb-2">Giờ sinh</label>
+                <DatePicker
+                  selected={time}
+                  onChange={(time)=> setTime(time)}
+                  locale="vi"
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeFormat="HH:mm"
+                  dateFormat="HH:mm"
+                />
+                </div> */}
+
+
+                    <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="birthdate" class="block text-sm font-medium text-gray-700 mb-1">Your Birth Date</label>
+                            <input value={date} onChange={(e)=> setDate(e.target.value)} type="date" id="birthdate" name="birthdate" class="number-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none" required=""/>
+                        </div>
+                        <div>
+                            <label for="birth-time" class="block text-sm font-medium text-gray-700 mb-1">Chọn giờ sinh:</label>
+                            <input value={time} onChange={(e)=> setTime(e.target.value)} type="time" placeholder="Enter your full name" id="birth-time"  class="number-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none" name="birth-time" required/>
+                        </div>
                     </div>
-                    )
-                }
-                if(data == 2){
-                  return(
-                    <div className="des_content">
-                      <h2>Nhiều tính {ModalityDescriptions[index].name}</h2>
-                      <p>{ModalityDescriptions[index].excess}</p>
-                    </div>
-                    )
-                }
-                })
-
-            )}
-             
-          </div>
-        </div>
-
-        <div className="feature_box nope">
-        <h1>Cân bằng nguyên tố</h1>
-        <div className="feature_wrapper">
-        <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie data={SumData[1]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
-                {SumData[1].map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS4[index % COLORS4.length]} />
-                ))}
-              </Pie>
-              <Tooltip active={false}/>
-              <Legend />
-            </PieChart>
-        </ResponsiveContainer>     
-        </div>  
-        <div className="description">
-              <h1>Nguyên tố</h1>
-              {des.ifBalance == 4 ? (
-                <div className="des_content">
-                    <h2>Cân bằng tổng thể</h2>
-                    <p>{ElementDescriptions.overallBalance.description}</p>
-                </div>              
-              ) : (
-                des.element.map((data, index)=>{
-
-            
-
-                  if(data == 1){
-                    return(
-                      <div className="des_content">
-                        <h2>Thiếu nguyên tố {ElementDescriptions[index].name}</h2>
-                        <p>{ElementDescriptions[index].lack}</p>
-                      </div>
-                      )
-                  }
-                  if(data == 2){
-                    return(
-                      <div className="des_content">
-                        <h2>Nhiều nguyên tố {ElementDescriptions[index].name}</h2>
-                        <p>{ElementDescriptions[index].excess}</p>
-                      </div>
-                      )
-                  }
-                  
-  
-                })
-              )}
-              
-          </div>
-        </div>
 
 
-        <div className="feature_box nope">
-          <h1>Các nhân tố</h1>
-            <div className="feature_wrapper_2">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={SumData[2]}>
-                    <XAxis hide tick={{ angle: -65, dy: 30, style: {fontWeight: 'bold', fill: 'white', fontSize: '11px'} }} dataKey="name"/>
-                    <YAxis domain={[0, 100]} tickCount={6}  tick={{  style: {  fontWeight: 'bold', fill: 'white', fontSize: '18px'} }}allowDecimals={false} />
-                    <Tooltip />
-                    <Bar dataKey="value" fill="#8884d8">
-                        {SumData[2].map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS10[index % COLORS10.length]} />
-                        ))}
-            
-                    </Bar>
-            
-                  </BarChart>
-                </ResponsiveContainer>
-                <div className="adj_Astro">
-                      <CustomLegend data={PlantColors}/>                      
+
+                
+                {/* <!-- Reveal Button --> */}
+                <div class="flex justify-center">
+                    <button id="revealButton" className="reveal-btn w-full md:w-2/3 py-4 rounded-xl text-white font-bold text-lg shadow-lg disabled:opacity-70" onClick={() => fetchAstroChart(1)} disabled={loading}>
+                    {loading ? "Loading..." : "Get Astro Chart"}
+                    </button>
                 </div>
             </div>
-            <div className="description">
-
-              {SumData[2].map((data, index)=>{
-                if(index > 6){
-                  return null
-                }
-                return(
-                  <div className="des_content">
-                    <h2>Mẫu người {data.name} - Điểm {data.value}</h2>
-                    <p>{planetDes[index]}</p>
-                  </div>
-                )
-              })}
-          </div>
-          </div>
         </div>
-      ) : ""}
+        
+        {/* <!-- Results Section --> */}
+        <div id="resultsSection" class="hidden">
+            <div class="flex flex-col md:flex-row gap-6">
+                {/* <!-- Sidebar Navigation (Vertical on desktop, horizontal on mobile) --> */}
+                <div class="sidebar bg-white/40 backdrop-blur-sm rounded-2xl p-4 md:w-64 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-x-visible">
+                    <button class="nav-item active flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span class="text-xl">🌌</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Birth Chart</span>
+                    </button>
+                    
+                    <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span class="text-xl">📊</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Planet Influence</span>
+                    </button>
+                    
+                    <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span class="text-xl">🔵</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Qualities</span>
+                    </button>
+                    
+                    <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span class="text-xl">🟣</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Elements</span>
+                    </button>
+                </div>
+                
+                {/* <!-- Content Panel --> */}
+                <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 flex-1 shadow-lg">
+                    {/* <!-- Birth Chart Panel --> */}
+                    <div id="birthChartPanel" class="content-panel active">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Birth Chart</h2>
+                        <p class="text-gray-600 mb-6">This celestial map shows the position of planets at the time of your birth, revealing your cosmic blueprint.</p>
+                        
+                        <div class="birth-chart-container">
+                            {/* <!-- SVG Birth Chart --> */}
 
+                            <div className="screen_shoot_horoscope_wrapper">
+                              {(response) ? (
+                                  <div className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
+                              ) : ("")}
+                              
+                            </div>
+                            
+                            {/* <!-- Planet Markers --> */}
+
+                        </div>
+                        
+                        <div class="mt-8 bg-indigo-50 rounded-xl p-4">
+                            <h3 class="font-semibold text-indigo-800 mb-2">Your Dominant Signs</h3>
+
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Leo Sun</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Pisces Moon</span>
+                                <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Virgo Rising</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* <!-- Planet Influence Panel --> */}
+                    <div id="planetInfluencePanel" class="content-panel">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Planet Influence</h2>
+                        <p class="text-gray-600 mb-6">See how strongly each planet influences your personality and life path.</p>
+                        
+                        <div class="plant_inner">
+                              <ResponsiveContainer width="100%" height="100%">
+                              <BarChart data={SumData[2]}>
+                                  <XAxis hide tick={{ angle: -65, dy: 30, style: {fontWeight: 'bold', fill: 'white', fontSize: '11px'} }} dataKey="name"/>
+                                  <YAxis domain={[0, 100]} tickCount={6}  tick={{  style: { fill: 'black', fontSize: '18px'} }}allowDecimals={false} />
+                                  <Tooltip />
+                                  <Bar dataKey="value" fill="#8884d8">
+                                      {SumData[2].map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS10[index % COLORS10.length]} />
+                                      ))}
+                          
+                                  </Bar>
+                          
+                                </BarChart>
+                              </ResponsiveContainer>
+                              <div className="adj_Astro">
+                                <CustomLegend data={PlantColors}/>                      
+                              </div>
+                        </div>
+                        
+                        <div class="mt-8 bg-indigo-50 rounded-xl p-4">
+                            <h3 class="font-semibold text-indigo-800 mb-2">Your Dominant Planet</h3>
+                            <p class="text-gray-700">
+                                <span class="font-medium">Venus</span> - You're naturally drawn to beauty, harmony, and relationships. Your charm and diplomatic skills help you connect with others.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    {/* <!-- Qualities Panel --> */}
+                    <div id="qualitiesPanel" class="content-panel">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Astrological Qualities</h2>
+                        <p class="text-gray-600 mb-6">Your distribution of Cardinal, Fixed, and Mutable energies shows how you approach challenges and change.</p>
+                        
+                        <div class="flex justify-center">
+                            <div class="quality_inner">
+                            <ResponsiveContainer width="100%" height={300}>
+                              <PieChart>
+                                <Pie data={SumData[0]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
+                                  {SumData[0].map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS3T[index % COLORS3T.length]} />
+                                  ))}
+                                </Pie>
+                                <Tooltip active={false}/>
+                                <Legend />
+                              </PieChart>
+                            </ResponsiveContainer>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 rounded-xl p-4">
+                                <h3 class="font-semibold text-indigo-800 mb-1">Cardinal (35%)</h3>
+                                <p class="text-sm text-gray-600">Initiative, leadership, action-oriented</p>
+                            </div>
+                            <div class="bg-purple-50 rounded-xl p-4">
+                                <h3 class="font-semibold text-purple-800 mb-1">Fixed (40%)</h3>
+                                <p class="text-sm text-gray-600">Stability, determination, persistence</p>
+                            </div>
+                            <div class="bg-pink-50 rounded-xl p-4">
+                                <h3 class="font-semibold text-pink-800 mb-1">Mutable (25%)</h3>
+                                <p class="text-sm text-gray-600">Adaptability, flexibility, versatility</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* <!-- Elements Panel --> */}
+                    <div id="elementsPanel" class="content-panel">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Elemental Balance</h2>
+                        <p class="text-gray-600 mb-6">Your distribution of Fire, Earth, Air, and Water elements reveals your fundamental temperament.</p>
+                        
+                        <div class="flex justify-center">
+                            <div class="elements_inner">
+                            <ResponsiveContainer width="100%" height={300}>
+                                <PieChart>
+                                  <Pie data={SumData[1]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
+                                    {SumData[1].map((entry, index) => (
+                                      <Cell key={`cell-${index}`} fill={COLORS4T[index % COLORS4T.length]} />
+                                    ))}
+                                  </Pie>
+                                  <Tooltip active={false}/>
+                                  <Legend />
+                                </PieChart>
+                            </ResponsiveContainer> 
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-red-50 rounded-xl p-4">
+                                <h3 class="font-semibold text-red-800 mb-1">Fire (20%)</h3>
+                                <p class="text-sm text-gray-600">Passion, energy, inspiration</p>
+                            </div>
+                            <div class="bg-green-50 rounded-xl p-4">
+                                <h3 class="font-semibold text-green-800 mb-1">Earth (30%)</h3>
+                                <p class="text-sm text-gray-600">Practicality, stability, reliability</p>
+                            </div>
+                            <div class="bg-yellow-50 rounded-xl p-4">
+                                <h3 class="font-semibold text-yellow-800 mb-1">Air (15%)</h3>
+                                <p class="text-sm text-gray-600">Intellect, communication, social</p>
+                            </div>
+                            <div class="bg-blue-50 rounded-xl p-4">
+                                <h3 class="font-semibold text-blue-800 mb-1">Water (35%)</h3>
+                                <p class="text-sm text-gray-600">Emotion, intuition, sensitivity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     </div>
+    
   );
 };
 

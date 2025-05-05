@@ -7,11 +7,13 @@
     box-sizing: border-box;
 
 }
-body{
-    overflow-x: hidden;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f8f7ff;
 }
+
+
 
 html {
     scroll-behavior: smooth;
