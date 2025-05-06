@@ -1,6 +1,6 @@
 
 import './HomeStyle.css'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 function Home(){
 //     const [isExpanded, setIsExpanded] = useState(null)
@@ -1179,6 +1179,29 @@ function Home(){
 
 //     },[])
 
+    const sectionRef = useRef(null);
+
+    const handleScroll = () => {
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+
+    const navigate = useNavigate();
+
+    const handleClick = (mode) => {
+    switch (mode){
+        case 1: navigate('/Guide'); break;
+        case 2: navigate('/Numerology'); break;
+        case 3: navigate('/MatrixDestiny'); break;
+        case 4: navigate('/Astrology'); break;
+        case 5: navigate('/DISC'); break;
+        case 6: navigate('/Tarot'); break;
+
+    }
+
+    ; // chuyển đến trang /dashboard
+    };
+
 
 
 
@@ -1189,7 +1212,8 @@ function Home(){
                 <div class="max-w-4xl mx-auto text-center">
                     <h1 class="text-3xl md:text-5xl font-bold mb-6">Unlock Your True Potential by Understanding Yourself</h1>
                     <p class="text-lg md:text-xl mb-10 opacity-90">Lifemap helps you discover your unique strengths, talents, and path forward through powerful self-discovery tools designed especially for students like you.</p>
-                    <button class="cta-button px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg">Start Your Self-Discovery Journey</button>
+                    <button onClick={handleScroll} class="cta-button fir_cta px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg">Start Self-Discovery Journey</button>
+                    <button onClick={handleClick} class="cta-button sec_cta px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg">Start With AI Guide</button>
                 </div>
             </div>
         </section>
@@ -1223,7 +1247,7 @@ function Home(){
         </section>
 
 
-        <section class="py-16 bg-gray-50">
+        <section ref={sectionRef} class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Powerful Self-Discovery Tools</h2>
@@ -1242,7 +1266,7 @@ function Home(){
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Numerology</h3>
                         <p class="text-gray-600 mb-4">Discover how numbers influence your personality, talents, and life path.</p>
-                        <button class="w-full py-2 bg-purple-100 text-purple-600 rounded-lg font-medium hover:bg-purple-200 transition-colors">Discover</button>
+                        <button onClick={()=>{handleClick(2)}} class="w-full py-2 bg-purple-100 text-purple-600 rounded-lg font-medium hover:bg-purple-200 transition-colors">Discover</button>
                     </div>
                 </div>
                 
@@ -1257,7 +1281,7 @@ function Home(){
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Matrix of Destiny</h3>
                         <p class="text-gray-600 mb-4">Uncover your life purpose and potential through your unique birth matrix.</p>
-                        <button class="w-full py-2 bg-blue-100 text-blue-600 rounded-lg font-medium hover:bg-blue-200 transition-colors">Discover</button>
+                        <button onClick={()=>{handleClick(3)}} class="w-full py-2 bg-blue-100 text-blue-600 rounded-lg font-medium hover:bg-blue-200 transition-colors">Discover</button>
                     </div>
                 </div>
                 
@@ -1272,7 +1296,7 @@ function Home(){
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Astrology</h3>
                         <p class="text-gray-600 mb-4">Learn how celestial bodies at your birth influence your personality and life.</p>
-                        <button class="w-full py-2 bg-indigo-100 text-indigo-600 rounded-lg font-medium hover:bg-indigo-200 transition-colors">Discover</button>
+                        <button onClick={()=>{handleClick(4)}} class="w-full py-2 bg-indigo-100 text-indigo-600 rounded-lg font-medium hover:bg-indigo-200 transition-colors">Discover</button>
                     </div>
                 </div>
                 
@@ -1287,7 +1311,7 @@ function Home(){
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">DISC Personality</h3>
                         <p class="text-gray-600 mb-4">Identify your behavioral style and learn how you interact with others.</p>
-                        <button class="w-full py-2 bg-green-100 text-green-600 rounded-lg font-medium hover:bg-green-200 transition-colors">Discover</button>
+                        <button onClick={()=>{handleClick(5)}} class="w-full py-2 bg-green-100 text-green-600 rounded-lg font-medium hover:bg-green-200 transition-colors">Discover</button>
                     </div>
                 </div>
                 
@@ -1302,7 +1326,7 @@ function Home(){
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Tarot Insights</h3>
                         <p class="text-gray-600 mb-4">Gain wisdom and perspective through symbolic card readings and reflection.</p>
-                        <button class="w-full py-2 bg-amber-100 text-amber-600 rounded-lg font-medium hover:bg-amber-200 transition-colors">Discover</button>
+                        <button onClick={()=>{handleClick(6)}} class="w-full py-2 bg-amber-100 text-amber-600 rounded-lg font-medium hover:bg-amber-200 transition-colors">Discover</button>
                     </div>
                 </div>
             </div>

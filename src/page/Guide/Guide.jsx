@@ -40,7 +40,7 @@ const sendMessage = async () => {
       },
       {
         headers: {
-          Authorization: "Bearer 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", // Thay bằng API Key từ OpenRouter
+          Authorization: "Bearer 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", // Thay bằng API Key từ OpenRouter
           "HTTP-Referer": "http://localhost:5173", // Thay bằng URL app của bạn
           "Content-Type": "application/json",
         },

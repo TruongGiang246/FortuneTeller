@@ -20,7 +20,7 @@ const publicRoutes = [
     {path: '/Numerology', component: Numerology},
     {path: '/Personal_Report', component: Blog},
     {path: '/DISC', component: DISCQuiz},
-    {path: '/Horoscope', component: AstroChartRequest},
+    {path: '/Astrology', component: AstroChartRequest},
     {path: '/Personal_Report/Report', component: Report},
     {path: '/Login', component: Login},
     {path: '/Guide', component: Guide}

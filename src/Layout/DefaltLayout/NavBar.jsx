@@ -44,7 +44,7 @@ function NavBar({children}){
                     </button>
                 </header>
 
-        <div className='py-3 h-20'></div>
+        <div className='py-3 box_height_nav'></div>
 
 
         <div id="navDrawer" class="nav-drawer fixed top-16 left-0 right-0 z-20 p-4 rounded-b-3xl">
@@ -72,7 +72,7 @@ function NavBar({children}){
                     <span class="font-medium">Numerology</span>
                 </div></Link>
                 
-                <Link onClick={handleNav} to="/Horoscope"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/Astrology"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                     </svg>
@@ -81,7 +81,12 @@ function NavBar({children}){
                 
                 <Link onClick={handleNav} to="/MatrixDestiny"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                        <circle cx="12" cy="7" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+                        <circle cx="6" cy="12" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+                        <circle cx="18" cy="12" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+                        <circle cx="12" cy="17" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+                        <line x1="12" y1="10" x2="12" y2="14" stroke-width="2" stroke-linecap="round"></line>
+                        <line x1="9" y1="12" x2="15" y2="12" stroke-width="2" stroke-linecap="round"></line>
                     </svg>
                     <span class="font-medium">Matrix of Destiny</span>
                 </div></Link>
@@ -113,12 +118,19 @@ function NavBar({children}){
                 </div></Link>
 
                 <Link onClick={handleNav} to="/Login"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                    {menuData ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                    </svg>
+                    ) : (
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         <path d="M10 17L15 12L10 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         <path d="M15 12H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
-                    <span class="font-medium">Login</span>
+
+                    )}
+                    <span class="font-medium">{menuData ? ("Dashboard") : ("Login")}</span>
                 </div></Link>
             </div>
         </div>

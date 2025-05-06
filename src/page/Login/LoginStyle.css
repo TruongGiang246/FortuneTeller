@@ -49,3 +49,210 @@ body {
     min-height: 100vh;
     position: relative;
 }
+
+#Logout{
+    color: white;
+    font-weight: 800;
+}
+
+
+
+:root {
+    --lavender: #e6e6fa;
+    --peach: #ffdab9;
+    --light-blue: #add8e6;
+    --soft-pink: #ffb6c1;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ff 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.mystic-container {
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+}
+
+.glow-effect {
+    box-shadow: 0 0 15px rgba(186, 104, 200, 0.5);
+    transition: all 0.3s ease;
+}
+
+.glow-effect:hover {
+    box-shadow: 0 0 25px rgba(186, 104, 200, 0.8);
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.rotate-slow {
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.pulse-glow {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(186, 104, 200, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(186, 104, 200, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(186, 104, 200, 0.5); }
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+    opacity: 0.7;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.2; }
+}
+
+.progress-circle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.progress-circle svg {
+    transform: rotate(-90deg);
+}
+
+.progress-circle circle {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.progress-circle .bg {
+    stroke: rgba(255, 255, 255, 0.3);
+}
+
+.progress-circle .progress {
+    stroke: url(#gradient);
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.chat-bubble {
+    position: relative;
+}
+
+.chat-bubble::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px 10px 10px 0;
+    border-style: solid;
+    border-color: transparent rgba(255, 255, 255, 0.7) transparent transparent;
+}
+
+.lumina-avatar {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.4));
+    border-radius: 50%;
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(173, 216, 230, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.logo-glow {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+.contaier_dash{
+    width: 80%;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .progress-tracker {
+        position: static;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .contaier_dash{
+        width: 93%;
+    }
+    .progress-tracker-inner {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 1rem;
+    }
+    
+    .tool-progress {
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.crystal-ball {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.4));
+    border-radius: 50%;
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(173, 216, 230, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.crystal-ball::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at 70% 70%, transparent 60%, rgba(255, 255, 255, 0.3) 100%);
+    border-radius: 50%;
+}
+

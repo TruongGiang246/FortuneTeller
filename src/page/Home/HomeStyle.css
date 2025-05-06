@@ -15,6 +15,12 @@
 .feature-card:hover .feature-icon {
     transform: scale(1.1);
 }
+.fir_cta{
+    margin-right: 1rem;
+}
+.sec_cta{
+    margin-left: 1rem;
+}
 .cta-button {
     background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
     transition: all 0.3s ease;
@@ -22,4 +28,13 @@
 .cta-button:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+@media (max-width: 650px) {
+    .fir_cta{
+        margin: 0;
+    }
+    .sec_cta{
+        margin-top: 1.5rem;
+        margin-right: 0;
+    }
 }

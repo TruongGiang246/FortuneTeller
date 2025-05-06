@@ -16,6 +16,7 @@ function Login({setMenuData}) {
 
   const handleLogout = () => {
     localStorage.removeItem("user_gmail");
+    localStorage.removeItem("user")
     setMenuData(null)
     setUser(null);
   };
