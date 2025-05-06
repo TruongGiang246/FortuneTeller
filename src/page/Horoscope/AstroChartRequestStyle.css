@@ -1,9 +1,19 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 .astro_wrapper{
     position: relative;
     min-height: 100vh;
-}      
+}  
+#hidden-content{
+    position: absolute;
+    width: 1200px;
+    top: -9999px;
+}   
+
+.horoscope_img_screen{
+    height: 100%;
+    width: 100%;
+
+} 
 .adj_Astro{
     display: flex;
     align-items: center;

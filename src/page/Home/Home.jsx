@@ -1213,7 +1213,7 @@ function Home(){
                     <h1 class="text-3xl md:text-5xl font-bold mb-6">Unlock Your True Potential by Understanding Yourself</h1>
                     <p class="text-lg md:text-xl mb-10 opacity-90">Lifemap helps you discover your unique strengths, talents, and path forward through powerful self-discovery tools designed especially for students like you.</p>
                     <button onClick={handleScroll} class="cta-button fir_cta px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg">Start Self-Discovery Journey</button>
-                    <button onClick={handleClick} class="cta-button sec_cta px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg">Start With AI Guide</button>
+                    <button onClick={()=>handleClick(1)} class="cta-button sec_cta px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg">Start With AI Guide</button>
                 </div>
             </div>
         </section>

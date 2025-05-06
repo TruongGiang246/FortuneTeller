@@ -900,18 +900,25 @@ console.log(time, date)
                 <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 flex-1 shadow-lg">
                     {/* <!-- Birth Chart Panel --> */}
                     <div id="birthChartPanel" class="content-panel active">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Birth Chart</h2>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 inline-block">Your Birth Chart</h2>
+                        <button onClick={handleScreenshot} class="inline-block ml-3 cta-button hover:bg-white/70 text-white font-medium py-1 px-5 rounded-full transition-all">
+                        <i class="fa-regular fa-circle-down" style={{color: "#ffffff"}}></i>
+                        </button>
                         <p class="text-gray-600 mb-6">This celestial map shows the position of planets at the time of your birth, revealing your cosmic blueprint.</p>
                         
                         <div class="birth-chart-container">
                             {/* <!-- SVG Birth Chart --> */}
-
-                            <div className="screen_shoot_horoscope_wrapper">
-                              {(response) ? (
-                                  <div className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
-                              ) : ("")}
-                              
+                            {(response) ? (
+                            <>
+                            <div className="screen_shoot_horoscope_wrapper">                          
+                                  <div className="feature_box nope horoscope_img" dangerouslySetInnerHTML={{ __html: response.chart }}></div>                           
                             </div>
+
+                            <div id="hidden-content">
+                              <div id="horoscope_img_download" className="horoscope_img_screen" dangerouslySetInnerHTML={{ __html: response.chart }}></div>
+                            </div>
+                            </>
+                          ) : ("")}
                             
                             {/* <!-- Planet Markers --> */}
 
