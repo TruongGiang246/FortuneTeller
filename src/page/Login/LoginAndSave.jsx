@@ -4,6 +4,8 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider, db } from "./fireBase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { getUserData } from "./getUserData";
+import { serverTimestamp } from "firebase/firestore";
+import { setPersistence, browserLocalPersistence } from "firebase/auth";
 import "./LoginStyle.css"
 
 
@@ -11,7 +13,11 @@ const LoginAndSave = ({ onLoginSuccess, setMenuData }) => {
 
   
   const handleLogin = async () => {
+
+
+
     try {
+      await setPersistence(auth, browserLocalPersistence);
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       const userData = {

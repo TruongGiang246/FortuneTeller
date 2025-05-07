@@ -1,7 +1,7 @@
 import './Guide.css'
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from "react-markdown";
-import remarkBreaks from "remark-breaks"; // xuống dòng khi có \n
+import remarkBreaks from "remark-breaks";
 import axios from 'axios';
 function Guide(){
 

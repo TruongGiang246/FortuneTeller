@@ -6,7 +6,16 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-
+.box_erase{
+    right: 1rem;
+    top: 1rem;
+    color: rgb(255, 255, 255);
+}
+.erase_btn_format{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
 .floating {
     position: absolute;
     animation-name: float;
@@ -49,7 +58,8 @@ body {
     position: relative;
 }
 
-#Logout{
+#Logout,
+#save-btn{
     color: white;
     font-weight: 800;
 }

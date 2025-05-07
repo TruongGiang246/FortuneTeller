@@ -277,8 +277,14 @@ function initCharts() {
   const [time, setTime] = useState(new Date(2025, 0, 1, 0, 0));
   const [date2, setDate2] = useState(new Date(2025, 0, 1, 0, 0));
   const [time2, setTime2] = useState(new Date(2025, 0, 1, 0, 0))
+  const [tick, setTick] = useState(false);
 
   const handleScreenshot = async () => {
+
+    setTick(prev => !prev);
+    setTimeout(() => {
+      setTick(prev => !prev);
+    }, 1200);
         
     const element = document.getElementById("horoscope_img_download");
 
@@ -286,6 +292,7 @@ function initCharts() {
     const link = document.createElement("a");
     link.download = "personal_horoscope.png";
     link.href = dataUrl;
+
     
     link.click();
     });
@@ -905,7 +912,19 @@ console.log(time, date)
                     <div id="birthChartPanel" class="content-panel active">
                         <h2 class="text-2xl font-bold text-gray-800 mb-6 inline-block">Your Birth Chart</h2>
                         <button onClick={handleScreenshot} class="inline-block ml-3 cta-button hover:bg-white/70 text-white font-medium py-1 px-5 rounded-full transition-all">
-                        <i class="fa-regular fa-circle-down" style={{color: "#ffffff"}}></i>
+                        {tick ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>                         
+                        ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M12 3v13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M7 12l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M3 17v4h18v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                        )}
+
+
                         </button>
                         <p class="text-gray-600 mb-6">This celestial map shows the position of planets at the time of your birth, revealing your cosmic blueprint.</p>
                         

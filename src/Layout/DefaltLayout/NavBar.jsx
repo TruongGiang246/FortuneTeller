@@ -117,7 +117,18 @@ function NavBar({children}){
                     <span class="font-medium">Guide</span>
                 </div></Link>
 
-                <Link onClick={handleNav} to="/Login"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+
+                <Link onClick={handleNav} to="/Resource"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <rect x="3" y="5" width="18" height="14" rx="2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
+                        <path d="M10 9l5 3-5 3V9z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M3 19h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <span class="font-medium">Resource</span>
+                </div></Link>
+
+                <Link onClick={handleNav} to="/Login">
+                <div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
                     {menuData ? (
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
@@ -131,7 +142,10 @@ function NavBar({children}){
 
                     )}
                     <span class="font-medium">{menuData ? ("Dashboard") : ("Login")}</span>
-                </div></Link>
+                </div>
+                </Link>
+
+
             </div>
         </div>
     

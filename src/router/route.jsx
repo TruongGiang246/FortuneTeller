@@ -11,6 +11,7 @@ import Report from '../page/Blog/Report'
 import { Navigate } from 'react-router-dom'
 import Login from '../page/Login/Login'
 import Guide from '../page/Guide/Guide'
+import Resource from '../page/Resource/Resource'
 const publicRoutes = [
     {path: '*', component: Navigate, nav: true},
     {path: '/', component: HomePage},
@@ -22,8 +23,9 @@ const publicRoutes = [
     {path: '/DISC', component: DISCQuiz},
     {path: '/Astrology', component: AstroChartRequest},
     {path: '/Personal_Report/Report', component: Report},
-    {path: '/Login', component: Login},
-    {path: '/Guide', component: Guide}
+    {path: '/Login', component: Login, LoginAuth: true},
+    {path: '/Guide', component: Guide},
+    {path: '/Resource', component: Resource}
 ]
 
 export{publicRoutes}

@@ -2,9 +2,33 @@
 import React, { useState, useEffect, useRef } from "react";
 import { getUserData, updateUserData } from "./getUserData";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 
 
 const Dashboard = ({ user, onLogout, setMenuData }) => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    let names = [];
+    let dataList;
+    if(storedUser){
+      names = Object.keys(storedUser); 
+      dataList = Object.values(storedUser);
+    }
+    const [deleteConfirm, setDeleteConfirm] = useState(null);
+    const handleDelete = (indexToDelete) => {
+        const userData = JSON.parse(localStorage.getItem("user")) || {};
+        delete userData[names[indexToDelete]];
+        localStorage.setItem("user", JSON.stringify(userData));
+    
+        // Cập nhật danh sách tên (nếu bạn hiển thị từ state)
+    
+    
+        setDeleteConfirm(null);
+      };
+    
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
 
     const endRef = useRef(null);
@@ -25,79 +49,90 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
         }
     }, [messages]);
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    
     console.log(storedUser)
-    const sendMessage = async () => {
+    const sendMessage = async (mode) => {
         
     
         const arrayValue = Object.values(storedUser)[profile]
-
         let ProfileToAI = `Dưới đây là thông tin một người dùng:`
+        let newMessages = []
+        let fakeMesage = []
 
-        if(arrayValue.numerology){
-            ProfileToAI += `
-    Thần số học:
-    - Số Đường đời(Lifepath): ${arrayValue.numerology[0]}
-    - Số Sứ mệnh (DestinyNumber): ${arrayValue.numerology[1]}
-    - Số Linh hồn(SoulNumber): ${arrayValue.numerology[2]}
-    - Số Biểu lộ(PersonalityNumber): ${arrayValue.numerology[3]}
-    - Số Thái độ(MatureNumber): ${arrayValue.numerology[4]}
-    - Số Trưởng thành(BirthDayNumber): ${arrayValue.numerology[5]}
-    - Số Ngày sinh(AttitudeNumber): ${arrayValue.numerology[6]}          
-        `
-        }
-        if(arrayValue.disc){
-            ProfileToAI  +=  `
-    Chỉ số DISC:
-    - Chỉ số D(Dominance): ${arrayValue.disc[0][1]} / 100
-    - Chỉ số I(Influence): ${arrayValue.disc[1][1]} / 100
-    - Chỉ số S(Steadiness): ${arrayValue.disc[2][1]} / 100
-    - Chỉ số C(Conscientiousness): ${arrayValue.disc[3][1]} / 100
-        `
-        }
-        if(arrayValue.horoscope){
-            ProfileToAI += `
-    Chiêm tinh học:
-    - Tính chất:
-      - Linh hoạt(Mutable): ${arrayValue.horoscope[0][0].value} / 10
-      - Tiên phong(Cardinal): ${arrayValue.horoscope[0][1].value} / 10
-      - Kiên định(Fixed): ${arrayValue.horoscope[0][2].value} / 10
-    - Tỉ lệ nguyên tố:
-      - Lửa(Fire): ${arrayValue.horoscope[1][0].value}%
-      - Đất(Earth): ${arrayValue.horoscope[1][1].value}%
-      - Khí(Air): ${arrayValue.horoscope[1][2].value}%
-      - Nước(Water): ${arrayValue.horoscope[1][3].value}%
-    - Năng lượng các hành tinh:
-      - Mặt trời(Sun): ${arrayValue.horoscope[2][0].value} / 100
-      - Mặt trăng(Moon): ${arrayValue.horoscope[2][1].value} / 100
-      - Thủy tinh(Mercury): ${arrayValue.horoscope[2][2].value} / 100
-      - Kim tinh(Venus): ${arrayValue.horoscope[2][3].value} / 100
-      - Sao hỏa(Mars): ${arrayValue.horoscope[2][4].value} / 100
-      - Sao mộc(Jupiter): ${arrayValue.horoscope[2][5].value} / 100
-      - Sao thổ(Saturn): ${arrayValue.horoscope[2][6].value} / 100
-      - Thiên vương tinh(Uranus): ${arrayValue.horoscope[2][7].value} / 100
-      - Hải vương tinh(Neptune): ${arrayValue.horoscope[2][8].value} / 100
-      - Diêm vương tinh(Pluto): ${arrayValue.horoscope[2][9].value} / 100
-        `
+        switch (mode){
+            case 1:
+                newMessages = [...messages, { role: "user", content: input }];
+                setMessages(newMessages)
+            break;
+
+            case 2:
+                if(arrayValue.numerology){
+                    ProfileToAI += `
+            Thần số học:
+            - Số Đường đời(Lifepath): ${arrayValue.numerology[0]}
+            - Số Sứ mệnh (DestinyNumber): ${arrayValue.numerology[1]}
+            - Số Linh hồn(SoulNumber): ${arrayValue.numerology[2]}
+            - Số Biểu lộ(PersonalityNumber): ${arrayValue.numerology[3]}
+            - Số Thái độ(MatureNumber): ${arrayValue.numerology[4]}
+            - Số Trưởng thành(BirthDayNumber): ${arrayValue.numerology[5]}
+            - Số Ngày sinh(AttitudeNumber): ${arrayValue.numerology[6]}          
+                `
+                }
+                if(arrayValue.disc){
+                    ProfileToAI  +=  `
+            Chỉ số DISC:
+            - Chỉ số D(Dominance): ${arrayValue.disc[0][1]} / 100
+            - Chỉ số I(Influence): ${arrayValue.disc[1][1]} / 100
+            - Chỉ số S(Steadiness): ${arrayValue.disc[2][1]} / 100
+            - Chỉ số C(Conscientiousness): ${arrayValue.disc[3][1]} / 100
+                `
+                }
+                if(arrayValue.horoscope){
+                    ProfileToAI += `
+            Chiêm tinh học:
+            - Tính chất:
+            - Linh hoạt(Mutable): ${arrayValue.horoscope[0][0].value} / 10
+            - Tiên phong(Cardinal): ${arrayValue.horoscope[0][1].value} / 10
+            - Kiên định(Fixed): ${arrayValue.horoscope[0][2].value} / 10
+            - Tỉ lệ nguyên tố:
+            - Lửa(Fire): ${arrayValue.horoscope[1][0].value}%
+            - Đất(Earth): ${arrayValue.horoscope[1][1].value}%
+            - Khí(Air): ${arrayValue.horoscope[1][2].value}%
+            - Nước(Water): ${arrayValue.horoscope[1][3].value}%
+            - Năng lượng các hành tinh:
+            - Mặt trời(Sun): ${arrayValue.horoscope[2][0].value} / 100
+            - Mặt trăng(Moon): ${arrayValue.horoscope[2][1].value} / 100
+            - Thủy tinh(Mercury): ${arrayValue.horoscope[2][2].value} / 100
+            - Kim tinh(Venus): ${arrayValue.horoscope[2][3].value} / 100
+            - Sao hỏa(Mars): ${arrayValue.horoscope[2][4].value} / 100
+            - Sao mộc(Jupiter): ${arrayValue.horoscope[2][5].value} / 100
+            - Sao thổ(Saturn): ${arrayValue.horoscope[2][6].value} / 100
+            - Thiên vương tinh(Uranus): ${arrayValue.horoscope[2][7].value} / 100
+            - Hải vương tinh(Neptune): ${arrayValue.horoscope[2][8].value} / 100
+            - Diêm vương tinh(Pluto): ${arrayValue.horoscope[2][9].value} / 100
+                `
+                
+                }
         
+                ProfileToAI += `
+            Hãy viết một đoạn mô tả ngắn gọn gồm:
+            - Điểm mạnh nổi bật
+            - Thử thách cần vượt qua
+            - Nghề nghiệp phù hợp
+            - Lời khuyên định hướng phát triển
+            - Giọng văn tích cực, truyền cảm hứng, dễ hiểu
+                `
+            newMessages = [...messages, { role: "user", content: ProfileToAI }];
+            fakeMesage = [...messages, { role: "user", content: "Đã gửi hồ sơ" }]
+            setMessages(fakeMesage);
+
+            break;
+
         }
-
-        ProfileToAI += `
-    Hãy viết một đoạn mô tả ngắn gọn gồm:
-    - Điểm mạnh nổi bật
-    - Thử thách cần vượt qua
-    - Nghề nghiệp phù hợp
-    - Lời khuyên định hướng phát triển
-    - Giọng văn tích cực, truyền cảm hứng, dễ hiểu
-        `
-        console.log(ProfileToAI)
-
-        
-
         // if (!input.trim()) return;
-      
-        const newMessages = [...messages, { role: "user", content: ProfileToAI }];
-        setMessages(newMessages);
+        // const newMessages = [...messages, { role: "user", content: ProfileToAI }];
+        
+        
         setInput("");
         setLoading(true);
         
@@ -114,7 +149,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
             },
             {
               headers: {
-                Authorization: "Bearer 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", // Thay bằng API Key từ OpenRouter
+                Authorization: "Bearer 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", // Thay bằng API Key từ OpenRouter
                 "HTTP-Referer": "http://localhost:5173", // Thay bằng URL app của bạn
                 "Content-Type": "application/json",
               },
@@ -122,8 +157,18 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
           );
       
           const reply = response.data.choices[0].message.content;
-          console.log(response)
-          setMessages([...newMessages, { role: "assistant", content: reply }]);
+          console.log(newMessages)
+         if(mode == 1){
+            setMessages([...newMessages, { role: "assistant", content: reply }]);
+         }else if(mode == 2){
+            setMessages([...fakeMesage, { role: "assistant", content: reply }]);
+         }
+            
+   
+          
+
+
+
         } catch (error) {
           console.error("API error:", error);
           setMessages([
@@ -161,7 +206,6 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
         
         
 
-        console.log(storedUser[0])
 
 
     console.log(profile)
@@ -172,6 +216,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
         const CloseBtn = document.getElementById('closeModalBtn');
         const LogoutBtn = document.getElementById('Logout')
         const profileName = document.getElementById('profileName')
+        const SavedBtn = document.getElementById('save-btn')
 
 
         for(let i = 0; i < btn_ask_lumina.length; i++){
@@ -188,7 +233,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
         })
 
         LogoutBtn.addEventListener('click', onLogout)
-
+        SavedBtn.addEventListener('click', handleSave)
 
 
 
@@ -227,7 +272,10 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                 
                 <div class="flex items-center">
                     <h2 class="text-xl md:text-2xl font-medium text-purple-800 mr-4">Welcome back, <span id="userName">{user.name}</span> 🌟</h2>
-                    <button id="Logout" class="cta-button hover:bg-white/70 text-white-800 font-medium py-2 px-4 rounded-full transition-all">
+                    <button id="save-btn" class="cta-button hover:bg-white/70 text-white-800 font-medium py-2 px-4 rounded-full transition-all">
+                        Save
+                    </button>
+                    <button id="Logout" class="ml-4 cta-button hover:bg-white/70 text-white-800 font-medium py-2 px-4 rounded-full transition-all">
                         Logout
                     </button>
                 </div>
@@ -238,6 +286,21 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
             <div class="absolute bottom-5 left-10 w-8 h-8 text-2xl floating" style={{animationDelay: "1s"}}>🌙</div>
             <div class="absolute top-20 left-20 w-8 h-8 text-2xl floating" style={{animationDelay: "1.5s"}}>⭐</div>
         </header>
+
+        
+        <div class="mystic-container p-6 mb-8 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+          
+
+                <p class="text-xl md:text-2xl font-medium text-purple-800 mr-4">Số hồ sơ: <span id="userName">{names.length}</span> 🌟</p>
+      
+            </div>
+            
+      
+            <div class="absolute top-5 right-10 w-8 h-8 text-2xl floating" style={{animationDelay: "0.5s"}}>✨</div>
+            <div class="absolute bottom-5 left-10 w-8 h-8 text-2xl floating" style={{animationDelay: "1s"}}>🌙</div>
+            <div class="absolute top-20 left-20 w-8 h-8 text-2xl floating" style={{animationDelay: "1.5s"}}>⭐</div>
+        </div>
         
 
         
@@ -245,9 +308,9 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
         <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
 
-            {storedUser ? (Object.entries(storedUser).map(([key, value]) => {
+            {storedUser ? (Object.entries(storedUser).map(([key, value], index) => {
                 return (
-                    <div class="mystic-container p-6 glow-effect">
+                    <div class="relative mystic-container p-6 glow-effect">
                     <div class="flex items-start mb-4">
                         <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white mr-4 flex items-center justify-center bg-gradient-to-br from-purple-300 to-pink-200">
                             <span class="text-2xl font-bold text-white">S</span>
@@ -268,12 +331,39 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                     
                     <div class="flex space-x-3">
                         <button class="flex-1 bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-medium py-2 px-4 rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center">
-                            <span class="mr-1">🧭</span> View Journey
+                            <span class="mr-1">🧭</span> View Profile
                         </button>
                         <button class="Ask-Lumina-btn flex-1 bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-white font-medium py-2 px-4 rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center ask-lumina" data-profile="Sophia Williams">
                             <span class="mr-1">💬</span> Ask Lumina
                         </button>
                     </div>
+                
+                <div className="absolute box_erase">
+                    {deleteConfirm === index ? (
+                  <>
+                    <button className="border-2 border-white erase_btn_format bg-gradient-to-br from-purple-300 to-pink-200" onClick={() => setDeleteConfirm(null)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M18 6L6 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    </button>
+                    <button className="border-2 ml-2 border-white erase_btn_format bg-gradient-to-br from-purple-300 to-pink-200" onClick={() => handleDelete(index)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    </button>
+                  </>
+                ) : (
+                  <button className="border-2 border-white erase_btn_format bg-gradient-to-br from-purple-300 to-pink-200" onClick={() => setDeleteConfirm(index)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M3 6h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M10 11v6M14 11v6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </button>
+                )}
+                </div>
                 </div>
                 );
             })) : ("")}
@@ -323,8 +413,8 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                             <div class="lumina-avatar w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
                                 <span class="text-xl">✨</span>
                             </div>
-                            <div class="whitespace-pre-line chat-bubble bg-white/70 p-3 rounded-lg max-w-[80%]">
-                                <p class="text-purple-800">{msg.content}</p>
+                            <div class="chat-bubble bg-white/70 p-3 rounded-lg max-w-[80%]">
+                                <ReactMarkdown remarkPlugins={[remarkBreaks]}>{msg.content}</ReactMarkdown>
                             </div>
                             </div>
                         )
@@ -358,6 +448,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                     <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">What should they work on?</button>
                     <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Give me a brief analysis</button>
                     <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Career recommendations?</button>
+                    <button onClick={()=>sendMessage(2)} class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Gửi hồ sơ</button>
                 </div>
             </div>
             
@@ -365,7 +456,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                 <input 
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                    sendMessage();
+                    sendMessage(1);
                     }
                 }}                         
                 value={input} 
@@ -375,7 +466,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                 placeholder="Ask Lumina..." 
                 class="flex-1 bg-white/70 border border-purple-200 rounded-l-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-400"
                 />
-                <button onClick={sendMessage} id="askButton" class="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-white font-medium py-2 px-6 rounded-r-full transition-all">
+                <button onClick={()=>sendMessage(1)} id="askButton" class="bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-white font-medium py-2 px-6 rounded-r-full transition-all">
                     Ask
                 </button>
             </div>

@@ -6,7 +6,9 @@ import "./LoginStyle.css"
 
 function Login({setMenuData}) {
   const [user, setUser] = useState(null);
-
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user_gmail"));
     if (storedUser) {
