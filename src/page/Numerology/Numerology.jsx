@@ -69,15 +69,15 @@ const descriptions = {
 };
 
 
-const titleNum = ["Số đường đời","Số vận mệnh","Số nội tâm","Số nhân cách","Số thái độ","Số trưởng thành"]
+const titleNum = ["Số đường đời","Số vận mệnh","Số nội tâm","Số biểu lộ","Số thái độ","Số trưởng thành","Số ngày sinh"]
 
 function Numerology(){
     const [value, setValue] = useState([0,0,0,0,0,0,0]);
     const valueRef = useRef(value);
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    //   }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   
 
 
@@ -88,6 +88,87 @@ function Numerology(){
 
 
     useEffect(()=>{
+
+
+        function normalizeName(name, mode) {
+        
+            let numerologyMap = {
+                "A": 1, "J": 1, "S": 1,
+                "B": 2, "K": 2, "T": 2,
+                "C": 3, "L": 3, "U": 3,
+                "D": 4, "M": 4, "V": 4,
+                "E": 5, "N": 5, "W": 5,
+                "F": 6, "O": 6, "X": 6,
+                "G": 7, "P": 7, "Y": 7,
+                "H": 8, "Q": 8, "Z": 8,
+                "I": 9, "R": 9
+            };
+            let ans = 0;
+            if(mode == 1){
+                numerologyMap = {
+                    "A": 1, "J": 0, "S": 0,
+                    "B": 0, "K": 0, "T": 0,
+                    "C": 0, "L": 0, "U": 3,
+                    "D": 0, "M": 0, "V": 0,
+                    "E": 5, "N": 0, "W": 0,
+                    "F": 0, "O": 6, "X": 0,
+                    "G": 0, "P": 0, "Y": 0,
+                    "H": 0, "Q": 0, "Z": 0,
+                    "I": 9, "R": 0
+                }
+            }else if(mode == 2){
+                numerologyMap = {
+                    "A": 0, "J": 1, "S": 1,
+                    "B": 2, "K": 2, "T": 2,
+                    "C": 3, "L": 3, "U": 0,
+                    "D": 4, "M": 4, "V": 4,
+                    "E": 0, "N": 5, "W": 5,
+                    "F": 6, "O": 0, "X": 6,
+                    "G": 7, "P": 7, "Y": 7,
+                    "H": 8, "Q": 8, "Z": 8,
+                    "I": 0, "R": 9
+                };
+            }
+     
+
+            name = name
+            .replace(/Đ/g, "D").replace(/đ/g, "d")        
+            .normalize("NFD")                              
+            .replace(/[\u0300-\u036f]/g, "")            
+            .toUpperCase()                                
+            .replace(/[^A-Z]/g, ""); 
+
+
+            let numbers = name.split("").map(char => {
+                return numerologyMap[char]
+            });
+            
+            for(let i = 0; i < numbers.length; i++){
+                // console.log(numbers[i], " ")
+                ans += numbers[i];
+            }
+            return ans;
+        }
+    
+    
+    
+        function Sum(dateString){
+            let ans = 0;
+            for(let i = 0; i < dateString.length; i++){
+              let number = parseInt(dateString[i], 10);
+              ans += number;
+            }
+            
+            if(ans == 11 || ans == 22 || ans == 33){
+                return ans;
+            }
+    
+            while (ans > 9) {
+                ans = ans.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
+            }
+            return ans;
+            
+        }
 
 
 
@@ -149,13 +230,14 @@ function Numerology(){
             const NumberHoTen = normalizeName(HoTen, 0);
             const LifePath = Sum([newDays, newMonths, newYears]);
             const DestinyNumber = Sum([NumberHoTen]);
+            console.log("HeloDEss", NumberHoTen)
             const SoulNumber = Sum([normalizeName(HoTen, 1)]);
             const PersonalityNumber = Sum([normalizeName(HoTen, 2)]);
             const AttitudeNumber = Sum([newDays, newMonths]);
             const MatureNumber = Sum([LifePath, DestinyNumber]);
 
-            setValue([LifePath, DestinyNumber, SoulNumber, PersonalityNumber, 
-            MatureNumber, newDays, AttitudeNumber]);
+            setValue([LifePath, DestinyNumber, SoulNumber, PersonalityNumber, AttitudeNumber,
+            MatureNumber, newDays]);
             const numerology = [LifePath, DestinyNumber, SoulNumber, PersonalityNumber, MatureNumber, newDays, AttitudeNumber];
             const storedUser = localStorage.getItem("user");
             const today = new Date();
@@ -218,71 +300,7 @@ function Numerology(){
 
     
  
-    function normalizeName(name, mode) {
-        let numerologyMap = {
-            "A": 1, "J": 1, "S": 1,
-            "B": 2, "K": 2, "T": 2,
-            "C": 3, "L": 3, "U": 3,
-            "D": 4, "M": 4, "V": 4,
-            "E": 5, "N": 5, "W": 5,
-            "F": 6, "O": 6, "X": 6,
-            "G": 7, "P": 7, "Y": 7,
-            "H": 8, "Q": 8, "Z": 8,
-            "I": 9, "R": 9
-        };
-        let ans = 0;
-        if(mode == 1){
-            numerologyMap = {
-                "A": 1, "J": 0, "S": 0,
-                "B": 0, "K": 0, "T": 0,
-                "C": 0, "L": 0, "U": 3,
-                "D": 0, "M": 0, "V": 0,
-                "E": 5, "N": 0, "W": 0,
-                "F": 0, "O": 6, "X": 0,
-                "G": 0, "P": 0, "Y": 0,
-                "H": 0, "Q": 0, "Z": 0,
-                "I": 9, "R": 0
-            }
-        }else if(mode == 2){
-            numerologyMap = {
-                "A": 0, "J": 1, "S": 1,
-                "B": 2, "K": 2, "T": 2,
-                "C": 3, "L": 3, "U": 0,
-                "D": 4, "M": 4, "V": 4,
-                "E": 0, "N": 5, "W": 5,
-                "F": 6, "O": 0, "X": 6,
-                "G": 7, "P": 7, "Y": 7,
-                "H": 8, "Q": 8, "Z": 8,
-                "I": 0, "R": 9
-            };
-        }
-        name = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
-        let numbers = name.split("").map(char => numerologyMap[char] || 0);
-        for(let i = 0; i < numbers.length; i++){
-            ans += numbers[i];
-        }
-        return ans;
-    }
-
-
-
-    function Sum(dateString){
-        let ans = 0;
-        for(let i = 0; i < dateString.length; i++){
-          let number = parseInt(dateString[i], 10);
-          ans += number;
-        }
-        
-        if(ans == 11 || ans == 22 || ans == 33){
-            return ans;
-        }
-
-        while (ans > 9) {
-            ans = ans.toString().split('').reduce((sum, digit) => sum + parseInt(digit, 10), 0);
-        }
-        return ans;
-        
-    }
+    
 
 
   

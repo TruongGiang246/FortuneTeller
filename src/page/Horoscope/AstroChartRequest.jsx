@@ -58,6 +58,9 @@ const AstroChartRequest = () => {
 
 
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   useEffect(() => {
     // Create starry background

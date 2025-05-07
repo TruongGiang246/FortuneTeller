@@ -1,7 +1,12 @@
 import './Guide.css'
 import { useEffect, useRef, useState } from 'react';
+import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks"; // xuống dòng khi có \n
 import axios from 'axios';
 function Guide(){
+
+
+
 
 const endRef = useRef(null);
 
@@ -35,12 +40,12 @@ const sendMessage = async () => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "qwen/qwen3-4b:free", // bạn có thể thay bằng deepseek-ai/deepseek-chat hoặc model khác
+        model: "deepseek/deepseek-r1:free", // bạn có thể thay bằng deepseek-ai/deepseek-chat hoặc model khác
         messages: recentMess,
       },
       {
         headers: {
-          Authorization: "Bearer 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", // Thay bằng API Key từ OpenRouter
+          Authorization: "Bearer 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", // Thay bằng API Key từ OpenRouter
           "HTTP-Referer": "http://localhost:5173", // Thay bằng URL app của bạn
           "Content-Type": "application/json",
         },
@@ -423,8 +428,8 @@ function createStars() {
                                 <path d="M17,19 Q20,22 23,19" stroke="#4b5563" strokeWidth="0.6" fill="transparent" />
                                 </svg>
                             </div>
-                                <div  className="whitespace-pre-line assistant-message rounded-2xl rounded-tl-none p-3 max-w-[80%] bg-gray-100">
-                                        <p>{msg.content}</p>
+                                <div  className="assistant-message rounded-2xl rounded-tl-none p-3 max-w-[80%] bg-gray-100">
+                                        <ReactMarkdown remarkPlugins={[remarkBreaks]}>{msg.content}</ReactMarkdown>
                                 </div>
                             </div> 
                         )
@@ -482,7 +487,7 @@ function createStars() {
                         <button   
  
                         onClick={sendMessage} 
-                        class="btn-primary rounded-xl px-4 flex items-center justify-center">
+                        class="btn-primary text-white rounded-xl px-4 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                             </svg>

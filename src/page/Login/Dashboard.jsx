@@ -11,7 +11,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
 
     const [messages, setMessages] = useState([
             { role: "system", content: "Bạn là một chatbot hướng dẫn người dùng khám phá bản thân qua các công cụ như chiêm tinh, thần số học, và DISC." },
-            { role: "assistant", content: "Chào bạn! Tôi là một chatbot hướng dẫn người dùng khám phá bản thân qua các công cụ như chiêm tinh, thần số học, và DISC. Tôi có thể giúp bạn khám phá bản thân. Bạn muốn bắt đầu từ đâu?" },
+            { role: "assistant", content: "Chào bạn! Tôi là một chatbot hướng dẫn người dùng khám phá bản thân qua các công cụ như chiêm tinh, thần số học, và DISC. Tôi có thể giúp bạn khám phá bản thân. Hãy ấn nút **Gửi hồ sơ** để tôi biết về bạn" },
         ]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
@@ -37,13 +37,13 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
         if(arrayValue.numerology){
             ProfileToAI += `
     Thần số học:
-    - Số đường đời(Lifepath): ${arrayValue.numerology[0]}
+    - Số Đường đời(Lifepath): ${arrayValue.numerology[0]}
     - Số Sứ mệnh (DestinyNumber): ${arrayValue.numerology[1]}
     - Số Linh hồn(SoulNumber): ${arrayValue.numerology[2]}
-    - Số Nhân cách(PersonalityNumber): ${arrayValue.numerology[3]}
-    - Số Trưởng thành(MatureNumber): ${arrayValue.numerology[4]}
-    - Số Ngày sinh(BirthDayNumber): ${arrayValue.numerology[5]}
-    - Số Thái độ(AttitudeNumber): ${arrayValue.numerology[6]}          
+    - Số Biểu lộ(PersonalityNumber): ${arrayValue.numerology[3]}
+    - Số Thái độ(MatureNumber): ${arrayValue.numerology[4]}
+    - Số Trưởng thành(BirthDayNumber): ${arrayValue.numerology[5]}
+    - Số Ngày sinh(AttitudeNumber): ${arrayValue.numerology[6]}          
         `
         }
         if(arrayValue.disc){
@@ -239,159 +239,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
             <div class="absolute top-20 left-20 w-8 h-8 text-2xl floating" style={{animationDelay: "1.5s"}}>⭐</div>
         </header>
         
-        
-        {/* <div class="progress-tracker fixed left-4 top-1/2 transform -translate-y-1/2 z-10 mystic-container p-4 glow-effect hidden md:block">
-            <h3 class="text-lg font-bold text-purple-800 mb-4 text-center">Your Journey</h3>
-            <div class="progress-tracker-inner flex flex-col space-y-4">
-                <div class="tool-progress flex flex-col items-center">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#a18cd1"></stop>
-                                    <stop offset="100%" stop-color="#fbc2eb"></stop>
-                                </linearGradient>
-                            </defs>
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke-dasharray="100" stroke-dashoffset="0"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">✔️</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">DISC</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke-dasharray="100" stroke-dashoffset="30"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🌙</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Astrology</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke-dasharray="100" stroke-dashoffset="70"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🌙</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Tarot</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke-dasharray="100" stroke-dashoffset="100"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🔒</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Numerology</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke-dasharray="100" stroke-dashoffset="100"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🔒</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Destiny Matrix</span>
-                </div>
-            </div>
-        </div> */}
-        
-    
-        <div class="md:hidden mystic-container p-4 mb-6">
-            <h3 class="text-lg font-bold text-purple-800 mb-2">Your Journey</h3>
-            <div class="flex overflow-x-auto space-x-4 pb-2">
-                <div class="tool-progress flex flex-col items-center flex-shrink-0">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <defs>
-                                <linearGradient id="gradient-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#a18cd1"></stop>
-                                    <stop offset="100%" stop-color="#fbc2eb"></stop>
-                                </linearGradient>
-                            </defs>
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke="url(#gradient-mobile)" stroke-dasharray="100" stroke-dashoffset="0"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">✔️</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">DISC</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center flex-shrink-0">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke="url(#gradient-mobile)" stroke-dasharray="100" stroke-dashoffset="30"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🌙</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Astrology</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center flex-shrink-0">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke="url(#gradient-mobile)" stroke-dasharray="100" stroke-dashoffset="70"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🌙</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Tarot</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center flex-shrink-0">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke="url(#gradient-mobile)" stroke-dasharray="100" stroke-dashoffset="100"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🔒</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Numerology</span>
-                </div>
-                
-                <div class="tool-progress flex flex-col items-center flex-shrink-0">
-                    <div class="progress-circle">
-                        <svg width="40" height="40" viewBox="0 0 40 40">
-                            <circle class="bg" cx="20" cy="20" r="16"></circle>
-                            <circle class="progress" cx="20" cy="20" r="16" stroke="url(#gradient-mobile)" stroke-dasharray="100" stroke-dashoffset="100"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-lg">🔒</span>
-                        </div>
-                    </div>
-                    <span class="text-sm text-purple-800 mt-1">Destiny Matrix</span>
-                </div>
-            </div>
-        </div>
+
         
     
         <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -455,20 +303,6 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
             
             <div id="chatContainer" ref={endRef} class="bg-white/50 rounded-lg p-4 h-80 overflow-y-auto mb-4">
 
-                {/* <div class="flex mb-4">
-                    <div class="lumina-avatar w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
-                        <span class="text-xl">✨</span>
-                    </div>
-                    <div class="chat-bubble bg-white/70 p-3 rounded-lg max-w-[80%]">
-                        <p class="text-purple-800">Hello! I'm Lumina, your mystical guide. Ask me anything about this profile and I'll provide insights based on their DISC, astrology, and destiny matrix.</p>
-                    </div>
-                </div>
-                
-                <div class="flex justify-end mb-4">
-                    <div class="bg-purple-100 p-3 rounded-lg max-w-[80%]">
-                        <p class="text-purple-800">What should they work on?</p>
-                    </div>
-                </div> */}
 
 
                 {messages.map((msg, i) => {

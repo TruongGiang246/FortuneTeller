@@ -40,6 +40,10 @@ const TarotCard = ({frontImage, backImage, condit }) => {
 
   
 const TarotReading = () => {
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const time = ["past","present","future"];
     const celticMean = ["Hiện tại", "Thử thách", "Gốc rễ", "Quá khứ gần", "Mục tiêu / Ý Thức", "Tương lai gần", "Bạn là ai lúc này", "Môi trường xung quanh", "Hy vọng và nỗi sợ", "Kết quả"]
 

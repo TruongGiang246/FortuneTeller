@@ -386,9 +386,9 @@ const DISCQuiz = () => {
   const [answers, setAnswers] = useState([]);
   const [items, setItems] = useState(questions[0].options);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
 
 
