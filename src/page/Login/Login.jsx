@@ -16,11 +16,18 @@ function Login({setMenuData}) {
     };
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("user_gmail");
-    localStorage.removeItem("user")
-    setMenuData(null)
-    setUser(null);
+  const handleLogout = (mode) => {
+    if(mode == 1){
+      localStorage.removeItem("user_gmail");
+      localStorage.removeItem("user")
+      setMenuData(null)
+      setUser(null);
+    }else{
+      localStorage.removeItem("user_gmail");
+      setMenuData(null);
+      setUser(null);
+    }
+
   };
 
   return (

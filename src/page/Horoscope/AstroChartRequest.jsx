@@ -16,7 +16,20 @@ const COLORS3 = ['#0088FE', '#00C49F', '#FFBB28'];
 const COLORS4 = ['#FF0000', '#FFD700', '#00C49F', '#0088FE'];
 const COLORS4T = ['	#EF4444B3', '#10B981B3', '#FACC15B3', '#3B82F6B3']
 const COLORS3T = ['#6366F1B3', '#8B5CF6B3', '#EC4899B3']
-
+const zodiacMap = {
+  "Ari": "Bạch Dương",
+  "Tau": "Kim Ngưu",
+  "Gem": "Song Tử",
+  "Can": "Cự Giải",
+  "Leo": "Sư Tử",
+  "Vir": "Xử Nữ",
+  "Lib": "Thiên Bình",
+  "Sco": "Bọ Cạp",
+  "Sag": "Nhân Mã",
+  "Cap": "Ma Kết",
+  "Aqu": "Bảo Bình",
+  "Pis": "Song Ngư"
+};
 
 const COLORS10 = [
   "#FFD700","#B0C4DE","#C0C0C0","#FF69B4","#FF4500","#D2691E","#708090","#40E0D0","#4169E1","#800080"
@@ -56,6 +69,7 @@ const PlantColors = [
 ]
 const AstroChartRequest = () => {
 
+  const [dominatZodiac, setDominateZodiac] = useState([])
 
   
   useEffect(() => {
@@ -321,6 +335,11 @@ function initCharts() {
       {name: "Thiên vương", value: 0},
       {name: "Hải vương", value: 0},
       {name: "Diêm vương", value: 0}
+    ],
+    ["Chart here"],
+    [
+      "Sample",
+      "Sample"
     ]
   ])
   const [des, setDes] = useState({
@@ -507,6 +526,7 @@ if (planet) {
     house: planet.house,
   };
 }
+
 return null; // Nếu không có hành tinh này, trả về null
 }).filter(planet => planet !== null); // Loại bỏ những kết quả null
 
@@ -639,19 +659,55 @@ neptune = filterZodiac["Pis"] + filterHouse["Twelfth_House"] + filterPlanet["Nep
 pluto = filterZodiac["Sco"] + filterHouse["Eighth_House"] + filterPlanet["Pluto"]
 
 
+const hightest_planet = [sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto];
+const planetName = ["Mặt trời", "Mặt trăng", "Sao Thủy", "Sao Kim", "Sao Mộc", "Sao Thổ","Sao Thiên vương","Sao Hải vương","Sao Diêm vương"]
+const comments = [
+  "☀️ Bạn tỏa sáng với sự tự tin và mục tiêu rõ ràng. Cách bạn thể hiện bản thân truyền cảm hứng cho những người xung quanh.",
+  "🌙 Bạn rất nhạy cảm với cảm xúc và trực giác. Bạn luôn tìm kiếm sự an yên, an toàn và kết nối về mặt cảm xúc.",
+  "🗣️ Bạn có trí óc tò mò và nhanh nhạy. Bạn giao tiếp tốt, thích học hỏi và chia sẻ ý tưởng.",
+  "💖 Bạn có xu hướng bị thu hút bởi cái đẹp, sự hòa hợp và các mối quan hệ. Sự duyên dáng và khéo léo giúp bạn dễ dàng kết nối với người khác.",
+  "🔥 Bạn tràn đầy năng lượng và quyết tâm. Niềm đam mê và sự chủ động giúp bạn tiến gần đến mục tiêu.",
+  "🌟 Bạn lạc quan và hào phóng. Bạn yêu thích sự phát triển, khám phá và mở rộng tầm nhìn.",
+  "⏳ Bạn kỷ luật và có trách nhiệm. Thử thách không làm bạn sợ — ngược lại, nó giúp bạn trưởng thành hơn.",
+  "⚡ Bạn sáng tạo và nổi loạn. Bạn coi trọng tự do và thích phá vỡ những khuôn mẫu cũ.",
+  "🌊 Bạn mơ mộng và nhạy cảm. Bạn bị thu hút bởi nghệ thuật, tâm linh và giúp đỡ người khác.",
+  "🔮 Bạn mãnh liệt và đầy tính chuyển hóa. Bạn có khát khao thay đổi và phát triển bản thân sâu sắc."
+];
+let indexHigh = -999;
+let indexPos = 0;
+for(let i = 0; i < hightest_planet.length; i++){
+  if(hightest_planet[i] > indexHigh){
+    indexHigh = hightest_planet[i];
+    indexPos = i;
+  }
+}
 
-// console.log(planetsInfo)
+
+console.log(planetsInfo)
 // console.log(absolute, mutable, cardinal)
 
 // console.log(sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto)
+console.log(zodiacMap["Tau"])
+console.log(zodiacMap[planetsInfo[0].sign])
 
+setDominateZodiac([
+  zodiacMap[planetsInfo[0].sign],
+  zodiacMap[planetsInfo[1].sign],
+  zodiacMap[planetsInfo[10].sign],
+])
 
+const sumOfQualities = mutable + cardinal + absolute;
+const QualitiesOfPercents = [
+  Math.round((mutable/sumOfQualities)*100),
+  Math.round((cardinal/sumOfQualities)*100),
+  Math.round((absolute/sumOfQualities)*100)
+]
 
 setSumData([
   [
-    {name: 'Linh hoạt', value: mutable},
-    {name: 'Tiên Phong', value: cardinal},
-    {name: 'Kiên định', value: absolute},
+    {name: 'Linh hoạt', value: QualitiesOfPercents[0]},
+    {name: 'Tiên Phong', value: QualitiesOfPercents[1]},
+    {name: 'Kiên định', value: QualitiesOfPercents[2]},
   ],
   [
     {name: "Lửa", value: parseInt(element_push[1])},
@@ -675,7 +731,8 @@ setSumData([
     response.chart
   ],
   [
-    response.data.sun.sign
+    planetName[indexPos],
+    comments[indexPos]
   ]
   
 ])
@@ -859,7 +916,7 @@ console.log(time, date)
 
                     <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="birthdate" class="block text-sm font-medium text-gray-700 mb-1">Your Birth Date</label>
+                            <label for="birthdate" class="block text-sm font-medium text-gray-700 mb-1">Chọn Ngày Sinh:</label>
                             <input value={date} onChange={(e)=> setDate(e.target.value)} type="date" id="birthdate" name="birthdate" class="number-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none" required=""/>
                         </div>
                         <div>
@@ -887,22 +944,22 @@ console.log(time, date)
                 <div class="sidebar bg-white/40 backdrop-blur-sm rounded-2xl p-4 md:w-64 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-x-visible">
                     <button class="nav-item active flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
                         <span class="text-xl">🌌</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Birth Chart</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Bản đồ sao</span>
                     </button>
                     
                     <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
                         <span class="text-xl">📊</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Planet Influence</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Hành tinh</span>
                     </button>
                     
                     <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
                         <span class="text-xl">🔵</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Qualities</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Tính chất</span>
                     </button>
                     
                     <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
                         <span class="text-xl">🟣</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Elements</span>
+                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Nguyên tố</span>
                     </button>
                 </div>
                 
@@ -910,7 +967,7 @@ console.log(time, date)
                 <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 flex-1 shadow-lg">
                     {/* <!-- Birth Chart Panel --> */}
                     <div id="birthChartPanel" class="content-panel active">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6 inline-block">Your Birth Chart</h2>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 inline-block">Bản đồ chiêm tinh của bạn</h2>
                         <button onClick={handleScreenshot} class="inline-block ml-3 cta-button hover:bg-white/70 text-white font-medium py-1 px-5 rounded-full transition-all">
                         {tick ? (
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -926,7 +983,7 @@ console.log(time, date)
 
 
                         </button>
-                        <p class="text-gray-600 mb-6">This celestial map shows the position of planets at the time of your birth, revealing your cosmic blueprint.</p>
+                        <p class="text-gray-600 mb-6">🪐 Bản đồ sao này cho thấy vị trí các hành tinh vào thời điểm bạn chào đời, tiết lộ bản thiết kế vũ trụ của bạn.</p>
                         
                         <div class="birth-chart-container">
                             {/* <!-- SVG Birth Chart --> */}
@@ -950,17 +1007,17 @@ console.log(time, date)
                             <h3 class="font-semibold text-indigo-800 mb-2">Your Dominant Signs</h3>
 
                             <div class="flex flex-wrap gap-3">
-                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Leo Sun</span>
-                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Pisces Moon</span>
-                                <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Virgo Rising</span>
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Mặt trời {dominatZodiac[0]}</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Mặt trăng {dominatZodiac[1]}</span>
+                                <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Cung mọc {dominatZodiac[2]}</span>
                             </div>
                         </div>
                     </div>
                     
                     {/* <!-- Planet Influence Panel --> */}
                     <div id="planetInfluencePanel" class="content-panel">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Planet Influence</h2>
-                        <p class="text-gray-600 mb-6">See how strongly each planet influences your personality and life path.</p>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ảnh hưởng của các hành tinh</h2>
+                        <p class="text-gray-600 mb-6">Khám phá mức độ mỗi hành tinh tác động đến tính cách và con đường đời của bạn.</p>
                         
                         <div class="plant_inner">
                               <ResponsiveContainer width="100%" height="100%">
@@ -983,17 +1040,18 @@ console.log(time, date)
                         </div>
                         
                         <div class="mt-8 bg-indigo-50 rounded-xl p-4">
-                            <h3 class="font-semibold text-indigo-800 mb-2">Your Dominant Planet</h3>
+                            <h3 class="font-semibold text-indigo-800 mb-2">Hành tinh chủ đạo của bạn</h3>
                             <p class="text-gray-700">
-                                <span class="font-medium">Venus</span> - You're naturally drawn to beauty, harmony, and relationships. Your charm and diplomatic skills help you connect with others.
+                                <span class="font-medium">{SumData[4][0]}</span> - {SumData[4][1]}
                             </p>
                         </div>
                     </div>
                     
                     {/* <!-- Qualities Panel --> */}
                     <div id="qualitiesPanel" class="content-panel">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Astrological Qualities</h2>
-                        <p class="text-gray-600 mb-6">Your distribution of Cardinal, Fixed, and Mutable energies shows how you approach challenges and change.</p>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Đặc Tính Chiêm Tinh</h2>
+                    <p class="text-gray-600 mb-6">Sự phân bố năng lượng của bạn giữa năng lượng Tiên phong, Kiên định, và Linh hoạt thể hiện cách bạn tiếp cận các thử thách và sự thay đổi.</p>
+
                         
                         <div class="flex justify-center">
                             <div class="quality_inner">
@@ -1013,24 +1071,24 @@ console.log(time, date)
                         
                         <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="bg-indigo-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-indigo-800 mb-1">Cardinal (35%)</h3>
-                                <p class="text-sm text-gray-600">Initiative, leadership, action-oriented</p>
+                                <h3 class="font-semibold text-indigo-800 mb-1">{`Linh hoạt (${SumData[0][0].value}%)`}</h3>
+                                <p class="text-sm text-gray-600">Khả năng thích ứng, linh hoạt, đa dạng</p>
                             </div>
                             <div class="bg-purple-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-purple-800 mb-1">Fixed (40%)</h3>
-                                <p class="text-sm text-gray-600">Stability, determination, persistence</p>
+                                <h3 class="font-semibold text-purple-800 mb-1">{`Tiên Phong (${SumData[0][1].value}%)`}</h3>
+                                <p class="text-sm text-gray-600">Khởi xướng, lãnh đạo, hướng hành động</p>
                             </div>
                             <div class="bg-pink-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-pink-800 mb-1">Mutable (25%)</h3>
-                                <p class="text-sm text-gray-600">Adaptability, flexibility, versatility</p>
+                                <h3 class="font-semibold text-pink-800 mb-1">{`Kiên Định (${SumData[0][2].value}%)`}</h3>
+                                <p class="text-sm text-gray-600">Sự ổn định, quyết tâm, kiên trì</p>
                             </div>
                         </div>
                     </div>
                     
                     {/* <!-- Elements Panel --> */}
                     <div id="elementsPanel" class="content-panel">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Elemental Balance</h2>
-                        <p class="text-gray-600 mb-6">Your distribution of Fire, Earth, Air, and Water elements reveals your fundamental temperament.</p>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Cân Bằng Nguyên Tố</h2>
+                        <p class="text-gray-600 mb-6">Sự phân bố các yếu tố Lửa, Đất, Khí và Nước của bạn tiết lộ tính cách cơ bản của bạn.</p>
                         
                         <div class="flex justify-center">
                             <div class="elements_inner">
@@ -1050,20 +1108,20 @@ console.log(time, date)
                         
                         <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div class="bg-red-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-red-800 mb-1">Fire (20%)</h3>
-                                <p class="text-sm text-gray-600">Passion, energy, inspiration</p>
+                                <h3 class="font-semibold text-red-800 mb-1">{`Lửa (${SumData[1][0].value}%)`}</h3>
+                                <p class="text-sm text-gray-600">Đam mê, năng lượng, cảm hứng</p>
                             </div>
                             <div class="bg-green-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-green-800 mb-1">Earth (30%)</h3>
-                                <p class="text-sm text-gray-600">Practicality, stability, reliability</p>
+                                <h3 class="font-semibold text-green-800 mb-1">{`Đất (${SumData[1][1].value}%)`}</h3>
+                                <p class="text-sm text-gray-600">Tính thực tế, ổn định, đáng tin cậy</p>
                             </div>
                             <div class="bg-yellow-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-yellow-800 mb-1">Air (15%)</h3>
-                                <p class="text-sm text-gray-600">Intellect, communication, social</p>
+                                <h3 class="font-semibold text-yellow-800 mb-1">{`Khí (${SumData[1][2].value}%)`}</h3>
+                                <p class="text-sm text-gray-600">Trí tuệ, giao tiếp, xã hội</p>
                             </div>
                             <div class="bg-blue-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-blue-800 mb-1">Water (35%)</h3>
-                                <p class="text-sm text-gray-600">Emotion, intuition, sensitivity</p>
+                                <h3 class="font-semibold text-blue-800 mb-1">{`Nước (${SumData[1][3].value}%)`}</h3>
+                                <p class="text-sm text-gray-600">Cảm xúc, trực giác, nhạy cảm</p>
                             </div>
                         </div>
                     </div>

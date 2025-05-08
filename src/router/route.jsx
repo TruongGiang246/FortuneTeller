@@ -22,7 +22,7 @@ const publicRoutes = [
     {path: '/Personal_Report', component: Blog},
     {path: '/DISC', component: DISCQuiz},
     {path: '/Astrology', component: AstroChartRequest},
-    {path: '/Personal_Report/Report', component: Report},
+    {path: '/Report', component: Report},
     {path: '/Login', component: Login, LoginAuth: true},
     {path: '/Guide', component: Guide},
     {path: '/Resource', component: Resource}

@@ -11,11 +11,16 @@ import "./LoginStyle.css"
 
 const LoginAndSave = ({ onLoginSuccess, setMenuData }) => {
 
+  function noLoginBtn(){
+    onLoginSuccess({
+      uid: null,
+      name: null,
+    })
+    setMenuData(true)
+    localStorage.setItem("user_gmail",JSON.stringify("unlogin User"))
+  }
   
   const handleLogin = async () => {
-
-
-
     try {
       await setPersistence(auth, browserLocalPersistence);
       const result = await signInWithPopup(auth, provider);
@@ -88,7 +93,7 @@ const LoginAndSave = ({ onLoginSuccess, setMenuData }) => {
             
             {/* <!-- Login Button --> */}
             <div class="flex flex-col items-center">
-                <button onClick={handleLogin} class="google-btn flex items-center justify-center gap-3 w-full max-w-xs bg-white border border-gray-300 rounded-full px-6 py-3 text-gray-700 font-medium shadow-sm transition-all duration-300 hover:bg-gray-50 mb-6">
+                <button onClick={handleLogin} class="mb-3 google-btn flex items-center justify-center gap-3 w-full max-w-xs bg-white border border-gray-300 rounded-full px-6 py-3 text-gray-700 font-medium shadow-sm transition-all duration-300 hover:bg-gray-50 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
                         <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
                         <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
@@ -97,6 +102,7 @@ const LoginAndSave = ({ onLoginSuccess, setMenuData }) => {
                     </svg>
                     Continue with Google
                 </button>
+                <p onClick={noLoginBtn} class="text-sm underline text-gray-800 text-center max-w-xs mb-6">Tiếp tục sử dụng không đăng nhập</p>
                 
                 <p class="text-sm text-gray-500 text-center max-w-xs">By signing in, you agree to our <br/> <a className="text-indigo-800/70">Terms of Service</a> & <a className="text-indigo-800/70">Privacy Policy</a></p>
             </div>

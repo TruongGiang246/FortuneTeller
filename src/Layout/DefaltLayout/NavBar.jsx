@@ -13,8 +13,8 @@ function NavBar({children}){
     useEffect(()=>{
         const userData = localStorage.getItem('user_gmail')
         if(userData){
-            const img = JSON.parse(userData).photo
-            setMenuData(img)
+            // const img = JSON.parse(userData).photo
+            setMenuData(true)
         }
     },[])
 
@@ -23,6 +23,8 @@ function NavBar({children}){
         sidebar[0].classList.toggle('translateY_0')
         
     }
+
+    console.log("nav",menuData)
 
 
     return(
@@ -57,7 +59,7 @@ function NavBar({children}){
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 px-2 pb-4">
-                <Link onClick={handleNav} to="/"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                     </svg>
@@ -65,21 +67,21 @@ function NavBar({children}){
                     <span class="font-medium">Home</span>
                 </div></Link>
                 
-                <Link onClick={handleNav} to="/Numerology"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/Numerology"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                     </svg>
                     <span class="font-medium">Numerology</span>
                 </div></Link>
                 
-                <Link onClick={handleNav} to="/Astrology"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/Astrology"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                     </svg>
                     <span class="font-medium">Astrology</span>
                 </div></Link>
                 
-                <Link onClick={handleNav} to="/MatrixDestiny"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/MatrixDestiny"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <circle cx="12" cy="7" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
                         <circle cx="6" cy="12" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
@@ -88,17 +90,17 @@ function NavBar({children}){
                         <line x1="12" y1="10" x2="12" y2="14" stroke-width="2" stroke-linecap="round"></line>
                         <line x1="9" y1="12" x2="15" y2="12" stroke-width="2" stroke-linecap="round"></line>
                     </svg>
-                    <span class="font-medium">Matrix of Destiny</span>
+                    <span class="font-medium">Matrix Destiny</span>
                 </div></Link>
                 
-                <Link onClick={handleNav} to="/DISC"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/DISC"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                     </svg>
                     <span class="font-medium">DISC</span>
                 </div></Link>
                 
-                <Link onClick={handleNav} to="/Tarot"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/Tarot"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
 
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <rect x="6" y="3" width="12" height="18" rx="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
@@ -108,7 +110,7 @@ function NavBar({children}){
                     <span class="font-medium">Tarot</span>
                 </div></Link>
 
-                <Link onClick={handleNav} to="/Guide"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/Guide"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <circle cx="12" cy="12" r="9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
                         <path d="M12 3L12 5M12 19L12 21M3 12L5 12M19 12L21 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -118,7 +120,7 @@ function NavBar({children}){
                 </div></Link>
 
 
-                <Link onClick={handleNav} to="/Resource"><div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <Link onClick={handleNav} to="/Resource"><div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <rect x="3" y="5" width="18" height="14" rx="2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect>
                         <path d="M10 9l5 3-5 3V9z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -128,7 +130,7 @@ function NavBar({children}){
                 </div></Link>
 
                 <Link onClick={handleNav} to="/Login">
-                <div class="menu-item flex flex-col items-center p-4 rounded-xl bg-white/10 text-white">
+                <div class="menu-item flex flex-col items-center p-[0.6rem] sm:p-4 rounded-xl bg-white/10 text-white">
                     {menuData ? (
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>

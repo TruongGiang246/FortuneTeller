@@ -4,9 +4,15 @@ import { getUserData, updateUserData } from "./getUserData";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
+import { useNavigate } from "react-router-dom";
 
 
 const Dashboard = ({ user, onLogout, setMenuData }) => {
+    
+    const navigate = useNavigate()
+    function handleNavigate(){
+        navigate('/Report');
+    }
     const storedUser = JSON.parse(localStorage.getItem("user"));
     let names = [];
     let dataList;
@@ -37,9 +43,13 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
             { role: "system", content: "Bạn là một chatbot hướng dẫn người dùng khám phá bản thân qua các công cụ như chiêm tinh, thần số học, và DISC." },
             { role: "assistant", content: "Chào bạn! Tôi là một chatbot hướng dẫn người dùng khám phá bản thân qua các công cụ như chiêm tinh, thần số học, và DISC. Tôi có thể giúp bạn khám phá bản thân. Hãy ấn nút **Gửi hồ sơ** để tôi biết về bạn" },
         ]);
+    
+    
+    
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [profile, selectedProfile] = useState(0);
+ 
 
     useEffect(() => {
         const chatContainer = endRef.current;
@@ -50,7 +60,6 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
     }, [messages]);
 
     
-    console.log(storedUser)
     const sendMessage = async (mode) => {
         
     
@@ -91,9 +100,9 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                     ProfileToAI += `
             Chiêm tinh học:
             - Tính chất:
-            - Linh hoạt(Mutable): ${arrayValue.horoscope[0][0].value} / 10
-            - Tiên phong(Cardinal): ${arrayValue.horoscope[0][1].value} / 10
-            - Kiên định(Fixed): ${arrayValue.horoscope[0][2].value} / 10
+            - Linh hoạt(Mutable): ${arrayValue.horoscope[0][0].value}%
+            - Tiên phong(Cardinal): ${arrayValue.horoscope[0][1].value}%
+            - Kiên định(Fixed): ${arrayValue.horoscope[0][2].value}%
             - Tỉ lệ nguyên tố:
             - Lửa(Fire): ${arrayValue.horoscope[1][0].value}%
             - Đất(Earth): ${arrayValue.horoscope[1][1].value}%
@@ -185,10 +194,15 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
 
     const [userLists, setUserLists] = useState([])
     useEffect(() => {
-        getUserData(user.uid).then((data) => {
-        console.log(data)        
-        setMenuData(data);
-        });
+        if(user.uid){
+            getUserData(user.uid).then((data) => {
+                console.log(data)        
+                setMenuData(data);
+                });
+        }
+
+     
+
    
     }, [user.uid]);
 
@@ -209,7 +223,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
 
 
     console.log(profile)
-
+    console.log("re-render")
     useEffect(()=>{
         const btn_ask_lumina = document.getElementsByClassName("Ask-Lumina-btn");
         const LuminaModel = document.getElementById('luminaModal');
@@ -217,6 +231,10 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
         const LogoutBtn = document.getElementById('Logout')
         const profileName = document.getElementById('profileName')
         const SavedBtn = document.getElementById('save-btn')
+        const BackBtn = document.getElementById('BackBtn')
+        const Suggested_box = document.getElementById('Suggested_box')
+        const Suggested_lists = document.getElementById('Suggested_lists')
+        const ContainerChat = document.getElementById('chatContainer')
 
 
         for(let i = 0; i < btn_ask_lumina.length; i++){
@@ -231,9 +249,22 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
             LuminaModel.classList.add('hidden')
            
         })
+        Suggested_box.addEventListener('click', ()=>{
+            Suggested_lists.classList.toggle('hidden')
+            ContainerChat.classList.toggle('h-96')
+            console.log("lmao")
+        })
 
-        LogoutBtn.addEventListener('click', onLogout)
-        SavedBtn.addEventListener('click', handleSave)
+        if(BackBtn){
+            BackBtn.addEventListener('click', ()=>onLogout(2))
+        }else{
+            LogoutBtn.addEventListener('click', ()=>onLogout(1))
+            SavedBtn.addEventListener('click', handleSave)
+        }
+        
+
+
+
 
 
 
@@ -243,13 +274,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
     
     <>
 
-      <div class="fixed bottom-6 right-6 z-10">
-            <div class="crystal-ball w-16 h-16  cursor-pointer pulse-glow" id="crystalBall">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <span class="text-2xl">🔮</span>
-                </div>
-            </div>
-        </div>
+
         
       <div class="contaier_dash mx-auto px-4 py-8 mb-20">
 
@@ -271,13 +296,31 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                 </div>
                 
                 <div class="flex items-center">
-                    <h2 class="text-xl md:text-2xl font-medium text-purple-800 mr-4">Welcome back, <span id="userName">{user.name}</span> 🌟</h2>
-                    <button id="save-btn" class="cta-button hover:bg-white/70 text-white-800 font-medium py-2 px-4 rounded-full transition-all">
-                        Save
-                    </button>
-                    <button id="Logout" class="ml-4 cta-button hover:bg-white/70 text-white-800 font-medium py-2 px-4 rounded-full transition-all">
-                        Logout
-                    </button>
+                    {user.name ? (
+                        <>
+                        <h2 class="text-xl md:text-2xl font-medium text-purple-800 mr-4">Welcome back, <span id="userName">{user.name}</span> 🌟</h2>
+                        <button id="save-btn" class="cta-button hover:bg-white/70 text-white-800 font-medium py-2 px-4 rounded-full transition-all">
+                            Save
+                        </button>
+                        <button id="Logout" class="ml-4 cta-button hover:bg-white/70 text-white-800 font-medium py-2 px-4 rounded-full transition-all">
+                            Logout
+                        </button>   
+                        </>                    
+                    ) : (
+                        <>
+                        <div>
+                        <h2 class="text-xl md:text-2xl font-medium text-purple-800 mb-2">Hồ sơ cục bộ 🌟</h2>
+                        <p className="text-sm mr-4">*Hãy đăng nhập để có thể lưu trên cloud</p>
+                        </div>
+
+                        
+                        <button id="BackBtn" class="ml-4 cta-button hover:bg-white/70 text-white font-medium py-2 px-4 rounded-full transition-all">
+                            Về trang Login
+                        </button>
+                        </>
+
+                    )}
+
                 </div>
             </div>
             
@@ -330,7 +373,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                     </div>
                     
                     <div class="flex space-x-3">
-                        <button class="flex-1 bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-medium py-2 px-4 rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center">
+                        <button onClick={handleNavigate} class="flex-1 bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500 text-white font-medium py-2 px-4 rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center">
                             <span class="mr-1">🧭</span> View Profile
                         </button>
                         <button class="Ask-Lumina-btn flex-1 bg-gradient-to-r from-blue-400 to-cyan-400 hover:from-blue-500 hover:to-cyan-500 text-white font-medium py-2 px-4 rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center ask-lumina" data-profile="Sophia Williams">
@@ -376,10 +419,10 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
           
     <div id="luminaModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
         <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" id="modalOverlay"></div>
-        <div class="mystic-container p-6 max-w-2xl w-full mx-4 z-10 transform transition-all">
+        <div class="mystic-container p-[0.5rem] sm:p-4 max-w-2xl w-full mx-4 z-10 transform transition-all">
             <div class="flex justify-between items-center mb-4">
                 <div class="flex items-center">
-                    <div class="lumina-avatar w-12 h-12 flex items-center justify-center mr-3">
+                    <div class="lumina-avatar flex items-center p-[0.3rem] justify-center mr-3">
                         <span class="text-2xl">✨</span>
                     </div>
                     <h3 class="text-xl font-bold text-purple-800">Ask Lumina about <span id="profileName">James</span></h3>
@@ -391,7 +434,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                 </button>
             </div>
             
-            <div id="chatContainer" ref={endRef} class="bg-white/50 rounded-lg p-4 h-80 overflow-y-auto mb-4">
+            <div id="chatContainer" ref={endRef} className="transition-all duration-500 bg-white/50 rounded-lg p-4 h-64 h-96 overflow-y-auto mb-4">
 
 
 
@@ -400,6 +443,25 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                         if(msg.role === "system"){
                             return null
                         }
+
+                        if(msg.role == "assistant" && i == 1){
+                            return(
+                                <>
+                                <div key={i} class="flex mb-4">
+                                <div class="lumina-avatar w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
+                                    <span class="text-xl">✨</span>
+                                </div>
+                                <div class="chat-bubble bg-white/70 p-3 rounded-lg max-w-[80%]">
+                                    <ReactMarkdown remarkPlugins={[remarkBreaks]}>{msg.content}</ReactMarkdown>
+                                    <button onClick={()=>sendMessage(2)} className="mt-2 cta-button hover:bg-white/70 text-white font-medium py-2 px-4 rounded-full transition-all">Gửi hồ sơ</button>
+                                </div>
+                                </div>
+
+                                </>
+                            )
+                        }
+
+                    
 
                         return (
                         msg.role === "user" ? (
@@ -441,14 +503,23 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
 
             </div>
             
-            <div class="bg-white/50 rounded-lg p-3 mb-4">
-                <h4 class="text-sm font-medium text-purple-800 mb-2">Suggested Questions:</h4>
-                <div class="flex flex-wrap gap-2">
+            <div id="Suggested_box"  class="bg-white/50 rounded-lg p-3 mb-4">
+                <div className="flex justify-between w-full">
+                    <h4 class="text-sm font-medium text-purple-800">Suggested Questions:</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                    </svg>
+                </div>
+                
+                <div id="Suggested_lists" class="flex flex-wrap gap-2 hidden h-[10rem] overflow-y-auto mt-2">
                     <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">What are their strengths?</button>
                     <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">What should they work on?</button>
                     <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Give me a brief analysis</button>
                     <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Career recommendations?</button>
-                    <button onClick={()=>sendMessage(2)} class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Gửi hồ sơ</button>
+                    <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">What are their strengths?</button>
+                    <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">What should they work on?</button>
+                    <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Give me a brief analysis</button>
+                    <button class="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Career recommendations?</button>
                 </div>
             </div>
             

@@ -3,10 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function Guide(){
 
 
-
+const navigate = useNavigate()
+function handleNavigate(){
+    navigate("/Resource")
+}
 
 const endRef = useRef(null);
 
@@ -88,7 +93,7 @@ useEffect(()=>{
   const guidedPathsSection = document.getElementById('guidedPaths');
   const chatSection = document.getElementById('chatSection');
   const progressTracker = document.getElementById('progressTracker');
-  const showPathsBtn = document.getElementById('showPathsBtn');
+
   const showChatBtn = document.getElementById('showChatBtn');
   const backBtn = document.getElementById('BackBtn')
 
@@ -110,13 +115,7 @@ useEffect(()=>{
     backBtn.classList.add('hidden')
   })
 
-  showPathsBtn.addEventListener('click', () => {
-      welcomeSection.classList.add('hidden');
-      chatSection.classList.add('hidden');
-      guidedPathsSection.classList.remove('hidden');
-      guidedPathsSection.classList.add('fade-in');
-      backBtn.classList.remove('hidden')
-  });
+
   
   showChatBtn.addEventListener('click', () => {
       welcomeSection.classList.add('hidden');
@@ -285,13 +284,13 @@ function createStars() {
                 
                 {/* <!-- Action Buttons --> */}
                 <div class="flex flex-col md:flex-row gap-4 w-full max-w-md">
-                    <button id="showPathsBtn" class="btn-primary flex-1 py-4 px-6 rounded-xl text-white font-bold text-lg shadow-lg flex items-center justify-center gap-2">
+                    <button onClick={handleNavigate} id="showPathsBtn" class="btn-primary flex-1 py-4 px-6 rounded-xl text-white font-bold text-lg shadow-lg flex items-center justify-center gap-2">
                         <span class="text-xl">✨</span>
-                        Choose a Guided Path
+                        Xem tài liệu
                     </button>
                     <button id="showChatBtn" class="btn-secondary flex-1 py-4 px-6 rounded-xl text-white font-bold text-lg shadow-lg flex items-center justify-center gap-2">
                         <span class="text-xl">💬</span>
-                        Chat with Lumina
+                        Trò chuyện với Lumina
                     </button>
                 </div>
             </div>

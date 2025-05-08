@@ -190,13 +190,18 @@
     
     .nav-item {
         flex-direction: row;
-        padding: 0.5rem 1rem;
+        padding: 0.2rem 0.5rem;
         margin-right: 0.5rem;
         margin-bottom: 0;
+        
+    }
+    .plant_inner{
+        margin-bottom: 7rem;
     }
     
     .nav-item span {
         margin-left: 0.5rem;
         margin-top: 0;
+        width: 3rem;
     }
 }

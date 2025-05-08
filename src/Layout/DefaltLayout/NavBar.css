@@ -55,3 +55,9 @@ body {
 .hero-gradient {
     background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 100%);
 }
+
+/* @media screen {
+    .menu-item{
+        padding: 0.6rem;
+    }
+} */

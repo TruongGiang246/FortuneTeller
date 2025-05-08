@@ -42,23 +42,7 @@ function Resource(){
         }
         
       };
-    //   function toggleFullscreen() {
 
-    //     const iframe = document.getElementById('player');
-    //     console.log('helloi')
-    //     // Kiểm tra xem iframe đã có thể chuyển sang chế độ full màn hình chưa
-    //     if (iframe.requestFullscreen) {
-    //       iframe.requestFullscreen();
-    //     } else if (iframe.mozRequestFullScreen) { // Firefox
-    //       iframe.mozRequestFullScreen();
-    //     } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari và Opera
-    //       iframe.webkitRequestFullscreen();
-    //     } else if (iframe.msRequestFullscreen) { // IE/Edge
-    //       iframe.msRequestFullscreen();
-    //     }
-
-
-    //   }
 
 
       const toggleFullscreen = () => {
@@ -129,13 +113,14 @@ function Resource(){
         <header class="flex flex-col md:flex-row items-center justify-between mb-8">
             <div class="flex items-center mb-4 md:mb-0">
                 <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-3">
+
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </div>
                 <div>
                     <h1 class="text-3xl font-bold gradient-text">Resource</h1>
-                    <p class="text-gray-600">Resource from Youtube</p>
+                    <p class="text-gray-600">Digital resource from Youtube</p>
                 </div>
             </div>
             
@@ -156,7 +141,7 @@ function Resource(){
             {/* <!-- Left Column - Player and Current Video --> */}
             <div class="lg:col-span-2">
                 {/* <!-- Player Section --> */}
-                <div class="glass-effect p-6 mb-6">
+                <div class="glass-effect p-3 sm:p-6 mb-6">
                     <div class="aspect-w-16 aspect-h-9 mb-4">
 
                         <div onClick={toggleFullscreen} id="player"  class="relative w-full h-0 pb-[56.25%] relative rounded-lg overflow-hidden">
@@ -166,6 +151,7 @@ function Resource(){
                                 src={`https://www.youtube.com/embed?listType=playlist&list=PL9ODuxeNSLJJz3e52Q2jzuXvMmk89GjPb&index=${indexVideo}`} 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                loading="lazy"
                                 allowfullscreen>
                             </iframe>
                             <button className="fullscreen-button" onClick={toggleFullscreen}>
@@ -177,14 +163,9 @@ function Resource(){
                     
                     <h2 id="videoTitle" class="text-xl font-bold text-gray-800 mb-2">Select a video to play</h2>
                     <p id="videoChannel" class="text-gray-600 mb-4 text-sm">Channel name will appear here</p>
-                    
-                    {/* <!-- Progress Bar --> */}
-                    <div class="progress-bar mb-4" id="progressBar">
-                        <div class="progress-fill" id="progressFill" style={{width: "0%"}}></div>
-                    </div>
-                    
+
                     {/* <!-- Player Controls --> */}
-                    <div class="flex flex-wrap items-center justify-between">
+                    <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
                             <button id="prevBtn" onClick={prevVideo} class="btn-icon text-gray-700 hover:text-violet-600 disabled:opacity-50 disabled:cursor-not-allowed">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -198,23 +179,9 @@ function Resource(){
                                 </svg>
                             </button>
                         </div>
+
                         
-                        {/* <div class="flex items-center space-x-4 mt-2 sm:mt-0">
-                            <div class="flex items-center space-x-2">
-                                <button id="muteBtn" class="btn-icon text-gray-700 hover:text-violet-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"></path>
-                                    </svg>
-                                </button>
-                                <input type="range" id="volumeSlider" min="0" max="100" value="100" class="volume-slider w-20"/>
-                            </div>
-                            
-                            <div class="text-gray-700 text-sm">
-                                <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-                            </div>
-                        </div> */}
-                        
-                        <div class="flex items-center space-x-2 mt-2 sm:mt-0 w-full sm:w-auto justify-center sm:justify-start">
+                        <div class="flex items-center space-x-2 mt-2 sm:mt-0 w-full justify-end">
                             <button id="loopBtn" class="btn-icon text-gray-700 hover:text-violet-600 tooltip">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
@@ -254,8 +221,8 @@ function Resource(){
                     {/* <!-- Tabs --> */}
                     <div class="flex border-b border-gray-200 mb-4">
                         <div class="tab active" data-tab="description">Description</div>
-                        <div class="tab" data-tab="comments">Comments</div>
-                        <div class="tab" data-tab="related">Related</div>
+                        {/* <div class="tab" data-tab="comments">Comments</div>
+                        <div class="tab" data-tab="related">Related</div> */}
                     </div>
                     
                     {/* <!-- Tab Content --> */}
@@ -264,13 +231,6 @@ function Resource(){
                             Video description will appear here when you select a video to play.
                         </p>
                         <div class="flex items-center text-sm text-gray-600">
-                            <div class="flex items-center mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                <span id="videoViews">0 views</span>
-                            </div>
                             <div class="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -280,7 +240,7 @@ function Resource(){
                         </div>
                     </div>
                     
-                    <div class="tab-content" id="comments-content">
+                    {/* <div class="tab-content" id="comments-content">
                         <div class="mb-4">
                             <textarea id="commentInput" placeholder="Add a comment..." class="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-400 resize-none"></textarea>
                             <div class="flex justify-end mt-2">
@@ -309,7 +269,7 @@ function Resource(){
                                 <p>Related videos will appear here when you play a video.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             
@@ -320,13 +280,7 @@ function Resource(){
                     <div class="flex items-center justify-between mb-4">
                         <h3 id="currentPlaylistTitle" class="text-lg font-bold text-gray-800">Current Playlist</h3>
                         <div class="flex items-center">
-                            <span id="videoCount" class="text-sm text-gray-600 mr-2">3 videos</span>
-                            <button id="clearPlaylistBtn" class="btn-icon text-gray-600 hover:text-violet-600 tooltip">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                </svg>
-                                <span class="tooltip-text">Clear Playlist</span>
-                            </button>
+                            <span id="videoCount" class="text-sm text-gray-600 mr-2">{videoPLaylist.length} videos</span>
                         </div>
                     </div>
                     
@@ -339,7 +293,7 @@ function Resource(){
                                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%238b5cf6'/%3E%3Ccircle cx='160' cy='90' r='50' fill='%23ec4899' fill-opacity='0.7'/%3E%3C/svg%3E" alt="Thumbnail" class="w-full h-full object-cover"/>
                             </div>
                             <div class="flex-grow min-w-0">
-                                <h4 class="text-sm font-medium text-gray-800 truncate">{video.title}c</h4>
+                                <h4 class="text-sm font-medium text-gray-800 truncate">{video.title}</h4>
                                 <p class="text-xs text-gray-600 truncate">{video.author}</p>
                             </div>
                             <div class="flex-shrink-0 ml-2">
@@ -372,12 +326,7 @@ function Resource(){
                             </svg>
                         </button>
                     </div>
-                    
-                    <div id="userPlaylistsContainer" class="space-y-3 mb-4">
-                        <div class="text-center text-gray-500 py-4">
-                            <p>Login to see your playlists</p>
-                        </div>
-                    </div>
+
                     
                     <h3 class="text-lg font-bold text-gray-800 mb-4">Featured Playlists</h3>
                     
