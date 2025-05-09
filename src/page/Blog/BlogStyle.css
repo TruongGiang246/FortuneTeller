@@ -26,6 +26,14 @@ h1, h2, h3, h4, h5 {
     margin: 0 auto;
     padding: 2rem 1rem;
 }
+.dashboard-container-screen{
+    width: 1500px;
+    position: absolute;
+    top: -9999px;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ff 100%)
+}
+
 
 .card {
     background: rgba(255, 255, 255, 0.85);
@@ -64,9 +72,12 @@ h1, h2, h3, h4, h5 {
 }
 
 .avatar-container {
+    
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
+    margin-right: 1.5rem;
+    z-index: 1;
 }
 
 .avatar-container::before {
@@ -119,6 +130,7 @@ h1, h2, h3, h4, h5 {
     z-index: 1;
     flex: 1;
     transition: color 0.3s ease;
+    
 }
 
 .toggle-slider {
@@ -235,7 +247,10 @@ h1, h2, h3, h4, h5 {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
     border-radius: inherit;
 }
-
+.chart-wrapper-report{
+    width: 70%;
+    max-width: 23rem;
+}
 .disc-bar {
     height: 20px;
     border-radius: 10px;
@@ -243,14 +258,16 @@ h1, h2, h3, h4, h5 {
 }
 
 .destiny-grid {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
     border-radius: 16px;
     padding: 15px;
+    overflow: hidden; */
+    padding: 15px;
     position: relative;
-    overflow: hidden;
+    height:26rem;
 }
 
 .destiny-grid::before {
@@ -313,3 +330,21 @@ h1, h2, h3, h4, h5 {
     box-shadow: 0 6px 20px rgba(200, 182, 255, 0.6);
     transform: translateY(-2px);
 }
+@media (max-width: 768px) {
+  .chart-wrapper-report{
+    margin-top: 2rem;
+    width: 100%;
+  }
+}
+
+
+/* MANUAL_CSS_SCREEN */
+/* .header-report{
+    margin-bottom: 2.5rem;
+} */
+
+
+
+
+
+

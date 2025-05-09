@@ -54,3 +54,7 @@ h1 {
   }
 
 }
+*, ::before, ::after {
+    border-color: initial;
+    border-style: none;
+}

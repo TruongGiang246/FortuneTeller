@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+
 import "./AstroChartRequestStyle.css"
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { PieChart, XAxis, YAxis, Pie, Cell, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import vi from 'date-fns/locale/vi'
 import CustomLegend from "../Blog/CustomLegend";
-import { ElementDescriptions, ModalityDescriptions, planetDes } from "./Library_Astro";
 import domtoimage from "dom-to-image-more";
-import { da } from "date-fns/locale";
+import { useState, useEffect } from "react";
 
 
 
-const COLORS3 = ['#0088FE', '#00C49F', '#FFBB28'];
-const COLORS4 = ['#FF0000', '#FFD700', '#00C49F', '#0088FE'];
+
 const COLORS4T = ['	#EF4444B3', '#10B981B3', '#FACC15B3', '#3B82F6B3']
 const COLORS3T = ['#6366F1B3', '#8B5CF6B3', '#EC4899B3']
 const zodiacMap = {
@@ -37,23 +34,7 @@ const COLORS10 = [
 
 
 
-const CustomTooltip = ({ active, payload }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div style={{
-        backgroundColor: 'black',
-        border: '2px solid rgba(212, 175, 55, 0.5)',
-        padding: '10px',
-        borderRadius: '5px'
-      }}>
-        <p><strong>{payload[0].name}:</strong></p>
-        <p>{payload[0].value}%</p>
-      </div>
-    );
-  }
 
-  return null;
-};
 
 const PlantColors = [
   {name: "Mặt trời", color: "#FFD700"},
@@ -88,35 +69,7 @@ const AstroChartRequest = () => {
         }, index * 200 + 500);
     });
     
-    // Name input and reveal button
-    const nameInput = document.getElementById('Name');
-    const revealButton = document.getElementById('revealButton');
-    const nameInputSection = document.getElementById('nameInputSection');
-    
-    
-    // Enable/disable button based on name input
-    
-    // nameInput.addEventListener('input', () => {
-    //     if (nameInput.value.trim().length > 0) {
-    //         revealButton.disabled = false;
-    //         revealButton.classList.add('pulse');
-    //     } else {
-    //         revealButton.disabled = true;
-    //         revealButton.classList.remove('pulse');
-    //     }
-    // });
-    
-    // Reveal button click handler
-    // revealButton.addEventListener('click', () => {
-    //     if (nameInput.value.trim().length > 0) {
-    //         nameInputSection.classList.add('hidden');
-    //         resultsSection.classList.remove('hidden');
-    //         resultsSection.classList.add('fade-in');
-            
-    //         // Initialize charts after revealing results
-    //         initCharts();
-    //     }
-    // });
+
     
     // Navigation between panels
     const navItems = document.querySelectorAll('.nav-item');
@@ -135,162 +88,13 @@ const AstroChartRequest = () => {
     });
 });
 
-// Create random stars in the background
-function createStars() {
-    const starBg = document.getElementById('starBackground');
-    const starCount = 100;
-    
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        
-        // Random position
-        const left = Math.random() * 100;
-        const top = Math.random() * 100;
-        
-        // Random size
-        const size = Math.random() * 3 + 1;
-        
-        // Random opacity and animation delay
-        const opacity = Math.random() * 0.5 + 0.1;
-        const animationDelay = Math.random() * 4 + 's';
-        
-        star.style.left = `${left}%`;
-        star.style.top = `${top}%`;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.opacity = opacity;
-        star.style.animationDelay = animationDelay;
-        
-        starBg.appendChild(star);
-    }
-}
 
-// Initialize charts
-function initCharts() {
-    // Planet Influence Chart (Bar Chart)
-    const planetCtx = document.getElementById('planetChart').getContext('2d');
-    const planetChart = new Chart(planetCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'],
-            datasets: [{
-                label: 'Influence Score',
-                data: [65, 70, 45, 85, 60, 55, 40, 30, 50, 35],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 159, 64, 0.7)',
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(201, 203, 207, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
-                    'rgba(255, 159, 64, 0.7)'
-                ],
-                borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(153, 102, 255)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 159, 64)',
-                    'rgb(255, 99, 132)',
-                    'rgb(75, 192, 192)',
-                    'rgb(201, 203, 207)',
-                    'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(255, 159, 64)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
-        }
-    });
-    
-    // Qualities Chart (Pie Chart)
-    const qualitiesCtx = document.getElementById('qualitiesChart').getContext('2d');
-    const qualitiesChart = new Chart(qualitiesCtx, {
-        type: 'pie',
-        data: {
-            labels: ['Cardinal', 'Fixed', 'Mutable'],
-            datasets: [{
-                data: [35, 40, 25],
-                backgroundColor: [
-                    'rgba(99, 102, 241, 0.7)',
-                    'rgba(139, 92, 246, 0.7)',
-                    'rgba(236, 72, 153, 0.7)'
-                ],
-                borderColor: [
-                    'rgb(99, 102, 241)',
-                    'rgb(139, 92, 246)',
-                    'rgb(236, 72, 153)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-    
-    // Elements Chart (Pie Chart)
-    const elementsCtx = document.getElementById('elementsChart').getContext('2d');
-    const elementsChart = new Chart(elementsCtx, {
-        type: 'pie',
-        data: {
-            labels: ['Fire', 'Earth', 'Air', 'Water'],
-            datasets: [{
-                data: [20, 30, 15, 35],
-                backgroundColor: [
-                    'rgba(239, 68, 68, 0.7)',
-                    'rgba(16, 185, 129, 0.7)',
-                    'rgba(250, 204, 21, 0.7)',
-                    'rgba(59, 130, 246, 0.7)'
-                ],
-                borderColor: [
-                    'rgb(239, 68, 68)',
-                    'rgb(16, 185, 129)',
-                    'rgb(250, 204, 21)',
-                    'rgb(59, 130, 246)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-}
 
 
   const [response, setResponse] = useState(null);
-  const [response2, setResponse2] = useState(null)
   const [loading, setLoading] = useState(false);
   const [date, setDate] = useState(new Date(2025, 0, 1));
   const [time, setTime] = useState(new Date(2025, 0, 1, 0, 0));
-  const [date2, setDate2] = useState(new Date(2025, 0, 1, 0, 0));
-  const [time2, setTime2] = useState(new Date(2025, 0, 1, 0, 0))
   const [tick, setTick] = useState(false);
 
   const handleScreenshot = async () => {
@@ -339,6 +143,7 @@ function initCharts() {
     ["Chart here"],
     [
       "Sample",
+      "Sample",
       "Sample"
     ]
   ])
@@ -346,7 +151,7 @@ function initCharts() {
     element: [],
     modality: []
   });
-  const [swapInput, setSwapInput] = useState(true);
+
 
   registerLocale('vi', vi);
   setDefaultLocale('vi');
@@ -683,12 +488,7 @@ for(let i = 0; i < hightest_planet.length; i++){
 }
 
 
-console.log(planetsInfo)
-// console.log(absolute, mutable, cardinal)
 
-// console.log(sun, moon, mer, venus, mars, jupiter, saturn, uranus, neptune, pluto)
-console.log(zodiacMap["Tau"])
-console.log(zodiacMap[planetsInfo[0].sign])
 
 setDominateZodiac([
   zodiacMap[planetsInfo[0].sign],
@@ -732,7 +532,8 @@ setSumData([
   ],
   [
     planetName[indexPos],
-    comments[indexPos]
+    comments[indexPos],
+    planetsInfo[0].sign
   ]
   
 ])
@@ -773,15 +574,6 @@ setSumData([
       check_balance_2++;
     }
   }
-
-  const insetData = {
-    element: [strong_weak[0], strong_weak[1], strong_weak[2], strong_weak[3]],
-    modality: [strong_weak_2[0], strong_weak_2[1], strong_weak_2[2]],
-    ifBalance: check_balance,
-    ifBalance_2: check_balance_2
-  }
-
-  setDes(insetData)
   
 
 }
@@ -796,9 +588,9 @@ useEffect(()=>{
 
   const randomNumber = Math.floor(Math.random() * 9) + 1;
   const formattedDate = `${day}-${month}-${year}`; // "09-04-2025"
-
-  if(SumData[3]){
-    const NamePerson = document.getElementById('Name').value;
+  const NamePerson = document.getElementById('Name').value;
+  if(SumData[4][1] != "sample" && NamePerson){
+    
 
     const storedUser = localStorage.getItem("user");
 
@@ -843,85 +635,58 @@ useEffect(()=>{
 
 
 
-console.log(time, date)
-
 
   return (
     <div className="astro_wrapper">
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
-          <div class="floating text-4xl" style={{top: "15%",left: "10%",animationDuration: "6s", opacity: "0.6"}}>✨</div>
-          <div class="floating text-3xl" style={{top: "25%", right: "15%", animationDuration: "7s", opacity: "0.6"}}>🌙</div>
-          <div class="floating text-4xl" style={{bottom: "20%", left: "15%", animationDuration: "8s", opacity: "0.6"}}>⭐</div>
-          <div class="floating text-3xl" style={{bottom: "30%", right: "10%", animationDuration: "9s", opacity: "0.6"}}>🪐</div>
-          <div class="floating text-4xl" style={{top: "60%", left: "20%", animationDuration: "7.5s", opacity: "0.6"}}>💫</div>
-          <div class="floating text-3xl" style={{top: "40%", right: "25%", animationDuration: "6.5s", opacity: "0.6"}}>🌠</div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="floating text-4xl" style={{top: "15%",left: "10%",animationDuration: "6s", opacity: "0.6"}}>✨</div>
+          <div className="floating text-3xl" style={{top: "25%", right: "15%", animationDuration: "7s", opacity: "0.6"}}>🌙</div>
+          <div className="floating text-4xl" style={{bottom: "20%", left: "15%", animationDuration: "8s", opacity: "0.6"}}>⭐</div>
+          <div className="floating text-3xl" style={{bottom: "30%", right: "10%", animationDuration: "9s", opacity: "0.6"}}>🪐</div>
+          <div className="floating text-4xl" style={{top: "60%", left: "20%", animationDuration: "7.5s", opacity: "0.6"}}>💫</div>
+          <div className="floating text-3xl" style={{top: "40%", right: "25%", animationDuration: "6.5s", opacity: "0.6"}}>🌠</div>
       </div>
 
-      <header class="w-full max-w-6xl mx-auto px-4 py-4 flex justify-center items-center">
+      <header className="w-full max-w-6xl mx-auto px-4 py-4 flex justify-center items-center">
 
         
-        <div class="text-sm text-indigo-700 font-medium">
+        <div className="text-sm text-indigo-700 font-medium">
             Astrology Map
         </div>
     </header>
-      <main class="w-full max-w-6xl mx-auto px-4 py-6">
+      <main className="w-full max-w-6xl mx-auto px-4 py-6">
         {/* <!-- Name Input Section --> */}
-        <div id="nameInputSection" class="fade-in">
-            <div class="mb-10 bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl max-w-lg mx-auto">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Your Cosmic Blueprint</h2>
-                    <p class="text-gray-600 leading-relaxed">
-                        Discover how the stars and planets influence your personality, strengths, and potential paths.
+        <div id="nameInputSection" className="fade-in">
+            <div className="mb-10 bg-white/80 backdrop-blur-md rounded-3xl p-8 md:p-10 shadow-xl max-w-lg mx-auto">
+                <div className="text-center mb-8">
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">✨ Bản Đồ Vũ Trụ Của Bạn</h2>
+                    <p className="text-gray-600 leading-relaxed">
+                    Khám phá cách các vì sao và hành tinh ảnh hưởng đến tính cách, điểm mạnh và con đường tiềm năng của bạn.
                     </p>
                 </div>
                 
                 {/* <!-- Name Input --> */}
-                <div class="mb-8">
-                    <label for="name" class="block text-gray-700 font-medium mb-2">Enter your name to reveal your birth chart</label>
-                    <input type="text" id="Name" class="input-field w-full px-5 py-4 bg-white/70 rounded-xl text-gray-800 text-lg outline-none" placeholder="e.g., Linh, Kai"/>
-                </div>
-                <div class="mb-8">
-                    <label for="name" class="block text-gray-700 font-medium mb-2">Enter your Nơi sinh</label>
-                    <input type="text" id="place_birth" class="input-field w-full px-5 py-4 bg-white/70 rounded-xl text-gray-800 text-lg outline-none" placeholder="e.g., Linh, Kai"/>
-                </div>
-
-
-                {/* <div className="mb-8">
-                <label for="name" class="block text-gray-700 font-medium mb-2">Ngày Tháng Năm</label>
-                <DatePicker
-                  selected={date}
-                  onChange={(date)=> setDate(date)}
-                  locale="vi"
-                  dateFormat="dd/MM/yyyy"
-                  isClearable
-                  showMonthDropdown
-                  showYearDropdown
-                  dropdownMode="select"
-                />
-                </div>
-
                 <div className="mb-8">
-                <label for="name" class="block text-gray-700 font-medium mb-2">Giờ sinh</label>
-                <DatePicker
-                  selected={time}
-                  onChange={(time)=> setTime(time)}
-                  locale="vi"
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeFormat="HH:mm"
-                  dateFormat="HH:mm"
-                />
-                </div> */}
+                    <label for="name" className="block text-gray-700 font-medium mb-2">Nhập tên của bạn để khám phá bản đồ sao cá nhân</label>
+                    <input type="text" id="Name" className="input-field w-full px-5 py-4 bg-white/70 rounded-xl text-gray-800 text-lg outline-none" placeholder="e.g., Linh, Kai"/>
+                </div>
+                <div className="mb-8">
+                    <label for="name" className="block text-gray-700 font-medium mb-2">Nhập nơi sinh</label>
+                    <input type="text" id="place_birth" className="input-field w-full px-5 py-4 bg-white/70 rounded-xl text-gray-800 text-lg outline-none" placeholder="e.g., Hà Nội, TP.HCM"/>
+                </div>
 
 
-                    <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+
+
+                    <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="birthdate" class="block text-sm font-medium text-gray-700 mb-1">Chọn Ngày Sinh:</label>
-                            <input value={date} onChange={(e)=> setDate(e.target.value)} type="date" id="birthdate" name="birthdate" class="number-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none" required=""/>
+                            <label for="birthdate" className="block text-sm font-medium text-gray-700 mb-1">Chọn Ngày Sinh:</label>
+                            <input value={date} onChange={(e)=> setDate(e.target.value)} type="date" id="birthdate" name="birthdate" className="number-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none" required=""/>
                         </div>
                         <div>
-                            <label for="birth-time" class="block text-sm font-medium text-gray-700 mb-1">Chọn giờ sinh:</label>
-                            <input value={time} onChange={(e)=> setTime(e.target.value)} type="time" placeholder="Enter your full name" id="birth-time"  class="number-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none" name="birth-time" required/>
+                            <label for="birth-time" className="block text-sm font-medium text-gray-700 mb-1">Chọn giờ sinh:</label>
+                            <input value={time} onChange={(e)=> setTime(e.target.value)} type="time" placeholder="Enter your full name" id="birth-time"  className="number-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none" name="birth-time" required/>
                         </div>
                     </div>
 
@@ -929,52 +694,52 @@ console.log(time, date)
 
                 
                 {/* <!-- Reveal Button --> */}
-                <div class="flex justify-center">
+                <div className="flex justify-center">
                     <button id="revealButton" className="reveal-btn w-full md:w-2/3 py-4 rounded-xl text-white font-bold text-lg shadow-lg disabled:opacity-70" onClick={() => fetchAstroChart(1)} disabled={loading}>
-                    {loading ? "Loading..." : "Get Astro Chart"}
+                    {loading ? "Loading..." : "Nhận Bản Đồ"}
                     </button>
                 </div>
             </div>
         </div>
         
         {/* <!-- Results Section --> */}
-        <div id="resultsSection" class="hidden">
-            <div class="flex flex-col md:flex-row gap-6">
+        <div id="resultsSection" className="hidden">
+            <div className="flex flex-col md:flex-row gap-6">
                 {/* <!-- Sidebar Navigation (Vertical on desktop, horizontal on mobile) --> */}
-                <div class="sidebar bg-white/40 backdrop-blur-sm rounded-2xl p-4 md:w-64 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-x-visible">
-                    <button class="nav-item active flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
-                        <span class="text-xl">🌌</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Bản đồ sao</span>
+                <div className="sidebar bg-white/40 backdrop-blur-sm rounded-2xl p-4 md:w-64 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-x-visible">
+                    <button className="nav-item active flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span className="text-xl">🌌</span>
+                        <span className="mt-1 md:mt-0 md:ml-3 font-medium">Bản đồ sao</span>
                     </button>
                     
-                    <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
-                        <span class="text-xl">📊</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Hành tinh</span>
+                    <button className="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span className="text-xl">📊</span>
+                        <span className="mt-1 md:mt-0 md:ml-3 font-medium">Hành tinh</span>
                     </button>
                     
-                    <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
-                        <span class="text-xl">🔵</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Tính chất</span>
+                    <button className="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span className="text-xl">🔵</span>
+                        <span className="mt-1 md:mt-0 md:ml-3 font-medium">Tính chất</span>
                     </button>
                     
-                    <button class="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
-                        <span class="text-xl">🟣</span>
-                        <span class="mt-1 md:mt-0 md:ml-3 font-medium">Nguyên tố</span>
+                    <button className="nav-item flex flex-col md:flex-row items-center p-3 rounded-xl w-full">
+                        <span className="text-xl">🟣</span>
+                        <span className="mt-1 md:mt-0 md:ml-3 font-medium">Nguyên tố</span>
                     </button>
                 </div>
                 
                 {/* <!-- Content Panel --> */}
-                <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 flex-1 shadow-lg">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 flex-1 shadow-lg">
                     {/* <!-- Birth Chart Panel --> */}
-                    <div id="birthChartPanel" class="content-panel active">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6 inline-block">Bản đồ chiêm tinh của bạn</h2>
-                        <button onClick={handleScreenshot} class="inline-block ml-3 cta-button hover:bg-white/70 text-white font-medium py-1 px-5 rounded-full transition-all">
+                    <div id="birthChartPanel" className="content-panel active">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-6 inline-block">Bản đồ chiêm tinh của bạn</h2>
+                        <button onClick={handleScreenshot} className="inline-block ml-3 cta-button hover:bg-white/70 text-white font-medium py-1 px-5 rounded-full transition-all">
                         {tick ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       </svg>                         
                         ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path d="M12 3v13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M7 12l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M3 17v4h18v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -983,9 +748,9 @@ console.log(time, date)
 
 
                         </button>
-                        <p class="text-gray-600 mb-6">🪐 Bản đồ sao này cho thấy vị trí các hành tinh vào thời điểm bạn chào đời, tiết lộ bản thiết kế vũ trụ của bạn.</p>
+                        <p className="text-gray-600 mb-6">🪐 Bản đồ sao này cho thấy vị trí các hành tinh vào thời điểm bạn chào đời, tiết lộ bản thiết kế vũ trụ của bạn.</p>
                         
-                        <div class="birth-chart-container">
+                        <div className="birth-chart-container">
                             {/* <!-- SVG Birth Chart --> */}
                             {(response) ? (
                             <>
@@ -1003,23 +768,23 @@ console.log(time, date)
 
                         </div>
                         
-                        <div class="mt-8 bg-indigo-50 rounded-xl p-4">
-                            <h3 class="font-semibold text-indigo-800 mb-2">Your Dominant Signs</h3>
+                        <div className="mt-8 bg-indigo-50 rounded-xl p-4">
+                            <h3 className="font-semibold text-indigo-800 mb-2">Your Dominant Signs</h3>
 
-                            <div class="flex flex-wrap gap-3">
-                                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Mặt trời {dominatZodiac[0]}</span>
-                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Mặt trăng {dominatZodiac[1]}</span>
-                                <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Cung mọc {dominatZodiac[2]}</span>
+                            <div className="flex flex-wrap gap-3">
+                                <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Mặt trời {dominatZodiac[0]}</span>
+                                <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Mặt trăng {dominatZodiac[1]}</span>
+                                <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Cung mọc {dominatZodiac[2]}</span>
                             </div>
                         </div>
                     </div>
                     
                     {/* <!-- Planet Influence Panel --> */}
-                    <div id="planetInfluencePanel" class="content-panel">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Ảnh hưởng của các hành tinh</h2>
-                        <p class="text-gray-600 mb-6">Khám phá mức độ mỗi hành tinh tác động đến tính cách và con đường đời của bạn.</p>
+                    <div id="planetInfluencePanel" className="content-panel">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-6">Ảnh hưởng của các hành tinh</h2>
+                        <p className="text-gray-600 mb-6">Khám phá mức độ mỗi hành tinh tác động đến tính cách và con đường đời của bạn.</p>
                         
-                        <div class="plant_inner">
+                        <div className="plant_inner">
                               <ResponsiveContainer width="100%" height="100%">
                               <BarChart data={SumData[2]}>
                                   <XAxis hide tick={{ angle: -65, dy: 30, style: {fontWeight: 'bold', fill: 'white', fontSize: '11px'} }} dataKey="name"/>
@@ -1039,22 +804,22 @@ console.log(time, date)
                               </div>
                         </div>
                         
-                        <div class="mt-8 bg-indigo-50 rounded-xl p-4">
-                            <h3 class="font-semibold text-indigo-800 mb-2">Hành tinh chủ đạo của bạn</h3>
-                            <p class="text-gray-700">
-                                <span class="font-medium">{SumData[4][0]}</span> - {SumData[4][1]}
+                        <div className="mt-8 bg-indigo-50 rounded-xl p-4">
+                            <h3 className="font-semibold text-indigo-800 mb-2">Hành tinh chủ đạo của bạn</h3>
+                            <p className="text-gray-700">
+                                <span className="font-medium">{SumData[4][0]}</span> - {SumData[4][1]}
                             </p>
                         </div>
                     </div>
                     
                     {/* <!-- Qualities Panel --> */}
-                    <div id="qualitiesPanel" class="content-panel">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Đặc Tính Chiêm Tinh</h2>
-                    <p class="text-gray-600 mb-6">Sự phân bố năng lượng của bạn giữa năng lượng Tiên phong, Kiên định, và Linh hoạt thể hiện cách bạn tiếp cận các thử thách và sự thay đổi.</p>
+                    <div id="qualitiesPanel" className="content-panel">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6">Đặc Tính Chiêm Tinh</h2>
+                    <p className="text-gray-600 mb-6">Sự phân bố năng lượng của bạn giữa năng lượng Tiên phong, Kiên định, và Linh hoạt thể hiện cách bạn tiếp cận các thử thách và sự thay đổi.</p>
 
                         
-                        <div class="flex justify-center">
-                            <div class="quality_inner">
+                        <div className="flex justify-center">
+                            <div className="quality_inner">
                             <ResponsiveContainer width="100%" height={300}>
                               <PieChart>
                                 <Pie data={SumData[0]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
@@ -1069,29 +834,29 @@ console.log(time, date)
                             </div>
                         </div>
                         
-                        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="bg-indigo-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-indigo-800 mb-1">{`Linh hoạt (${SumData[0][0].value}%)`}</h3>
-                                <p class="text-sm text-gray-600">Khả năng thích ứng, linh hoạt, đa dạng</p>
+                        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="bg-indigo-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-indigo-800 mb-1">{`Linh hoạt (${SumData[0][0].value}%)`}</h3>
+                                <p className="text-sm text-gray-600">Khả năng thích ứng, linh hoạt, đa dạng</p>
                             </div>
-                            <div class="bg-purple-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-purple-800 mb-1">{`Tiên Phong (${SumData[0][1].value}%)`}</h3>
-                                <p class="text-sm text-gray-600">Khởi xướng, lãnh đạo, hướng hành động</p>
+                            <div className="bg-purple-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-purple-800 mb-1">{`Tiên Phong (${SumData[0][1].value}%)`}</h3>
+                                <p className="text-sm text-gray-600">Khởi xướng, lãnh đạo, hướng hành động</p>
                             </div>
-                            <div class="bg-pink-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-pink-800 mb-1">{`Kiên Định (${SumData[0][2].value}%)`}</h3>
-                                <p class="text-sm text-gray-600">Sự ổn định, quyết tâm, kiên trì</p>
+                            <div className="bg-pink-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-pink-800 mb-1">{`Kiên Định (${SumData[0][2].value}%)`}</h3>
+                                <p className="text-sm text-gray-600">Sự ổn định, quyết tâm, kiên trì</p>
                             </div>
                         </div>
                     </div>
                     
                     {/* <!-- Elements Panel --> */}
-                    <div id="elementsPanel" class="content-panel">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Cân Bằng Nguyên Tố</h2>
-                        <p class="text-gray-600 mb-6">Sự phân bố các yếu tố Lửa, Đất, Khí và Nước của bạn tiết lộ tính cách cơ bản của bạn.</p>
+                    <div id="elementsPanel" className="content-panel">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-6">Cân Bằng Nguyên Tố</h2>
+                        <p className="text-gray-600 mb-6">Sự phân bố các yếu tố Lửa, Đất, Khí và Nước của bạn tiết lộ tính cách cơ bản của bạn.</p>
                         
-                        <div class="flex justify-center">
-                            <div class="elements_inner">
+                        <div className="flex justify-center">
+                            <div className="elements_inner">
                             <ResponsiveContainer width="100%" height={300}>
                                 <PieChart>
                                   <Pie data={SumData[1]} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value">
@@ -1106,22 +871,22 @@ console.log(time, date)
                             </div>
                         </div>
                         
-                        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div class="bg-red-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-red-800 mb-1">{`Lửa (${SumData[1][0].value}%)`}</h3>
-                                <p class="text-sm text-gray-600">Đam mê, năng lượng, cảm hứng</p>
+                        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div className="bg-red-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-red-800 mb-1">{`Lửa (${SumData[1][0].value}%)`}</h3>
+                                <p className="text-sm text-gray-600">Đam mê, năng lượng, cảm hứng</p>
                             </div>
-                            <div class="bg-green-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-green-800 mb-1">{`Đất (${SumData[1][1].value}%)`}</h3>
-                                <p class="text-sm text-gray-600">Tính thực tế, ổn định, đáng tin cậy</p>
+                            <div className="bg-green-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-green-800 mb-1">{`Đất (${SumData[1][1].value}%)`}</h3>
+                                <p className="text-sm text-gray-600">Tính thực tế, ổn định, đáng tin cậy</p>
                             </div>
-                            <div class="bg-yellow-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-yellow-800 mb-1">{`Khí (${SumData[1][2].value}%)`}</h3>
-                                <p class="text-sm text-gray-600">Trí tuệ, giao tiếp, xã hội</p>
+                            <div className="bg-yellow-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-yellow-800 mb-1">{`Khí (${SumData[1][2].value}%)`}</h3>
+                                <p className="text-sm text-gray-600">Trí tuệ, giao tiếp, xã hội</p>
                             </div>
-                            <div class="bg-blue-50 rounded-xl p-4">
-                                <h3 class="font-semibold text-blue-800 mb-1">{`Nước (${SumData[1][3].value}%)`}</h3>
-                                <p class="text-sm text-gray-600">Cảm xúc, trực giác, nhạy cảm</p>
+                            <div className="bg-blue-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-blue-800 mb-1">{`Nước (${SumData[1][3].value}%)`}</h3>
+                                <p className="text-sm text-gray-600">Cảm xúc, trực giác, nhạy cảm</p>
                             </div>
                         </div>
                     </div>

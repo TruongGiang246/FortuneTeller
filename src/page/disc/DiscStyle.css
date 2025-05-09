@@ -165,3 +165,18 @@
     70% { transform: scale(1.05); }
     100% { opacity: 1; transform: scale(1); }
 }
+@media screen {
+    .question-card{
+        margin-top: 3rem;
+        width: 90vw;
+    }
+    #ProgressGroup{
+        display: none;
+    }
+    .result-card-disc{
+        width: 90%;
+    }
+    .tips_card{
+        width: 90%;
+    }
+}

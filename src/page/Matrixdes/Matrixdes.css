@@ -108,3 +108,9 @@ input, select {
     width: 90%;
   }
 }
+#lmao{
+  border-bottom: 1rem solid rgb(244, 114, 182);
+  border-left: 0.3rem solid rgb(96, 165, 250);
+  border-right: 0.3rem solid rgb(168, 85, 247);
+  border-top: 1rem solid rgb(79 70 229);
+}
