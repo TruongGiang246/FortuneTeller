@@ -21,7 +21,6 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
     let names = [];
     if(storedUser){
       names = Object.keys(storedUser); 
-      dataList = Object.values(storedUser);
     }
     const [deleteConfirm, setDeleteConfirm] = useState(null);
     const handleDelete = (indexToDelete) => {
