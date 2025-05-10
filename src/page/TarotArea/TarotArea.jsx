@@ -211,7 +211,7 @@ const TarotReading = () => {
             <div class="intent-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 <div class="intent-card rounded-xl p-6 text-center cursor-pointer" data-intent="love">
                     <div class="text-5xl mb-4 floating_item">❤️</div>
-                    <h3 class="text-xl font-medium text-white">Love &amp; Tình yêu & Các mối quan hệ</h3>
+                    <h3 class="text-xl font-medium text-white">Tình yêu &amp; Các mối quan hệ</h3>
                     <p class="text-purple-200 mt-2">Lời khuyên dành cho trái tim và các kết nối của bạn</p>
                 </div>
                 

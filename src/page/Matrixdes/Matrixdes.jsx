@@ -661,13 +661,7 @@ function Matrixdes(){
                     </div>
                     
                     {/* <!-- Call to Action --> */}
-                    <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-8 text-center text-white shadow-lg">
-                        <h3 className="text-2xl font-bold mb-4">Curious what this means for your future?</h3>
-                        <p className="mb-6 text-lg">Let Lumina guide you step by step through your Destiny Matrix insights.</p>
-                        <button id="lumina-btn" className="bg-white text-indigo-700 font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-                            Talk to Lumina
-                        </button>
-                    </div>
+
                 </div>
             </div>
         </div>

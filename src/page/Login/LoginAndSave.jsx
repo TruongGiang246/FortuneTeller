@@ -87,8 +87,8 @@ const LoginAndSave = ({ onLoginSuccess, setMenuData }) => {
         {/* <!-- Login Box --> */}
         <div class="bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-xl">
             <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-3">Welcome to Lifemap</h2>
-                <p class="text-gray-600 leading-relaxed">Begin your journey to understand your strengths and shape your future.</p>
+                <h2 class="text-2xl font-bold text-gray-800 mb-3">Chào mừng tới LifeMap</h2>
+                <p class="text-gray-600 leading-relaxed">Mở ra con đường của bạn</p>
             </div>
             
             {/* <!-- Login Button --> */}
@@ -102,7 +102,7 @@ const LoginAndSave = ({ onLoginSuccess, setMenuData }) => {
                     </svg>
                     Continue with Google
                 </button>
-                <p onClick={noLoginBtn} class="text-sm underline text-gray-800 text-center max-w-xs mb-6">Tiếp tục sử dụng không đăng nhập</p>
+                <p onClick={noLoginBtn} class="text-sm underline cursor-pointer text-gray-800 text-center max-w-xs mb-6">Tiếp tục sử dụng không đăng nhập</p>
                 
                 <p class="text-sm text-gray-500 text-center max-w-xs">By signing in, you agree to our <br/> <a className="text-indigo-800/70">Terms of Service</a> & <a className="text-indigo-800/70">Privacy Policy</a></p>
             </div>

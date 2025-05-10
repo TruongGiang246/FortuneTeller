@@ -563,9 +563,9 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
                 </div>
                 
                 <div id="Suggested_lists" className="flex flex-wrap gap-2 hidden h-[10rem] overflow-y-auto mt-2">
-                    <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Điều gì thúc đẩy họ?</button>
-                    <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Họ đối mặt với căng thẳng như thế nào?</button>
-                    <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Tài năng tiềm ẩn của họ là gì?</button>
+                    <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Điểm mạnh của họ là gì?</button>
+                    <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Điểm yếu của họ là gì?</button>
+                    <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Nghề nghiệp phù hợp của họ?</button>
                     <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Họ tương tác với người khác ra sao?</button>
                     <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Những thử thách nào họ có thể gặp phải?</button>
                     <button className="suggested-question bg-white/70 hover:bg-white text-purple-800 text-sm py-1 px-3 rounded-full transition-all">Làm sao họ có thể cải thiện bản thân?</button>
