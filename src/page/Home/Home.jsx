@@ -273,7 +273,7 @@ function Home(){
             <div className="max-w-3xl mx-auto text-center">
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Sẵn Sàng Khám Phá Con Người Thật Của Bạn?</h2>
                 <p className="text-lg mb-8 opacity-90">Bắt đầu hành trình khám phá bản thân hôm nay và mở khóa những hiểu biết giúp bạn tự tin phát triển!</p>
-                <button className="px-8 py-4 bg-white text-indigo-600 rounded-full font-semibold text-lg shadow-lg hover:bg-indigo-50 transition-colors">Tạo Lifemap miễn phí của bạn</button>
+                <button onClick={handleScroll} className="px-8 py-4 bg-white text-indigo-600 rounded-full font-semibold text-lg shadow-lg hover:bg-indigo-50 transition-colors">Tạo Lifemap miễn phí của bạn</button>
             </div>
         </div>
     </section>

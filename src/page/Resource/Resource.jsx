@@ -5,32 +5,34 @@ function Resource(){
 
     const [indexVideo, setIndexVideo] = useState(12)
     const videoPLaylist = [
-        { title: "Ngày 1. Triết học - Minh triết Dễ hiểu", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 2. Triết học - Con người & Vũ trụ", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 3. Tâm lý học Tổng quát", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 4. Tâm lý học Ứng dụng", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 5. Tâm lý Trị liệu Tổng quát", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 6. Ngành Coaching - Giới thiệu", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 7. Coaching - 7 Kỹ năng & Mô hình Grow", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 8. 7 Mô hình Coaching: Tập trung Giải pháp, Nhận thức - Hành vi, NLP...", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 8+1. Giải đáp các quan niệm Triết học & Kinh nghiệm Coaching", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 8+2. Rèn luyện Chánh niệm & Xả ly, Gia tăng nội lực", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 8+3. Ứng dụng Trí tuệ Nhân tạo trong Tự học & Hành nghề", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 9. Chiêm tinh học Tổng quan", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 10. Hành tinh trong Chiêm tinh học", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 11. 12 Nhà trong Chiêm tinh học", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 12. Thực hành Bản đồ Sao Chiêm tinh học", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 13. Nhập môn Thần số học", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 14. Thần số học - Các Chỉ số quan trọng", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 15: Thần số học - Khám phá chu kỳ cuộc đời qua năm cá nhân", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 17: Ma trận Định mệnh Nhập môn", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 19: DISC Đầy đủ & Chi tiết", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 21: Put It All Together - Tích hợp các công cụ Luận giải", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 22: Put It All Together - Thực hành Tư vấn Coaching", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Ngày 23: Put It All Together - Hiểu mình và Trưởng thành", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Tổng kết & Hỏi - đáp Tất tần tật Con đường phát triển nghề", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" },
-        { title: "Talkshow & Bế mạc Hành trình K1 AI Đọc vị 16 tuần", author: "Ngô Duy Kha", img: "https://via.placeholder.com/150" }
+        { title: "Ngày 1. Triết học - Minh triết Dễ hiểu", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/1.png" },
+        { title: "Ngày 2. Triết học - Con người & Vũ trụ", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/2.png" },
+        { title: "Ngày 3. Tâm lý học Tổng quát", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/3.png" },
+        { title: "Ngày 4. Tâm lý học Ứng dụng", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/4.png" },
+        { title: "Ngày 5. Tâm lý Trị liệu Tổng quát", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/5.png" },
+        { title: "Ngày 6. Ngành Coaching - Giới thiệu", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/6.png" },
+        { title: "Ngày 7. Coaching - 7 Kỹ năng & Mô hình Grow", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/7.png" },
+        { title: "Ngày 8. 7 Mô hình Coaching: Tập trung Giải pháp, Nhận thức - Hành vi, NLP...", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/8.png" },
+        { title: "Ngày 8+1. Giải đáp các quan niệm Triết học & Kinh nghiệm Coaching", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/8_1.png" },
+        { title: "Ngày 8+2. Rèn luyện Chánh niệm & Xả ly, Gia tăng nội lực", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/8_2.png" },
+        { title: "Ngày 8+3. Ứng dụng Trí tuệ Nhân tạo trong Tự học & Hành nghề", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/8_3.png" },
+        { title: "Ngày 9. Chiêm tinh học Tổng quan", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/9.png" },
+        { title: "Ngày 10. Hành tinh trong Chiêm tinh học", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/10.png" },
+        { title: "Ngày 11. 12 Nhà trong Chiêm tinh học", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/11.png" },
+        { title: "Ngày 12. Thực hành Bản đồ Sao Chiêm tinh học", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/12.png" },
+        { title: "Ngày 13. Nhập môn Thần số học", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/13.png" },
+        { title: "Ngày 14. Thần số học - Các Chỉ số quan trọng", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/14.png" },
+        { title: "Ngày 15: Thần số học - Khám phá chu kỳ cuộc đời qua năm cá nhân", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/15.png" },
+        { title: "Ngày 17: Ma trận Định mệnh Nhập môn", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/16.png" },
+        { title: "Ngày 19: DISC Đầy đủ & Chi tiết", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/17.png" },
+        { title: "Ngày 21: Put It All Together - Tích hợp các công cụ Luận giải", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/18.png" },
+        { title: "Ngày 22: Put It All Together - Thực hành Tư vấn Coaching", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/19.png" },
+        { title: "Ngày 23: Put It All Together - Hiểu mình và Trưởng thành", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/20.png" },
+        { title: "Tổng kết & Hỏi - đáp Tất tần tật Con đường phát triển nghề", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/21.png" },
+        { title: "Talkshow & Bế mạc Hành trình K1 AI Đọc vị 16 tuần", author: "Ngô Duy Kha", img: "/FortuneTeller/video_thumbnail/22.png" }
       ];
+
+
       
       const nextVideo = () => {
         setIndexVideo(indexVideo+1)
@@ -83,9 +85,11 @@ function Resource(){
 
 
     useEffect(()=>{
+
         const videoList = document.getElementsByClassName('video_current')
         const videoTitle = document.getElementById('videoTitle')
         const videoChannel = document.getElementById('videoChannel')
+
 
         for(let i = 0; i < videoList.length; i++){
             videoList[i].addEventListener('click', ()=>{
@@ -119,8 +123,8 @@ function Resource(){
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-3xl font-bold gradient-text">Resource</h1>
-                    <p class="text-gray-600">Digital resource from Youtube</p>
+                    <h1 class="text-3xl font-bold gradient-text">Tài liệu</h1>
+                    <p class="text-gray-600">Tài liệu số được chọn lọc</p>
                 </div>
             </div>
             
@@ -167,7 +171,7 @@ function Resource(){
                     {/* <!-- Player Controls --> */}
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <button id="prevBtn" onClick={prevVideo} class="btn-icon text-gray-700 hover:text-violet-600 disabled:opacity-50 disabled:cursor-not-allowed">
+                            {/* <button id="prevBtn" onClick={prevVideo} class="btn-icon text-gray-700 hover:text-violet-600 disabled:opacity-50 disabled:cursor-not-allowed">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z"></path>
                                 </svg>
@@ -177,12 +181,12 @@ function Resource(){
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z"></path>
                                 </svg>
-                            </button>
+                            </button> */}
                         </div>
 
                         
-                        <div class="flex items-center space-x-2 mt-2 sm:mt-0 w-full justify-end">
-                            <button id="loopBtn" class="btn-icon text-gray-700 hover:text-violet-600 tooltip">
+                        {/* <div class="flex items-center space-x-2 mt-2 sm:mt-0 w-full justify-end"> */}
+                            {/* <button id="loopBtn" class="btn-icon text-gray-700 hover:text-violet-600 tooltip">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                                 </svg>
@@ -193,14 +197,14 @@ function Resource(){
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
                                 </svg>
                                 <span class="tooltip-text">Shuffle</span>
-                            </button>
+                            </button> */}
                             <button onClick={toggleFullscreen} id="fullscreenBtn" class="btn-icon text-gray-700 hover:text-violet-600 tooltip">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path>
                                 </svg>
                                 <span class="tooltip-text">Fullscreen</span>
                             </button>
-                            <button id="likeBtn" class="btn-icon like-btn text-gray-700 hover:text-pink-500 tooltip">
+                            {/* <button id="likeBtn" class="btn-icon like-btn text-gray-700 hover:text-pink-500 tooltip">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                                 </svg>
@@ -211,21 +215,21 @@ function Resource(){
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
                                 </svg>
                                 <span class="tooltip-text">Share</span>
-                            </button>
-                        </div>
+                            </button> */}
+                        {/* </div> */}
                     </div>
                 </div>
                 
                 {/* <!-- Video Info and Comments Section --> */}
-                <div class="glass-effect p-6">
+               
                     {/* <!-- Tabs --> */}
-                    <div class="flex border-b border-gray-200 mb-4">
+                    {/* <div class="flex border-b border-gray-200 mb-4">
                         <div class="tab active" data-tab="description">Description</div>
-                        {/* <div class="tab" data-tab="comments">Comments</div>
-                        <div class="tab" data-tab="related">Related</div> */}
+                        <div class="tab" data-tab="comments">Comments</div>
+                        <div class="tab" data-tab="related">Related</div>
                     </div>
                     
-                    {/* <!-- Tab Content --> */}
+ 
                     <div class="tab-content active" id="description-content">
                         <p id="videoDescription" class="text-gray-700 mb-4">
                             Video description will appear here when you select a video to play.
@@ -238,7 +242,7 @@ function Resource(){
                                 <span id="videoPublished">Published date</span>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     
                     {/* <div class="tab-content" id="comments-content">
                         <div class="mb-4">
@@ -270,7 +274,7 @@ function Resource(){
                             </div>
                         </div>
                     </div> */}
-                </div>
+              
             </div>
             
             {/* <!-- Right Column - Playlists and Current Playlist --> */}
@@ -278,7 +282,7 @@ function Resource(){
             {/* <!-- Current Playlist --> */}
             <div class="glass-effect p-6 mb-6">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 id="currentPlaylistTitle" class="text-lg font-bold text-gray-800">Current Playlist</h3>
+                        <h3 id="currentPlaylistTitle" class="text-lg font-bold text-gray-800">Playlist hiện tại</h3>
                         <div class="flex items-center">
                             <span id="videoCount" class="text-sm text-gray-600 mr-2">{videoPLaylist.length} videos</span>
                         </div>
@@ -290,7 +294,7 @@ function Resource(){
                         {videoPLaylist.map((video, index)=>(
                         <div class="video_current playlist-item p-3 rounded-lg mb-2 flex items-center cursor-pointer">
                             <div class="w-20 h-12 rounded-md overflow-hidden mr-3 flex-shrink-0">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%238b5cf6'/%3E%3Ccircle cx='160' cy='90' r='50' fill='%23ec4899' fill-opacity='0.7'/%3E%3C/svg%3E" alt="Thumbnail" class="w-full h-full object-cover"/>
+                                <img src={video.img} alt="Thumbnail" class="w-full h-full object-cover"/>
                             </div>
                             <div class="flex-grow min-w-0">
                                 <h4 class="text-sm font-medium text-gray-800 truncate">{video.title}</h4>
@@ -318,43 +322,22 @@ function Resource(){
 
                 {/* <!-- Playlist Management --> */}
                 <div class="glass-effect p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-bold text-gray-800">Your Playlists</h3>
-                        <button id="createPlaylistBtn" class="btn-icon text-violet-600 hover:text-violet-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </button>
-                    </div>
+
 
                     
-                    <h3 class="text-lg font-bold text-gray-800 mb-4">Featured Playlists</h3>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Playlists gợi ý</h3>
                     
                     <div id="featuredPlaylistsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
                         {/* <!-- Featured Playlists will be loaded here --> */}
                         <div class="playlist-cover aspect-w-16 aspect-h-9 cursor-pointer" data-playlist-id="PLj0L3ZL0ijaTQ4s0nZ3eyJdx7k3q6IpBh">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%238b5cf6'/%3E%3Cpath d='M400 225m-150 0a150 150 0 1 0 300 0a150 150 0 1 0 -300 0' fill='%23ec4899' fill-opacity='0.7'/%3E%3C/svg%3E" alt="Chill Lofi Beats" class="w-full h-full object-cover"/>
+                            <img src="/FortuneTeller/video_thumbnail/1.png" alt="Chill Lofi Beats" class="w-full h-full object-cover"/>
                             <div class="playlist-cover-info">
-                                <h4 class="text-white font-bold">Chill Lofi Beats</h4>
-                                <p class="text-white/80 text-sm">Perfect for studying and relaxing</p>
+                                <h4 class="text-white font-bold">Hành trình kiến tạo Người Nâng đỡ Chuyển hoá</h4>
+                                <p class="text-white/80 text-sm">Tài liệu học tập từ Coach</p>
                             </div>
                         </div>
                         
-                        <div class="playlist-cover aspect-w-16 aspect-h-9 cursor-pointer" data-playlist-id="PL4fGSI1pDJn6jXS_Tv_N9B8Z0HTRVJE0m">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%2364748b'/%3E%3Cpath d='M200 225a200 200 0 1 0 400 0a200 200 0 1 0 -400 0' fill='%2338bdf8' fill-opacity='0.6'/%3E%3C/svg%3E" alt="Top Hits 2023" class="w-full h-full object-cover"/>
-                            <div class="playlist-cover-info">
-                                <h4 class="text-white font-bold">Top Hits 2023</h4>
-                                <p class="text-white/80 text-sm">The most popular songs right now</p>
-                            </div>
-                        </div>
-                        
-                        <div class="playlist-cover aspect-w-16 aspect-h-9 cursor-pointer" data-playlist-id="PLw-VjHDlEOgs658kAHR_LAaILBXb-s6Q5">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23475569'/%3E%3Cpath d='M0 225 L800 225 L400 50 Z' fill='%23f472b6' fill-opacity='0.7'/%3E%3C/svg%3E" alt="Classic Rock Essentials" class="w-full h-full object-cover"/>
-                            <div class="playlist-cover-info">
-                                <h4 class="text-white font-bold">Classic Rock Essentials</h4>
-                                <p class="text-white/80 text-sm">Timeless rock hits from the legends</p>
-                            </div>
-                        </div>
+       
                     </div>
                 </div>
                 
