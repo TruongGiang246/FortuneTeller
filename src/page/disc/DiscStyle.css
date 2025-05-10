@@ -165,7 +165,7 @@
     70% { transform: scale(1.05); }
     100% { opacity: 1; transform: scale(1); }
 }
-@media screen {
+@media screen and (max-width:680px){
     .question-card{
         margin-top: 3rem;
         width: 90vw;

@@ -269,18 +269,18 @@ function Matrixdes(){
                                 <div>
                                     <select id="months" className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" required="">
                                         <option value="" disabled="" selected="">Tháng</option>
-                                        <option value="1">January</option>
-                                        <option value="2">February</option>
-                                        <option value="3">March</option>
-                                        <option value="4">April</option>
-                                        <option value="5">May</option>
-                                        <option value="6">June</option>
-                                        <option value="7">July</option>
-                                        <option value="8">August</option>
-                                        <option value="9">September</option>
-                                        <option value="10">October</option>
-                                        <option value="11">November</option>
-                                        <option value="12">December</option>
+                                        <option value="1">T1</option>
+                                        <option value="2">T2</option>
+                                        <option value="3">T3</option>
+                                        <option value="4">T4</option>
+                                        <option value="5">T5</option>
+                                        <option value="6">T6</option>
+                                        <option value="7">T7</option>
+                                        <option value="8">T8</option>
+                                        <option value="9">T9</option>
+                                        <option value="10">T10</option>
+                                        <option value="11">T11</option>
+                                        <option value="12">T12</option>
                                     </select>
                                 </div>
                                 <div>
@@ -641,8 +641,8 @@ function Matrixdes(){
                                 <p className="text-gray-700">{financialInfo[value[9]].subscription}</p>
                                 <p className="text-gray-700 mb-3">Thực hành cho tài chính bạn:</p>
                                 <ul className='list-disc pl-5 space-y-1 text-gray-700 mb-3'>
-                                    <li>{talentInfo[value[9]].description[0]}</li>
-                                    <li>{talentInfo[value[9]].description[1]}</li>
+                                    <li>{financialInfo[value[9]].description[0]}</li>
+                                    <li>{financialInfo[value[9]].description[1]}</li>
                                 </ul>
                                  <p className="text-gray-700">When you embrace these strengths fully, you become a powerful force for positive change in your community.</p>
                                 </>

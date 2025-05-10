@@ -621,7 +621,7 @@ const DISCQuiz = () => {
             <div className="bg-white/60 backdrop-blur-sm p-5 rounded-2xl flex items-center gap-4">
                 <div className="disc-icon bg-green-500 text-sm">S</div>
                 <div>
-                    <h3 className="font-bold text-gray-800">Người Ổn định</h3>
+                    <h3 className="font-bold text-gray-800">Người Chăm sóc</h3>
                     <p className="text-sm text-gray-600">Kiên nhẫn, trung thành, hỗ trợ</p>
                 </div>
             </div>
