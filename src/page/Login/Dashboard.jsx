@@ -132,6 +132,7 @@ const Dashboard = ({ user, onLogout, setMenuData }) => {
             - Nghề nghiệp phù hợp
             - Lời khuyên định hướng phát triển
             - Giọng văn tích cực, truyền cảm hứng, dễ hiểu
+            - Giới hạn độ dài trong khoảng 500 từ
                 `
             newMessages = [...messages, { role: "user", content: ProfileToAI }];
             fakeMesage = [...messages, { role: "user", content: "Đã gửi hồ sơ" }]

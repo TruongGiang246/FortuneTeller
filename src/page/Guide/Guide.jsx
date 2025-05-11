@@ -81,7 +81,7 @@ const sendMessage = async (mode) => {
             case 2:{
             const cardNames = location.state.card.map(card => majorArcana[card]).join(", ");
                 ProfileToAI = `
-Tôi muốn hỏi về chủ đề ${location.state.reason[0]}. Tôi đã chọn kiểu trải ${cardNames}. Hãy giúp tôi diễn giải ý nghĩa của các lá bài này cho mục đích của tôi.
+Tôi muốn hỏi về chủ đề ${location.state.reason[0]}. Tôi đã chọn kiểu trải ${cardNames}. Hãy giúp tôi diễn giải ý nghĩa của các lá bài này cho mục đích của tôi, giới hạn cho tôi trong khoảng 200 từ.
                 `
         
             newMessages = [...messages, { role: "user", content: ProfileToAI }];
@@ -100,7 +100,7 @@ Tôi muốn hỏi về chủ đề ${location.state.reason[0]}. Tôi đã chọn
 -Số thái độ (Attitude Number) của tôi là ${location.state.number[4]}
 -Số trưởng thành (Mature Number) của tôi là ${location.state.number[5]}
 -Số ngày sinh (Birthday Number) của tôi là ${location.state.number[6]}
-Hãy giải thích ý nghĩa những con số này cho tôi
+Hãy giải thích ý nghĩa những con số này cho tôi, giới hạn cho tôi trong khoảng 150 từ
                 `
            
             newMessages = [...messages, { role: "user", content: ProfileToAI }];
